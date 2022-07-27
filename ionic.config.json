@@ -1,0 +1,7 @@
+{
+  "name": "culture_dept_mp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
