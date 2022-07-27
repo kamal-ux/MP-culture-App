@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ApiServiceService } from "../../service/api-service.service";
 import { UtilServiceService } from "../../service/util-service.service";
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"],
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -18,12 +18,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      userName: [],
-      password: [],
+      userName: ["", Validators.required],
+      password: ["", Validators.required]
     });
   }
 
-  submit() {
-    console.log("Form value", this.loginForm);
+  submit(isValid: boolean, formValue: any) {
+    if (!isValid) return;
+    const formObj = {
+      userName: formValue.userName,
+      password: formValue.password
+    };
+    console.log("isvalid", isValid, formObj);
   }
 }
