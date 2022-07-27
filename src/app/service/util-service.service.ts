@@ -1,9 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { LoadingController } from "@ionic/angular";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UtilServiceService {
+  constructor(private modalCtrl: LoadingController) {}
 
-  constructor() { }
+  async presentLoader() {
+    let loader = await this.modalCtrl.create({
+      message: "Please wait",
+    });
+    await loader.present();
+  }
+
+  async dismissLoading() {
+    this.modalCtrl.dismiss();
+  }
 }

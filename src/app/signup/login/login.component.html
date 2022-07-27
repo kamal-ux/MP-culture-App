@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="text" required></ion-input>
