@@ -7,7 +7,7 @@ import { UtilServiceService } from "../../service/util-service.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       userName: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
     });
   }
 
@@ -29,8 +29,18 @@ export class LoginComponent implements OnInit {
     if (!isValid) return;
     const formObj = {
       userName: formValue.userName,
-      password: formValue.password
+      password: formValue.password,
     };
+    this.apiService.userLogin(formObj).subscribe(
+      (res) => {
+        console.log("user logged-in", res);
+        this.utilService.dismissLoading();
+      },
+      (error) => {
+        console.log("User could not logged-in", error);
+        this.utilService.dismissLoading();
+      }
+    );
     console.log("isvalid", isValid, formObj);
     this.router.navigate(["home"]);
   }
