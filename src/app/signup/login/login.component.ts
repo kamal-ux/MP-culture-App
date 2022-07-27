@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ApiServiceService } from "../../service/api-service.service";
 import { UtilServiceService } from "../../service/util-service.service";
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private apiService: ApiServiceService,
     private utilService: UtilServiceService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -30,5 +32,6 @@ export class LoginComponent implements OnInit {
       password: formValue.password
     };
     console.log("isvalid", isValid, formObj);
+    this.router.navigate(["home"]);
   }
 }
