@@ -1,21 +1,38 @@
 <ion-content>
-  <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-    <div class="text-center">
-      <h3>Login</h3>
-    </div>
-  </ion-col>
-  <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)">
-    <ion-item lines="full">
+  <ion-row>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div class="icon">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <div class="text-center">
+          <span>Login</span>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="submit(loginForm.valid, loginForm.value)"
+  >
+    <ion-item class="mt50">
       <ion-label position="floating">User Name</ion-label>
       <ion-input type="text" formControlName="userName" required></ion-input>
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="password" required></ion-input>
+      <ion-input
+        type="password"
+        formControlName="password"
+        required
+      ></ion-input>
     </ion-item>
     <ion-row>
-      <ion-col>
-        <ion-button type="submit" [disabled]="loginForm.invalid" color="danger" expand="block"
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          color="danger"
+          expand="block"
           >Sign In</ion-button
         >
         <!-- <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a> -->
