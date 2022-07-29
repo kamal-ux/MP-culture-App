@@ -11,6 +11,7 @@ import { UtilServiceService } from "../../service/util-service.service";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  clientReady: boolean;
   constructor(
     private apiService: ApiServiceService,
     private utilService: UtilServiceService,
@@ -19,19 +20,31 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.subscription();
     this.loginForm = this.fb.group({
       userName: ["", Validators.required],
       password: ["", Validators.required]
     });
   }
 
+  subscription(): void {
+    this.apiService.clientState().subscribe((ready) => {
+      if (ready) {
+        this.clientReady = true;
+      }
+    });
+  }
+
   submit(isValid: boolean, formValue: any) {
-    if (!isValid) return;
+    if (!isValid || !this.clientReady) return;
     const formObj = {
-      userName: formValue.userName,
-      password: formValue.password
+      UserName: formValue.userName,
+      Password: formValue.password
     };
     console.log("isvalid", isValid, formObj);
-    this.router.navigate(["home"]);
+    this.apiService.userLogin(formObj).subscribe((res: any) => {
+      console.log("login res", res);
+    });
+    // this.router.navigate(["home"]);
   }
 }
