@@ -29,6 +29,7 @@ export class ApiServiceService {
 
   userLogin(obj) {
     // this.uitlService.presentLoader();
+    this.client.addHttpHeader("Content-Type", "text/xml");
     return this.client.call("Login", obj);
   }
 }
