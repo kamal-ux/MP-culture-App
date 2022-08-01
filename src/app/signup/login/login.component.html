@@ -1,25 +1,42 @@
-<ion-content>
-  <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-    <div class="text-center">
-      <h3>Login</h3>
-    </div>
-  </ion-col>
-  <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)">
-    <ion-item lines="full">
-      <ion-label position="floating">User Name</ion-label>
-      <ion-input type="text" formControlName="userName" required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="password" required></ion-input>
-    </ion-item>
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" [disabled]="loginForm.invalid" color="danger" expand="block"
-          >Sign In</ion-button
-        >
-        <!-- <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a> -->
-      </ion-col>
-    </ion-row>
-  </form>
-</ion-content>
+<ion-app>
+  <ion-content class="ion-padding login_top">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="">
+      <ion-list>
+        <div class="login_img">
+          <img src="../../../assets/images/login_img.png" />
+        </div>
+        <h3 class="ion-text-center mb30">Welcome Back!</h3>
+        <ion-row>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="user-Name"
+              name="userName"
+              placeholder="Username or email"
+              required
+              formControlName="email"
+            ></ion-input>
+            <ion-icon name="person-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              formControlName="password"
+            ></ion-input>
+            <ion-icon name="lock-open-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="mb30">
+            <button type="button">Login</button>
+          </ion-col>
+
+          <ion-col size="12" class="ion-text-center">
+            <p><a href="#!">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="#!">Register</a></p>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-app>

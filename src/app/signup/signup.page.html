@@ -1,9 +1,50 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<ion-app>
+  <ion-content class="ion-padding login_top">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="">
+      <ion-list>
+        <div class="login_img">
+          <img src="../../../assets/images/login_img.png" />
+        </div>
+        <h3 class="ion-text-center mb30">Welcome, Register Now!</h3>
+        <ion-row>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="user-Name"
+              name="userName"
+              placeholder="Username"
+              required
+              formControlName="username"
+            ></ion-input>
+            <ion-icon name="person-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="user-Name"
+              name="userName"
+              placeholder="Email address"
+              required
+              formControlName="email"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              formControlName="password"
+            ></ion-input>
+            <ion-icon name="lock-open-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="mb30">
+            <button type="button">Register Now</button>
+          </ion-col>
+          <ion-col size="12" class="ion-text-center">
+            <p>Already have an account? <a href="#!">Login</a></p>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-app>
