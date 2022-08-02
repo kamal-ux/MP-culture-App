@@ -1,6 +1,6 @@
 <ion-app>
   <ion-content class="ion-padding login_top">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="">
+    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)" class="">
       <ion-list>
         <div class="login_img">
           <img src="../../../assets/images/login_img.png" />
@@ -13,7 +13,7 @@
               name="userName"
               placeholder="Username or email"
               required
-              formControlName="email"
+              formControlName="userName"
             ></ion-input>
             <ion-icon name="person-outline" class="icon"></ion-icon>
           </ion-col>

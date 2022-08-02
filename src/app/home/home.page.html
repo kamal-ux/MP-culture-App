@@ -1,22 +1,40 @@
 <ion-header>
   <ion-toolbar>
     <ion-title> Home </ion-title>
+    <ion-buttons slot="start" name="main">
+      <ion-menu-button>
+        <ion-icon name="grid-outline" class="icons"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col size="6">
+        <ion-label class="detailTxt">Detail</ion-label>
+      </ion-col>
+      <ion-col size="6">
         <ion-label class="detailTxt">Detail</ion-label>
       </ion-col>
     </ion-row>
-    <hr />
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label></ion-label>
-        </ion-item>
+        <ion-slides #registerSlider [options]="slideOpts">
+          <ion-slide>
+            slide1
+            <!-- <img src="../../../assets/images/register-slide-1.gif" alt="" class="img" /> -->
+          </ion-slide>
+          <ion-slide>
+            slide2
+            <!-- <img src="../../../assets/images/register-slide-2.jpeg" alt="" class="img" /> -->
+          </ion-slide>
+          <ion-slide>
+            slide3
+            <!-- <img src="../../../assets/images/register-slide-3.jpeg" alt="" class="img img2" /> -->
+          </ion-slide>
+        </ion-slides>
       </ion-col>
     </ion-row>
   </ion-grid>

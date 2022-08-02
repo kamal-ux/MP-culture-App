@@ -1,3 +1,29 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane when="false" contentId="main">
+    <ion-menu side="start" contentId="main">
+      <ion-header>
+        <ion-toolbar translucent class="text-center"> </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle>
+            <ion-item class="menu-list" *ngFor="let p of appMenu" (click)="menuToggle(p.title)">
+              <ion-icon
+                name="{{ p.icon }}"
+                style="color: gray; font-size: 28px"
+                slot="start"
+                [ngClass]="{
+                  'animate__animated animate__infinite animate__swing':
+                    p.icon == 'notifications-circle'
+                }"
+              >
+              </ion-icon>
+              <ion-label class="menu-txt">{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
