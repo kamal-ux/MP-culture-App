@@ -52,8 +52,8 @@ export class UtilService {
   }
 
   async dismissLoading() {
+    await (this.loading && this.loading.dismiss());
     await this.loadingCtrl.dismiss();
-    // await this.loading.dismiss();
     this.isLoading = false;
   }
 }
