@@ -26,21 +26,24 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 .relative{position: relative;}
-h1{font-size: 26px !important;white-space: normal;}
-h2{font-size: 24px !important;white-space: normal; font-weight: 500;}
-h3{font-size: 22px !important;white-space: normal;}
-h4{font-size: 18px !important;white-space: normal;}
-h5{font-size: 16px !important; color: #0E1127;white-space: normal;}
-h6{font-size: 15px !important;white-space: normal;color: #666; font-weight: 400;}
+h1{font-size: 26px !important;white-space: normal; margin: 0; padding: 0;}
+h2{font-size: 24px !important;white-space: normal; font-weight: 500; margin: 0; padding: 0;}
+h3{font-size: 22px !important;white-space: normal; margin: 0; padding: 0;}
+h4{font-size: 18px !important;white-space: normal; margin: 0; padding: 0;}
+h5{font-size: 16px !important; color: #0E1127;white-space: normal; margin: 0; padding: 0;}
+h6{font-size: 15px !important;white-space: normal;color: #666; font-weight: 400; margin: 0; padding: 0;}
 p{padding: 0;margin: 0 auto 10px;font-size: 14px !important;color: #666; font-weight: 400;width: 100%;white-space: normal;}
 
 a{color: #000; text-decoration: none;}
 a:hover{color: #333; text-decoration: none;}
 ion-icon{vertical-align: middle;}
+.mb10{margin-bottom: 10px !important;}
 .mb30{margin-bottom: 30px !important;}
 .mb50{margin-bottom: 50px !important;}
 .mt20{margin-top:20px !important;}
-
+.mr-1{margin-right: 10px;}
+.p-0{padding: 0;}
+.m-0{margin: 0;}
 button, ion-button{background: #e42f08;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
 button:hover, ion-button:hover{background: #c02705;}
 

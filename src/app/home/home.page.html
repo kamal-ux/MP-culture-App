@@ -10,32 +10,187 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row class="mt20">
-      <ion-col size="6">
-        <ion-label>Detail</ion-label>
+  <ion-row>
+    <ion-col size="6">
+      <h3 class="m-0 p-0">News Today</h3>
+    </ion-col>
+    <ion-col size="6" class="ion-text-end">
+      <p>Tuesday, 2 August</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-slides #registerSlider [options]="slideOpts" class="banner_slide">
+        <ion-slide>
+          <div class="content">
+            <div class="red_btn">Health</div>
+            <h4>Loses over 30kg on keto diet and one meal a day</h4>
+            <p>
+              <a href="#!" class="mr-1"
+                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+              >
+              <a href="#!" class="mr-1"
+                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
+                March</a
+              ><span
+                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
+              >
+            </p>
+          </div>
+          <img src="../../../assets/images/banner1.jpg" class="banner_img" />
+        </ion-slide>
+        <ion-slide>
+          <div class="content">
+            <div class="red_btn">Health</div>
+            <h4>Loses over 30kg on keto diet and one meal a day</h4>
+            <p>
+              <a href="#!" class="mr-1"
+                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+              >
+              <a href="#!" class="mr-1"
+                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
+                March</a
+              ><span
+                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
+              >
+            </p>
+          </div>
+          <img src="../../../assets/images/banner2.jpg" class="banner_img" />
+        </ion-slide>
+        <ion-slide>
+          <div class="content">
+            <div class="red_btn">Health</div>
+            <h4>Loses over 30kg on keto diet and one meal a day</h4>
+            <p>
+              <a href="#!" class="mr-1"
+                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+              >
+              <a href="#!" class="mr-1"
+                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
+                March</a
+              ><span
+                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
+              >
+            </p>
+          </div>
+          <img src="../../../assets/images/banner3.jpg" class="banner_img" />
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row class="mt20">
+    <ion-col size="12" class="catagories_slider">
+      <h3 class="m-0">Top Catagories</h3>
+      <ion-slides>
+        <ion-slide>
+          <ion-row>
+            <ion-col size="6">
+              <div class="content">
+                <div class="red_btn">Sports</div>
+              </div>
+              <img src="../../../assets/images/slide1.jpg" class="slide2_img" />
+            </ion-col>
+            <ion-col size="6">
+              <div class="content">
+                <div class="red_btn">Fashion</div>
+              </div>
+              <img src="../../../assets/images/slide2.jpg" class="slide2_img" />
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide>
+          <ion-row>
+            <ion-col size="6">
+              <div class="content">
+                <div class="red_btn">Tech</div>
+              </div>
+              <img src="../../../assets/images/slide3.jpg" class="slide2_img" />
+            </ion-col>
+            <ion-col size="6">
+              <div class="content">
+                <div class="red_btn">Gadgets</div>
+              </div>
+              <img src="../../../assets/images/slide4.jpg" class="slide2_img" />
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+        <ion-slide>
+          <ion-row>
+            <ion-col size="6">
+              <div class="content">
+                <div class="red_btn">Health</div>
+              </div>
+              <img src="../../../assets/images/slide5.jpg" class="slide2_img" />
+            </ion-col>
+            <ion-col size="6">
+              <div class="content">
+                <div class="red_btn">Politics</div>
+              </div>
+              <img src="../../../assets/images/slide6.jpg" class="slide2_img" />
+            </ion-col>
+          </ion-row>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="mt20">
+    <ion-col size="6">
+      <h3 class="m-0 p-0">Trending</h3>
+    </ion-col>
+    <ion-col size="6" class="ion-text-end">
+      <a href="#!" class="red_btn">View All</a>
+    </ion-col>
+  </ion-row>
+  <ion-card class="blue_card">
+    <ion-row>
+      <ion-col size="4">
+        <img
+          src="../../../assets/images/trending_img1.jpg"
+          class="trending_img"
+        />
       </ion-col>
-      <ion-col size="6" class="ion-text-center">
-        <ion-text>Tuesday, 2 August</ion-text>
+      <ion-col size="8">
+        <h6 class="mb10">
+          <a href="#!">Swimming is a good exercise for the body</a>
+        </h6>
+        <a href="#!" class="green_btn mr-1">Sports</a>
+        <a href="#!">2 Aug 2022</a>
       </ion-col>
     </ion-row>
-    <ion-row class="mt20">
-      <ion-col>
-        <ion-slides #registerSlider [options]="slideOpts">
-          <ion-slide>
-            slide1
-            <!-- <img src="../../../assets/images/register-slide-1.gif" alt="" class="img" /> -->
-          </ion-slide>
-          <ion-slide>
-            slide2
-            <!-- <img src="../../../assets/images/register-slide-2.jpeg" alt="" class="img" /> -->
-          </ion-slide>
-          <ion-slide>
-            slide3
-            <!-- <img src="../../../assets/images/register-slide-3.jpeg" alt="" class="img img2" /> -->
-          </ion-slide>
-        </ion-slides>
+  </ion-card>
+  <ion-card class="blue_card">
+    <ion-row>
+      <ion-col size="4">
+        <img
+          src="../../../assets/images/trending_img2.jpg"
+          class="trending_img"
+        />
+      </ion-col>
+      <ion-col size="8">
+        <h6 class="mb10">
+          <a href="#!">Swimming is a good exercise for the body</a>
+        </h6>
+        <a href="#!" class="green_btn mr-1">Tech</a>
+        <a href="#!">2 Aug 2022</a>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-card>
+  <ion-card class="blue_card">
+    <ion-row>
+      <ion-col size="4">
+        <img
+          src="../../../assets/images/trending_img3.jpg"
+          class="trending_img"
+        />
+      </ion-col>
+      <ion-col size="8">
+        <h6 class="mb10">
+          <a href="#!">Swimming is a good exercise for the body</a>
+        </h6>
+        <a href="#!" class="green_btn mr-1">Fashion</a>
+        <a href="#!">2 Aug 2022</a>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
