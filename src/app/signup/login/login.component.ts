@@ -26,15 +26,10 @@ export class LoginComponent implements OnInit {
     this.subscription();
     this.loginForm = this.fb.group({
       userStatus: ["audience"],
-      userName: [""],
+      userName: ["", Validators.required],
       password: ["", Validators.required],
-      mobileNo: [""]
+      mobileNo: ["", [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
-  }
-
-  changeUserType(evt: any): void {
-    console.log("evt value", evt.target.value);
-    const userStatus = (this.userStatus = evt.target.value);
   }
 
   subscription(): void {
@@ -45,15 +40,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  changeUserType(evt: any): void {
+    const userType = (this.userStatus = evt.value);
+    console.log("user type", userType);
+    if (userType == "artist") {
+      this.loginForm.controls["mobileNo"].setValidators([Validators.required]);
+      this.loginForm.get("mobileNo").updateValueAndValidity();
+      this.loginForm.controls["userName"].clearValidators();
+      this.loginForm.get("userName").updateValueAndValidity();
+    } else {
+      this.loginForm.controls["userName"].setValidators([Validators.required]);
+      this.loginForm.get("userName").updateValueAndValidity();
+      this.loginForm.controls["mobileNo"].clearValidators();
+      this.loginForm.get("mobileNo").updateValueAndValidity();
+    }
+  }
+
   submit(isValid: boolean, formValue: any) {
     if (!isValid || !this.clientReady) return;
-    console.log("login type", this.userStatus);
-
-    if (this.userStatus == "audience") {
-      this.audienceLogin(formValue);
-    } else {
-      this.artistLogin(formValue);
-    }
+    const userType = this.loginForm.controls.userStatus.value;
+    userType == "audience" ? this.audienceLogin(formValue) : this.artistLogin(formValue);
   }
 
   audienceLogin(formValue: any) {
@@ -61,28 +67,31 @@ export class LoginComponent implements OnInit {
       UserName: formValue.userName,
       Password: formValue.password
     };
-    console.log("form obj", formObj);
+    console.log("audience obj", formObj);
     this.apiService.userLogin(formObj).subscribe(
       (res) => {
         console.log("user logged-in", res);
-        const {
-          userid = "",
-          usertype = "",
-          username = "",
-          departmentid = "",
-          userfullname = ""
-        } = res;
-        const userData = {
-          userid,
-          usertype,
-          username,
-          departmentid,
-          userfullname
-        };
-        console.log("userdata", userData);
-        userData && this.localStorageService.set("userData", userData);
-        this.router.navigate(["/tabs/home"]);
-        this.utilService.dismissLoading();
+        if (res.result == "success") {
+          const {
+            userid = "",
+            usertype = "",
+            username = "",
+            departmentid = "",
+            userfullname = ""
+          } = res;
+          const userData = {
+            userid,
+            usertype,
+            username,
+            departmentid,
+            userfullname
+          };
+          console.log("userdata", userData);
+          userData && this.localStorageService.set("userData", userData);
+          this.router.navigate(["/tabs/home"]);
+        } else {
+          this.utilService.presentToast(res.message);
+        }
       },
       (error) => {
         console.log("User could not logged-in", error);
@@ -96,20 +105,24 @@ export class LoginComponent implements OnInit {
       MobileNo: formValue.mobileNo,
       Password: formValue.password
     };
-    console.log("form obj", formObj);
+    console.log("artist obj", formObj);
     this.apiService.artistLogin(formObj).subscribe(
       (res) => {
         console.log("artist logged-in", res);
-        const { artistid = "", mobileno = "", artistname = "" } = res;
-        const userData = {
-          artistid,
-          mobileno,
-          artistname
-        };
-        console.log("artist data", userData);
-        userData && this.localStorageService.set("userData", userData);
-        this.router.navigate(["/tabs/home"]);
-        this.utilService.dismissLoading();
+        if (res.result == "success") {
+          const { artistid = "", mobileno = "", artistname = "" } = res;
+          const userData = {
+            artistid,
+            mobileno,
+            artistname
+          };
+          console.log("artist data", userData);
+          userData && this.localStorageService.set("userData", userData);
+          this.router.navigate(["/tabs/home"]);
+          this.utilService.dismissLoading();
+        } else {
+          this.utilService.presentToast(res.message);
+        }
       },
       (error) => {
         console.log("User could not logged-in", error);
