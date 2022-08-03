@@ -7,7 +7,7 @@ import { UtilServiceService } from "../../service/util-service.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"],
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.subscription();
     this.loginForm = this.fb.group({
       userName: ["", Validators.required],
-      password: ["", Validators.required],
+      password: ["", Validators.required]
     });
   }
 
@@ -39,8 +39,9 @@ export class LoginComponent implements OnInit {
     if (!isValid || !this.clientReady) return;
     const formObj = {
       UserName: formValue.userName,
-      Password: formValue.password,
+      Password: formValue.password
     };
+    console.log("form obj", formObj);
     this.apiService.userLogin(formObj).subscribe(
       (res) => {
         console.log("user logged-in", res);
@@ -52,9 +53,6 @@ export class LoginComponent implements OnInit {
       }
     );
     console.log("isvalid", isValid, formObj);
-    this.apiService.userLogin(formObj).subscribe((res: any) => {
-      console.log("login res", res);
-    });
     // this.router.navigate(["home"]);
   }
 }

@@ -1,6 +1,6 @@
 <ion-app>
   <ion-content class="ion-padding login_top">
-    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)" class="">
+    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)">
       <ion-list>
         <div class="login_img">
           <img src="../../../assets/images/login_img.png" />
@@ -28,7 +28,7 @@
             <ion-icon name="lock-open-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="mb30">
-            <button type="button">Login</button>
+            <button type="submit">Login</button>
           </ion-col>
 
           <ion-col size="12" class="ion-text-center">

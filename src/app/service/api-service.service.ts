@@ -28,8 +28,9 @@ export class ApiServiceService {
   }
 
   userLogin(obj) {
-    // this.uitlService.presentLoader();
     this.client.addHttpHeader("Content-Type", "text/xml");
-    return this.client.call("Login", obj);
+    this.client.addHttpHeader("Referer", "http://localhost:8100");
+    this.client.addHttpHeader("SOAPAction", "UserLogin");
+    return this.client.call("UserLogin", obj);
   }
 }
