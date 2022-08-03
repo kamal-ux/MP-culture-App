@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { LocalStorageService } from "./service/local-storage.service";
 
 @Component({
   selector: "app-root",
@@ -30,9 +31,10 @@ export class AppComponent {
       icon: "log-out"
     }
   ];
-  constructor(private router: Router) {}
+  constructor(private router: Router, private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
+    this.localStorageService.init();
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
   }

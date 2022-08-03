@@ -1,24 +1,59 @@
 import { Injectable } from "@angular/core";
-import { LoadingController } from "@ionic/angular";
-// import * as soap from "soap";
+import { AlertController, ToastController, LoadingController } from "@ionic/angular";
+
 @Injectable({
   providedIn: "root"
 })
-export class UtilServiceService {
-  constructor(private modalCtrl: LoadingController) {
-    // soap.createClient("webservice.fiService.solyn.in", {}, function (err, client) {
-    //   console.log("client", client);
-    // });
+export class UtilService {
+  alert: any;
+  toast: any;
+  loading: any;
+  header: any = {
+    "Content-Type": "application/json"
+  };
+  isLoading: any = false;
+  constructor(
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController
+  ) {}
+
+  async basicAlert(header: string, message: string, buttons: any) {
+    this.alert = await this.alertCtrl.create({
+      backdropDismiss: false,
+      header,
+      message,
+      buttons
+    });
+    this.alert.present();
   }
 
-  async presentLoader() {
-    let loader = await this.modalCtrl.create({
-      message: "Please wait"
+  async presentToast(message: string, duration: number = 1000) {
+    this.toast ? this.toast.dismiss() : false;
+    this.toast = await this.toastCtrl.create({
+      message,
+      duration,
+      position: "top"
     });
-    await loader.present();
+    this.toast.present();
+  }
+
+  async dismissToast() {
+    return this.toast.dismiss();
+  }
+
+  async presentLoading(message: any) {
+    this.loading = this.loading ? await this.loading.dismiss() : false;
+    this.loading = await this.loadingCtrl.create({
+      message
+    });
+    await this.loading.present();
+    this.isLoading = true;
   }
 
   async dismissLoading() {
-    this.modalCtrl.dismiss();
+    await this.loadingCtrl.dismiss();
+    // await this.loading.dismiss();
+    this.isLoading = false;
   }
 }
