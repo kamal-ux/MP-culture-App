@@ -28,7 +28,7 @@ export class UtilService {
     this.alert.present();
   }
 
-  async presentToast(message: string, duration: number = 1000) {
+  async presentToast(message: string, duration: number = 1500) {
     this.toast ? this.toast.dismiss() : false;
     this.toast = await this.toastCtrl.create({
       message,
@@ -43,17 +43,13 @@ export class UtilService {
   }
 
   async presentLoading(message: any) {
-    this.loading = this.loading ? await this.loading.dismiss() : false;
     this.loading = await this.loadingCtrl.create({
       message
     });
     await this.loading.present();
-    this.isLoading = true;
   }
 
   async dismissLoading() {
-    await (this.loading && this.loading.dismiss());
-    await this.loadingCtrl.dismiss();
-    this.isLoading = false;
+    await (this.loading && this.loadingCtrl.dismiss());
   }
 }

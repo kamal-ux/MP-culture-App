@@ -7,51 +7,37 @@
         </div>
         <!-- <h3 class="ion-text-center mb30">Welcome Back!</h3> -->
         <ion-row>
-          <ion-radio-group formControlName="userStatus">
+          <ion-radio-group
+            formControlName="userStatus"
+            mode="ios"
+            (ionChange)="changeUserType($event.target)"
+          >
             <ion-col size="10">
               <ion-chip>
-                <ion-radio
-                  value="audience"
-                  checked="true"
-                  (click)="changeUserType($event)"
-                ></ion-radio>
+                <ion-radio value="audience" color="danger"></ion-radio>
                 <ion-label>Audience</ion-label>
               </ion-chip>
             </ion-col>
             <ion-col size="2">
-              <ion-chip>
-                <ion-radio value="artist" (click)="changeUserType($event)"></ion-radio>
+              <ion-chip class="padding-15v">
+                <ion-radio value="artist" color="danger"></ion-radio>
                 <ion-label>Artist</ion-label>
               </ion-chip>
             </ion-col>
           </ion-radio-group>
 
           <ion-col size="12" class="relative" *ngIf="userStatus == 'audience'">
-            <ion-input
-              id="user-Name"
-              name="userName"
-              placeholder="Username or email"
-              required
-              formControlName="userName"
-            ></ion-input>
+            <ion-input placeholder="Username or email" formControlName="userName"></ion-input>
             <ion-icon name="person-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative" *ngIf="userStatus == 'artist'">
-            <ion-input
-              id="user-Name"
-              name="userName"
-              placeholder="Mobile No."
-              required
-              formControlName="mobileNo"
-            ></ion-input>
-            <ion-icon name="person-outline" class="icon"></ion-icon>
+            <ion-input placeholder="Mobile No." formControlName="mobileNo"></ion-input>
+            <ion-icon name="phone-portrait-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-input
               type="password"
-              name="password"
               placeholder="Password"
-              required
               formControlName="password"
             ></ion-input>
             <ion-icon name="lock-open-outline" class="icon"></ion-icon>
@@ -60,9 +46,9 @@
             <button
               type="submit"
               [ngStyle]="{
-                'background-color': loginForm.invalid || !userStatus ? '#e42f0896' : ''
+                'background-color': loginForm.invalid ? '#e42f0896' : ''
               }"
-              [disabled]="loginForm.invalid || !userStatus"
+              [disabled]="loginForm.invalid"
             >
               Login
             </button>
