@@ -37,11 +37,15 @@ p{padding: 0;margin: 0 auto 10px;font-size: 14px !important;color: #666; font-we
 a{color: #000; text-decoration: none;}
 a:hover{color: #333; text-decoration: none;}
 ion-icon{vertical-align: middle;}
+.mb0{margin-bottom: 0px !important;}
 .mb10{margin-bottom: 10px !important;}
+.mb20{margin-bottom: 20px !important;}
 .mb30{margin-bottom: 30px !important;}
 .mb50{margin-bottom: 50px !important;}
+.mt10{margin-top:10px !important;}
 .mt20{margin-top:20px !important;}
 .mr-1{margin-right: 10px;}
+.ml-1{margin-left: 10px;}
 .p-0{padding: 0;}
 .m-0{margin: 0;}
 button, ion-button{background: #e42f08;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
@@ -50,6 +54,17 @@ button:hover, ion-button:hover{background: #c02705;}
 button.outline{background: #fff;border-radius: 6px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #0e1127;font-weight: 500;cursor: pointer !important; border: solid 1px #0e1127;}
 button.outline:hover{background: rgb(232, 246, 244); border: solid 1px #006660; color: #006660;}
 
+.red_btn{background: #f00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.green_btn{background: rgb(0, 179, 45); font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.see_green_btn{background: #00b894; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.orange_btn{background: #00b894; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.danger_btn{background: #ea4c62; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.blue_btn{background: #21d6f1; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+
 ion-icon{vertical-align: middle;}
 ion-card.card {background-color: #fff;border: 1px solid #eaeaea;border-radius: 10px;text-align: center;padding: 10px;margin: 0;margin-top: 20px;top:10px}
 ion-input{input::placeholder {color:rgba(14,17,39,0.4)!important;}}
+
+.text-white{color: #fff;}
+.text-yellow{color: #ffaf00;}
+
