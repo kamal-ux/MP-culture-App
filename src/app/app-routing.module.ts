@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "signup",
+    redirectTo: "landing",
     pathMatch: "full"
   },
   {
@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: "tabs",
     loadChildren: () => import("./tabs/tabs.module").then((m) => m.TabsPageModule)
+  },
+  {
+    path: "landing",
+    loadChildren: () => import("./landing/landing.module").then((m) => m.LandingPageModule)
   }
 ];
 

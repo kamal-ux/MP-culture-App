@@ -43,6 +43,7 @@ export class UtilService {
   }
 
   async presentLoading(message: any) {
+    this.loading = this.loading ? await this.loading.dismiss() : false;
     this.loading = await this.loadingCtrl.create({
       message
     });

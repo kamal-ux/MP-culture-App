@@ -9,18 +9,46 @@ import { map } from "rxjs/operators";
 })
 export class ApiServiceService {
   client: Client;
+  programClient: Client;
+  landingPageClient: Client;
   path = "../assets/test.xml";
+  programWSDLPath = "../assets/program.xml";
+  landingPageWSDLPath = "../assets/landingPage.xml";
+
   private clientReady = new BehaviorSubject(false);
+  private programClientReady = new BehaviorSubject(false);
+  private landingPageClientReady = new BehaviorSubject(false);
+
   constructor(private http: HttpClient, private soap: NgxSoapService) {
     this.soap.createClient(this.path).then((client) => {
       console.log("client", client);
       this.client = client;
       this.clientReady.next(true);
     });
+
+    this.soap.createClient(this.programWSDLPath).then((client) => {
+      console.log("program client", client);
+      this.programClient = client;
+      this.programClientReady.next(true);
+    });
+
+    this.soap.createClient(this.landingPageWSDLPath).then((client) => {
+      console.log("landing page client", client);
+      this.landingPageClient = client;
+      this.landingPageClientReady.next(true);
+    });
   }
 
   clientState() {
     return this.clientReady.asObservable();
+  }
+
+  programClientState() {
+    return this.programClientReady.asObservable();
+  }
+
+  landingPageClientState() {
+    return this.landingPageClientReady.asObservable();
   }
 
   userLogin(obj) {
@@ -37,6 +65,42 @@ export class ApiServiceService {
     return this.client.call("ArtistLogin", obj).pipe(
       map((data) => {
         return JSON.parse(data.result.ArtistLoginResult);
+      })
+    );
+  }
+
+  loadUpcomingProgram() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("LoadUpcomingProgram", null).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadUpcomingProgramResult);
+      })
+    );
+  }
+
+  loadPastProgram() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("LoadPastProgram", {}).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadPastProgramResult);
+      })
+    );
+  }
+
+  loadTodaysProgram() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("LoadTodaysProgram", {}).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadTodaysProgramResult);
+      })
+    );
+  }
+
+  loadLandingPageContent() {
+    this.landingPageClient.addHttpHeader("Content-Type", "text/xml");
+    return this.landingPageClient.call("LoadLandingData", {}).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadLandingDataResult);
       })
     );
   }

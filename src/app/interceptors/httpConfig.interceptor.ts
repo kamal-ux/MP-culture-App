@@ -17,7 +17,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
   urslsNotToShowLoading: Array<string>;
 
   constructor(private utilService: UtilService) {
-    this.urslsNotToShowLoading = ["assets/test.xml"];
+    this.urslsNotToShowLoading = [
+      "assets/test.xml",
+      "assets/program.xml",
+      "/ProgramService.asmx",
+      "/landingPage.xml",
+      "/LandingPageService.asmx"
+    ];
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -25,13 +31,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
       this.utilService.presentLoading("Please wait...");
     }
 
-    if (!request.headers.has("Content-Type")) {
-      request = request.clone({
-        setHeaders: {
-          "content-type": "text/xml"
-        }
-      });
-    }
+    // if (!request.headers.has("Content-Type")) {
+    //   request = request.clone({
+    //     setHeaders: {
+    //       "content-type": "text/xml"
+    //     }
+    //   });
+    // }
 
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
