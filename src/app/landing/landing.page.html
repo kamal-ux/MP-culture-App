@@ -12,7 +12,7 @@
         class="banner_slide"
         *ngIf="upcomingPrograms.length"
       >
-        <ion-slide *ngFor="let program of upcomingPrograms">
+        <ion-slide *ngFor="let program of upcomingPrograms; let index=index;">
           <div class="content">
             <div class="red_btn">
               {{program.ProgramName | titlecase}} {{program.ProgramType | titlecase}}
@@ -27,7 +27,10 @@
               <!-- <span><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span> -->
             </p>
           </div>
-          <img [src]="[mediaUrl]" class="banner_img" />
+          <img
+            src="{{'https://mpcd.solyn.in' + program.HomeSliderImage[index].PhotoPath}}"
+            class="banner_img"
+          />
         </ion-slide>
         <ion-slide>
           <div class="content">

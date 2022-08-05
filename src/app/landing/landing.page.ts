@@ -14,7 +14,7 @@ export class LandingPage implements OnInit {
   todaysPrograms: any[] = [];
   pastPrograms: any[] = [];
   landingPageData: any[] = [];
-  mediaUrl: string = "http://mpcd.solyn.in/ReadWrite/Program/ProgramPhoto/Desert2.jpg";
+  mediaUrl: string = "http://mpcd.solyn.in";
   @ViewChild("slider", { static: false }) slideWithNav: IonSlides;
   @ViewChild("registerSlider", { static: false })
   slideOpts = {
