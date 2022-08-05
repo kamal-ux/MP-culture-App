@@ -1,6 +1,10 @@
 <ion-app>
   <ion-content class="ion-padding login_top">
-    <form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)" class="">
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="submit(signupForm.valid, signupForm.value)"
+      class=""
+    >
       <ion-list>
         <div class="login_img">
           <img src="../../../assets/images/login_img.png" />
@@ -9,18 +13,28 @@
         <ion-row>
           <ion-col size="12" class="relative">
             <ion-input
-              id="user-Name"
-              name="userName"
-              placeholder="Username"
+              id="ArtistName"
+              name="ArtistName"
+              placeholder="Artist Name"
               required
-              formControlName="userName"
+              formControlName="ArtistName"
             ></ion-input>
             <ion-icon name="person-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-input
-              id="user-Name"
-              name="userName"
+              id="Mobile"
+              name="Mobile"
+              placeholder="Mobile address"
+              required
+              formControlName="Mobile"
+            ></ion-input>
+            <ion-icon name="person-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="email"
+              name="email"
               placeholder="Email address"
               required
               formControlName="email"
@@ -28,17 +42,188 @@
             <ion-icon name="mail-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-              formControlName="password"
-            ></ion-input>
-            <ion-icon name="lock-open-outline" class="icon"></ion-icon>
+            <ion-select interface="popover" placeholder="Select State">
+              <ion-select-option value="apples">Rajsthan</ion-select-option>
+              <ion-select-option value="oranges"
+                >Uttar Pradesh</ion-select-option
+              >
+              <ion-select-option value="bananas">Maharastra</ion-select-option>
+              <ion-select-option value="bananas"
+                >Madhya Pradesh</ion-select-option
+              >
+            </ion-select>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
           </ion-col>
-          <ion-col size="12" class="mb30">
-            <button type="submit" [disabled]="signupForm.invalid">Register Now</button>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Address"
+              name="Address"
+              placeholder="Address"
+              required
+              formControlName="Address"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Select State">
+              <ion-select-option value="apples">Rajsthan</ion-select-option>
+              <ion-select-option value="oranges"
+                >Uttar Pradesh</ion-select-option
+              >
+              <ion-select-option value="bananas">Maharastra</ion-select-option>
+              <ion-select-option value="bananas"
+                >Madhya Pradesh</ion-select-option
+              >
+            </ion-select>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="BlockName"
+              name="BlockName"
+              placeholder="Block Name"
+              required
+              formControlName="BlockName"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Select District">
+              <ion-select-option value="apples">Indore</ion-select-option>
+              <ion-select-option value="oranges">Gwalior</ion-select-option>
+              <ion-select-option value="bananas">Bhopal</ion-select-option>
+              <ion-select-option value="bananas">Sehore</ion-select-option>
+              <ion-select-option value="bananas">Itarsi</ion-select-option>
+              <ion-select-option value="bananas">Alirajpur</ion-select-option>
+              <ion-select-option value="bananas">Anuppur</ion-select-option>
+            </ion-select>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="CityVillage"
+              name="CityVillage"
+              placeholder="City/Village"
+              required
+              formControlName="CityVillage"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Description"
+              name="Description"
+              placeholder="Description of current working"
+              required
+              formControlName="Description"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="AnyOtherQuality"
+              name="AnyOtherQuality"
+              placeholder="Any Other Quality"
+              required
+              formControlName="AnyOtherQuality"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Describeit"
+              name="Describeit"
+              placeholder="Describe it"
+              required
+              formControlName="Describeit"
+            ></ion-input>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox
+                  color="danger"
+                  checked
+                  slot="start"
+                ></ion-checkbox>
+                <ion-label> Register Artist of Akashvani </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label>Upload Certificate of Akashvani</ion-label>
+            <ion-input
+              id="Text"
+              name="Text"
+              placeholder="Text"
+              required
+              formControlName="Text"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox
+                  color="danger"
+                  checked
+                  slot="start"
+                ></ion-checkbox>
+                <ion-label> Register Artist of Doordarshan </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label>Upload Certificate of Doordarshan</ion-label>
+            <ion-input
+              id="Text"
+              name="Text"
+              placeholder="Text"
+              required
+              formControlName="Text"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox
+                  color="danger"
+                  checked
+                  slot="start"
+                ></ion-checkbox>
+                <ion-label> Register Artist of ICCR </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label>Upload Certificate of ICCR</ion-label>
+            <ion-input
+              id="Text"
+              name="Text"
+              placeholder="Text"
+              required
+              formControlName="Text"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Select Artist Grade">
+              <ion-select-option value="apples">A+</ion-select-option>
+              <ion-select-option value="oranges">A</ion-select-option>
+              <ion-select-option value="bananas">B+</ion-select-option>
+              <ion-select-option value="bananas">B</ion-select-option>
+            </ion-select>
+            <ion-icon name="mail-outline" class="icon"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="mb30">
+            <button type="submit" [disabled]="signupForm.invalid">Save</button>
+          </ion-col>
+          <ion-col size="6" class="mb30">
+            <button type="submit" [disabled]="signupForm.invalid">
+              Cancel
+            </button>
           </ion-col>
           <ion-col size="12" class="ion-text-center">
             <p>Already have an account? <a href="#!">Login</a></p>
