@@ -1,3 +1,9 @@
 ::ng-deep.item-inner {
     border: none!important;;
 }
+.menu-bg{border-radius: 0;overflow: hidden;--background: url(/assets/images/side_menu_bg.jpg) 0 0/cover no-repeat #fff; padding-top: 100px;}
+.menu-bg ion-item{--background: transparent;}
+ion-item{--border-color: transparent !important; font-size: 14px; color: #000 !important;padding: 5px 0;}
+ion-list ion-item:last-child{--border-color: transparent !important;}
+ion-item {border: none !important;}
+.pt50{padding-top: 50px;}

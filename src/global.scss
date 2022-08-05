@@ -33,7 +33,7 @@ h4{font-size: 18px !important;white-space: normal; margin: 0; padding: 0;}
 h5{font-size: 16px !important; color: #0E1127;white-space: normal; margin: 0; padding: 0;}
 h6{font-size: 15px !important;white-space: normal;color: #666; font-weight: 400; margin: 0; padding: 0;}
 p{padding: 0;margin: 0 auto 10px;font-size: 14px !important;color: #666; font-weight: 400;width: 100%;white-space: normal;}
-
+.font50{font-size: 50px;}
 a{color: #000; text-decoration: none;}
 a:hover{color: #333; text-decoration: none;}
 ion-icon{vertical-align: middle;}
@@ -57,9 +57,11 @@ button.outline:hover{background: rgb(232, 246, 244); border: solid 1px #006660; 
 .red_btn{background: #f00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .green_btn{background: rgb(0, 179, 45); font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .see_green_btn{background: #00b894; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
-.orange_btn{background: #00b894; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.orange_btn{background: #ffaf00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .danger_btn{background: #ea4c62; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .blue_btn{background: #21d6f1; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.load_more_btn{background: #f00; font-size: 13px; text-align: center; border-radius: 4px; display: inline-block; padding: 5px 10px; color: #fff;}
+.load_more_btn:hover{background: #000; text-decoration: none;}
 
 ion-icon{vertical-align: middle;}
 ion-card.card {background-color: #fff;border: 1px solid #eaeaea;border-radius: 10px;text-align: center;padding: 10px;margin: 0;margin-top: 20px;top:10px}
@@ -68,3 +70,4 @@ ion-input{input::placeholder {color:rgba(14,17,39,0.4)!important;}}
 .text-white{color: #fff;}
 .text-yellow{color: #ffaf00;}
 
+#background-content{--background: #f00 !important;}

@@ -8,76 +8,83 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-row class="mt10">
-    <ion-col size="6">
-      <h3 class="m-0 p-0">News Today</h3>
-    </ion-col>
-    <ion-col size="6" class="ion-text-end">
-      <p>Tuesday, 2 August</p>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12">
-      <ion-slides #registerSlider [options]="slideOpts" class="banner_slide">
-        <ion-slide>
-          <div class="content">
-            <div class="red_btn">Health</div>
-            <h4>Loses over 30kg on keto diet and one meal a day</h4>
-            <p>
-              <a href="#!" class="mr-1"
-                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
-              >
-              <a href="#!" class="mr-1"
-                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
-                March</a
-              ><span
-                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
-              >
-            </p>
-          </div>
-          <img src="../../../assets/images/banner1.jpg" class="banner_img" />
-        </ion-slide>
-        <ion-slide>
-          <div class="content">
-            <div class="red_btn">Health</div>
-            <h4>Loses over 30kg on keto diet and one meal a day</h4>
-            <p>
-              <a href="#!" class="mr-1"
-                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
-              >
-              <a href="#!" class="mr-1"
-                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
-                March</a
-              ><span
-                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
-              >
-            </p>
-          </div>
-          <img src="../../../assets/images/banner2.jpg" class="banner_img" />
-        </ion-slide>
-        <ion-slide>
-          <div class="content">
-            <div class="red_btn">Health</div>
-            <h4>Loses over 30kg on keto diet and one meal a day</h4>
-            <p>
-              <a href="#!" class="mr-1"
-                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
-              >
-              <a href="#!" class="mr-1"
-                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
-                March</a
-              ><span
-                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
-              >
-            </p>
-          </div>
-          <img src="../../../assets/images/banner3.jpg" class="banner_img" />
-        </ion-slide>
-      </ion-slides>
-    </ion-col>
-  </ion-row>
+  <div class="ion-padding">
+    <ion-row class="mt10">
+      <ion-col size="6">
+        <h3 class="m-0 p-0">News Today</h3>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <p>Tuesday, 2 August</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-slides #registerSlider [options]="slideOpts" class="banner_slide">
+          <ion-slide>
+            <div class="content">
+              <div class="red_btn">Health</div>
+              <h4>Loses over 30kg on keto diet and one meal a day</h4>
+              <p>
+                <a href="#!" class="mr-1">
+                  <ion-icon name="person-outline"></ion-icon>
+                  Nazrul</a
+                >
+                <a href="#!" class="mr-1">
+                  <ion-icon name="calendar-outline" class="mr-1"></ion-icon>
+                  21 March</a
+                ><span>
+                  <ion-icon name="bar-chart-outline"></ion-icon>
+                  3 min read</span
+                >
+              </p>
+            </div>
+            <img src="../../../assets/images/banner1.jpg" class="banner_img" />
+          </ion-slide>
+          <ion-slide>
+            <div class="content">
+              <div class="red_btn">Health</div>
+              <h4>Loses over 30kg on keto diet and one meal a day</h4>
+              <p>
+                <a href="#!" class="mr-1">
+                  <ion-icon name="person-outline"></ion-icon>
+                  Nazrul</a
+                >
+                <a href="#!" class="mr-1">
+                  <ion-icon name="calendar-outline" class="mr-1"></ion-icon>
+                  21 March</a
+                ><span>
+                  <ion-icon name="bar-chart-outline"></ion-icon>
+                  3 min read</span
+                >
+              </p>
+            </div>
+            <img src="../../../assets/images/banner2.jpg" class="banner_img" />
+          </ion-slide>
+          <ion-slide>
+            <div class="content">
+              <div class="red_btn">Health</div>
+              <h4>Loses over 30kg on keto diet and one meal a day</h4>
+              <p>
+                <a href="#!" class="mr-1">
+                  <ion-icon name="person-outline"></ion-icon>
+                  Nazrul</a
+                >
+                <a href="#!" class="mr-1">
+                  <ion-icon name="calendar-outline" class="mr-1"></ion-icon>
+                  21 March</a
+                ><span>
+                  <ion-icon name="bar-chart-outline"></ion-icon>
+                  3 min read</span
+                >
+              </p>
+            </div>
+            <img src="../../../assets/images/banner3.jpg" class="banner_img" />
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </div>
   <ion-row class="mt20">
     <ion-col size="12" class="catagories_slider">
       <h3 class="m-0">Top Catagories</h3>
@@ -133,67 +140,67 @@
       </ion-slides>
     </ion-col>
   </ion-row>
-
-  <ion-row class="mt20">
-    <ion-col size="6">
-      <h3 class="m-0 p-0">Trending</h3>
-    </ion-col>
-    <ion-col size="6" class="ion-text-end">
-      <a href="#!" class="red_btn">View All</a>
-    </ion-col>
-  </ion-row>
-  <ion-card class="blue_card">
-    <ion-row>
-      <ion-col size="4">
-        <img
-          src="../../../assets/images/trending_img1.jpg"
-          class="trending_img"
-        />
+  <div class="ion-padding">
+    <ion-row class="mt20">
+      <ion-col size="6">
+        <h3 class="m-0 p-0">Trending</h3>
       </ion-col>
-      <ion-col size="8">
-        <h6 class="mb10">
-          <a href="#!">Swimming is a good exercise for the body</a>
-        </h6>
-        <a href="#!" class="green_btn mr-1">Sports</a>
-        <a href="#!">2 Aug 2022</a>
+      <ion-col size="6" class="ion-text-end">
+        <a href="#!" class="red_btn">View All</a>
       </ion-col>
     </ion-row>
-  </ion-card>
-  <ion-card class="blue_card">
-    <ion-row>
-      <ion-col size="4">
-        <img
-          src="../../../assets/images/trending_img2.jpg"
-          class="trending_img"
-        />
-      </ion-col>
-      <ion-col size="8">
-        <h6 class="mb10">
-          <a href="#!">Swimming is a good exercise for the body</a>
-        </h6>
-        <a href="#!" class="green_btn mr-1">Tech</a>
-        <a href="#!">2 Aug 2022</a>
-      </ion-col>
-    </ion-row>
-  </ion-card>
-  <ion-card class="blue_card">
-    <ion-row>
-      <ion-col size="4">
-        <img
-          src="../../../assets/images/trending_img3.jpg"
-          class="trending_img"
-        />
-      </ion-col>
-      <ion-col size="8">
-        <h6 class="mb10">
-          <a href="#!">Swimming is a good exercise for the body</a>
-        </h6>
-        <a href="#!" class="green_btn mr-1">Fashion</a>
-        <a href="#!">2 Aug 2022</a>
-      </ion-col>
-    </ion-row>
-  </ion-card>
-
+    <ion-card class="blue_card">
+      <ion-row>
+        <ion-col size="4">
+          <img
+            src="../../../assets/images/trending_img1.jpg"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10">
+            <a href="#!">Swimming is a good exercise for the body</a>
+          </h6>
+          <a href="#!" class="green_btn mr-1">Sports</a>
+          <a href="#!">2 Aug 2022</a>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card class="blue_card">
+      <ion-row>
+        <ion-col size="4">
+          <img
+            src="../../../assets/images/trending_img2.jpg"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10">
+            <a href="#!">Swimming is a good exercise for the body</a>
+          </h6>
+          <a href="#!" class="green_btn mr-1">Tech</a>
+          <a href="#!">2 Aug 2022</a>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card class="blue_card">
+      <ion-row>
+        <ion-col size="4">
+          <img
+            src="../../../assets/images/trending_img3.jpg"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10">
+            <a href="#!">Swimming is a good exercise for the body</a>
+          </h6>
+          <a href="#!" class="green_btn mr-1">Fashion</a>
+          <a href="#!">2 Aug 2022</a>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
   <ion-row class="mt20">
     <ion-col size="12" class="product_slide">
       <h1 class="text-white ion-text-center text-yellow">
@@ -214,11 +221,13 @@
                 >
               </h5>
               <p class="mt20">
-                <a href="#!" class="mr-1 text-white"
-                  ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+                <a href="#!" class="mr-1 text-white">
+                  <ion-icon name="person-outline"></ion-icon>
+                  Nazrul</a
                 >
-                <a href="#!" class="text-white"
-                  ><ion-icon name="calendar-outline"></ion-icon> 30 March</a
+                <a href="#!" class="text-white">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  30 March</a
                 >
               </p>
             </ion-col>
@@ -237,11 +246,13 @@
                 >
               </h5>
               <p class="mt20">
-                <a href="#!" class="mr-1 text-white"
-                  ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+                <a href="#!" class="mr-1 text-white">
+                  <ion-icon name="person-outline"></ion-icon>
+                  Nazrul</a
                 >
-                <a href="#!" class="text-white"
-                  ><ion-icon name="calendar-outline"></ion-icon> 30 March</a
+                <a href="#!" class="text-white">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  30 March</a
                 >
               </p>
             </ion-col>
@@ -260,11 +271,13 @@
                 >
               </h5>
               <p class="mt20">
-                <a href="#!" class="mr-1 text-white"
-                  ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+                <a href="#!" class="mr-1 text-white">
+                  <ion-icon name="person-outline"></ion-icon>
+                  Nazrul</a
                 >
-                <a href="#!" class="text-white"
-                  ><ion-icon name="calendar-outline"></ion-icon> 30 March</a
+                <a href="#!" class="text-white">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  30 March</a
                 >
               </p>
             </ion-col>
@@ -273,138 +286,135 @@
       </ion-slides>
     </ion-col>
   </ion-row>
-
-  <ion-row class="mt20">
-    <ion-col size="6">
-      <h3 class="m-0 p-0">For You</h3>
-    </ion-col>
-    <ion-col size="6" class="ion-text-end">
-      <a href="#!" class="red_btn">View All</a>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col size="6">
-      <ion-card class="foryou_card">
-        <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-        <div class="content">
-          <p class="text-yellow">Sports</p>
-          <p class="text-white mb0">Lemon is useful to lose weight</p>
-        </div>
-        <img src="../../../assets/images/slide1.jpg" />
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card class="foryou_card">
-        <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-        <div class="content">
-          <p class="text-yellow">Fashion</p>
-          <p class="text-white mb0">Lemon is useful to lose weight</p>
-        </div>
-        <img src="../../../assets/images/slide2.jpg" />
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card class="foryou_card">
-        <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-        <div class="content">
-          <p class="text-yellow">Tech</p>
-          <p class="text-white mb0">Lemon is useful to lose weight</p>
-        </div>
-        <img src="../../../assets/images/slide3.jpg" />
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card class="foryou_card">
-        <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-        <div class="content">
-          <p class="text-yellow">Gadgets</p>
-          <p class="text-white mb0">Lemon is useful to lose weight</p>
-        </div>
-        <img src="../../../assets/images/slide4.jpg" />
-      </ion-card>
-    </ion-col>
-  </ion-row>
-
-  <ion-segment class="btn-segment mt20">
-    <ion-segment-button class="btn-segment" value="Newest">
-      <ion-label>Newest</ion-label>
-    </ion-segment-button>
-    <ion-segment-button class="btn-segment" value="Popular">
-      <ion-label>Popular</ion-label>
-    </ion-segment-button>
-    <ion-segment-button class="btn-segment" value="Featured">
-      <ion-label>Featured</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-
-  <ion-card class="blue_tab_card">
-    <ion-row class="mb10">
-      <ion-col size="4">
-        <img
-          src="../../../assets/images/trending_img1.jpg"
-          class="trending_img"
-        />
+  <div class="ion-padding">
+    <ion-row class="mt20">
+      <ion-col size="6">
+        <h3 class="m-0 p-0">For You</h3>
       </ion-col>
-      <ion-col size="8">
-        <h6 class="mb10">
-          <a href="#!">Balcony gardening is a new trend of big cities</a>
-        </h6>
-        <a href="#!" class="mr-1">Mayaj</a> |
-        <a href="#!" class="ml-1">9 min read</a>
-      </ion-col>
-    </ion-row>
-    <ion-row class="mb10">
-      <ion-col size="4">
-        <img
-          src="../../../assets/images/trending_img2.jpg"
-          class="trending_img"
-        />
-      </ion-col>
-      <ion-col size="8">
-        <h6 class="mb10">
-          <a href="#!"
-            >The world is becoming polluted very fast and lives are being
-            destroyed</a
-          >
-        </h6>
-        <a href="#!" class="mr-1">Nazrul</a> |
-        <a href="#!" class="ml-1">27 min read</a>
+      <ion-col size="6" class="ion-text-end">
+        <a href="#!" class="red_btn">View All</a>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="4">
-        <img
-          src="../../../assets/images/trending_img3.jpg"
-          class="trending_img"
-        />
+      <ion-col size="6">
+        <ion-card class="foryou_card">
+          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
+          <div class="content">
+            <p class="text-yellow">Sports</p>
+            <p class="text-white mb0">Lemon is useful to lose weight</p>
+          </div>
+          <img src="../../../assets/images/slide1.jpg" />
+        </ion-card>
       </ion-col>
-      <ion-col size="8">
-        <h6 class="mb10">
-          <a href="#!">Sea is polluted in a terrible way by human garbage</a>
-        </h6>
-        <a href="#!" class="mr-1">Suha</a> |
-        <a href="#!" class="ml-1">95 min read</a>
+      <ion-col size="6">
+        <ion-card class="foryou_card">
+          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
+          <div class="content">
+            <p class="text-yellow">Fashion</p>
+            <p class="text-white mb0">Lemon is useful to lose weight</p>
+          </div>
+          <img src="../../../assets/images/slide2.jpg" />
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="foryou_card">
+          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
+          <div class="content">
+            <p class="text-yellow">Tech</p>
+            <p class="text-white mb0">Lemon is useful to lose weight</p>
+          </div>
+          <img src="../../../assets/images/slide3.jpg" />
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="foryou_card">
+          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
+          <div class="content">
+            <p class="text-yellow">Gadgets</p>
+            <p class="text-white mb0">Lemon is useful to lose weight</p>
+          </div>
+          <img src="../../../assets/images/slide4.jpg" />
+        </ion-card>
       </ion-col>
     </ion-row>
-  </ion-card>
-
-  <ion-row class="mt20">
-    <ion-col size="12">
-      <h3 class="mb20">Popular Tags</h3>
-      <p>
-        <a class="red_btn mr-1 mb10" href="#">#Politics</a
-        ><a class="green_btn mr-1 mb10" href="#">#Fashion</a
-        ><a class="orange_btn mr-1 mb10" href="#">#Tech</a
-        ><a class="danger_btn mr-1 mb10" href="#">#Lifestyle</a
-        ><a class="blue_btn mr-1 mb10" href="#">#Sports</a
-        ><a class="green_btn mr-1 mb10" href="#">#World</a
-        ><a class="orange_btn mr-1 mb10" href="#">#Environment</a
-        ><a class="danger_btn mr-1 mb10" href="#">#People</a
-        ><a class="blue_btn mr-1 mb10" href="#">#Gadgets</a
-        ><a class="green_btn mr-1 mb10" href="#">#Health</a
-        ><a class="red_btn mb10" href="#">#Wildlife</a>
-      </p>
-    </ion-col>
-  </ion-row>
+    <ion-segment class="btn-segment mt20 mb20">
+      <ion-segment-button class="btn-segment" value="Newest">
+        <ion-label>Newest</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="btn-segment" value="Popular">
+        <ion-label>Popular</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class="btn-segment" value="Featured">
+        <ion-label>Featured</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-card class="blue_tab_card">
+      <ion-row class="mb10">
+        <ion-col size="4">
+          <img
+            src="../../../assets/images/trending_img1.jpg"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10">
+            <a href="#!">Balcony gardening is a new trend of big cities</a>
+          </h6>
+          <a href="#!" class="mr-1">Mayaj</a> |
+          <a href="#!" class="ml-1">9 min read</a>
+        </ion-col>
+      </ion-row>
+      <ion-row class="mb10">
+        <ion-col size="4">
+          <img
+            src="../../../assets/images/trending_img2.jpg"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10">
+            <a href="#!"
+              >The world is becoming polluted very fast and lives are being
+              destroyed</a
+            >
+          </h6>
+          <a href="#!" class="mr-1">Nazrul</a> |
+          <a href="#!" class="ml-1">27 min read</a>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <img
+            src="../../../assets/images/trending_img3.jpg"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10">
+            <a href="#!">Sea is polluted in a terrible way by human garbage</a>
+          </h6>
+          <a href="#!" class="mr-1">Suha</a> |
+          <a href="#!" class="ml-1">95 min read</a>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-row class="mt20">
+      <ion-col size="12">
+        <h3 class="mb20">Popular Tags</h3>
+        <p>
+          <a class="red_btn mr-1 mb10" href="#">#Politics</a
+          ><a class="green_btn mr-1 mb10" href="#">#Fashion</a
+          ><a class="orange_btn mr-1 mb10" href="#">#Tech</a
+          ><a class="danger_btn mr-1 mb10" href="#">#Lifestyle</a
+          ><a class="blue_btn mr-1 mb10" href="#">#Sports</a
+          ><a class="green_btn mr-1 mb10" href="#">#World</a
+          ><a class="orange_btn mr-1 mb10" href="#">#Environment</a
+          ><a class="danger_btn mr-1 mb10" href="#">#People</a
+          ><a class="blue_btn mr-1 mb10" href="#">#Gadgets</a
+          ><a class="green_btn mr-1 mb10" href="#">#Health</a
+          ><a class="red_btn mb10" href="#">#Wildlife</a>
+        </p>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

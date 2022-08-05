@@ -1,0 +1,37 @@
+.page-nav {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+ul li {
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+}
+.page-nav li a {
+    color: #020b10;
+    display: block;
+    padding: 0.75rem 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 5rem;
+    background-color: #dcebfd;
+    font-size: 14px;
+}
+.page-nav li a:hover, .page-nav li a:focus {
+    color: #ffffff;
+    background-color: #e42f08;
+}
+.page-nav li ion-icon{
+    position: absolute; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    top: 50%;
+    font-size: 20px;
+}
