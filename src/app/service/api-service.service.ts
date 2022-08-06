@@ -11,13 +11,17 @@ export class ApiServiceService {
   client: Client;
   programClient: Client;
   landingPageClient: Client;
+  artistRegisterClient: Client;
+
   path = "../assets/test.xml";
   programWSDLPath = "../assets/program.xml";
   landingPageWSDLPath = "../assets/landingPage.xml";
+  artistRegisterWSDLPath = "../assets/test.xml";
 
   private clientReady = new BehaviorSubject(false);
   private programClientReady = new BehaviorSubject(false);
   private landingPageClientReady = new BehaviorSubject(false);
+  private artistRegisterClientReady = new BehaviorSubject(false);
 
   constructor(private http: HttpClient, private soap: NgxSoapService) {
     this.soap.createClient(this.path).then((client) => {
@@ -37,6 +41,12 @@ export class ApiServiceService {
       this.landingPageClient = client;
       this.landingPageClientReady.next(true);
     });
+
+    this.soap.createClient(this.artistRegisterWSDLPath).then((client) => {
+      console.log("artist register client", client);
+      this.artistRegisterClient = client;
+      this.artistRegisterClientReady.next(true);
+    });
   }
 
   clientState() {
@@ -49,6 +59,10 @@ export class ApiServiceService {
 
   landingPageClientState() {
     return this.landingPageClientReady.asObservable();
+  }
+
+  artistRegisterClientState() {
+    return this.artistRegisterClientReady.asObservable();
   }
 
   userLogin(obj) {
@@ -103,5 +117,14 @@ export class ApiServiceService {
         return JSON.parse(data.result.LoadLandingDataResult);
       })
     );
+  }
+
+  doArtistRegister() {
+    // this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+    // return this.artistRegisterClient.call("LoadLandingData", {}).pipe(
+    //   map((data) => {
+    //     return JSON.parse(data.result.LoadLandingDataResult);
+    //   })
+    // );
   }
 }

@@ -12,8 +12,18 @@ export class SignupPage implements OnInit {
 
   ngOnInit() {
     this.signupForm = this.fb.group({
+      ArtistName: [],
+      Mobile: [],
+      email: [],
+      Address: [],
+      BlockName: [],
+      CityVillage: [],
+      Description: [],
+      AnyOtherQuality: [],
+      Describeit: [],
+      ConfirmPassword: [],
+
       userName: ["", Validators.required],
-      email: ["", Validators.email],
       password: ["", Validators.required]
     });
   }
