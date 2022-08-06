@@ -22,7 +22,9 @@ export class HttpConfigInterceptor implements HttpInterceptor {
       "assets/program.xml",
       "/ProgramService.asmx",
       "/landingPage.xml",
-      "/LandingPageService.asmx"
+      "/LandingPageService.asmx",
+      "/artistRegister.xml",
+      "/SignupService.asmx"
     ];
   }
 

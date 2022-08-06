@@ -22,18 +22,37 @@
               name="Mobile"
               placeholder="Mobile address"
               required
-              formControlName="Mobile"
+              formControlName="MobileNo"
             ></ion-input>
           </ion-col>
+
           <ion-col size="12" class="relative">
             <ion-input
               id="email"
               name="email"
               placeholder="Email address"
               required
-              formControlName="email"
+              formControlName="EmailId"
             ></ion-input>
           </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label id="date-time"
+              >{{signupForm.controls['DateOfBirth'].value ?
+              (signupForm.controls['DateOfBirth'].value | date: 'mediumDate') :"Select date"
+              }}</ion-label
+            >
+            <ion-popover trigger="date-time">
+              <ng-template>
+                <ion-datetime
+                  formControlName="DateOfBirth"
+                  presentation="date"
+                  showDefaultButtons="{true}"
+                >
+                </ion-datetime>
+              </ng-template>
+            </ion-popover>
+          </ion-col>
+
           <ion-col size="12" class="relative">
             <ion-select interface="popover" placeholder="Select State">
               <ion-select-option value="apples">Rajsthan</ion-select-option>
@@ -52,7 +71,7 @@
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-select interface="popover" placeholder="Select State">
+            <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
               <ion-select-option value="apples">Rajsthan</ion-select-option>
               <ion-select-option value="oranges">Uttar Pradesh</ion-select-option>
               <ion-select-option value="bananas">Maharastra</ion-select-option>
@@ -69,7 +88,11 @@
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-select interface="popover" placeholder="Select District">
+            <ion-select
+              interface="popover"
+              placeholder="Select District"
+              formControlName="DistrictId"
+            >
               <ion-select-option value="apples">Indore</ion-select-option>
               <ion-select-option value="oranges">Gwalior</ion-select-option>
               <ion-select-option value="bananas">Bhopal</ion-select-option>
@@ -81,11 +104,11 @@
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-input
-              id="CityVillage"
-              name="CityVillage"
+              id="CityName"
+              name="CityName"
               placeholder="City/Village"
               required
-              formControlName="CityVillage"
+              formControlName="CityName"
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
@@ -94,65 +117,96 @@
               name="Description"
               placeholder="Description of current working"
               required
-              formControlName="Description"
+              formControlName="DescriptionOfCurrentWorking"
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-input
-              id="AnyOtherQuality"
-              name="AnyOtherQuality"
+              id="OtherQualityName"
+              name="OtherQualityName"
               placeholder="Any Other Quality"
               required
-              formControlName="AnyOtherQuality"
+              formControlName="OtherQualityName"
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-input
-              id="Describeit"
-              name="Describeit"
+              id="OtherQualityDescription"
+              name="OtherQualityDescription"
               placeholder="Describe it"
               required
-              formControlName="Describeit"
+              formControlName="OtherQualityDescription"
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-list>
               <ion-item>
-                <ion-checkbox color="success" slot="start"></ion-checkbox>
+                <ion-checkbox
+                  color="primary"
+                  slot="start"
+                  formControlName="IsRegisteredArtistOfAkasvani"
+                ></ion-checkbox>
                 <ion-label> Register Artist of Akashvani </ion-label>
               </ion-item>
             </ion-list>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-label for="Akashvani">Upload Certificate of Akashvani</ion-label>
-            <input type="file" id="Akashvani" name="Akashvani" />
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-list>
               <ion-item>
-                <ion-checkbox color="success" slot="start"></ion-checkbox>
+                <ion-checkbox
+                  color="primary"
+                  slot="start"
+                  formControlName="IsRegisteredArtistOfDoordarshan"
+                ></ion-checkbox>
                 <ion-label> Register Artist of Doordarshan </ion-label>
               </ion-item>
             </ion-list>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-label for="Doordarshan">Upload Certificate of Doordarshan</ion-label>
-            <input type="file" id="Doordarshan" name="Doordarshan" />
+            <input
+              type="file"
+              id="Doordarshan"
+              name="Doordarshan"
+              formControlName="SupportCertificatePhotoDoordarshan"
+            />
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-list>
               <ion-item>
-                <ion-checkbox color="success" slot="start"></ion-checkbox>
+                <ion-checkbox
+                  color="primary"
+                  slot="start"
+                  formControlName="IsRegisteredArtistOfICCR"
+                ></ion-checkbox>
                 <ion-label> Register Artist of ICCR </ion-label>
               </ion-item>
             </ion-list>
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-label for="ICCR">Upload Certificate of ICCR</ion-label>
-            <input type="file" id="ICCR" name="ICCR" />
+            <input
+              type="file"
+              id="ICCR"
+              name="ICCR"
+              formControlName="SupportCertificatePhotoICCR"
+            />
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-select interface="popover" placeholder="Select Artist Grade">
+            <ion-select
+              interface="popover"
+              placeholder="Select Artist Grade"
+              formControlName="ArtistGrade"
+            >
               <ion-select-option value="apples">A+</ion-select-option>
               <ion-select-option value="oranges">A</ion-select-option>
               <ion-select-option value="bananas">B+</ion-select-option>
@@ -195,11 +249,11 @@
           </ion-col>
           <ion-col size="12" class="relative">
             <ion-input
-              type="ConfirmPassword"
-              name="ConfirmPassword"
+              type="AboutArtist"
+              name="AboutArtist"
               placeholder="About Artist"
               required
-              formControlName="ConfirmPassword"
+              formControlName="AboutArtist"
             ></ion-input>
           </ion-col>
 

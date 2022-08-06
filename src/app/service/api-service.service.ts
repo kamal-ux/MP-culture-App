@@ -16,7 +16,7 @@ export class ApiServiceService {
   path = "../assets/test.xml";
   programWSDLPath = "../assets/program.xml";
   landingPageWSDLPath = "../assets/landingPage.xml";
-  artistRegisterWSDLPath = "../assets/test.xml";
+  artistRegisterWSDLPath = "../assets/artistRegister.xml";
 
   private clientReady = new BehaviorSubject(false);
   private programClientReady = new BehaviorSubject(false);
@@ -119,12 +119,21 @@ export class ApiServiceService {
     );
   }
 
-  doArtistRegister() {
-    // this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
-    // return this.artistRegisterClient.call("LoadLandingData", {}).pipe(
-    //   map((data) => {
-    //     return JSON.parse(data.result.LoadLandingDataResult);
-    //   })
-    // );
+  doArtistRegister(obj) {
+    this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+    return this.artistRegisterClient.call("ArtistRegistration", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.ArtistRegistrationResult);
+      })
+    );
+  }
+
+  getArtistRegisterRequirement() {
+    this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+    return this.artistRegisterClient.call("ArtistRegistrationPageLoad", {}).pipe(
+      map((data) => {
+        return JSON.parse(data.result.ArtistRegistrationPageLoadResult);
+      })
+    );
   }
 }

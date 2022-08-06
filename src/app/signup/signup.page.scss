@@ -25,3 +25,6 @@ ion-checkbox {
   }
   ion-label, ion-item{--border-bottom: none; color: #666; font-size: 13px;}
   input{width: 100%;line-height: 42px;padding: 3px 40px 2px 20px !important; border-radius: 100px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+ion-popover#ion-overlay-1 {
+    margin-top:-50%!important;
+}

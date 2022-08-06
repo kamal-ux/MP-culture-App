@@ -29,17 +29,16 @@ export class LandingPage implements OnInit {
   constructor(private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
-    this.apiService.programClientState().subscribe((ready) => {
-      if (ready) {
-        this.clientReady = true;
-        this.subscription();
-      }
-    });
-
     this.apiService.landingPageClientState().subscribe((ready) => {
       if (ready) {
         this.landingPageClientReady = true;
         this.loadLandingData();
+      }
+    });
+    this.apiService.programClientState().subscribe((ready) => {
+      if (ready) {
+        this.clientReady = true;
+        this.subscription();
       }
     });
   }
@@ -51,6 +50,7 @@ export class LandingPage implements OnInit {
     });
     this.apiService.loadPastProgram().subscribe((res: any) => {
       console.log("past program", res);
+      this.pastPrograms = res;
     });
     this.apiService.loadTodaysProgram().subscribe((res: any) => {
       console.log("todays program", res);
