@@ -5,33 +5,36 @@ import { LocalStorageService } from "./service/local-storage.service";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
-  styleUrls: ["app.component.scss"]
+  styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
   public appMenu = [
     {
       title: "Live",
-      icon: "play-outline"
+      icon: "play-outline",
     },
     { title: "My Profile", icon: "person-outline" },
     {
       title: "All Pages",
-      icon: "documents-outline"
+      icon: "documents-outline",
     },
     {
       title: "All Category",
-      icon: "menu-outline"
+      icon: "menu-outline",
     },
     {
       title: "Settings",
-      icon: "settings-outline"
+      icon: "settings-outline",
     },
     {
       title: "Logout",
-      icon: "log-out"
-    }
+      icon: "log-out",
+    },
   ];
-  constructor(private router: Router, private localStorageService: LocalStorageService) {}
+  constructor(
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     this.localStorageService.init();
@@ -47,12 +50,12 @@ export class AppComponent {
         break;
       case "T&Cs and Privacy":
         this.router.navigate(["/login/login/registration/termOfUse"], {
-          state: { page: { privacyTerm: true } }
+          state: { page: { privacyTerm: true } },
         });
         break;
       case "About Us":
         this.router.navigate(["/login/login/registration/termOfUse"], {
-          state: { page: "About" }
+          state: { page: "About" },
         });
         break;
       case "Notifications":
