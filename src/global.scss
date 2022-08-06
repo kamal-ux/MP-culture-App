@@ -50,9 +50,8 @@ ion-icon{vertical-align: middle;}
 .m-0{margin: 0;}
 button, ion-button{background: #e42f08;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
 button:hover, ion-button:hover{background: #c02705;}
-
-button.outline{background: #fff;border-radius: 6px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #0e1127;font-weight: 500;cursor: pointer !important; border: solid 1px #0e1127;}
-button.outline:hover{background: rgb(232, 246, 244); border: solid 1px #006660; color: #006660;}
+button.cancel, ion-button.cancel{background: #585858;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
+button.cancel:hover, ion-button.cancel:hover{background: #333;}
 
 .red_btn{background: #f00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .green_btn{background: rgb(0, 179, 45); font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}

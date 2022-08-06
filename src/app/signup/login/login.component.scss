@@ -3,14 +3,14 @@
 
 ion-icon{vertical-align: middle;}
 .icon{position: absolute; right: 22px;top: 50%;transform: translateY(-50%);font-size: 18px; z-index: 9; color: #e42f08;}
-ion-input{box-shadow: 0 3px 6px #d7d7d7; padding: 3px 40px 2px 20px !important; border-radius: 100px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+ion-input{padding: 3px 40px 2px 20px !important; border-radius: 100px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
 ion-input:focus{border: solid 1px #e42f08;color: #e42f08 !important;}
 
 ion-col{margin-bottom: 10px;}
 .padding-15v {
     margin-left: 13.6vh;
 }
-ion-chip {background: #dcebfd;}
+ion-chip {background: transparent;}
 .list-ios{background: transparent;}
 .login_top{
     --background: url(../../../assets/images/login_top.png) no-repeat right top/60%;
@@ -21,4 +21,5 @@ content: "";position: fixed;left: 0;bottom: 0;width: 100%;height: 150px;display:
 ion-radio{border-radius: 50%;
     width: 23px;
     margin-right: 5px;
-    background: white;}
+    background: #f5f5f5;
+border: solid 1px #ccc;}
