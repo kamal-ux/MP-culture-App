@@ -1,39 +1,47 @@
 <ion-app>
   <ion-content class="ion-padding login_top">
-    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="submit(loginForm.valid, loginForm.value)"
+    >
       <ion-list>
         <div class="login_img">
           <img src="../../../assets/images/login_img.png" />
         </div>
         <!-- <h3 class="ion-text-center mb30">Welcome Back!</h3> -->
-
-        <ion-row class="mt20 mb20">
-          <ion-radio-group
-            formControlName="userStatus"
-            mode="ios"
-            (ionChange)="changeUserType($event.target)"
-          >
+        <ion-radio-group
+          formControlName="userStatus"
+          mode="ios"
+          (ionChange)="changeUserType($event.target)"
+        >
+          <ion-row class="mt20 mb20">
             <ion-col size="6">
               <ion-chip>
                 <ion-radio value="audience" color="success"></ion-radio>
                 <ion-label>Audience</ion-label>
               </ion-chip>
             </ion-col>
-            <ion-col size="6">
+            <ion-col size="6" class="ion-text-end">
               <ion-chip>
                 <ion-radio value="artist" color="success"></ion-radio>
                 <ion-label>Artist</ion-label>
               </ion-chip>
             </ion-col>
-          </ion-radio-group>
-        </ion-row>
+          </ion-row>
+        </ion-radio-group>
         <ion-row>
           <ion-col size="12" class="relative" *ngIf="userStatus == 'audience'">
-            <ion-input placeholder="Username or email" formControlName="userName"></ion-input>
+            <ion-input
+              placeholder="Username or email"
+              formControlName="userName"
+            ></ion-input>
             <ion-icon name="person-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative" *ngIf="userStatus == 'artist'">
-            <ion-input placeholder="Mobile No." formControlName="mobileNo"></ion-input>
+            <ion-input
+              placeholder="Mobile No."
+              formControlName="mobileNo"
+            ></ion-input>
             <ion-icon name="phone-portrait-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative">
@@ -58,7 +66,9 @@
 
           <ion-col size="12" class="ion-text-center">
             <p><a href="#!">Forgot Password?</a></p>
-            <p>Don't have an account? <a [routerLink]="'./signup'">Register</a></p>
+            <p>
+              Don't have an account? <a [routerLink]="'./signup'">Register</a>
+            </p>
           </ion-col>
         </ion-row>
       </ion-list>

@@ -1,3 +1,115 @@
-<p>
-  signup-step2 works!
-</p>
+<ion-app>
+  <ion-content class="ion-padding login_top">
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="submit(signupForm.valid, signupForm.value)"
+      class=""
+    >
+      <ion-list>
+        <div class="login_img">
+          <img src="../../../assets/images/logo-white.png" />
+        </div>
+        <h3 class="ion-text-center mb30">Welcome, Register Now!</h3>
+        <ion-row>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Registration"
+              name="Registration"
+              placeholder="Registration No."
+              required
+              formControlName="Registration"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Aadhar"
+              name="Aadhar"
+              placeholder="Aadhar No."
+              required
+              formControlName="Aadhar"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Pan"
+              name="Pan"
+              placeholder="PAN"
+              required
+              formControlName="Pan"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Voter"
+              name="Voter"
+              placeholder="Voter ID"
+              required
+              formControlName="Voter"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Passport"
+              name="Passport"
+              placeholder="Passport No"
+              required
+              formControlName="Passport"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="BankName"
+              name="BankName"
+              placeholder="Bank Name"
+              required
+              formControlName="BankName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="AccountName"
+              name="AccountName"
+              placeholder="Account Name"
+              required
+              formControlName="AccountName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Account"
+              name="Account"
+              placeholder="Account No."
+              required
+              formControlName="Account"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="IFSC"
+              name="IFSC"
+              placeholder="IFSC"
+              required
+              formControlName="IFSC"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="mb30">
+            <button type="submit" [disabled]="signupForm.invalid">Save</button>
+          </ion-col>
+          <ion-col size="6" class="mb30">
+            <button
+              class="cancel"
+              type="submit"
+              [disabled]="signupForm.invalid"
+            >
+              Cancel
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-app>
