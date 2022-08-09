@@ -1,7 +1,29 @@
 <ion-content [fullscreen]="true">
+  <ion-slides [options]="slideOptsOne">
+    <ion-slide>
+      This is first slide.
+      <!-- <ion-card>
+        <ion-card-content> This is first slide. </ion-card-content>
+      </ion-card> -->
+    </ion-slide>
+    <ion-slide>
+      This is second slide.
+      <!-- <ion-card>
+        <ion-card-content> This is second slide. </ion-card-content>
+      </ion-card> -->
+    </ion-slide>
+    <ion-slide>
+      This is third slide.
+      <!-- <ion-card>
+        <ion-card-content> This is third slide. </ion-card-content>
+      </ion-card> -->
+    </ion-slide>
+  </ion-slides>
   <ion-row class="mt10">
     <ion-col size="12" *ngFor="let landingData of landingPageData">
-      <ion-text class="text-small"> {{landingData.AppLandingPageText}}</ion-text>
+      <ion-text class="text-small">
+        {{landingData.AppLandingPageText}}</ion-text
+      >
     </ion-col>
   </ion-row>
   <ion-row>
@@ -15,11 +37,14 @@
         <ion-slide *ngFor="let program of upcomingPrograms; let index=index;">
           <div class="content">
             <div class="red_btn">
-              {{program.ProgramName | titlecase}} {{program.ProgramType | titlecase}}
+              {{program.ProgramName | titlecase}} {{program.ProgramType |
+              titlecase}}
             </div>
             <h4>{{program.AboutProgram ? program.AboutProgram : 'N/A'}}</h4>
             <p>
-              <a href="#!" class="mr-1"><ion-icon name="person-outline"></ion-icon>Nazrul</a>
+              <a href="#!" class="mr-1"
+                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+              >
               <a href="#!" class="mr-1"
                 ><ion-icon name="calendar-outline" class="mr-1"></ion-icon>
                 {{program.ProgramDateTime | date : 'short'}}</a
@@ -37,10 +62,15 @@
             <div class="red_btn">Health</div>
             <h4>Loses over 30kg on keto diet and one meal a day</h4>
             <p>
-              <a href="#!" class="mr-1"><ion-icon name="person-outline"></ion-icon>Nazrul</a>
               <a href="#!" class="mr-1"
-                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21 March</a
-              ><span><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span>
+                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+              >
+              <a href="#!" class="mr-1"
+                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
+                March</a
+              ><span
+                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
+              >
             </p>
           </div>
           <img src="../../../assets/images/banner2.jpg" class="banner_img" />
@@ -50,10 +80,15 @@
             <div class="red_btn">Health</div>
             <h4>Loses over 30kg on keto diet and one meal a day</h4>
             <p>
-              <a href="#!" class="mr-1"><ion-icon name="person-outline"></ion-icon>Nazrul</a>
               <a href="#!" class="mr-1"
-                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21 March</a
-              ><span><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span>
+                ><ion-icon name="person-outline"></ion-icon>Nazrul</a
+              >
+              <a href="#!" class="mr-1"
+                ><ion-icon name="calendar-outline" class="mr-1"></ion-icon> 21
+                March</a
+              ><span
+                ><ion-icon name="bar-chart-outline"></ion-icon>3 min read</span
+              >
             </p>
           </div>
           <img src="../../../assets/images/banner3.jpg" class="banner_img" />
@@ -128,7 +163,10 @@
   <ion-card class="blue_card">
     <ion-row>
       <ion-col size="4">
-        <img src="../../../assets/images/trending_img1.jpg" class="trending_img" />
+        <img
+          src="../../../assets/images/trending_img1.jpg"
+          class="trending_img"
+        />
       </ion-col>
       <ion-col size="8">
         <h6 class="mb10">
@@ -142,7 +180,10 @@
   <ion-card class="blue_card">
     <ion-row>
       <ion-col size="4">
-        <img src="../../../assets/images/trending_img2.jpg" class="trending_img" />
+        <img
+          src="../../../assets/images/trending_img2.jpg"
+          class="trending_img"
+        />
       </ion-col>
       <ion-col size="8">
         <h6 class="mb10">
@@ -156,7 +197,10 @@
   <ion-card class="blue_card">
     <ion-row>
       <ion-col size="4">
-        <img src="../../../assets/images/trending_img3.jpg" class="trending_img" />
+        <img
+          src="../../../assets/images/trending_img3.jpg"
+          class="trending_img"
+        />
       </ion-col>
       <ion-col size="8">
         <h6 class="mb10">
@@ -183,7 +227,9 @@
             <ion-col size="6" class="ion-text-start">
               <div class="see_green_btn mb10">Sports</div>
               <h5>
-                <a href="#!" class="text-white">Basketball is becoming popular young people</a>
+                <a href="#!" class="text-white"
+                  >Basketball is becoming popular young people</a
+                >
               </h5>
               <p class="mt20">
                 <a href="#!" class="mr-1 text-white"
@@ -204,7 +250,9 @@
             <ion-col size="6" class="ion-text-start">
               <div class="see_green_btn mb10">Sports</div>
               <h5>
-                <a href="#!" class="text-white">Basketball is becoming popular young people</a>
+                <a href="#!" class="text-white"
+                  >Basketball is becoming popular young people</a
+                >
               </h5>
               <p class="mt20">
                 <a href="#!" class="mr-1 text-white"
@@ -225,7 +273,9 @@
             <ion-col size="6" class="ion-text-start">
               <div class="see_green_btn mb10">Sports</div>
               <h5>
-                <a href="#!" class="text-white">Basketball is becoming popular young people</a>
+                <a href="#!" class="text-white"
+                  >Basketball is becoming popular young people</a
+                >
               </h5>
               <p class="mt20">
                 <a href="#!" class="mr-1 text-white"
@@ -309,7 +359,10 @@
   <ion-card class="blue_tab_card">
     <ion-row class="mb10">
       <ion-col size="4">
-        <img src="../../../assets/images/trending_img1.jpg" class="trending_img" />
+        <img
+          src="../../../assets/images/trending_img1.jpg"
+          class="trending_img"
+        />
       </ion-col>
       <ion-col size="8">
         <h6 class="mb10">
@@ -321,11 +374,17 @@
     </ion-row>
     <ion-row class="mb10">
       <ion-col size="4">
-        <img src="../../../assets/images/trending_img2.jpg" class="trending_img" />
+        <img
+          src="../../../assets/images/trending_img2.jpg"
+          class="trending_img"
+        />
       </ion-col>
       <ion-col size="8">
         <h6 class="mb10">
-          <a href="#!">The world is becoming polluted very fast and lives are being destroyed</a>
+          <a href="#!"
+            >The world is becoming polluted very fast and lives are being
+            destroyed</a
+          >
         </h6>
         <a href="#!" class="mr-1">Nazrul</a> |
         <a href="#!" class="ml-1">27 min read</a>
@@ -333,7 +392,10 @@
     </ion-row>
     <ion-row>
       <ion-col size="4">
-        <img src="../../../assets/images/trending_img3.jpg" class="trending_img" />
+        <img
+          src="../../../assets/images/trending_img3.jpg"
+          class="trending_img"
+        />
       </ion-col>
       <ion-col size="8">
         <h6 class="mb10">

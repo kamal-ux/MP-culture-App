@@ -5,7 +5,7 @@ import { ApiServiceService } from "../service/api-service.service";
 @Component({
   selector: "app-landing",
   templateUrl: "./landing.page.html",
-  styleUrls: ["./landing.page.scss"]
+  styleUrls: ["./landing.page.scss"],
 })
 export class LandingPage implements OnInit {
   clientReady: boolean;
@@ -24,7 +24,12 @@ export class LandingPage implements OnInit {
     centeredSlides: true,
     loop: true,
     spaceBetween: 10,
-    autoplay: true
+    autoplay: true,
+  };
+  slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay: true,
   };
   constructor(private apiService: ApiServiceService) {}
 
