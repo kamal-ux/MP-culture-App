@@ -13,7 +13,7 @@ export class LandingPage implements OnInit {
   upcomingPrograms: any[] = [];
   todaysPrograms: any[] = [];
   pastPrograms: any[] = [];
-  landingPageData: any[] = [];
+  landingPageData: any;
   mediaUrl: string = "http://mpcd.solyn.in";
   @ViewChild("slider", { static: false }) slideWithNav: IonSlides;
   @ViewChild("registerSlider", { static: false })
@@ -26,7 +26,9 @@ export class LandingPage implements OnInit {
     spaceBetween: 10,
     autoplay: true
   };
+  slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
   scrollAmount = 4;
+  landingImages: any;
   constructor(private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
@@ -62,6 +64,7 @@ export class LandingPage implements OnInit {
     this.apiService.loadLandingPageContent().subscribe((res: any) => {
       console.log("landing page content", res);
       this.landingPageData = res;
+      this.landingImages = this.landingPageData[0].HomeSliderImage;
     });
   }
 }
