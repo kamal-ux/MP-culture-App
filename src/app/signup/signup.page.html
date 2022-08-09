@@ -1,11 +1,19 @@
 <ion-app>
   <ion-content class="ion-padding login_top">
-    <form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)" class="">
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="submit(signupForm.valid, signupForm.value)"
+      class=""
+    >
       <ion-list>
         <div class="login_img">
-          <img src="../../../assets/images/logo-white.png" />
+          <img src="../../../assets/images/logo.png" />
         </div>
         <h3 class="ion-text-center mb30">Welcome, Register Now!</h3>
+        <p>
+          <button type="submit" class="button_roundad">Register</button>
+        </p>
+        <h6 class="ion-text-center mb20"><a href="#!">Text here</a></h6>
         <ion-row>
           <ion-col size="12" class="relative">
             <ion-input
@@ -38,8 +46,8 @@
           <ion-col size="12" class="relative">
             <ion-label id="date-time"
               >{{signupForm.controls['DateOfBirth'].value ?
-              (signupForm.controls['DateOfBirth'].value | date: 'mediumDate') :"Select date"
-              }}</ion-label
+              (signupForm.controls['DateOfBirth'].value | date: 'mediumDate')
+              :"Select date" }}</ion-label
             >
             <ion-popover trigger="date-time">
               <ng-template>
@@ -56,9 +64,13 @@
           <ion-col size="12" class="relative">
             <ion-select interface="popover" placeholder="Select State">
               <ion-select-option value="apples">Rajsthan</ion-select-option>
-              <ion-select-option value="oranges">Uttar Pradesh</ion-select-option>
+              <ion-select-option value="oranges"
+                >Uttar Pradesh</ion-select-option
+              >
               <ion-select-option value="bananas">Maharastra</ion-select-option>
-              <ion-select-option value="bananas">Madhya Pradesh</ion-select-option>
+              <ion-select-option value="bananas"
+                >Madhya Pradesh</ion-select-option
+              >
             </ion-select>
           </ion-col>
           <ion-col size="12" class="relative">
@@ -71,11 +83,19 @@
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
+            <ion-select
+              interface="popover"
+              placeholder="Select State"
+              formControlName="StateId"
+            >
               <ion-select-option value="apples">Rajsthan</ion-select-option>
-              <ion-select-option value="oranges">Uttar Pradesh</ion-select-option>
+              <ion-select-option value="oranges"
+                >Uttar Pradesh</ion-select-option
+              >
               <ion-select-option value="bananas">Maharastra</ion-select-option>
-              <ion-select-option value="bananas">Madhya Pradesh</ion-select-option>
+              <ion-select-option value="bananas"
+                >Madhya Pradesh</ion-select-option
+              >
             </ion-select>
           </ion-col>
           <ion-col size="12" class="relative">
@@ -151,7 +171,9 @@
             </ion-list>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-label for="Akashvani">Upload Certificate of Akashvani</ion-label>
+            <ion-label for="Akashvani"
+              >Upload Certificate of Akashvani</ion-label
+            >
             <input
               type="file"
               id="Akashvani"
@@ -172,7 +194,9 @@
             </ion-list>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-label for="Doordarshan">Upload Certificate of Doordarshan</ion-label>
+            <ion-label for="Doordarshan"
+              >Upload Certificate of Doordarshan</ion-label
+            >
             <input
               type="file"
               id="Doordarshan"
@@ -232,7 +256,10 @@
             ></ion-input>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-select interface="popover" placeholder="Artist Education Category">
+            <ion-select
+              interface="popover"
+              placeholder="Artist Education Category"
+            >
               <ion-select-option value="apples">A+</ion-select-option>
               <ion-select-option value="oranges">A</ion-select-option>
               <ion-select-option value="bananas">B+</ion-select-option>
@@ -240,7 +267,10 @@
             </ion-select>
           </ion-col>
           <ion-col size="12" class="relative">
-            <ion-select interface="popover" placeholder="Artist Education SubCategory">
+            <ion-select
+              interface="popover"
+              placeholder="Artist Education SubCategory"
+            >
               <ion-select-option value="apples">A+</ion-select-option>
               <ion-select-option value="oranges">A</ion-select-option>
               <ion-select-option value="bananas">B+</ion-select-option>
@@ -262,7 +292,8 @@
               <ion-item>
                 <ion-checkbox color="success" slot="start"></ion-checkbox>
                 <ion-label>
-                  By Signing up it is not assured to get the work from ministry of culture
+                  By Signing up it is not assured to get the work from ministry
+                  of culture
                 </ion-label>
               </ion-item>
             </ion-list>
@@ -274,7 +305,13 @@
             <button type="submit" [disabled]="signupForm.invalid">Save</button>
           </ion-col>
           <ion-col size="6" class="mb30">
-            <button class="cancel" type="submit" [disabled]="signupForm.invalid">Cancel</button>
+            <button
+              class="cancel"
+              type="submit"
+              [disabled]="signupForm.invalid"
+            >
+              Cancel
+            </button>
           </ion-col>
           <ion-col size="12" class="ion-text-center">
             <p>Already have an account? <a href="#!">Login</a></p>

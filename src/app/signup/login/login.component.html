@@ -1,9 +1,12 @@
 <ion-app>
   <ion-content class="ion-padding login_top">
-    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="submit(loginForm.valid, loginForm.value)"
+    >
       <ion-list>
         <div class="login_img">
-          <img src="https://jusmarktech.in/Culture/img/core-img/logoimgg-tp-1.png" />
+          <img src="../../../assets/images/logo.png" />
         </div>
         <h3 class="ion-text-center mb30 mt20">Welcome Back!</h3>
         <ion-radio-group
@@ -28,11 +31,17 @@
         </ion-radio-group>
         <ion-row>
           <ion-col size="12" class="relative" *ngIf="userStatus == 'audience'">
-            <ion-input placeholder="Username or email" formControlName="userName"></ion-input>
+            <ion-input
+              placeholder="Username or email"
+              formControlName="userName"
+            ></ion-input>
             <ion-icon name="person-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative" *ngIf="userStatus == 'artist'">
-            <ion-input placeholder="Mobile No." formControlName="mobileNo"></ion-input>
+            <ion-input
+              placeholder="Mobile No."
+              formControlName="mobileNo"
+            ></ion-input>
             <ion-icon name="phone-portrait-outline" class="icon"></ion-icon>
           </ion-col>
           <ion-col size="12" class="relative">
@@ -57,7 +66,9 @@
 
           <ion-col size="12" class="ion-text-center">
             <p><a href="#!">Forgot Password?</a></p>
-            <p>Don't have an account? <a [routerLink]="'./signup'">Register</a></p>
+            <p>
+              Don't have an account? <a [routerLink]="'./signup'">Register</a>
+            </p>
           </ion-col>
         </ion-row>
       </ion-list>
