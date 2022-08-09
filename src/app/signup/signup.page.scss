@@ -3,7 +3,7 @@
 
 ion-icon{vertical-align: middle;}
 .icon{position: absolute; right: 22px;top: 50%;transform: translateY(-50%);font-size: 18px; z-index: 9; color: #e42f08;}
-ion-input, ion-select{padding: 3px 40px 2px 20px !important; border-radius: 100px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+ion-input, ion-select{padding: 3px 20px 2px 20px !important; border-radius: 5px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
 ion-input:focus{border: solid 1px #e42f08;color: #e42f08 !important;}
 
 ion-col{margin-bottom: 10px;}
@@ -24,7 +24,7 @@ ion-checkbox {
     --border-color: #107C76;
   }
   ion-label, ion-item{--border-bottom: none; color: #666; font-size: 13px;}
-  input{width: 100%;line-height: 42px;padding: 3px 40px 2px 20px !important; border-radius: 100px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+  input{width: 100%;line-height: 42px;padding: 3px 20px 2px 20px !important; border-radius: 5px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
 ion-popover#ion-overlay-1 {
     margin-top:-50%!important;
 }

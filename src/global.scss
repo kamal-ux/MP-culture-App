@@ -49,11 +49,15 @@ ion-icon{vertical-align: middle;}
 .ml-1{margin-left: 10px;}
 .p-0{padding: 0;}
 .m-0{margin: 0;}
+
+ion-header, ion-toolbar{--background: #e42f08; color: #fff;}
+ion-header ion-icon{color: #fff !important;}
 button, ion-button{background: #e42f08;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
 button:hover, ion-button:hover{background: #c02705;}
 button.cancel, ion-button.cancel{background: #585858;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
 button.cancel:hover, ion-button.cancel:hover{background: #333;}
 
+.gray_btn{background: #ccc; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 10px; color: #000;}
 .red_btn{background: #f00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .green_btn{background: rgb(0, 179, 45); font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .see_green_btn{background: #00b894; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
@@ -71,3 +75,5 @@ ion-input{input::placeholder {color:rgba(14,17,39,0.4)!important;}}
 .text-yellow{color: #ffaf00;}
 
 #background-content{--background: #f00 !important;}
+
+.d-block{display: block;}
