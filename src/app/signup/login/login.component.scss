@@ -3,7 +3,7 @@
   margin: 70px auto 0;
 }
 .login_img img {
-  max-width: 100%;
+  max-width: 14rem;
   max-height: 140px;
 }
 
@@ -21,7 +21,7 @@ ion-icon {
 }
 ion-input {
   padding: 3px 40px 2px 20px !important;
-  border-radius: 100px;
+  border-radius: 5px;
   color: #333;
   font-size: 14px !important;
   min-height: 50px;
@@ -39,7 +39,10 @@ ion-col {
   margin-left: 13.6vh;
 }
 ion-chip {
-  background: #dcebfd;
+  background:  #e42f08;
+  color:white;
+  font-weight: 500;
+  width:40vw;
 }
 .list-ios {
   background: transparent;
@@ -61,12 +64,13 @@ ion-chip {
   z-index: 0;
 }
 ion-radio {
-  border-radius: 50%;
-  width: 23px;
-  margin-right: 5px;
-  background: #f5f5f5;
-  border: solid 1px #ccc;
+    border-radius: 50%;
+    width: 20px;
+    margin-right: 10px;
+    background: #f5f5f5;
+    --color: #333;
 }
+
 .list-md {
   margin-left: 0;
   margin-right: 0;
@@ -78,3 +82,4 @@ ion-radio {
   padding-bottom: 8px;
   background: none;
 }
+

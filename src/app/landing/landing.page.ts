@@ -26,6 +26,7 @@ export class LandingPage implements OnInit {
     spaceBetween: 10,
     autoplay: true
   };
+  scrollAmount = 4;
   constructor(private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
