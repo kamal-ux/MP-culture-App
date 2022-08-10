@@ -1,0 +1,268 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://webservice.mpcd.solyn.in/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://webservice.mpcd.solyn.in/">
+<script/>
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="https://webservice.mpcd.solyn.in/">
+<s:element name="ArtistRegistrationPageLoad">
+<s:complexType/>
+</s:element>
+<s:element name="ArtistRegistrationPageLoadResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ArtistRegistrationPageLoadResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ArtistRegistration">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ArtistName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="MobileNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="BlockName" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="DistrictId" nillable="true" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="StateId" type="s:int"/>
+<s:element minOccurs="0" maxOccurs="1" name="DateOfBirth" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DescriptionOfCurrentWorking" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="OtherQualityName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="OtherQualityDescription" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="IsRegisteredArtistOfAkasvani" type="s:boolean"/>
+<s:element minOccurs="1" maxOccurs="1" name="IsRegisteredArtistOfDoordarshan" type="s:boolean"/>
+<s:element minOccurs="1" maxOccurs="1" name="IsRegisteredArtistOfICCR" type="s:boolean"/>
+<s:element minOccurs="0" maxOccurs="1" name="SupportCertificatePhotoAkasvani" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="SupportCertificatePhotoNameAkasvani" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="SupportCertificatePhotoDoordarshan" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="SupportCertificatePhotoNameDoordarshan" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="SupportCertificatePhotoICCR" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="SupportCertificatePhotoNameICCR" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ArtistGrade" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="AboutArtist" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="Pkey" type="s:int"/>
+<s:element minOccurs="0" maxOccurs="1" name="CreatedThough" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ArtistRegistrationResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ArtistRegistrationResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="AudienceSignup">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="MobileNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CreatedThrough" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="AudienceSignupResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="AudienceSignupResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="string" nillable="true" type="s:string"/>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="ArtistRegistrationPageLoadSoapIn">
+<wsdl:part name="parameters" element="tns:ArtistRegistrationPageLoad"/>
+</wsdl:message>
+<wsdl:message name="ArtistRegistrationPageLoadSoapOut">
+<wsdl:part name="parameters" element="tns:ArtistRegistrationPageLoadResponse"/>
+</wsdl:message>
+<wsdl:message name="ArtistRegistrationSoapIn">
+<wsdl:part name="parameters" element="tns:ArtistRegistration"/>
+</wsdl:message>
+<wsdl:message name="ArtistRegistrationSoapOut">
+<wsdl:part name="parameters" element="tns:ArtistRegistrationResponse"/>
+</wsdl:message>
+<wsdl:message name="AudienceSignupSoapIn">
+<wsdl:part name="parameters" element="tns:AudienceSignup"/>
+</wsdl:message>
+<wsdl:message name="AudienceSignupSoapOut">
+<wsdl:part name="parameters" element="tns:AudienceSignupResponse"/>
+</wsdl:message>
+<wsdl:message name="ArtistRegistrationPageLoadHttpGetIn"/>
+<wsdl:message name="ArtistRegistrationPageLoadHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceSignupHttpGetIn">
+<wsdl:part name="FullName" type="s:string"/>
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+<wsdl:part name="CreatedThrough" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceSignupHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistRegistrationPageLoadHttpPostIn"/>
+<wsdl:message name="ArtistRegistrationPageLoadHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceSignupHttpPostIn">
+<wsdl:part name="FullName" type="s:string"/>
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+<wsdl:part name="CreatedThrough" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceSignupHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:portType name="SignupServiceSoap">
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<wsdl:input message="tns:ArtistRegistrationPageLoadSoapIn"/>
+<wsdl:output message="tns:ArtistRegistrationPageLoadSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistRegistration">
+<wsdl:input message="tns:ArtistRegistrationSoapIn"/>
+<wsdl:output message="tns:ArtistRegistrationSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<wsdl:input message="tns:AudienceSignupSoapIn"/>
+<wsdl:output message="tns:AudienceSignupSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="SignupServiceHttpGet">
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<wsdl:input message="tns:ArtistRegistrationPageLoadHttpGetIn"/>
+<wsdl:output message="tns:ArtistRegistrationPageLoadHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<wsdl:input message="tns:AudienceSignupHttpGetIn"/>
+<wsdl:output message="tns:AudienceSignupHttpGetOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="SignupServiceHttpPost">
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<wsdl:input message="tns:ArtistRegistrationPageLoadHttpPostIn"/>
+<wsdl:output message="tns:ArtistRegistrationPageLoadHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<wsdl:input message="tns:AudienceSignupHttpPostIn"/>
+<wsdl:output message="tns:AudienceSignupHttpPostOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="SignupServiceSoap" type="tns:SignupServiceSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/ArtistRegistrationPageLoad" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistRegistration">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/ArtistRegistration" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/AudienceSignup" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="SignupServiceSoap12" type="tns:SignupServiceSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/ArtistRegistrationPageLoad" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistRegistration">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/ArtistRegistration" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/AudienceSignup" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="SignupServiceHttpGet" type="tns:SignupServiceHttpGet">
+<http:binding verb="GET"/>
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<http:operation location="/ArtistRegistrationPageLoad"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<http:operation location="/AudienceSignup"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="SignupServiceHttpPost" type="tns:SignupServiceHttpPost">
+<http:binding verb="POST"/>
+<wsdl:operation name="ArtistRegistrationPageLoad">
+<http:operation location="/ArtistRegistrationPageLoad"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceSignup">
+<http:operation location="/AudienceSignup"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SignupService">
+<wsdl:port name="SignupServiceSoap" binding="tns:SignupServiceSoap">
+<soap:address location="https://webservice.mpcd.solyn.in/SignupService.asmx"/>
+</wsdl:port>
+<wsdl:port name="SignupServiceSoap12" binding="tns:SignupServiceSoap12">
+<soap12:address location="https://webservice.mpcd.solyn.in/SignupService.asmx"/>
+</wsdl:port>
+<wsdl:port name="SignupServiceHttpGet" binding="tns:SignupServiceHttpGet">
+<http:address location="https://webservice.mpcd.solyn.in/SignupService.asmx"/>
+</wsdl:port>
+<wsdl:port name="SignupServiceHttpPost" binding="tns:SignupServiceHttpPost">
+<http:address location="https://webservice.mpcd.solyn.in/SignupService.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
