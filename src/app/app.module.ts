@@ -9,6 +9,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgxSoapModule } from "ngx-soap";
 import { HttpConfigInterceptor } from "./interceptors/httpConfig.interceptor";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { HttpConfigInterceptor } from "./interceptors/httpConfig.interceptor";
     IonicStorageModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    NgxSoapModule
+    NgxSoapModule,
+    NgbModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -10,9 +10,17 @@ import { SignupPage } from "./signup.page";
 import { LoginComponent } from "./login/login.component";
 import { AudienceRegistrationComponent } from "./audience-registration/audience-registration.component";
 import { SignupStep2Component } from "./signup-step2/signup-step2.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SignupPageRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SignupPageRoutingModule,
+    ReactiveFormsModule,
+    NgbModule
+  ],
   declarations: [SignupPage, LoginComponent, AudienceRegistrationComponent, SignupStep2Component]
 })
 export class SignupPageModule {}
