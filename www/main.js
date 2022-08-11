@@ -20,30 +20,28 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: "",
-        redirectTo: "landing",
-        pathMatch: "full",
+        redirectTo: "tabs",
+        pathMatch: "full"
     },
     {
         path: "signup",
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_signup_signup_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./signup/signup.module */ 77648)).then((m) => m.SignupPageModule),
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_signup_signup_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./signup/signup.module */ 77648)).then((m) => m.SignupPageModule)
     },
     {
         path: "tabs",
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_tabs_tabs_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./tabs/tabs.module */ 15564)).then((m) => m.TabsPageModule),
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_tabs_tabs_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./tabs/tabs.module */ 15564)).then((m) => m.TabsPageModule)
     },
     {
         path: "landing",
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_service_api-service_service_ts-node_modules_swiper_angular_fesm2015_swiper_an-506306"), __webpack_require__.e("src_app_landing_landing_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./landing/landing.module */ 68721)).then((m) => m.LandingPageModule),
-    },
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_service_api-service_service_ts-node_modules_swiper_angular_fesm2015_swiper_an-506306"), __webpack_require__.e("src_app_landing_landing_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./landing/landing.module */ 68721)).then((m) => m.LandingPageModule)
+    }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.NgModule)({
-        imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__.PreloadAllModules }),
-        ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule],
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__.PreloadAllModules })],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule]
     })
 ], AppRoutingModule);
 
@@ -62,11 +60,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component.html?ngResource */ 33383);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 79259);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./service/local-storage.service */ 42518);
 
 
@@ -74,32 +73,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let AppComponent = class AppComponent {
-    constructor(router, localStorageService) {
+    constructor(router, localStorageService, menuController) {
         this.router = router;
         this.localStorageService = localStorageService;
+        this.menuController = menuController;
         this.appMenu = [
             {
-                title: "Live",
-                icon: "play-outline",
-            },
-            { title: "My Profile", icon: "person-outline" },
-            {
-                title: "All Pages",
-                icon: "documents-outline",
+                title: "कार्यक्रमों का सजीव प्रसारण",
+                value: "live-program",
+                icon: "play-outline"
             },
             {
-                title: "All Category",
-                icon: "menu-outline",
+                title: "आज के कार्यक्रम",
+                value: "today-program",
+                icon: "flash-outline"
             },
             {
-                title: "Settings",
-                icon: "settings-outline",
+                title: "आगामी कार्यक्रम",
+                value: "upcoming-program",
+                icon: "flash-outline"
             },
             {
-                title: "Logout",
-                icon: "log-out",
+                title: "संगृहीत कार्यक्रम",
+                value: "archive-program",
+                icon: "documents-outline"
             },
+            {
+                title: "प्रवेशिका",
+                value: "register",
+                icon: "person-outline"
+            },
+            {
+                title: "कला विधाये",
+                value: "category",
+                icon: "grid-outline"
+            },
+            {
+                title: "सेटिंग",
+                value: "live-program",
+                icon: "settings-outline"
+            },
+            {
+                title: "लॉग इन",
+                value: "login",
+                icon: "power-outline"
+            }
         ];
     }
     ngOnInit() {
@@ -110,21 +130,32 @@ let AppComponent = class AppComponent {
     menuToggle(menu) {
         switch (menu) {
             case "Logout":
-                // this.localStorage.clearAll();
+                this.localStorageService.clearAll();
                 this.router.navigateByUrl("", { replaceUrl: true });
                 break;
-            case "T&Cs and Privacy":
-                this.router.navigate(["/login/login/registration/termOfUse"], {
-                    state: { page: { privacyTerm: true } },
-                });
+            case "live-program":
+                this.router.navigate(["tabs/home"]);
                 break;
-            case "About Us":
-                this.router.navigate(["/login/login/registration/termOfUse"], {
-                    state: { page: "About" },
-                });
+            case "today-program":
+                this.router.navigate(["tabs/home"]);
                 break;
-            case "Notifications":
-                this.router.navigate(["tab/home/notification"]);
+            case "upcoming-program":
+                this.router.navigate(["tabs/home"]);
+                break;
+            case "archive-program":
+                break;
+            case "register":
+                this.router.navigate(["../signup/signup"]);
+                break;
+            case "category":
+                this.router.navigate(["tabs/category"]);
+                break;
+            case "setting":
+                this.router.navigate(["tabs/"]);
+                break;
+            case "login":
+                this.router.navigate(["../signup"]);
+                break;
             default:
                 break;
         }
@@ -132,10 +163,11 @@ let AppComponent = class AppComponent {
 };
 AppComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
-    { type: _service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__.LocalStorageService }
+    { type: _service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__.LocalStorageService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController }
 ];
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: "app-root",
         template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -314,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LocalStorageService": () => (/* binding */ LocalStorageService)
 /* harmony export */ });
-/* harmony import */ var _Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/storage-angular */ 80190);
@@ -331,7 +363,7 @@ let LocalStorageService = class LocalStorageService {
   init() {
     var _this = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       // If using, define drivers here: await this.storage.defineDriver(/*...*/);
       const storage = yield _this.storage.create();
       _this._storage = storage;
@@ -343,7 +375,7 @@ let LocalStorageService = class LocalStorageService {
   set(key, value) {
     var _this2 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       // console.log('key and value', key, value);
       yield _this2._storage?.set(key, value);
     })();
@@ -352,7 +384,7 @@ let LocalStorageService = class LocalStorageService {
   get(key) {
     var _this3 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       return yield _this3._storage?.get(key);
     })();
   }
@@ -360,7 +392,7 @@ let LocalStorageService = class LocalStorageService {
   remove(key) {
     var _this4 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield _this4._storage.remove(key);
     })();
   }
@@ -368,7 +400,7 @@ let LocalStorageService = class LocalStorageService {
   clearAll() {
     var _this5 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield _this5._storage.clear();
     })();
   }
@@ -397,7 +429,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "UtilService": () => (/* binding */ UtilService)
 /* harmony export */ });
-/* harmony import */ var _Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ 93819);
@@ -419,7 +451,7 @@ let UtilService = class UtilService {
   basicAlert(header, message, buttons) {
     var _this = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this.alert = yield _this.alertCtrl.create({
         backdropDismiss: false,
         header,
@@ -434,7 +466,7 @@ let UtilService = class UtilService {
   presentToast(message, duration = 1500) {
     var _this2 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this2.toast ? _this2.toast.dismiss() : false;
       _this2.toast = yield _this2.toastCtrl.create({
         message,
@@ -449,7 +481,7 @@ let UtilService = class UtilService {
   dismissToast() {
     var _this3 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       return _this3.toast.dismiss();
     })();
   }
@@ -457,7 +489,7 @@ let UtilService = class UtilService {
   presentLoading(message) {
     var _this4 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this4.loading = _this4.loading ? yield _this4.loading.dismiss() : false;
       _this4.loading = yield _this4.loadingCtrl.create({
         message
@@ -469,7 +501,7 @@ let UtilService = class UtilService {
   dismissLoading() {
     var _this5 = this;
 
-    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield _this5.loading && _this5.loadingCtrl.dismiss();
     })();
   }
@@ -506,7 +538,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false
+    production: false,
+    mediaUrl: "https://mpcd.solyn.in"
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -798,7 +831,7 @@ module.exports = webpackAsyncContext;
 /***/ ((module) => {
 
 "use strict";
-module.exports = "::ng-deep.item-inner {\n  border: none !important;\n}\n\n.menu-bg {\n  border-radius: 0;\n  overflow: hidden;\n  --background: url(/assets/images/side_menu_bg.jpg) 0 0/cover no-repeat #fff;\n  padding-top: 100px;\n}\n\n.menu-bg ion-item {\n  --background: transparent;\n}\n\nion-item {\n  --border-color: transparent !important;\n  font-size: 14px;\n  color: #000 !important;\n  padding: 5px 0;\n}\n\nion-list ion-item:last-child {\n  --border-color: transparent !important;\n}\n\nion-item {\n  border: none !important;\n}\n\n.pt50 {\n  padding-top: 50px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHVCQUFBO0FBQ0o7O0FBQ0E7RUFBUyxnQkFBQTtFQUFpQixnQkFBQTtFQUFpQiwyRUFBQTtFQUE2RSxrQkFBQTtBQU14SDs7QUFMQTtFQUFrQix5QkFBQTtBQVNsQjs7QUFSQTtFQUFTLHNDQUFBO0VBQXdDLGVBQUE7RUFBaUIsc0JBQUE7RUFBdUIsY0FBQTtBQWV6Rjs7QUFkQTtFQUE2QixzQ0FBQTtBQWtCN0I7O0FBakJBO0VBQVUsdUJBQUE7QUFxQlY7O0FBcEJBO0VBQU0saUJBQUE7QUF3Qk4iLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOjpuZy1kZWVwLml0ZW0taW5uZXIge1xuICAgIGJvcmRlcjogbm9uZSFpbXBvcnRhbnQ7O1xufVxuLm1lbnUtYmd7Ym9yZGVyLXJhZGl1czogMDtvdmVyZmxvdzogaGlkZGVuOy0tYmFja2dyb3VuZDogdXJsKC9hc3NldHMvaW1hZ2VzL3NpZGVfbWVudV9iZy5qcGcpIDAgMC9jb3ZlciBuby1yZXBlYXQgI2ZmZjsgcGFkZGluZy10b3A6IDEwMHB4O31cbi5tZW51LWJnIGlvbi1pdGVtey0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7fVxuaW9uLWl0ZW17LS1ib3JkZXItY29sb3I6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7IGZvbnQtc2l6ZTogMTRweDsgY29sb3I6ICMwMDAgIWltcG9ydGFudDtwYWRkaW5nOiA1cHggMDt9XG5pb24tbGlzdCBpb24taXRlbTpsYXN0LWNoaWxkey0tYm9yZGVyLWNvbG9yOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O31cbmlvbi1pdGVtIHtib3JkZXI6IG5vbmUgIWltcG9ydGFudDt9XG4ucHQ1MHtwYWRkaW5nLXRvcDogNTBweDt9Il19 */";
+module.exports = "::ng-deep.item-inner {\n  border: none !important;\n}\n\n.menu-bg {\n  --background: #dcebfd;\n}\n\n.menu-bg ion-item {\n  --background: #dcebfd;\n}\n\nion-item {\n  --border-color: transparent !important;\n  font-size: 14px;\n  color: #000 !important;\n  padding: 5px 0;\n}\n\nion-list ion-item:last-child {\n  --border-color: transparent !important;\n}\n\nion-item {\n  border: none !important;\n}\n\n.pt50 {\n  padding-top: 50px;\n}\n\n.text-bold, ion-icon {\n  font-weight: 800;\n}\n\nion-icon {\n  color: #67696c;\n  margin-inline-end: 10px;\n}\n\n.flashing-effect {\n  animation: flashingeffect 2s linear 1s infinite;\n}\n\n.red-circle {\n  width: 12px;\n  height: 12px;\n  border-radius: 50%;\n  background-color: #e42f08;\n}\n\nion-menu {\n  --width:230px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHVCQUFBO0FBQ0o7O0FBQ0E7RUFBUyxxQkFBQTtBQUdUOztBQURBO0VBQWtCLHFCQUFBO0FBS2xCOztBQUpBO0VBQVMsc0NBQUE7RUFBd0MsZUFBQTtFQUFpQixzQkFBQTtFQUF1QixjQUFBO0FBV3pGOztBQVZBO0VBQTZCLHNDQUFBO0FBYzdCOztBQWJBO0VBQVUsdUJBQUE7QUFpQlY7O0FBaEJBO0VBQU0saUJBQUE7QUFvQk47O0FBbkJBO0VBQXNCLGdCQUFBO0FBdUJ0Qjs7QUF0QkE7RUFBUyxjQUFBO0VBQWUsdUJBQUE7QUEyQnhCOztBQTFCQTtFQUNJLCtDQUFBO0FBNkJKOztBQTNCQTtFQUNJLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtBQThCSjs7QUE1QkE7RUFDSSxhQUFBO0FBK0JKIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjo6bmctZGVlcC5pdGVtLWlubmVyIHtcbiAgICBib3JkZXI6IG5vbmUhaW1wb3J0YW50Oztcbn1cbi5tZW51LWJney0tYmFja2dyb3VuZDogI2RjZWJmZDt9XG4vLyAubWVudS1iZ3tib3JkZXItcmFkaXVzOiAwO292ZXJmbG93OiBoaWRkZW47LS1iYWNrZ3JvdW5kOiB1cmwoL2Fzc2V0cy9pbWFnZXMvc2lkZV9tZW51X2JnLmpwZykgMCAwL2NvdmVyIG5vLXJlcGVhdCAjZmZmOyBwYWRkaW5nLXRvcDogMTAwcHg7fVxuLm1lbnUtYmcgaW9uLWl0ZW17LS1iYWNrZ3JvdW5kOiAjZGNlYmZkO31cbmlvbi1pdGVtey0tYm9yZGVyLWNvbG9yOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50OyBmb250LXNpemU6IDE0cHg7IGNvbG9yOiAjMDAwICFpbXBvcnRhbnQ7cGFkZGluZzogNXB4IDA7fVxuaW9uLWxpc3QgaW9uLWl0ZW06bGFzdC1jaGlsZHstLWJvcmRlci1jb2xvcjogdHJhbnNwYXJlbnQgIWltcG9ydGFudDt9XG5pb24taXRlbSB7Ym9yZGVyOiBub25lICFpbXBvcnRhbnQ7fVxuLnB0NTB7cGFkZGluZy10b3A6IDUwcHg7fVxuLnRleHQtYm9sZCwgaW9uLWljb24ge2ZvbnQtd2VpZ2h0OiA4MDA7fVxuaW9uLWljb257Y29sb3I6IzY3Njk2YzsgbWFyZ2luLWlubGluZS1lbmQ6IDEwcHg7fVxuLmZsYXNoaW5nLWVmZmVjdHtcbiAgICBhbmltYXRpb246IGZsYXNoaW5nZWZmZWN0IDJzIGxpbmVhciAxcyBpbmZpbml0ZTtcbn1cbi5yZWQtY2lyY2xlIHtcbiAgICB3aWR0aDogMTJweDtcbiAgICBoZWlnaHQ6IDEycHg7XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNlNDJmMDg7XG59XG5pb24tbWVudXtcbiAgICAtLXdpZHRoOjIzMHB4O1xufSJdfQ== */";
 
 /***/ }),
 
@@ -809,7 +842,7 @@ module.exports = "::ng-deep.item-inner {\n  border: none !important;\n}\n\n.menu
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\n  <ion-split-pane when=\"false\" contentId=\"main\">\n    <ion-menu side=\"start\" contentId=\"main\">\n      <ion-content class=\"menu-bg\">\n        <ion-menu-toggle class=\"pt50\">\n          <p>&nbsp;</p>\n          <p>&nbsp;</p>\n          <ion-row>\n            <ion-col size=\"12\" class=\"ion-text-center\">\n              <h1>\n                <ion-icon\n                  name=\"cloudy-night-outline\"\n                  class=\"text-white font50\"\n                ></ion-icon>\n              </h1>\n              <h4 class=\"text-white\">Dhaka</h4>\n              <h5 class=\"mb20 text-white\">Mostly sunny</h5>\n              <p>Friday, 5 August 2022</p>\n              <p>8:20:00</p>\n            </ion-col>\n          </ion-row>\n          <ion-item\n            class=\"menu-list\"\n            *ngFor=\"let p of appMenu\"\n            (click)=\"menuToggle(p.title)\"\n          >\n            <ion-icon\n              name=\"{{ p.icon }}\"\n              slot=\"start\"\n              [ngClass]=\"{\n                'animate__animated animate__infinite animate__swing':\n                  p.icon == 'notifications-circle'\n              }\"\n            >\n            </ion-icon>\n            <ion-label class=\"text-white\">{{ p.title }}</ion-label>\n          </ion-item>\n        </ion-menu-toggle>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+module.exports = "<ion-app>\n  <ion-split-pane when=\"false\" contentId=\"main\">\n    <ion-menu side=\"start\" contentId=\"main\" swipeGesture=\"false\">\n      <ion-content class=\"menu-bg\">\n        <ion-menu-toggle>\n          <p>&nbsp;</p>\n          <p>&nbsp;</p>\n          <ion-row>\n            <ion-col size=\"12\" class=\"ion-text-center\">\n              <div class=\"login_img\">\n                <img src=\"../../../assets/images/mp-logo.png\" width=\"65px\" />\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-item class=\"menu-list\" *ngFor=\"let p of appMenu\" (click)=\"menuToggle(p.value)\">\n            <ion-icon\n              name=\"{{ p.icon }}\"\n              slot=\"start\"\n              [ngClass]=\"{\n                'animate__animated animate__infinite animate__swing':\n                  p.icon == 'notifications-circle'\n              }\"\n            >\n            </ion-icon>\n            <ion-label class=\"text-bold\"\n              >{{ p.title }}<span class=\"red-circle flashing-effect\"></span\n            ></ion-label>\n          </ion-item>\n        </ion-menu-toggle>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
 
 /***/ }),
 

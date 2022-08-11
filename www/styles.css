@@ -11518,6 +11518,7 @@ p {
 a {
   color: #000;
   text-decoration: none;
+  font-weight: 800;
 }
 a:hover {
   color: #333;
@@ -11707,6 +11708,7 @@ ion-input input::placeholder {
 }
 .border_bottom_red {
   border-bottom: 3px solid #e42f08;
+  font-weight: 800;
 }
 .button_roundad {
   border-radius: 6px;
