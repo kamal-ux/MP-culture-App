@@ -35,7 +35,7 @@ h5{font-size: 16px !important; color: #0E1127;white-space: normal; margin: 0; pa
 h6{font-size: 15px !important;white-space: normal;color: #666; font-weight: 400; margin: 0; padding: 0;}
 p{padding: 0;margin: 0 auto 10px;font-size: 14px !important;color: #666; font-weight: 400;width: 100%;white-space: normal;}
 .font50{font-size: 50px;}
-a{color: #000; text-decoration: none;}
+a{color: #000; text-decoration: none; font-weight:800;}
 a:hover{color: #333; text-decoration: none;}
 ion-icon{vertical-align: middle;}
 .mb0{margin-bottom: 0px !important;}
@@ -79,5 +79,5 @@ ion-input{input::placeholder {color:rgba(14,17,39,0.4)!important;}}
 .d-block{display: block;}
 
 .about_img{max-width: 100%; max-height: 60px;vertical-align: middle;}
-.border_bottom_red{border-bottom: 3px solid #e42f08;}
+.border_bottom_red{border-bottom: 3px solid #e42f08; font-weight: 800}
 .button_roundad{border-radius: 6px;height: 40px;}

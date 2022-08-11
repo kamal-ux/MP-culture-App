@@ -17,7 +17,9 @@ hr {
   color: gray;
   padding-left: 10px;
 }
-
+.swiper-pagination-bullet-active {
+      --background: #eef0f2;
+}
 .slide2_img{
   max-width: 100% !important;
   max-height: 300px !important;

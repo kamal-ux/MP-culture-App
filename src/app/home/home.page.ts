@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
 import { ApiServiceService } from "../service/api-service.service";
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: "app-home",
@@ -10,6 +11,11 @@ import { ApiServiceService } from "../service/api-service.service";
 })
 export class HomePage implements OnInit {
   clientReady: boolean;
+  landingPageClientReady: boolean;
+  upcomingPrograms: any[] = [];
+  todaysPrograms: any[] = [];
+  pastPrograms: any[] = [];
+  landingPageData: any;
   @ViewChild("slider", { static: false }) slideWithNav: IonSlides;
   @ViewChild("registerSlider", { static: false })
   slideOpts = {
@@ -21,9 +27,19 @@ export class HomePage implements OnInit {
     spaceBetween: 10,
     autoplay: true
   };
+  slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
+  scrollAmount = 4;
+  landingImages: any;
+  mediaUrl: string = environment.mediaUrl;
   constructor(private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
+    this.apiService.landingPageClientState().subscribe((ready) => {
+      if (ready) {
+        this.landingPageClientReady = true;
+        this.loadLandingData();
+      }
+    });
     this.apiService.programClientState().subscribe((ready) => {
       if (ready) {
         this.clientReady = true;
@@ -31,16 +47,25 @@ export class HomePage implements OnInit {
       }
     });
   }
-
   subscription(): void {
     this.apiService.loadUpcomingProgram().subscribe((res: any) => {
-      console.log("upcoming program", res);
+      this.upcomingPrograms = res;
+      console.log("upcoming program", this.upcomingPrograms);
     });
     this.apiService.loadPastProgram().subscribe((res: any) => {
       console.log("past program", res);
+      this.pastPrograms = res;
     });
     this.apiService.loadTodaysProgram().subscribe((res: any) => {
       console.log("todays program", res);
+    });
+  }
+
+  public loadLandingData(): void {
+    this.apiService.loadLandingPageContent().subscribe((res: any) => {
+      console.log("landing page content", res);
+      this.landingPageData = res;
+      this.landingImages = this.landingPageData[0].HomeSliderImage;
     });
   }
 }

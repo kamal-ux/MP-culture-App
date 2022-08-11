@@ -1,91 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title> Home </ion-title>
-    <ion-buttons slot="start" name="main">
-      <ion-menu-button>
-        <ion-icon name="grid-outline" class="icons"></ion-icon>
-      </ion-menu-button>
-    </ion-buttons>
+<ion-header translucent="false">
+  <ion-toolbar class="toolbar-content">
+    <!-- <ion-buttons name="main"> -->
+    <ion-text> एम पी कल्चर ऐप, मध्य प्रदेश, सस्कृति विभाग</ion-text>
+    <!-- </ion-buttons> -->
   </ion-toolbar>
+  <ion-row class="header-area">
+    <ion-col size="2">
+      <ion-buttons name="main" class="mt21">
+        <ion-menu-button>
+          <ion-icon name="grid-outline" id="icons"></ion-icon>
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+    <ion-col size="4" class="">
+      <div class="login_img">
+        <img src="../../../assets/images/mp-logo.png" width="65px" />
+      </div>
+    </ion-col>
+    <ion-col size="4" class="ion-text-end mt21">
+      <img src="../../../assets/images/about.png" class="about_img" />
+    </ion-col>
+  </ion-row>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="ion-padding">
-    <ion-row class="mt10">
-      <ion-col size="6">
-        <h3 class="m-0 p-0">News Today</h3>
-      </ion-col>
-      <ion-col size="6" class="ion-text-end">
-        <p>Tuesday, 2 August</p>
-      </ion-col>
-    </ion-row>
+  <div class="">
     <ion-row>
-      <ion-col size="12">
-        <ion-slides #registerSlider [options]="slideOpts" class="banner_slide">
-          <ion-slide>
-            <div class="content">
-              <div class="red_btn">Health</div>
-              <h4>Loses over 30kg on keto diet and one meal a day</h4>
-              <p>
-                <a href="#!" class="mr-1">
-                  <ion-icon name="person-outline"></ion-icon>
-                  Nazrul</a
-                >
-                <a href="#!" class="mr-1">
-                  <ion-icon name="calendar-outline" class="mr-1"></ion-icon>
-                  21 March</a
-                ><span>
-                  <ion-icon name="bar-chart-outline"></ion-icon>
-                  3 min read</span
-                >
-              </p>
-            </div>
-            <img src="../../../assets/images/banner1.jpg" class="banner_img" />
-          </ion-slide>
-          <ion-slide>
-            <div class="content">
-              <div class="red_btn">Health</div>
-              <h4>Loses over 30kg on keto diet and one meal a day</h4>
-              <p>
-                <a href="#!" class="mr-1">
-                  <ion-icon name="person-outline"></ion-icon>
-                  Nazrul</a
-                >
-                <a href="#!" class="mr-1">
-                  <ion-icon name="calendar-outline" class="mr-1"></ion-icon>
-                  21 March</a
-                ><span>
-                  <ion-icon name="bar-chart-outline"></ion-icon>
-                  3 min read</span
-                >
-              </p>
-            </div>
-            <img src="../../../assets/images/banner2.jpg" class="banner_img" />
-          </ion-slide>
-          <ion-slide>
-            <div class="content">
-              <div class="red_btn">Health</div>
-              <h4>Loses over 30kg on keto diet and one meal a day</h4>
-              <p>
-                <a href="#!" class="mr-1">
-                  <ion-icon name="person-outline"></ion-icon>
-                  Nazrul</a
-                >
-                <a href="#!" class="mr-1">
-                  <ion-icon name="calendar-outline" class="mr-1"></ion-icon>
-                  21 March</a
-                ><span>
-                  <ion-icon name="bar-chart-outline"></ion-icon>
-                  3 min read</span
-                >
-              </p>
-            </div>
-            <img src="../../../assets/images/banner3.jpg" class="banner_img" />
+      <ion-col>
+        <ion-slides pager="true" [options]="slideOptsOne" *ngIf="landingImages">
+          <ion-slide *ngFor="let landingData of landingImages; let index=index">
+            <img src="{{mediaUrl + landingData?.PhotoPath}}" class="banner_img" />
           </ion-slide>
         </ion-slides>
       </ion-col>
     </ion-row>
+    <ion-row class="mt10 ion-padding">
+      <ion-col size="8">
+        <span class="border_bottom_red">हमारे बारे में / About Us</span>
+      </ion-col>
+      <ion-col class="mt10" size="12" *ngFor="let landingData of landingPageData">
+        <p class="text-justify">{{landingData.AppLandingPageText}}</p>
+      </ion-col>
+    </ion-row>
   </div>
-  <div class="ion-padding">
+  <!-- <div class="ion-padding">
     <ion-row class="mt20">
       <ion-col size="6">
         <h3 class="m-0 p-0">हमारे बारे में / About Us</h3>
@@ -95,29 +53,25 @@
       </ion-col>
       <ion-col size="12">
         <p>
-          मध्येप्रदेश की कला, साहित्य और संस्कृति को हर सम्भव उपयों द्वारा
-          प्रोन्नत करना, सांस्कृतिक धरोहर, पुरातात्विक सम्पदा एवं ऐतिहासिक महत्व
-          का यथास्थिति संरक्षण एवं विरूपण, विनाश, अपक्षरण, व्ययन या निर्यात से
-          संरक्षण, जनजातीय और लोक कला, साहित्य एवं संस्कृति का अनुरक्षण,
-          संरक्षण, प्रोत्साहन, प्रदर्शन, प्रशिक्षण एवं विकास करना संस्कृति विभाग
-          का मुख्य उद्देश्य हैं। मध्यप्रदेश की कला, संस्कृति, साहित्य, राजभाषा,
-          स्वाधीनता संग्राम से संबंधित एवं पुरासम्पदा के संरक्षण, संवर्धन तथा
-          उनके उत्तरोत्तर विकास, कलाकारों, साहित्यकारों, विद्वानों,
-          पुरातत्वविदों एवं संगठनों का सम्मांन, नाट्य विद्यालय, रंगकर्म प्रदर्शन
-          तथा अध्ययन, अभिनय, प्रशिक्षण, प्रचार और विकास, अशासकीय सांस्कृतिक
-          संगठनों को प्रोत्साहन एवं वित्तीय सहायता उपलब्ध कराना, संगीत एवं ललित
-          कला को प्रोन्नत, सुदृढ़, विस्तार आदि के लिये उद्देश्य अनुरूप सक्रिय
-          है।
+          मध्येप्रदेश की कला, साहित्य और संस्कृति को हर सम्भव उपयों द्वारा प्रोन्नत करना, सांस्कृतिक
+          धरोहर, पुरातात्विक सम्पदा एवं ऐतिहासिक महत्व का यथास्थिति संरक्षण एवं विरूपण, विनाश,
+          अपक्षरण, व्ययन या निर्यात से संरक्षण, जनजातीय और लोक कला, साहित्य एवं संस्कृति का
+          अनुरक्षण, संरक्षण, प्रोत्साहन, प्रदर्शन, प्रशिक्षण एवं विकास करना संस्कृति विभाग का मुख्य
+          उद्देश्य हैं। मध्यप्रदेश की कला, संस्कृति, साहित्य, राजभाषा, स्वाधीनता संग्राम से संबंधित
+          एवं पुरासम्पदा के संरक्षण, संवर्धन तथा उनके उत्तरोत्तर विकास, कलाकारों, साहित्यकारों,
+          विद्वानों, पुरातत्वविदों एवं संगठनों का सम्मांन, नाट्य विद्यालय, रंगकर्म प्रदर्शन तथा
+          अध्ययन, अभिनय, प्रशिक्षण, प्रचार और विकास, अशासकीय सांस्कृतिक संगठनों को प्रोत्साहन एवं
+          वित्तीय सहायता उपलब्ध कराना, संगीत एवं ललित कला को प्रोन्नत, सुदृढ़, विस्तार आदि के लिये
+          उद्देश्य अनुरूप सक्रिय है।
         </p>
         <p>
-          विभाग संस्कृति के विभिन्न क्षेत्रों में प्रतिभा को बढ़ावा देने और
-          मध्यप्रदेश की समृद्ध संस्कृति/विरासत के बारे में देश-दुनिया को जानकारी
-          देने के लिए राज्य भर में कई सांस्कृतिक गतिविधियों का आयोजन,
-          प्रचार-प्रसार एवं दस्तावेजीकरण करता है।
+          विभाग संस्कृति के विभिन्न क्षेत्रों में प्रतिभा को बढ़ावा देने और मध्यप्रदेश की समृद्ध
+          संस्कृति/विरासत के बारे में देश-दुनिया को जानकारी देने के लिए राज्य भर में कई सांस्कृतिक
+          गतिविधियों का आयोजन, प्रचार-प्रसार एवं दस्तावेजीकरण करता है।
         </p>
       </ion-col>
     </ion-row>
-  </div>
+  </div> -->
   <!-- <ion-row class="mt20">
     <ion-col size="12" class="catagories_slider">
       <h3 class="m-0">Top Catagories</h3>
@@ -191,18 +145,16 @@
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <a href="#!">राष्ट्रीय चेतना जा सुर </a>
+            <a>राष्ट्रीय चेतना जा सुर </a>
           </h6>
-          <a href="#!" class="red_btn mr-1">भोपाल</a>
-          <a href="#!">08 अगस्त 2022</a>
-          <p class="mt10">
-            राष्ट्रीय गीतों की प्रस्तुति <br />सिंधी साहित्य अकादमी
-          </p>
+          <a class="red_btn mr-1">भोपाल</a>
+          <a>08 अगस्त 2022</a>
+          <p class="mt10">राष्ट्रीय गीतों की प्रस्तुति <br />सिंधी साहित्य अकादमी</p>
         </ion-col>
       </ion-row>
     </ion-card>
   </div>
-
+  <!-- Upcoming programs [OPEN]-->
   <div class="ion-padding">
     <ion-row class="mt20">
       <ion-col size="6">
@@ -212,36 +164,40 @@
         </h5>
       </ion-col>
       <ion-col size="6" class="ion-text-end">
-        <a href="#!" class="red_btn">View All</a>
+        <a class="red_btn">View All</a>
       </ion-col>
     </ion-row>
-    <ion-card class="blue_card">
+    <ion-card class="blue_card" *ngFor="let program of upcomingPrograms">
       <ion-row>
         <ion-col size="4">
-          <img src="../../../assets/images/b1.jpg" class="trending_img" />
+          <img
+            src="{{program.ProgramMultiMedia.length ? mediaUrl+ program.ProgramMultiMedia.MediaPath :'../../../assets/images/b3.jpg'}}"
+            class="trending_img"
+          />
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <a href="#!">स्वाधीनता पर्व</a>
+            <ion-text color="dark">{{program.ProgramName}}</ion-text>
           </h6>
-          <a href="#!" class="see_green_btn mr-1">भोपाल</a>
-          <a href="#!">15 अगस्त 2022</a>
-          <p class="mt10">देशभक्ति आधारित स्वराज संस्थान संचालनालय</p>
+          <a class="see_green_btn mr-1"> {{program.CityName}}</a>
+          <a>{{program.ProgramDateTime | date:'short':'IST'}}</a>
+          <!-- <p class="mt10">देशभक्ति आधारित स्वराज संस्थान संचालनालय</p> -->
+          <p class="mt10">{{program.AboutProgram}}</p>
         </ion-col>
       </ion-row>
     </ion-card>
-    <ion-card class="blue_card">
+    <!-- <ion-card class="blue_card">
       <ion-row>
         <ion-col size="4">
           <img src="../../../assets/images/b3.jpg" class="trending_img" />
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <a href="#!">स्मृति समारोह </a>
+            <a>स्मृति समारोह </a>
             <p>सुभद्रा कुमारी चौहान</p>
           </h6>
-          <a href="#!" class="red_btn mr-1">सिवनी</a>
-          <a href="#!">17 अगस्त 2022</a>
+          <a class="red_btn mr-1">सिवनी</a>
+          <a>17 अगस्त 2022</a>
           <p class="mt10">विमर्श एवं रचनापाठ साहित्य अकादमी</p>
         </ion-col>
       </ion-row>
@@ -253,13 +209,11 @@
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <a href="#!">व्याख्यान</a>
+            <a>व्याख्यान</a>
           </h6>
-          <a href="#!" class="orange_btn mr-1">उज्जैन</a>
-          <a href="#!">17 अगस्त 2022</a>
-          <p class="mt10">
-            बलरामः कृषि संस्कृति के प्रणेता जनजातीय लोककला एवं बोली विकास अका.
-          </p>
+          <a class="orange_btn mr-1">उज्जैन</a>
+          <a>17 अगस्त 2022</a>
+          <p class="mt10">बलरामः कृषि संस्कृति के प्रणेता जनजातीय लोककला एवं बोली विकास अका.</p>
         </ion-col>
       </ion-row>
     </ion-card>
@@ -270,18 +224,20 @@
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <a href="#!">ललित पर्व</a>
+            <a>ललित पर्व</a>
           </h6>
-          <a href="#!" class="see_green_btn mr-1">उज्जैन</a>
-          <a href="#!">18-20 अगस्त 2022</a>
+          <a class="see_green_btn mr-1">उज्जैन</a>
+          <a>18-20 अगस्त 2022</a>
           <p class="mt10">
-            श्रीकृष्ण के आख्यान की कला अभिव्यक्तियाँ जनजातीय लोककला एवं बोली
-            विकास अका.
+            श्रीकृष्ण के आख्यान की कला अभिव्यक्तियाँ जनजातीय लोककला एवं बोली विकास अका.
           </p>
         </ion-col>
       </ion-row>
-    </ion-card>
+    </ion-card> -->
   </div>
+  <!-- Upcoming programs [CLOSE]-->
+
+  <!-- Artist Category [OPEN]-->
   <div class="ion-padding">
     <ion-row class="mt20">
       <ion-col size="6">
@@ -291,14 +247,14 @@
         </h5>
       </ion-col>
       <ion-col size="6" class="ion-text-end">
-        <a href="#!" class="red_btn">View All</a>
+        <a class="red_btn">View All</a>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="6">
         <ion-card class="foryou_card">
           <div class="content">
-            <a href="#!" class="red_btn">शास्त्रीय / classical</a>
+            <a class="red_btn">शास्त्रीय / classical</a>
           </div>
           <img src="../../../assets/images/cat1.jpg" />
         </ion-card>
@@ -306,7 +262,7 @@
       <ion-col size="6">
         <ion-card class="foryou_card">
           <div class="content">
-            <a href="#!" class="red_btn">उप शास्त्रीय / sub classical</a>
+            <a class="red_btn">उप शास्त्रीय / sub classical</a>
           </div>
           <img src="../../../assets/images/cat2.jpg" />
         </ion-card>
@@ -314,7 +270,7 @@
       <ion-col size="6">
         <ion-card class="foryou_card">
           <div class="content">
-            <a href="#!" class="red_btn">आधुनिक कला / modern Art</a>
+            <a class="red_btn">आधुनिक कला / modern Art</a>
           </div>
           <img src="../../../assets/images/cat3.jpg" />
         </ion-card>
@@ -322,7 +278,7 @@
       <ion-col size="6">
         <ion-card class="foryou_card">
           <div class="content">
-            <a href="#!" class="red_btn">लोक एवं आदिवासी / folk and tribal</a>
+            <a class="red_btn">लोक एवं आदिवासी / folk and tribal</a>
           </div>
           <img src="../../../assets/images/cat4.jpg" />
         </ion-card>
@@ -337,7 +293,7 @@
         </h5>
       </ion-col>
       <ion-col size="6" class="ion-text-end">
-        <a href="#!" class="red_btn">View All</a>
+        <a class="red_btn">View All</a>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -345,7 +301,7 @@
         <ion-card class="foryou_card">
           <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
           <div class="content">
-            <a href="#!" class="gray_btn">Mrinalini<br />नृत्य/Dancer</a>
+            <a class="gray_btn">Mrinalini<br />नृत्य/Dancer</a>
           </div>
           <img src="../../../assets/images/b5.jpg" />
         </ion-card>
@@ -354,9 +310,7 @@
         <ion-card class="foryou_card">
           <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
           <div class="content">
-            <a href="#!" class="gray_btn">
-              Bhuri Bai<br />चित्रकारी / painting</a
-            >
+            <a class="gray_btn"> Bhuri Bai<br />चित्रकारी / painting</a>
           </div>
           <img src="../../../assets/images/b6.jpg" />
         </ion-card>
@@ -365,7 +319,7 @@
         <ion-card class="foryou_card">
           <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
           <div class="content">
-            <a href="#!" class="gray_btn">Sreetoma<br />गायन/Singer</a>
+            <a class="gray_btn">Sreetoma<br />गायन/Singer</a>
           </div>
           <img src="../../../assets/images/b7.jpg" />
         </ion-card>
@@ -374,11 +328,12 @@
         <ion-card class="foryou_card">
           <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
           <div class="content">
-            <a href="#!" class="gray_btn">Rishav Ishu<br />Actor</a>
+            <a class="gray_btn">Rishav Ishu<br />Actor</a>
           </div>
           <img src="../../../assets/images/b8.jpg" />
         </ion-card>
       </ion-col>
     </ion-row>
   </div>
+  <!-- Artist Category [CLOSE]-->
 </ion-content>

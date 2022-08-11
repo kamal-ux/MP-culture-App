@@ -1,6 +1,29 @@
-.icons {
+ion-toolbar {
+	height: 5vh;
+}
+.toolbar-content {
+    text-align: center;
+    font-weight: 600;
+}
+ion-header{
+	--background: white;
+}
+.text-justify {
+	text-align: justify;
+	color:#797494;
+}
+.header-area {
+	    // background: url(https://jusmarktech.in/Culture/img/bg-img/NOTES1.png) repeat-x #fff;
+    background-color: #fff !important;
+    height: 100px !important;
+    background-position: 0% 63%;
+}
+.mt21{
+	margin-top:20px
+}
+#icons {
 	font-size: 25px;
-	color: gray;
+	color: #67696c!important;
 	padding-left: 10px;
 }
 .slide2_img {
@@ -135,4 +158,7 @@
 .btn-segment.segment-button-checked {
 	background: #e42f08;
 	color: #e42f08;
+}
+a {
+	color:black;
 }

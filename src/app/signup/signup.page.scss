@@ -1,5 +1,5 @@
-.login_img {text-align: center;margin: 20px auto 0;}
-.login_img img {max-width: 100%;max-height: 60px;}
+.login_img {text-align: center;}
+// .login_img img {max-width: 100%;max-height: 60px;}
 
 ion-icon{vertical-align: middle;}
 .icon{position: absolute; right: 22px;top: 50%;transform: translateY(-50%);font-size: 18px; z-index: 9; color: #e42f08;}
@@ -28,4 +28,20 @@ ion-checkbox {
 ion-popover#ion-overlay-1 {
     margin-top:-50%!important;
 }
+.deselected_btn {
+    background: white;
+border: 1px solid #0000000f;
+    color:black;
+}
+.selected_btn {
+    background: red;
+}
 
+ion-list{
+    padding:5px;
+}
+
+form {
+    border: 1px solid lightgray;
+    margin-top: 15px;
+}

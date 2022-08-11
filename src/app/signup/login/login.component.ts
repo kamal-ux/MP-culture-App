@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     this.subscription();
     this.loginForm = this.fb.group({
       userStatus: ["audience"],
-      userName: ["", Validators.required],
       password: ["", Validators.required],
       mobileNo: ["", [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });

@@ -9,6 +9,7 @@ import { ApiServiceService } from "../service/api-service.service";
 })
 export class SignupPage implements OnInit {
   signupForm!: FormGroup;
+  signupType = "audience";
   artistRegisterClientReady: boolean;
   constructor(private fb: FormBuilder, private apiService: ApiServiceService) {}
 
@@ -57,8 +58,22 @@ export class SignupPage implements OnInit {
     });
   }
 
+  toggleStatus(status: any) {
+    this.signupType = status;
+  }
+
+  imgTobase64(element) {
+    console.log("element", element.files);
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      console.log("RESULT", reader.result);
+    };
+    return reader.readAsDataURL(file);
+  }
+
   submit(isValid: boolean, formValue: any): void {
-    if (!isValid || !this.artistRegisterClientReady) return;
+    // if (!isValid || !this.artistRegisterClientReady) return;
     const formObj = {
       ArtistName: formValue.ArtistName,
       MobileNo: formValue.MobileNo,

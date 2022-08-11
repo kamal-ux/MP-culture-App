@@ -1,0 +1,431 @@
+<ion-app>
+  <ion-content class="ion-padding login_top">
+    <form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)" class="">
+      <ion-list>
+        <div class="login_img">
+          <img src="../../../assets/images/logo.png" />
+        </div>
+        <h3 class="ion-text-center mb30">Welcome, Register Now!</h3>
+        <p>
+          <button type="submit" class="button_roundad">Artist Registeration</button>
+        </p>
+        <!-- <h6 class="ion-text-center mb20"><a>Audience Registeration</a></h6> -->
+        <button type="submit" class="button_roundad">Audience Registeration</button>
+
+        <ion-row class="mt10">
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="ArtistName"
+              name="ArtistName"
+              placeholder="Artist Name"
+              required
+              formControlName="ArtistName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Mobile"
+              name="Mobile"
+              placeholder="Mobile address"
+              required
+              formControlName="MobileNo"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="email"
+              name="email"
+              placeholder="Email address"
+              required
+              formControlName="EmailId"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <div class="input-group" (click)="d.toggle()">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                formControlName="DateOfBirth"
+                ngbDatepicker
+                #d="ngbDatepicker"
+              />
+            </div>
+            <!-- <ion-label id="date-time"
+              >{{signupForm.controls['DateOfBirth'].value ?
+              (signupForm.controls['DateOfBirth'].value | date: 'mediumDate')
+              :"Select date" }}</ion-label
+            >
+            <ion-popover trigger="date-time">
+              <ng-template>
+                <ion-datetime
+                  formControlName="DateOfBirth"
+                  presentation="date"
+                  showDefaultButtons="{true}"
+                >
+                </ion-datetime>
+              </ng-template>
+            </ion-popover> -->
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Select State">
+              <ion-select-option value="apples">Rajsthan</ion-select-option>
+              <ion-select-option value="oranges">Uttar Pradesh</ion-select-option>
+              <ion-select-option value="bananas">Maharastra</ion-select-option>
+              <ion-select-option value="bananas">Madhya Pradesh</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Address"
+              name="Address"
+              placeholder="Address"
+              required
+              formControlName="Address"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
+              <ion-select-option value="apples">Rajsthan</ion-select-option>
+              <ion-select-option value="oranges">Uttar Pradesh</ion-select-option>
+              <ion-select-option value="bananas">Maharastra</ion-select-option>
+              <ion-select-option value="bananas">Madhya Pradesh</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="BlockName"
+              name="BlockName"
+              placeholder="Block Name"
+              required
+              formControlName="BlockName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select
+              interface="popover"
+              placeholder="Select District"
+              formControlName="DistrictId"
+            >
+              <ion-select-option value="apples">Indore</ion-select-option>
+              <ion-select-option value="oranges">Gwalior</ion-select-option>
+              <ion-select-option value="bananas">Bhopal</ion-select-option>
+              <ion-select-option value="bananas">Sehore</ion-select-option>
+              <ion-select-option value="bananas">Itarsi</ion-select-option>
+              <ion-select-option value="bananas">Alirajpur</ion-select-option>
+              <ion-select-option value="bananas">Anuppur</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="CityName"
+              name="CityName"
+              placeholder="City/Village"
+              required
+              formControlName="CityName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="Description"
+              name="Description"
+              placeholder="Description of current working"
+              required
+              formControlName="DescriptionOfCurrentWorking"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="OtherQualityName"
+              name="OtherQualityName"
+              placeholder="Any Other Quality"
+              required
+              formControlName="OtherQualityName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              id="OtherQualityDescription"
+              name="OtherQualityDescription"
+              placeholder="Describe it"
+              required
+              formControlName="OtherQualityDescription"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox
+                  color="primary"
+                  slot="start"
+                  formControlName="IsRegisteredArtistOfAkasvani"
+                ></ion-checkbox>
+                <ion-label> Register Artist of Akashvani </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label for="Akashvani">Upload Certificate of Akashvani</ion-label>
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox
+                  color="primary"
+                  slot="start"
+                  formControlName="IsRegisteredArtistOfDoordarshan"
+                ></ion-checkbox>
+                <ion-label> Register Artist of Doordarshan </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label for="Doordarshan">Upload Certificate of Doordarshan</ion-label>
+            <input
+              type="file"
+              id="Doordarshan"
+              name="Doordarshan"
+              formControlName="SupportCertificatePhotoDoordarshan"
+            />
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox
+                  color="primary"
+                  slot="start"
+                  formControlName="IsRegisteredArtistOfICCR"
+                ></ion-checkbox>
+                <ion-label> Register Artist of ICCR </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-label for="ICCR">Upload Certificate of ICCR</ion-label>
+            <input
+              type="file"
+              id="ICCR"
+              name="ICCR"
+              formControlName="SupportCertificatePhotoICCR"
+            />
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select
+              interface="popover"
+              placeholder="Select Artist Grade"
+              formControlName="ArtistGrade"
+            >
+              <ion-select-option value="apples">A+</ion-select-option>
+              <ion-select-option value="oranges">A</ion-select-option>
+              <ion-select-option value="bananas">B+</ion-select-option>
+              <ion-select-option value="bananas">B</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              formControlName="password"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              type="ConfirmPassword"
+              name="ConfirmPassword"
+              placeholder="Confirm Password"
+              required
+              formControlName="ConfirmPassword"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Artist Education Category">
+              <ion-select-option value="apples">A+</ion-select-option>
+              <ion-select-option value="oranges">A</ion-select-option>
+              <ion-select-option value="bananas">B+</ion-select-option>
+              <ion-select-option value="bananas">B</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-select interface="popover" placeholder="Artist Education SubCategory">
+              <ion-select-option value="apples">A+</ion-select-option>
+              <ion-select-option value="oranges">A</ion-select-option>
+              <ion-select-option value="bananas">B+</ion-select-option>
+              <ion-select-option value="bananas">B</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-input
+              type="AboutArtist"
+              name="AboutArtist"
+              placeholder="About Artist"
+              required
+              formControlName="AboutArtist"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox color="success" slot="start"></ion-checkbox>
+                <ion-label>
+                  By Signing up it is not assured to get the work from ministry of culture
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="mb30">
+            <button type="submit" [disabled]="signupForm.invalid">Save</button>
+          </ion-col>
+          <ion-col size="6" class="mb30">
+            <button class="cancel" type="submit" [disabled]="signupForm.invalid">Cancel</button>
+          </ion-col>
+          <ion-col size="12" class="ion-text-center">
+            <p>Already have an account? <a href="#!">Login</a></p>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-app>
+
+
+
+.login_img {text-align: center;margin: 20px auto 0;}
+.login_img img {max-width: 100%;max-height: 60px;}
+
+ion-icon{vertical-align: middle;}
+.icon{position: absolute; right: 22px;top: 50%;transform: translateY(-50%);font-size: 18px; z-index: 9; color: #e42f08;}
+ion-input, ion-select{padding: 3px 20px 2px 20px !important; border-radius: 5px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+ion-input:focus{border: solid 1px #e42f08;color: #e42f08 !important;}
+
+ion-col{margin-bottom: 10px;}
+
+.list-ios{background: transparent;}
+.login_top{
+    --background: url(../../assets/images/login_top.png) no-repeat right top/60%;
+}
+.login_top:before{
+background: url(../../assets/images/login_bottom.png) no-repeat left bottom/60%;
+content: "";position: fixed;left: 0;bottom: 0;width: 100%;height: 150px;display: block;z-index: 0;}
+
+ion-checkbox {
+    width: 19px;
+    height: 19px;
+    border-radius: 4px;
+    --border-radius: 4px;
+    --border-color: #107C76;
+  }
+  ion-label, ion-item{--border-bottom: none; color: #666; font-size: 13px;}
+  input{width: 100%;line-height: 42px;padding: 3px 20px 2px 20px !important; border-radius: 5px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+ion-popover#ion-overlay-1 {
+    margin-top:-50%!important;
+}
+
+
+
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ApiServiceService } from "../service/api-service.service";
+
+@Component({
+  selector: "app-signup",
+  templateUrl: "./signup.page.html",
+  styleUrls: ["./signup.page.scss"]
+})
+export class SignupPage implements OnInit {
+  signupForm!: FormGroup;
+  artistRegisterClientReady: boolean;
+  constructor(private fb: FormBuilder, private apiService: ApiServiceService) {}
+
+  ngOnInit() {
+    this.apiService.artistRegisterClientState().subscribe((ready) => {
+      if (ready) {
+        this.artistRegisterClientReady = true;
+        this.getArtistRegisterRequirement();
+      }
+    });
+    this.signupForm = this.fb.group({
+      ArtistName: ["art"],
+      MobileNo: ["120"],
+      EmailId: ["emailId"],
+      Address: ["Address"],
+      DateOfBirth: [""],
+      DistrictId: ["districid"],
+      StateId: ["stateId"],
+      BlockName: ["BlockName"],
+      CityName: ["CityName"],
+      DescriptionOfCurrentWorking: ["DescriptionOfCurrentWorking"],
+      OtherQualityName: ["OtherQualityName"],
+      OtherQualityDescription: ["OtherQualityDescription"],
+      ConfirmPassword: ["ConfirmPassword"],
+      IsRegisteredArtistOfDoordarshan: ["IsRegisteredArtistOfDoordarshan"],
+      SupportCertificatePhotoAkasvani: [""],
+      IsRegisteredArtistOfAkasvani: [0],
+      SupportCertificatePhotoDoordarshan: [""],
+      SupportCertificatePhotoNameDoordarshan: ["SupportCertificatePhotoNameDoordarshan"],
+      SupportCertificatePhotoICCR: [""],
+      SupportCertificatePhotoNameAkasvani: [""],
+      SupportCertificatePhotoNameICCR: ["SupportCertificatePhotoNameICCR"],
+      IsRegisteredArtistOfICCR: ["IsRegisteredArtistOfICCR"],
+      ArtistGrade: ["ArtistGrade"],
+      AboutArtist: ["AboutArtist"],
+      userName: ["userName", Validators.required],
+      password: ["password", Validators.required],
+      pKey: ["pKey"],
+      CreatedThough: ["CreatedThough"]
+    });
+  }
+
+  public getArtistRegisterRequirement(): void {
+    this.apiService.getArtistRegisterRequirement().subscribe((res: any) => {
+      console.log("requiremtn payload", res);
+    });
+  }
+
+  submit(isValid: boolean, formValue: any): void {
+    if (!isValid || !this.artistRegisterClientReady) return;
+    const formObj = {
+      ArtistName: formValue.ArtistName,
+      MobileNo: formValue.MobileNo,
+      EmailId: formValue.EmailId,
+      Address: formValue.Address,
+      CityName: formValue.CityName,
+      BlockName: formValue.BlockName,
+      DistrictId: formValue.DistrictId,
+      StateId: formValue.StateId,
+      DateOfBirth: formValue.DateOfBirth,
+      DescriptionOfCurrentWorking: formValue.DescriptionOfCurrentWorking,
+      OtherQualityName: formValue.OtherQualityName,
+      OtherQualityDescription: formValue.OtherQualityDescription,
+      IsRegisteredArtistOfAkasvani: formValue.IsRegisteredArtistOfAkasvani,
+      IsRegisteredArtistOfDoordarshan: formValue.IsRegisteredArtistOfDoordarshan,
+      IsRegisteredArtistOfICCR: formValue.IsRegisteredArtistOfICCR,
+      SupportCertificatePhotoAkasvani: formValue.SupportCertificatePhotoAkasvani,
+      SupportCertificatePhotoNameAkasvani: formValue.SupportCertificatePhotoNameAkasvani,
+      SupportCertificatePhotoDoordarshan: formValue.SupportCertificatePhotoDoordarshan,
+      SupportCertificatePhotoNameDoordarshan: formValue.SupportCertificatePhotoNameDoordarshan,
+      SupportCertificatePhotoICCR: formValue.SupportCertificatePhotoICCR,
+      SupportCertificatePhotoNameICCR: formValue.SupportCertificatePhotoNameICCR,
+      ArtistGrade: formValue.ArtistGrade,
+      AboutArtist: formValue.AboutArtist,
+      Password: formValue.password,
+      Pkey: 0,
+      CreatedThough: formValue.CreatedThough
+    };
+
+    console.log("form obj", isValid, formObj);
+  }
+}

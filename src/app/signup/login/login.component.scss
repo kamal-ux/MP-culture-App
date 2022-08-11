@@ -6,7 +6,9 @@
   max-width: 14rem;
   max-height: 140px;
 }
-
+#mt-5v{
+  margin-top:5vh;
+}
 ion-icon {
   vertical-align: middle;
 }
@@ -72,14 +74,17 @@ ion-radio {
 }
 
 .list-md {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background: none;
+  // margin-left: 0;
+  // margin-right: 0;
+  // margin-top: 0;
+  // margin-bottom: 0;
+  // padding-left: 0;
+  // padding-right: 0;
+  // padding-top: 8px;
+  // padding-bottom: 8px;
+  // background: none;
+  padding:5px;
 }
-
+form{
+  border: 1px solid lightgray;
+}

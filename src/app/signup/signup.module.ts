@@ -21,6 +21,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ReactiveFormsModule,
     NgbModule
   ],
-  declarations: [SignupPage, LoginComponent, AudienceRegistrationComponent, SignupStep2Component]
+  declarations: [SignupPage, LoginComponent, AudienceRegistrationComponent, SignupStep2Component],
+  providers: [AudienceRegistrationComponent]
 })
 export class SignupPageModule {}
