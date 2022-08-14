@@ -1,0 +1,316 @@
+<ion-app>
+  <ion-content class="ion-padding login_top">
+    <div class="login_img">
+      <img src="../../../assets/images/mp-logo.png" width="100" />
+    </div>
+    <ion-row class="mt10 fnt-bold">
+      <ion-col size="6"><ion-text>Artist Registration</ion-text></ion-col>
+      <ion-col size="6" class="ion-text-right">
+        <select name="cars" id="cars">
+          <option value="english">English</option>
+        </select>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)">
+      <ion-list>
+        <ion-row>
+          <ion-col size="12" class="relative">
+            <ion-text>Name <span class="text-danger">*</span></ion-text>
+            <ion-input
+              id="ArtistName"
+              name="ArtistName"
+              placeholder="Artist Name"
+              required
+              formControlName="ArtistName"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Profile Photo <span class="text-danger">*</span></ion-text>
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Mobile Number <span class="text-danger">*</span></ion-text>
+
+            <ion-input
+              id="Mobile"
+              name="Mobile"
+              placeholder="Mobile address"
+              required
+              formControlName="MobileNo"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>Gender <span class="text-danger">*</span></ion-text>
+            <ion-select interface="popover" placeholder="Male">
+              <ion-select-option value="male" selected>Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>Father Name </ion-text>
+            <ion-input
+              id="email"
+              name="email"
+              placeholder=""
+              required
+              formControlName="EmailId"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>Email </ion-text>
+            <ion-input
+              id="email"
+              name="email"
+              placeholder=""
+              required
+              formControlName="EmailId"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="8">
+            <ion-text>Birth Date</ion-text>
+            <div class="input-group" (click)="d.toggle()">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                formControlName="DateOfBirth"
+                ngbDatepicker
+                #d="ngbDatepicker"
+              />
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <ion-text>Age</ion-text>
+            <ion-input placeholder="" required formControlName="Address"></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>Address</ion-text>
+            <ion-input placeholder="" required formControlName="Address"></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Country</ion-text>
+
+            <ion-select
+              interface="popover"
+              placeholder="Select Country"
+              formControlName="DistrictId"
+            >
+              <ion-select-option value="india">India</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>State</ion-text>
+            <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
+              <ion-select-option value="apples">Rajsthan</ion-select-option>
+              <ion-select-option value="oranges">Uttar Pradesh</ion-select-option>
+              <ion-select-option value="bananas">Maharastra</ion-select-option>
+              <ion-select-option value="bananas">Madhya Pradesh</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>District</ion-text>
+            <ion-select
+              interface="popover"
+              placeholder="Select District"
+              formControlName="DistrictId"
+            >
+              <ion-select-option value="apples">Indore</ion-select-option>
+              <ion-select-option value="oranges">Gwalior</ion-select-option>
+              <ion-select-option value="bananas">Bhopal</ion-select-option>
+              <ion-select-option value="bananas">Sehore</ion-select-option>
+              <ion-select-option value="bananas">Itarsi</ion-select-option>
+              <ion-select-option value="bananas">Alirajpur</ion-select-option>
+              <ion-select-option value="bananas">Anuppur</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Village/City</ion-text>
+            <ion-input required formControlName="CityName"></ion-input>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <ion-text>Pin Code</ion-text>
+            <ion-input required formControlName="PinCode"></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Work Experience in Years</ion-text>
+            <ion-input required formControlName="WorkingExperience"></ion-input>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Education Qualification</ion-text>
+            <ion-select interface="popover" placeholder="--Select--" formControlName="DistrictId">
+              <ion-select-option value="ma">MA</ion-select-option>
+              <ion-select-option value="mcom">MCOM</ion-select-option>
+              <ion-select-option value="msc">MSC</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="relative">
+            <ion-text>Art Category <span class="text-danger">*</span></ion-text>
+            <ion-select interface="popover" placeholder="--Select--" formControlName="DistrictId">
+              <ion-select-option value="classical">Classical</ion-select-option>
+              <ion-select-option value="subclassical">Subclassical</ion-select-option>
+              <ion-select-option value="art">Modern Art</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12" class="mt10"><ion-text>Artist Grade</ion-text></ion-col>
+
+          <ion-col size="6" class="relative">
+            <ion-input readonly="true" formControlName="Doordarshan"></ion-input>
+          </ion-col>
+          <ion-col size="6" class="relative">
+            <ion-select interface="popover" placeholder="Choose Grade" formControlName="DistrictId">
+              <ion-select-option value="ma">MA</ion-select-option>
+              <ion-select-option value="mcom">MCOM</ion-select-option>
+              <ion-select-option value="msc">MSC</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
+          </ion-col>
+
+          <ion-col size="6" class="relative">
+            <ion-input readonly="true" formControlName="Doordarshan"></ion-input>
+          </ion-col>
+          <ion-col size="6" class="relative">
+            <ion-select interface="popover" placeholder="Choose Grade" formControlName="DistrictId">
+              <ion-select-option value="ma">MA</ion-select-option>
+              <ion-select-option value="mcom">MCOM</ion-select-option>
+              <ion-select-option value="msc">MSC</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
+          </ion-col>
+
+          <ion-col size="6" class="relative">
+            <ion-input readonly="true" formControlName="CityName"></ion-input>
+          </ion-col>
+          <ion-col size="6" class="relative">
+            <ion-select interface="popover" placeholder="Choose Grade" formControlName="DistrictId">
+              <ion-select-option value="ma">MA</ion-select-option>
+              <ion-select-option value="mcom">MCOM</ion-select-option>
+              <ion-select-option value="msc">MSC</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
+          </ion-col>
+
+          <ion-col size="6" class="relative">
+            <ion-input readonly="true" formControlName="CityName"></ion-input>
+          </ion-col>
+          <ion-col size="6" class="relative">
+            <ion-select interface="popover" placeholder="Choose Grade" formControlName="DistrictId">
+              <ion-select-option value="ma">MA</ion-select-option>
+              <ion-select-option value="mcom">MCOM</ion-select-option>
+              <ion-select-option value="msc">MSC</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col size="12" class="relative">
+            <input
+              type="file"
+              id="Akashvani"
+              name="Akashvani"
+              formControlName="SupportCertificatePhotoAkasvani"
+            />
+          </ion-col>
+
+          <ion-col size="12">
+            <p id="theme-text">
+              <ion-text> Through which medium you want information about the program?</ion-text>
+            </p>
+          </ion-col>
+          <ion-col size="12">
+            <ion-radio-group formControlName="AwardReceived">
+              <ion-radio value="email"></ion-radio>
+              <ion-text>By Email</ion-text>
+
+              <ion-radio value="sms"></ion-radio>
+              <ion-text>By SMS</ion-text>
+            </ion-radio-group>
+          </ion-col>
+          <ion-col size="12">
+            <h5><ion-text>Disclaimer</ion-text></h5>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text>
+              1. Registration will not generate the eligibility to give employment or to be called
+              in any program by the department. This gives my consent.
+            </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text>
+              2. It is certified that the information given by me is completely true.
+            </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text>
+              3.The information provided by me will be enabled by the department for use in
+              departmental practice.
+            </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text>
+              4. I give my consent for any action taken by the department for the authenticity of
+              the artist.
+            </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text>
+              5. In case of any dispute, only the decision of the Principal Secretary/Secretary/Head
+              of the Department of Culture will be valid.
+            </ion-text>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-checkbox></ion-checkbox>&nbsp; <ion-text>I Agree</ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="mb30">
+            <button type="submit" [disabled]="signupForm.invalid">Next</button>
+          </ion-col>
+          <ion-col size="6" class="mb30">
+            <button class="skip" type="submit" routerLink="">Skip</button>
+          </ion-col>
+          <ion-col size="12" class="ion-text-center">
+            <p>Already have an account? <a routerLink="../../signup">Login</a></p>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-app>

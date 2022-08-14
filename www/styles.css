@@ -11594,12 +11594,24 @@ button.cancel, ion-button.cancel {
   font-weight: 500;
   cursor: pointer !important;
 }
+button.skip, ion-button.cancel {
+  background: #21d6f1;
+  border-radius: 100px;
+  display: block;
+  width: 100%;
+  padding: 5px 15px;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer !important;
+}
 button.cancel:hover, ion-button.cancel:hover {
   background: #333;
 }
 .gray_btn {
   background: #ccc;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11608,7 +11620,7 @@ button.cancel:hover, ion-button.cancel:hover {
 }
 .red_btn {
   background: #f00;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11617,7 +11629,7 @@ button.cancel:hover, ion-button.cancel:hover {
 }
 .green_btn {
   background: rgb(0, 179, 45);
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11626,7 +11638,7 @@ button.cancel:hover, ion-button.cancel:hover {
 }
 .see_green_btn {
   background: #00b894;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11635,7 +11647,7 @@ button.cancel:hover, ion-button.cancel:hover {
 }
 .orange_btn {
   background: #ffaf00;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11644,7 +11656,7 @@ button.cancel:hover, ion-button.cancel:hover {
 }
 .danger_btn {
   background: #ea4c62;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11653,7 +11665,7 @@ button.cancel:hover, ion-button.cancel:hover {
 }
 .blue_btn {
   background: #21d6f1;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
   border-radius: 100px;
   display: inline-block;
@@ -11713,6 +11725,12 @@ ion-input input::placeholder {
 .button_roundad {
   border-radius: 6px;
   height: 40px;
+}
+ion-input > .readonly {
+  background: #cdd4d5;
+}
+.mt5 {
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=styles.css.map*/

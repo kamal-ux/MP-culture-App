@@ -11,6 +11,8 @@ import { LoginComponent } from "./login/login.component";
 import { AudienceRegistrationComponent } from "./audience-registration/audience-registration.component";
 import { SignupStep2Component } from "./signup-step2/signup-step2.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { ArtistSignupComponent } from "./artist-signup/artist-signup.component";
+import { AudienceRegistration2Component } from "./audience-registration2/audience-registration2.component";
 
 @NgModule({
   imports: [
@@ -21,7 +23,14 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ReactiveFormsModule,
     NgbModule
   ],
-  declarations: [SignupPage, LoginComponent, AudienceRegistrationComponent, SignupStep2Component],
+  declarations: [
+    SignupPage,
+    LoginComponent,
+    AudienceRegistrationComponent,
+    SignupStep2Component,
+    ArtistSignupComponent,
+    AudienceRegistration2Component
+  ],
   providers: [AudienceRegistrationComponent]
 })
 export class SignupPageModule {}

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
 import { ApiServiceService } from "../service/api-service.service";
 import { environment } from "../../environments/environment";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -31,9 +32,13 @@ export class HomePage implements OnInit {
   scrollAmount = 4;
   landingImages: any;
   mediaUrl: string = environment.mediaUrl;
-  constructor(private apiService: ApiServiceService) {}
+  isReadMore = true;
+  isReadMorePara = true;
+  constructor(private apiService: ApiServiceService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ionViewWillEnter(): void {
     this.apiService.landingPageClientState().subscribe((ready) => {
       if (ready) {
         this.landingPageClientReady = true;
@@ -58,6 +63,7 @@ export class HomePage implements OnInit {
     });
     this.apiService.loadTodaysProgram().subscribe((res: any) => {
       console.log("todays program", res);
+      this.todaysPrograms = res;
     });
   }
 
@@ -67,5 +73,22 @@ export class HomePage implements OnInit {
       this.landingPageData = res;
       this.landingImages = this.landingPageData[0].HomeSliderImage;
     });
+  }
+
+  viewAllUpcomingProgram() {
+    this.router.navigate(["tabs/home/programs", { param: "upcoming" }]);
+  }
+  viewProgramDetails(programDetails: any, today?: any) {
+    programDetails.today = today ? today : false;
+    this.router.navigate(["tabs/home/programDetails"], {
+      state: programDetails
+    });
+  }
+
+  showText() {
+    this.isReadMore = !this.isReadMore;
+  }
+  showPara() {
+    this.isReadMorePara = !this.isReadMorePara;
   }
 }

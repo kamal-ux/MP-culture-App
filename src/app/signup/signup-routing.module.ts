@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { ArtistSignupComponent } from "./artist-signup/artist-signup.component";
 import { AudienceRegistrationComponent } from "./audience-registration/audience-registration.component";
+import { AudienceRegistration2Component } from "./audience-registration2/audience-registration2.component";
 import { LoginComponent } from "./login/login.component";
 import { SignupStep2Component } from "./signup-step2/signup-step2.component";
 
@@ -16,8 +18,16 @@ const routes: Routes = [
     component: SignupPage
   },
   {
+    path: "signup/artistSignup",
+    component: ArtistSignupComponent
+  },
+  {
     path: "audience",
     component: AudienceRegistrationComponent
+  },
+  {
+    path: "signup/audienceSignup2",
+    component: AudienceRegistration2Component
   },
   {
     path: "signup2",

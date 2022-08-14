@@ -68,6 +68,48 @@
 </s:sequence>
 </s:complexType>
 </s:element>
+<s:element name="AudienceUpdate">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="AudienceId" type="s:int"/>
+<s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DateOfBirth" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ProfilePhoto" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ProfilePhotoName" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="EmailNotificationRequired" type="s:boolean"/>
+<s:element minOccurs="1" maxOccurs="1" name="MobileNotificationRequired" type="s:boolean"/>
+<s:element minOccurs="1" maxOccurs="1" name="StateId" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="AudienceUpdateResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="AudienceUpdateResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ArtistSignup">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="MobileNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CreatedThrough" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ArtistSignupResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ArtistSignupResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
 <s:element name="string" nillable="true" type="s:string"/>
 </s:schema>
 </wsdl:types>
@@ -89,6 +131,18 @@
 <wsdl:message name="AudienceSignupSoapOut">
 <wsdl:part name="parameters" element="tns:AudienceSignupResponse"/>
 </wsdl:message>
+<wsdl:message name="AudienceUpdateSoapIn">
+<wsdl:part name="parameters" element="tns:AudienceUpdate"/>
+</wsdl:message>
+<wsdl:message name="AudienceUpdateSoapOut">
+<wsdl:part name="parameters" element="tns:AudienceUpdateResponse"/>
+</wsdl:message>
+<wsdl:message name="ArtistSignupSoapIn">
+<wsdl:part name="parameters" element="tns:ArtistSignup"/>
+</wsdl:message>
+<wsdl:message name="ArtistSignupSoapOut">
+<wsdl:part name="parameters" element="tns:ArtistSignupResponse"/>
+</wsdl:message>
 <wsdl:message name="ArtistRegistrationPageLoadHttpGetIn"/>
 <wsdl:message name="ArtistRegistrationPageLoadHttpGetOut">
 <wsdl:part name="Body" element="tns:string"/>
@@ -100,6 +154,32 @@
 <wsdl:part name="CreatedThrough" type="s:string"/>
 </wsdl:message>
 <wsdl:message name="AudienceSignupHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceUpdateHttpGetIn">
+<wsdl:part name="AudienceId" type="s:string"/>
+<wsdl:part name="FullName" type="s:string"/>
+<wsdl:part name="EmailId" type="s:string"/>
+<wsdl:part name="Gender" type="s:string"/>
+<wsdl:part name="Address" type="s:string"/>
+<wsdl:part name="CityName" type="s:string"/>
+<wsdl:part name="DateOfBirth" type="s:string"/>
+<wsdl:part name="ProfilePhoto" type="s:string"/>
+<wsdl:part name="ProfilePhotoName" type="s:string"/>
+<wsdl:part name="EmailNotificationRequired" type="s:string"/>
+<wsdl:part name="MobileNotificationRequired" type="s:string"/>
+<wsdl:part name="StateId" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceUpdateHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistSignupHttpGetIn">
+<wsdl:part name="FullName" type="s:string"/>
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+<wsdl:part name="CreatedThrough" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistSignupHttpGetOut">
 <wsdl:part name="Body" element="tns:string"/>
 </wsdl:message>
 <wsdl:message name="ArtistRegistrationPageLoadHttpPostIn"/>
@@ -115,6 +195,32 @@
 <wsdl:message name="AudienceSignupHttpPostOut">
 <wsdl:part name="Body" element="tns:string"/>
 </wsdl:message>
+<wsdl:message name="AudienceUpdateHttpPostIn">
+<wsdl:part name="AudienceId" type="s:string"/>
+<wsdl:part name="FullName" type="s:string"/>
+<wsdl:part name="EmailId" type="s:string"/>
+<wsdl:part name="Gender" type="s:string"/>
+<wsdl:part name="Address" type="s:string"/>
+<wsdl:part name="CityName" type="s:string"/>
+<wsdl:part name="DateOfBirth" type="s:string"/>
+<wsdl:part name="ProfilePhoto" type="s:string"/>
+<wsdl:part name="ProfilePhotoName" type="s:string"/>
+<wsdl:part name="EmailNotificationRequired" type="s:string"/>
+<wsdl:part name="MobileNotificationRequired" type="s:string"/>
+<wsdl:part name="StateId" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceUpdateHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistSignupHttpPostIn">
+<wsdl:part name="FullName" type="s:string"/>
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+<wsdl:part name="CreatedThrough" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistSignupHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
 <wsdl:portType name="SignupServiceSoap">
 <wsdl:operation name="ArtistRegistrationPageLoad">
 <wsdl:input message="tns:ArtistRegistrationPageLoadSoapIn"/>
@@ -128,6 +234,14 @@
 <wsdl:input message="tns:AudienceSignupSoapIn"/>
 <wsdl:output message="tns:AudienceSignupSoapOut"/>
 </wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<wsdl:input message="tns:AudienceUpdateSoapIn"/>
+<wsdl:output message="tns:AudienceUpdateSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<wsdl:input message="tns:ArtistSignupSoapIn"/>
+<wsdl:output message="tns:ArtistSignupSoapOut"/>
+</wsdl:operation>
 </wsdl:portType>
 <wsdl:portType name="SignupServiceHttpGet">
 <wsdl:operation name="ArtistRegistrationPageLoad">
@@ -138,6 +252,14 @@
 <wsdl:input message="tns:AudienceSignupHttpGetIn"/>
 <wsdl:output message="tns:AudienceSignupHttpGetOut"/>
 </wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<wsdl:input message="tns:AudienceUpdateHttpGetIn"/>
+<wsdl:output message="tns:AudienceUpdateHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<wsdl:input message="tns:ArtistSignupHttpGetIn"/>
+<wsdl:output message="tns:ArtistSignupHttpGetOut"/>
+</wsdl:operation>
 </wsdl:portType>
 <wsdl:portType name="SignupServiceHttpPost">
 <wsdl:operation name="ArtistRegistrationPageLoad">
@@ -147,6 +269,14 @@
 <wsdl:operation name="AudienceSignup">
 <wsdl:input message="tns:AudienceSignupHttpPostIn"/>
 <wsdl:output message="tns:AudienceSignupHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<wsdl:input message="tns:AudienceUpdateHttpPostIn"/>
+<wsdl:output message="tns:AudienceUpdateHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<wsdl:input message="tns:ArtistSignupHttpPostIn"/>
+<wsdl:output message="tns:ArtistSignupHttpPostOut"/>
 </wsdl:operation>
 </wsdl:portType>
 <wsdl:binding name="SignupServiceSoap" type="tns:SignupServiceSoap">
@@ -171,6 +301,24 @@
 </wsdl:operation>
 <wsdl:operation name="AudienceSignup">
 <soap:operation soapAction="https://webservice.mpcd.solyn.in/AudienceSignup" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/AudienceUpdate" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/ArtistSignup" style="document"/>
 <wsdl:input>
 <soap:body use="literal"/>
 </wsdl:input>
@@ -208,6 +356,24 @@
 <soap12:body use="literal"/>
 </wsdl:output>
 </wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/AudienceUpdate" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/ArtistSignup" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
 </wsdl:binding>
 <wsdl:binding name="SignupServiceHttpGet" type="tns:SignupServiceHttpGet">
 <http:binding verb="GET"/>
@@ -229,6 +395,24 @@
 <mime:mimeXml part="Body"/>
 </wsdl:output>
 </wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<http:operation location="/AudienceUpdate"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<http:operation location="/ArtistSignup"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
 </wsdl:binding>
 <wsdl:binding name="SignupServiceHttpPost" type="tns:SignupServiceHttpPost">
 <http:binding verb="POST"/>
@@ -243,6 +427,24 @@
 </wsdl:operation>
 <wsdl:operation name="AudienceSignup">
 <http:operation location="/AudienceSignup"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceUpdate">
+<http:operation location="/AudienceUpdate"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistSignup">
+<http:operation location="/ArtistSignup"/>
 <wsdl:input>
 <mime:content type="application/x-www-form-urlencoded"/>
 </wsdl:input>

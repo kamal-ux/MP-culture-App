@@ -1,9 +1,12 @@
-ion-toolbar {
-	height: 5vh;
+::ng-deep.header-md::after{
+	height: 0px!important;
 }
 .toolbar-content {
     text-align: center;
     font-weight: 600;
+}
+.swiper-pagination-bullet-active {
+	background:white;
 }
 ion-header{
 	--background: white;
@@ -11,6 +14,9 @@ ion-header{
 .text-justify {
 	text-align: justify;
 	color:#797494;
+}
+.mt30{
+	margin-top: 35px;
 }
 .header-area {
 	    // background: url(https://jusmarktech.in/Culture/img/bg-img/NOTES1.png) repeat-x #fff;
@@ -34,14 +40,13 @@ ion-header{
 .swiper-slide {
 	position: relative;
 	overflow: hidden;
-	border-radius: 10px;
 }
 .swiper-slide:before {
 	content: "";
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: rgba(0,0,0,0.5);
+	background:rgb(233 229 229 / 8%);
 }
 .swiper-slide .content {
 	position: absolute;
@@ -161,4 +166,9 @@ ion-header{
 }
 a {
 	color:black;
+}
+
+.limitTextHeight {
+    height: 85px;
+    overflow: hidden;
 }

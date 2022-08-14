@@ -45,3 +45,22 @@ form {
     border: 1px solid lightgray;
     margin-top: 15px;
 }
+ion-text {
+    --color: gray!important;
+    margin-bottom:15px;
+    font-size: 0.8rem;
+}
+.ng-touched:not(form) {
+  border: 1px solid #e4161391;
+}
+// .ng-invalid:not(form) {
+//   border: 1px solid #e4161391;
+// }
+.ng-valid:not(form) {
+  border: 1px solid blanchedalmond;
+}
+// button{
+//     width: 80%;
+//     height:35px;
+// }
+

@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Program Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-slides
+      pager="true"
+      [options]="slideOptsOne"
+      *ngIf="programDetails.ProgramMultiMedia.length"
+    >
+      <ion-slide *ngFor="let details of programDetails.ProgramMultiMedia; let index = index">
+        <img src="{{ mediaUrl + details?.MediaPath }}" class="banner_img" />
+      </ion-slide>
+    </ion-slides>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <a
+          *ngIf="programDetails.today"
+          href="https://jusmarktech.in/Culture/live.html"
+          target="_blank"
+        >
+          <h3 class="text-danger blink-me">Program Live Streaming Link</h3></a
+        >
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="mt10 pad-5" *ngIf="programDetails">
+    <ion-col size="12">
+      <span class="border_bottom_red">Program Details</span>
+    </ion-col>
+    <ion-col class="mt10" size="12">
+      <ion-text><b>Program Name : </b>{{ programDetails.ProgramName }}</ion-text
+      ><br />
+      <ion-text
+        ><b>Program Date & Time : </b> {{ programDetails.ProgramStartDate }} |
+        {{ programDetails.ProgramEndDate }} <br />
+        {{ programDetails.StartTime }} To {{ programDetails.EndTime }} </ion-text
+      ><br />
+      <ion-text><b>Address : </b>{{ programDetails.Venue }}</ion-text>
+    </ion-col>
+
+    <ion-col size="12" class="mt10">
+      <span class="border_bottom_red">About Program</span>
+    </ion-col>
+    <ion-col class="mt10" size="12">
+      <h4>
+        <ion-text>{{ programDetails.ProgramName }}</ion-text>
+      </h4>
+      <p class="text-justify mt10" style="white-space: pre-wrap">
+        {{ programDetails.AboutProgram }}
+      </p>
+    </ion-col>
+  </ion-row>
+</ion-content>

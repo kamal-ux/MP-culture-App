@@ -55,15 +55,16 @@ ion-header ion-icon{color: #fff !important;}
 button, ion-button{background: #e42f08;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
 button:hover, ion-button:hover{background: #c02705;}
 button.cancel, ion-button.cancel{background: #585858;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
+button.skip, ion-button.cancel{background: #21d6f1;border-radius: 100px;display: block;width: 100%;padding: 5px 15px;height: 50px;font-size: 16px;color: #fff;font-weight: 500;cursor: pointer !important;}
 button.cancel:hover, ion-button.cancel:hover{background: #333;}
 
-.gray_btn{background: #ccc; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 10px; color: #000;}
-.red_btn{background: #f00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
-.green_btn{background: rgb(0, 179, 45); font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
-.see_green_btn{background: #00b894; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
-.orange_btn{background: #ffaf00; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
-.danger_btn{background: #ea4c62; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
-.blue_btn{background: #21d6f1; font-size: 12px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.gray_btn{background: #ccc; font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 10px; color: #000;}
+.red_btn{background: #f00; font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.green_btn{background: rgb(0, 179, 45); font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.see_green_btn{background: #00b894; font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.orange_btn{background: #ffaf00; font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.danger_btn{background: #ea4c62; font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
+.blue_btn{background: #21d6f1; font-size: 9px; text-align: center; border-radius: 100px; display: inline-block; padding: 3px 6px; color: #fff;}
 .load_more_btn{background: #f00; font-size: 13px; text-align: center; border-radius: 4px; display: inline-block; padding: 5px 10px; color: #fff;}
 .load_more_btn:hover{background: #000; text-decoration: none;}
 
@@ -81,3 +82,10 @@ ion-input{input::placeholder {color:rgba(14,17,39,0.4)!important;}}
 .about_img{max-width: 100%; max-height: 60px;vertical-align: middle;}
 .border_bottom_red{border-bottom: 3px solid #e42f08; font-weight: 800}
 .button_roundad{border-radius: 6px;height: 40px;}
+ion-input >.readonly{
+        background: #cdd4d5;
+}
+.mt5{
+	margin-top:5px;
+}
+

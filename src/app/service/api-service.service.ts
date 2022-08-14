@@ -121,9 +121,27 @@ export class ApiServiceService {
 
   doArtistRegister(obj) {
     this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
-    return this.artistRegisterClient.call("ArtistRegistration", obj).pipe(
+    return this.artistRegisterClient.call("ArtistSignup", obj).pipe(
       map((data) => {
-        return JSON.parse(data.result.ArtistRegistrationResult);
+        return JSON.parse(data.result.ArtistSignupResult);
+      })
+    );
+  }
+
+  doAudienceRegister(obj) {
+    this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+    return this.artistRegisterClient.call("AudienceSignup", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.AudienceSignupResult);
+      })
+    );
+  }
+
+  doAudienceProfileUpdate(obj) {
+    this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+    return this.artistRegisterClient.call("AudienceUpdate", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.AudienceUpdateResult);
       })
     );
   }

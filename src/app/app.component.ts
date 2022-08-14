@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuController } from "@ionic/angular";
 import { LocalStorageService } from "./service/local-storage.service";
-
+import { StatusBar, Style } from "@capacitor/status-bar";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -57,16 +57,27 @@ export class AppComponent {
       icon: "power-outline"
     }
   ];
+  isLoggedIn: boolean;
   constructor(
     private router: Router,
     private localStorageService: LocalStorageService,
     private menuController: MenuController
-  ) {}
+  ) {
+    StatusBar.setOverlaysWebView({ overlay: false });
+    StatusBar.setStyle({ style: Style.Light });
+    StatusBar.setBackgroundColor({ color: "#e42f08" });
+  }
 
   ngOnInit(): void {
     this.localStorageService.init();
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+  }
+
+  async ionViewWillEnter() {
+    this.isLoggedIn =
+      (await !!this.localStorageService.get("audienceData")) ||
+      (await !!this.localStorageService.get("audienceData"));
   }
 
   public menuToggle(menu: string): void {
@@ -76,15 +87,16 @@ export class AppComponent {
         this.router.navigateByUrl("", { replaceUrl: true });
         break;
       case "live-program":
-        this.router.navigate(["tabs/home"]);
+        this.router.navigate(["tabs/home/programs", { param: "live" }]);
         break;
       case "today-program":
-        this.router.navigate(["tabs/home"]);
+        this.router.navigate(["tabs/home/programs", { param: "today's" }]);
         break;
       case "upcoming-program":
-        this.router.navigate(["tabs/home"]);
+        this.router.navigate(["tabs/home/programs", { param: "upcoming" }]);
         break;
       case "archive-program":
+        this.router.navigate(["tabs/home/programs", { param: "archive" }]);
         break;
       case "register":
         this.router.navigate(["../signup/signup"]);

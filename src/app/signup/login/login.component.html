@@ -2,7 +2,7 @@
   <ion-content class="ion-padding login_top">
     <ion-col id="mt-5v">
       <div class="login_img">
-        <img src="../../../assets/images/mp-logo.png" width="70" />
+        <img src="../../../assets/images/mp-logo.png" width="100" />
       </div>
       <h3 class="ion-text-center mb30 mt20">Welcome Back!</h3>
       <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.valid, loginForm.value)">
@@ -57,7 +57,7 @@
             </ion-col>
 
             <ion-col size="12" class="ion-text-center">
-              <p><a href="#!">Forgot Password?</a></p>
+              <p><a>Forgot Password?</a></p>
               <p>Didn't have an account? <a [routerLink]="'./signup'">Register</a></p>
             </ion-col>
           </ion-row>

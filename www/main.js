@@ -60,13 +60,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component.html?ngResource */ 33383);
-/* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 79259);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var _service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./service/local-storage.service */ 42518);
+/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.html?ngResource */ 33383);
+/* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 79259);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./service/local-storage.service */ 42518);
+/* harmony import */ var _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/status-bar */ 19326);
+
+
 
 
 
@@ -75,105 +79,136 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(router, localStorageService, menuController) {
-        this.router = router;
-        this.localStorageService = localStorageService;
-        this.menuController = menuController;
-        this.appMenu = [
-            {
-                title: "कार्यक्रमों का सजीव प्रसारण",
-                value: "live-program",
-                icon: "play-outline"
-            },
-            {
-                title: "आज के कार्यक्रम",
-                value: "today-program",
-                icon: "flash-outline"
-            },
-            {
-                title: "आगामी कार्यक्रम",
-                value: "upcoming-program",
-                icon: "flash-outline"
-            },
-            {
-                title: "संगृहीत कार्यक्रम",
-                value: "archive-program",
-                icon: "documents-outline"
-            },
-            {
-                title: "प्रवेशिका",
-                value: "register",
-                icon: "person-outline"
-            },
-            {
-                title: "कला विधाये",
-                value: "category",
-                icon: "grid-outline"
-            },
-            {
-                title: "सेटिंग",
-                value: "live-program",
-                icon: "settings-outline"
-            },
-            {
-                title: "लॉग इन",
-                value: "login",
-                icon: "power-outline"
-            }
-        ];
-    }
-    ngOnInit() {
-        this.localStorageService.init();
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
-    }
-    menuToggle(menu) {
-        switch (menu) {
-            case "Logout":
-                this.localStorageService.clearAll();
-                this.router.navigateByUrl("", { replaceUrl: true });
-                break;
-            case "live-program":
-                this.router.navigate(["tabs/home"]);
-                break;
-            case "today-program":
-                this.router.navigate(["tabs/home"]);
-                break;
-            case "upcoming-program":
-                this.router.navigate(["tabs/home"]);
-                break;
-            case "archive-program":
-                break;
-            case "register":
-                this.router.navigate(["../signup/signup"]);
-                break;
-            case "category":
-                this.router.navigate(["tabs/category"]);
-                break;
-            case "setting":
-                this.router.navigate(["tabs/"]);
-                break;
-            case "login":
-                this.router.navigate(["../signup"]);
-                break;
-            default:
-                break;
-        }
-    }
-};
-AppComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
-    { type: _service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__.LocalStorageService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController }
-];
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
-        selector: "app-root",
-        template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], AppComponent);
+  constructor(router, localStorageService, menuController) {
+    this.router = router;
+    this.localStorageService = localStorageService;
+    this.menuController = menuController;
+    this.appMenu = [{
+      title: "कार्यक्रमों का सजीव प्रसारण",
+      value: "live-program",
+      icon: "play-outline"
+    }, {
+      title: "आज के कार्यक्रम",
+      value: "today-program",
+      icon: "flash-outline"
+    }, {
+      title: "आगामी कार्यक्रम",
+      value: "upcoming-program",
+      icon: "flash-outline"
+    }, {
+      title: "संगृहीत कार्यक्रम",
+      value: "archive-program",
+      icon: "documents-outline"
+    }, {
+      title: "प्रवेशिका",
+      value: "register",
+      icon: "person-outline"
+    }, {
+      title: "कला विधाये",
+      value: "category",
+      icon: "grid-outline"
+    }, {
+      title: "सेटिंग",
+      value: "live-program",
+      icon: "settings-outline"
+    }, {
+      title: "लॉग इन",
+      value: "login",
+      icon: "power-outline"
+    }];
+    _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.StatusBar.setOverlaysWebView({
+      overlay: false
+    });
+    _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.StatusBar.setStyle({
+      style: _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.Style.Light
+    });
+    _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.StatusBar.setBackgroundColor({
+      color: "#e42f08"
+    });
+  }
 
+  ngOnInit() {
+    this.localStorageService.init(); //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+  }
+
+  ionViewWillEnter() {
+    var _this = this;
+
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this.isLoggedIn = (yield !!_this.localStorageService.get("audienceData")) || (yield !!_this.localStorageService.get("audienceData"));
+    })();
+  }
+
+  menuToggle(menu) {
+    switch (menu) {
+      case "Logout":
+        this.localStorageService.clearAll();
+        this.router.navigateByUrl("", {
+          replaceUrl: true
+        });
+        break;
+
+      case "live-program":
+        this.router.navigate(["tabs/home/programs", {
+          param: "live"
+        }]);
+        break;
+
+      case "today-program":
+        this.router.navigate(["tabs/home/programs", {
+          param: "today's"
+        }]);
+        break;
+
+      case "upcoming-program":
+        this.router.navigate(["tabs/home/programs", {
+          param: "upcoming"
+        }]);
+        break;
+
+      case "archive-program":
+        this.router.navigate(["tabs/home/programs", {
+          param: "archive"
+        }]);
+        break;
+
+      case "register":
+        this.router.navigate(["../signup/signup"]);
+        break;
+
+      case "category":
+        this.router.navigate(["tabs/category"]);
+        break;
+
+      case "setting":
+        this.router.navigate(["tabs/"]);
+        break;
+
+      case "login":
+        this.router.navigate(["../signup"]);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+};
+
+AppComponent.ctorParameters = () => [{
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+}, {
+  type: _service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__.LocalStorageService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.MenuController
+}];
+
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+  selector: "app-root",
+  template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], AppComponent);
 
 
 /***/ }),
@@ -842,7 +877,7 @@ module.exports = "::ng-deep.item-inner {\n  border: none !important;\n}\n\n.menu
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\n  <ion-split-pane when=\"false\" contentId=\"main\">\n    <ion-menu side=\"start\" contentId=\"main\" swipeGesture=\"false\">\n      <ion-content class=\"menu-bg\">\n        <ion-menu-toggle>\n          <p>&nbsp;</p>\n          <p>&nbsp;</p>\n          <ion-row>\n            <ion-col size=\"12\" class=\"ion-text-center\">\n              <div class=\"login_img\">\n                <img src=\"../../../assets/images/mp-logo.png\" width=\"65px\" />\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-item class=\"menu-list\" *ngFor=\"let p of appMenu\" (click)=\"menuToggle(p.value)\">\n            <ion-icon\n              name=\"{{ p.icon }}\"\n              slot=\"start\"\n              [ngClass]=\"{\n                'animate__animated animate__infinite animate__swing':\n                  p.icon == 'notifications-circle'\n              }\"\n            >\n            </ion-icon>\n            <ion-label class=\"text-bold\"\n              >{{ p.title }}<span class=\"red-circle flashing-effect\"></span\n            ></ion-label>\n          </ion-item>\n        </ion-menu-toggle>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+module.exports = "<ion-app>\n  <ion-split-pane when=\"false\" contentId=\"main\">\n    <ion-menu side=\"start\" contentId=\"main\" swipeGesture=\"false\">\n      <ion-content class=\"menu-bg\">\n        <ion-menu-toggle>\n          <p>&nbsp;</p>\n          <p>&nbsp;</p>\n          <ion-row>\n            <ion-col size=\"12\" class=\"ion-text-center\">\n              <div class=\"login_img\">\n                <img src=\"../../../assets/images/mp-logo.png\" width=\"100px\" />\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-item class=\"menu-list\" *ngFor=\"let p of appMenu\" (click)=\"menuToggle(p.value)\">\n            <ion-icon\n              name=\"{{ p.icon }}\"\n              slot=\"start\"\n              [ngClass]=\"{\n                'animate__animated animate__infinite animate__swing':\n                  p.icon == 'notifications-circle'\n              }\"\n            >\n            </ion-icon>\n            <ion-label class=\"text-bold\"\n              >{{ p.title }}<span class=\"red-circle flashing-effect\"></span\n            ></ion-label>\n          </ion-item>\n        </ion-menu-toggle>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
 
 /***/ }),
 

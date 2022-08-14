@@ -129,7 +129,7 @@ let TabsPage = class TabsPage {
         this.tabs = [
             { index: 0, name: "", value: "home", icon: "home-outline" },
             { index: 0, name: "", value: "category", icon: "grid-outline" },
-            { index: 1, name: "", value: "trending", icon: "flash-outline" },
+            // { index: 1, name: "", value: "trending", icon: "flash-outline" },
             { index: 2, name: "", value: "favourite", icon: "heart-outline" },
             { index: 4, name: "", value: "bookmark", icon: "bookmark-outline" }
         ];
@@ -163,7 +163,7 @@ TabsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ0YWJzLnBhZ2Uuc2NzcyJ9 */";
+module.exports = ".tab-selected {\n  color: red !important;\n}\n\nion-tab-button {\n  --color-selected: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UscUJBQUE7QUFDRjs7QUFDQTtFQUNFLHFCQUFBO0FBRUYiLCJmaWxlIjoidGFicy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGFiLXNlbGVjdGVkIHtcbiAgY29sb3I6IHJlZCAhaW1wb3J0YW50O1xufVxuaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZWQ7XG59Il19 */";
 
 /***/ }),
 

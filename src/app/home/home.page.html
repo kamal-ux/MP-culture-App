@@ -1,48 +1,51 @@
 <ion-header translucent="false">
   <ion-toolbar class="toolbar-content">
     <!-- <ion-buttons name="main"> -->
-    <ion-text> एम पी कल्चर ऐप, मध्य प्रदेश, सस्कृति विभाग</ion-text>
+    <ion-text> एम पी कल्चर ऐप, मध्य प्रदेश, संस्कृति विभाग</ion-text>
     <!-- </ion-buttons> -->
   </ion-toolbar>
   <ion-row class="header-area">
-    <ion-col size="2">
+    <ion-col size="1.5">
       <ion-buttons name="main" class="mt21">
         <ion-menu-button>
           <ion-icon name="grid-outline" id="icons"></ion-icon>
         </ion-menu-button>
       </ion-buttons>
     </ion-col>
-    <ion-col size="2"></ion-col>
-    <ion-col size="4" class="">
+    <ion-col size="3.5" class="mt10">
       <div class="login_img">
-        <img src="../../../assets/images/mp-logo.png" width="65px" />
+        <img src="../../../assets/images/15aug.jpeg" width="100px" height="85px" />
       </div>
     </ion-col>
-    <ion-col size="4" class="ion-text-end mt21">
+    <ion-col size="4" class="">
+      <div class="login_img">
+        <img src="../../../assets/images/mp-logo.png" width="100px" />
+      </div>
+    </ion-col>
+    <ion-col size="3" class="ion-text-end mt30">
       <img src="../../../assets/images/about.png" class="about_img" />
     </ion-col>
   </ion-row>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="">
-    <ion-row>
-      <ion-col>
-        <ion-slides pager="true" [options]="slideOptsOne" *ngIf="landingImages">
-          <ion-slide *ngFor="let landingData of landingImages; let index=index">
-            <img src="{{mediaUrl + landingData?.PhotoPath}}" class="banner_img" />
-          </ion-slide>
-        </ion-slides>
-      </ion-col>
-    </ion-row>
-    <ion-row class="mt10 ion-padding">
-      <ion-col size="8">
-        <span class="border_bottom_red">हमारे बारे में / About Us</span>
-      </ion-col>
-      <ion-col class="mt10" size="12" *ngFor="let landingData of landingPageData">
-        <p class="text-justify">{{landingData.AppLandingPageText}}</p>
-      </ion-col>
-    </ion-row>
-  </div>
+  <ion-row>
+    <!-- <ion-col> -->
+    <ion-slides pager="true" [options]="slideOptsOne" *ngIf="landingImages">
+      <ion-slide *ngFor="let landingData of landingImages; let index=index">
+        <img src="{{mediaUrl + landingData?.PhotoPath}}" class="banner_img" />
+      </ion-slide>
+    </ion-slides>
+    <!-- </ion-col> -->
+  </ion-row>
+  <ion-row class="mt10 ion-padding" *ngIf="landingPageData">
+    <ion-col size="8">
+      <span class="border_bottom_red">हमारे बारे में / About Us</span>
+    </ion-col>
+    <ion-col class="mt10" size="12" *ngFor="let landingData of landingPageData">
+      <p class="text-justify" style="white-space: pre-wrap">{{landingData.AppLandingPageText}}</p>
+    </ion-col>
+  </ion-row>
+
   <!-- <div class="ion-padding">
     <ion-row class="mt20">
       <ion-col size="6">
@@ -128,32 +131,55 @@
     </ion-col>
   </ion-row> -->
 
+  <!-- Today's programs [OPEN]-->
   <div class="ion-padding">
     <ion-row class="mt20">
-      <ion-col size="6">
+      <ion-col size="12">
         <h5 class="m-0 p-0">
           <span class="border_bottom_red">आज के कार्यक्रम</span
           ><span class="mt10 d-block">Today's Program</span>
         </h5>
       </ion-col>
-      <ion-col size="6" class="ion-text-end"> </ion-col>
+      <!-- <ion-col size="6" class="ion-text-end">
+        <a class="red_btn" (click)="viewAllUpcomingProgram()">View All</a>
+      </ion-col> -->
     </ion-row>
-    <ion-card class="blue_card">
+    <ion-card class="blue_card" *ngFor="let program of todaysPrograms">
       <ion-row>
-        <ion-col size="4">
-          <img src="../../../assets/images/b3.jpg" class="trending_img" />
+        <ion-col size="4" (click)="viewProgramDetails(program, true)">
+          <img
+            src="{{program.ProgramMultiMedia.length ? (mediaUrl+ program.ProgramMultiMedia[0].MediaPath) :'../../../assets/images/b3.jpg'}}"
+            class="trending_img"
+          />
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <a>राष्ट्रीय चेतना जा सुर </a>
+            <h6 class="mb10" (click)="viewProgramDetails(program, true)">
+              <a>{{program.ProgramName}} </a>
+            </h6>
           </h6>
-          <a class="red_btn mr-1">भोपाल</a>
-          <a>08 अगस्त 2022</a>
-          <p class="mt10">राष्ट्रीय गीतों की प्रस्तुति <br />सिंधी साहित्य अकादमी</p>
+          <a class="see_green_btn mr-1"
+            >स्थान: {{program.Venue ? program.Venue : program.CityName}}</a
+          >
+          <p class="mt5">
+            {{program.ProgramStartDate }} | {{program.ProgramEndDate }} <br />
+            {{program.StartTime}} To {{program.EndTime }}
+          </p>
+          <a>{{program.ProgramDateTime | date:'short':'IST'}}</a>
+          <p
+            class="mt10"
+            style="white-space: pre-wrap"
+            [ngClass]="{'limitTextHeight': isReadMorePara}"
+          >
+            {{program.AboutProgram}}
+          </p>
+          <u> <a (click)="showPara()"> {{ isReadMorePara ? 'Read More': 'Read Less' }} </a></u>
         </ion-col>
       </ion-row>
     </ion-card>
   </div>
+  <!-- Today's programs [CLOSE]-->
+
   <!-- Upcoming programs [OPEN]-->
   <div class="ion-padding">
     <ion-row class="mt20">
@@ -164,82 +190,40 @@
         </h5>
       </ion-col>
       <ion-col size="6" class="ion-text-end">
-        <a class="red_btn">View All</a>
+        <a class="red_btn" (click)="viewAllUpcomingProgram()">View All</a>
       </ion-col>
     </ion-row>
     <ion-card class="blue_card" *ngFor="let program of upcomingPrograms">
       <ion-row>
-        <ion-col size="4">
+        <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
-            src="{{program.ProgramMultiMedia.length ? mediaUrl+ program.ProgramMultiMedia.MediaPath :'../../../assets/images/b3.jpg'}}"
+            src="{{program.ProgramMultiMedia.length ? mediaUrl+ program.ProgramMultiMedia[0].MediaPath :'../../../assets/images/b3.jpg'}}"
             class="trending_img"
           />
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <ion-text color="dark">{{program.ProgramName}}</ion-text>
+            <h6 class="mb10" (click)="viewProgramDetails(program)">
+              <a>{{program.ProgramName}} </a>
+            </h6>
           </h6>
-          <a class="see_green_btn mr-1"> {{program.CityName}}</a>
+          <a class="see_green_btn mr-1"
+            >स्थान: {{program.Venue ? program.Venue : program.CityName}}</a
+          >
           <a>{{program.ProgramDateTime | date:'short':'IST'}}</a>
-          <!-- <p class="mt10">देशभक्ति आधारित स्वराज संस्थान संचालनालय</p> -->
-          <p class="mt10">{{program.AboutProgram}}</p>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-    <!-- <ion-card class="blue_card">
-      <ion-row>
-        <ion-col size="4">
-          <img src="../../../assets/images/b3.jpg" class="trending_img" />
-        </ion-col>
-        <ion-col size="8">
-          <h6 class="mb10">
-            <a>स्मृति समारोह </a>
-            <p>सुभद्रा कुमारी चौहान</p>
-          </h6>
-          <a class="red_btn mr-1">सिवनी</a>
-          <a>17 अगस्त 2022</a>
-          <p class="mt10">विमर्श एवं रचनापाठ साहित्य अकादमी</p>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-    <ion-card class="blue_card">
-      <ion-row>
-        <ion-col size="4">
-          <img src="../../../assets/images/b.jpg" class="trending_img" />
-        </ion-col>
-        <ion-col size="8">
-          <h6 class="mb10">
-            <a>व्याख्यान</a>
-          </h6>
-          <a class="orange_btn mr-1">उज्जैन</a>
-          <a>17 अगस्त 2022</a>
-          <p class="mt10">बलरामः कृषि संस्कृति के प्रणेता जनजातीय लोककला एवं बोली विकास अका.</p>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-    <ion-card class="blue_card">
-      <ion-row>
-        <ion-col size="4">
-          <img src="../../../assets/images/b2.jpg" class="trending_img" />
-        </ion-col>
-        <ion-col size="8">
-          <h6 class="mb10">
-            <a>ललित पर्व</a>
-          </h6>
-          <a class="see_green_btn mr-1">उज्जैन</a>
-          <a>18-20 अगस्त 2022</a>
-          <p class="mt10">
-            श्रीकृष्ण के आख्यान की कला अभिव्यक्तियाँ जनजातीय लोककला एवं बोली विकास अका.
+          <p class="mt10" style="white-space: pre-wrap" [ngClass]="{'limitTextHeight': isReadMore}">
+            {{program.AboutProgram}}
           </p>
+          <u> <a (click)="showText()"> {{ isReadMore ? 'Read More': 'Read Less' }} </a></u>
         </ion-col>
       </ion-row>
-    </ion-card> -->
+    </ion-card>
   </div>
   <!-- Upcoming programs [CLOSE]-->
 
   <!-- Artist Category [OPEN]-->
   <div class="ion-padding">
-    <ion-row class="mt20">
+    <!-- <ion-row class="mt20">
       <ion-col size="6">
         <h5 class="m-0 p-0">
           <span class="border_bottom_red">कलाकार श्रेणी</span
@@ -283,18 +267,18 @@
           <img src="../../../assets/images/cat4.jpg" />
         </ion-card>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
 
     <ion-row class="mt20">
-      <ion-col size="6">
+      <ion-col size="8">
         <h5 class="m-0 p-0">
-          <span class="border_bottom_red">मासिक लोकप्रिय कलाकार</span
-          ><span class="mt10 d-block"> Popular Artist of the Month </span>
+          <span class="border_bottom_red">मासिक लोकप्रिय कार्यक्रम</span
+          ><span class="mt10 d-block"> Monthly Popular Program's </span>
         </h5>
       </ion-col>
-      <ion-col size="6" class="ion-text-end">
+      <!-- <ion-col size="4" class="ion-text-end">
         <a class="red_btn">View All</a>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
     <ion-row>
       <ion-col size="6">
