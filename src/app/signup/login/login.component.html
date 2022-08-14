@@ -35,14 +35,45 @@
             <ion-col size="12" class="relative">
               <ion-input placeholder="Mobile No." formControlName="mobileNo"></ion-input>
               <ion-icon name="call-outline" class="icon"></ion-icon>
+              <ion-text
+                color="danger"
+                *ngIf="
+                  !loginForm.get('mobileNo').hasError('mobileNo') &&
+                  loginForm.get('mobileNo').hasError('required') &&
+                  (loginForm.get('mobileNo').dirty || loginForm.get('mobileNo').touched)
+                "
+              >
+                * Mobile Number is Required
+              </ion-text>
+              <ion-text
+                class="text-small"
+                color="danger"
+                *ngIf="
+                  loginForm.get('mobileNo').hasError('minlength') ||
+                  loginForm.get('mobileNo').hasError('maxlength')
+                "
+              >
+                Enter valid mobile number.
+              </ion-text>
             </ion-col>
             <ion-col size="12" class="relative">
               <ion-input
                 type="password"
                 placeholder="Password"
                 formControlName="password"
+                (ionChange)="password_check()"
               ></ion-input>
               <ion-icon name="lock-closed-outline" class="icon"></ion-icon>
+            </ion-col>
+            <ion-col>
+              <ion-text
+                class="text-small"
+                color="danger"
+                *ngIf="loginForm.get('password').hasError('error')"
+              >
+                Password contain atleast 6 characters long including 1 uppercase, 1 special &
+                alphanumeric characters.
+              </ion-text>
             </ion-col>
             <ion-col size="12" class="mb30">
               <button

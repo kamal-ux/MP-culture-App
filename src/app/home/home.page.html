@@ -1,8 +1,6 @@
 <ion-header translucent="false">
   <ion-toolbar class="toolbar-content">
-    <!-- <ion-buttons name="main"> -->
     <ion-text> एम पी कल्चर ऐप, मध्य प्रदेश, संस्कृति विभाग</ion-text>
-    <!-- </ion-buttons> -->
   </ion-toolbar>
   <ion-row class="header-area">
     <ion-col size="1.5">
@@ -12,17 +10,17 @@
         </ion-menu-button>
       </ion-buttons>
     </ion-col>
-    <ion-col size="3.5" class="mt10">
+    <ion-col size="2.5" class="mt10">
       <div class="login_img">
         <img src="../../../assets/images/15aug.jpeg" width="100px" height="85px" />
       </div>
     </ion-col>
-    <ion-col size="4" class="">
+    <ion-col size="4.5" class="">
       <div class="login_img">
         <img src="../../../assets/images/mp-logo.png" width="100px" />
       </div>
     </ion-col>
-    <ion-col size="3" class="ion-text-end mt30">
+    <ion-col size="3.5" class="ion-text-end mt30">
       <img src="../../../assets/images/about.png" class="about_img" />
     </ion-col>
   </ion-row>
@@ -46,35 +44,6 @@
     </ion-col>
   </ion-row>
 
-  <!-- <div class="ion-padding">
-    <ion-row class="mt20">
-      <ion-col size="6">
-        <h3 class="m-0 p-0">हमारे बारे में / About Us</h3>
-      </ion-col>
-      <ion-col size="6" class="ion-text-end">
-        <img src="../../../assets/images/about.png" class="about_img" />
-      </ion-col>
-      <ion-col size="12">
-        <p>
-          मध्येप्रदेश की कला, साहित्य और संस्कृति को हर सम्भव उपयों द्वारा प्रोन्नत करना, सांस्कृतिक
-          धरोहर, पुरातात्विक सम्पदा एवं ऐतिहासिक महत्व का यथास्थिति संरक्षण एवं विरूपण, विनाश,
-          अपक्षरण, व्ययन या निर्यात से संरक्षण, जनजातीय और लोक कला, साहित्य एवं संस्कृति का
-          अनुरक्षण, संरक्षण, प्रोत्साहन, प्रदर्शन, प्रशिक्षण एवं विकास करना संस्कृति विभाग का मुख्य
-          उद्देश्य हैं। मध्यप्रदेश की कला, संस्कृति, साहित्य, राजभाषा, स्वाधीनता संग्राम से संबंधित
-          एवं पुरासम्पदा के संरक्षण, संवर्धन तथा उनके उत्तरोत्तर विकास, कलाकारों, साहित्यकारों,
-          विद्वानों, पुरातत्वविदों एवं संगठनों का सम्मांन, नाट्य विद्यालय, रंगकर्म प्रदर्शन तथा
-          अध्ययन, अभिनय, प्रशिक्षण, प्रचार और विकास, अशासकीय सांस्कृतिक संगठनों को प्रोत्साहन एवं
-          वित्तीय सहायता उपलब्ध कराना, संगीत एवं ललित कला को प्रोन्नत, सुदृढ़, विस्तार आदि के लिये
-          उद्देश्य अनुरूप सक्रिय है।
-        </p>
-        <p>
-          विभाग संस्कृति के विभिन्न क्षेत्रों में प्रतिभा को बढ़ावा देने और मध्यप्रदेश की समृद्ध
-          संस्कृति/विरासत के बारे में देश-दुनिया को जानकारी देने के लिए राज्य भर में कई सांस्कृतिक
-          गतिविधियों का आयोजन, प्रचार-प्रसार एवं दस्तावेजीकरण करता है।
-        </p>
-      </ion-col>
-    </ion-row>
-  </div> -->
   <!-- <ion-row class="mt20">
     <ion-col size="12" class="catagories_slider">
       <h3 class="m-0">Top Catagories</h3>
@@ -173,7 +142,11 @@
           >
             {{program.AboutProgram}}
           </p>
-          <u> <a (click)="showPara()"> {{ isReadMorePara ? 'Read More': 'Read Less' }} </a></u>
+          <u>
+            <a *ngIf="program.AboutProgram" (click)="showPara()">
+              {{ isReadMorePara ? 'Read More': 'Read Less' }}
+            </a></u
+          >
         </ion-col>
       </ion-row>
     </ion-card>
@@ -214,7 +187,11 @@
           <p class="mt10" style="white-space: pre-wrap" [ngClass]="{'limitTextHeight': isReadMore}">
             {{program.AboutProgram}}
           </p>
-          <u> <a (click)="showText()"> {{ isReadMore ? 'Read More': 'Read Less' }} </a></u>
+          <u>
+            <a *ngIf="program.AboutProgram" (click)="showText()">
+              {{ isReadMore ? 'Read More': 'Read Less' }}
+            </a></u
+          >
         </ion-col>
       </ion-row>
     </ion-card>

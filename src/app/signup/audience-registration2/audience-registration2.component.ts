@@ -42,7 +42,7 @@ export class AudienceRegistration2Component implements OnInit {
       StateId: [0],
       DateOfBirth: ["", Validators.nullValidator],
       Age: [""],
-      NotificationRequired: [""],
+      NotificationRequired: ["email"],
       EmailNotificationRequired: [""],
       MobileNotificationRequired: [""]
     });
@@ -161,7 +161,7 @@ export class AudienceRegistration2Component implements OnInit {
       console.log("audience profile updated", res);
       res.result == "failure" && this.utilService.presentToast(res.message);
       res.result == "success" &&
-        this.localStorage.set("audienceData", formObj) &&
+        this.utilService.presentToast("Successfull registered") &&
         this.router.navigate([""]);
     });
     console.log("form obj", isValid, formObj);

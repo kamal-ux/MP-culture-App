@@ -9,12 +9,16 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./programs.component.scss"]
 })
 export class ProgramsComponent implements OnInit {
-  clientReady: boolean;
-  upcomingPrograms: any;
-  pastPrograms: any;
-  todayPrograms: any;
-  paramString: any = "today's";
-  mediaUrl = environment.mediaUrl;
+  public clientReady: boolean;
+  public livePrograms: any;
+  public upcomingPrograms: any;
+  public pastPrograms: any;
+  public todayPrograms: any;
+  public paramString: any = "today's programs";
+  public mediaUrl = environment.mediaUrl;
+  public isReadMorePara = true;
+  public isReadMore = true;
+  public isMorePara = true;
   constructor(
     public activeRoute: ActivatedRoute,
     private apiService: ApiServiceService,
@@ -41,17 +45,22 @@ export class ProgramsComponent implements OnInit {
   }
 
   subscription(params?: string): void {
-    params == "upcoming" &&
+    params == "live now" &&
+      this.apiService.loadLiveProgram().subscribe((res: any) => {
+        this.livePrograms = res;
+        console.log("live program", this.livePrograms);
+      });
+    params == "upcoming programs" &&
       this.apiService.loadUpcomingProgram().subscribe((res: any) => {
         this.upcomingPrograms = res;
         console.log("upcoming program", this.upcomingPrograms);
       });
-    params == "archive" &&
+    params == "archive programs" &&
       this.apiService.loadPastProgram().subscribe((res: any) => {
         console.log("past program", res);
         this.pastPrograms = res;
       });
-    params == "today's" &&
+    params == "today's programs" &&
       this.apiService.loadTodaysProgram().subscribe((res: any) => {
         this.todayPrograms = res;
         console.log("todays program", res);
@@ -63,9 +72,18 @@ export class ProgramsComponent implements OnInit {
   }
   viewProgramDetails(programDetails: any, today?: any) {
     programDetails.today = today ? today : false;
-    alert("hey");
     this.router.navigate(["tabs/home/programDetails"], {
       state: programDetails
     });
+  }
+
+  showText() {
+    this.isReadMore = !this.isReadMore;
+  }
+  showPara() {
+    this.isReadMorePara = !this.isReadMorePara;
+  }
+  showMorePara() {
+    this.isMorePara = !this.isMorePara;
   }
 }

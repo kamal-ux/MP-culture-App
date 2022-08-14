@@ -7,9 +7,10 @@ import { SwiperModule } from "swiper/angular";
 import { HomePageRoutingModule } from "./home-routing.module";
 import { ProgramsComponent } from "../programs/programs.component";
 import { ProgramDetailsComponent } from "../programs/program-details/program-details.component";
+import { SettingsComponent } from "../settings/settings.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule, SwiperModule],
-  declarations: [HomePage, ProgramsComponent, ProgramDetailsComponent]
+  declarations: [HomePage, ProgramsComponent, ProgramDetailsComponent, SettingsComponent]
 })
 export class HomePageModule {}

@@ -42,9 +42,20 @@
       <ion-text><b>Program Name : </b>{{ programDetails.ProgramName }}</ion-text
       ><br />
       <ion-text
-        ><b>Program Date & Time : </b> {{ programDetails.ProgramStartDate }} |
-        {{ programDetails.ProgramEndDate }} <br />
-        {{ programDetails.StartTime }} To {{ programDetails.EndTime }} </ion-text
+        ><b>Program Date : </b>
+        {{
+          programDetails.ProgramStartDate == programDetails.ProgramEndDate
+            ? programDetails.ProgramStartDate
+            : programDetails.ProgramStartDate + " To " + programDetails.ProgramEndDate
+        }}</ion-text
+      ><br />
+      <ion-text
+        ><b>Time : </b>
+        {{
+          programDetails.StartTime == programDetails.EndTime
+            ? programDetails.StartTime
+            : programDetails.StartTime + "To" + programDetails.EndTime
+        }}</ion-text
       ><br />
       <ion-text><b>Address : </b>{{ programDetails.Venue }}</ion-text>
     </ion-col>

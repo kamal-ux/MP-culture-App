@@ -13,7 +13,7 @@ import { UtilService } from "../service/util-service.service";
 })
 export class SignupPage implements OnInit {
   signupForm!: FormGroup;
-  signupType = "artist";
+  signupType = "audience";
   artistRegisterClientReady: boolean;
   constructor(
     private fb: FormBuilder,
@@ -53,6 +53,7 @@ export class SignupPage implements OnInit {
   }
 
   toggleStatus(status: any) {
+    return;
     this.signupType = status;
   }
 
@@ -79,7 +80,7 @@ export class SignupPage implements OnInit {
     console.log("form obj", isValid, formObj);
     this.apiService.doArtistRegister(formObj).subscribe((res: any) => {
       console.log("artist register", res);
-      res.failed && this.utilService.presentToast(res.message);
+      res.result == "failure" && this.utilService.presentToast(res.message);
       if (res.result == "success") {
         this.localStorage.set("artistData", {
           FullName,

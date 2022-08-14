@@ -83,6 +83,15 @@ export class ApiServiceService {
     );
   }
 
+  loadLiveProgram() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("LoadLiveProgram", null).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadLiveProgramResult);
+      })
+    );
+  }
+
   loadUpcomingProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
     return this.programClient.call("LoadUpcomingProgram", null).pipe(

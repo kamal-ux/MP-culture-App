@@ -3,7 +3,7 @@
     <ion-row class="mt10">
       <ion-col size="12" class="relative">
         <ion-text>Mobile No. <span class="text-danger">*</span></ion-text>
-        <ion-input placeholder="Mobile No" type="number" formControlName="MobileNo"></ion-input>
+        <ion-input placeholder="Mobile No" type="text" formControlName="MobileNo"></ion-input>
         <ion-text
           color="danger"
           *ngIf="
@@ -21,7 +21,7 @@
             signupForm.get('MobileNo').hasError('maxlength')
           "
         >
-          * Enter valid mobile number
+          Enter valid mobile number
         </ion-text>
       </ion-col>
       <ion-col size="12" class="relative">
@@ -40,7 +40,12 @@
       </ion-col>
       <ion-col size="12" class="relative">
         <ion-text>Password <span class="text-danger">*</span></ion-text>
-        <ion-input placeholder="Password" required formControlName="Password"></ion-input>
+        <ion-input
+          placeholder="Password"
+          (ionChange)="password_check()"
+          required
+          formControlName="Password"
+        ></ion-input>
         <ion-text
           color="danger"
           *ngIf="
@@ -50,6 +55,14 @@
           "
         >
           * Password is Required
+        </ion-text>
+        <ion-text
+          class="text-small"
+          color="danger"
+          *ngIf="signupForm.get('Password').hasError('error')"
+        >
+          Password contain atleast 6 characters long including 1 uppercase, 1 special & alphanumeric
+          characters.
         </ion-text>
       </ion-col>
       <ion-col size="12" class="relative">
@@ -85,7 +98,7 @@
         </button>
       </ion-col>
       <ion-col size="6" class="mb30">
-        <button class="cancel" type="reset">Cancel</button>
+        <button class="cancel" type="button" routerLink="">Cancel</button>
       </ion-col>
       <ion-col size="12" class="ion-text-center">
         <p>Already have an account? <a routerLink="../../signup">Login</a></p>

@@ -66,6 +66,17 @@ export class AudienceRegistrationComponent implements OnInit {
     return reader.readAsDataURL(file);
   }
 
+  password_check() {
+    const pass = this.signupForm.get("Password").value;
+    console.log(pass);
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (regex.exec(pass) == null) {
+      this.signupForm.controls["Password"].setErrors({ error: true });
+    } else {
+      this.signupForm.get("Password").clearValidators();
+    }
+  }
+
   submit(isValid: boolean, formValue: any): void {
     if (!isValid || !this.artistRegisterClientReady) return;
     const formObj = {
@@ -78,7 +89,7 @@ export class AudienceRegistrationComponent implements OnInit {
     console.log("form obj", isValid, formObj);
     this.apiService.doAudienceRegister(formObj).subscribe((res: any) => {
       console.log("audience register", res);
-      res.failed && this.utilService.presentToast(res.message);
+      res.result == "failure" && this.utilService.presentToast(res.message);
       if (res.result == "success") {
         this.localStorage.set("audienceData", {
           FullName,

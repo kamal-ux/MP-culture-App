@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     this.subscription();
     this.loginForm = this.fb.group({
       userStatus: ["audience"],
-      password: ["", Validators.required],
-      mobileNo: ["", [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+      password: ["", [Validators.required]],
+      mobileNo: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
     });
   }
 
@@ -55,6 +55,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  password_check() {
+    const pass = this.loginForm.get("password").value;
+    console.log(pass);
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (regex.exec(pass) == null) {
+      this.loginForm.controls["password"].setErrors({ error: true });
+    } else {
+      this.loginForm.get("password").clearValidators();
+    }
+  }
+
   submit(isValid: boolean, formValue: any) {
     if (!isValid || !this.clientReady) return;
     const userType = this.loginForm.controls.userStatus.value;
@@ -63,7 +74,7 @@ export class LoginComponent implements OnInit {
 
   audienceLogin(formValue: any) {
     const formObj = {
-      UserName: formValue.userName,
+      MobileNo: formValue.mobileNo,
       Password: formValue.password
     };
     console.log("audience obj", formObj);

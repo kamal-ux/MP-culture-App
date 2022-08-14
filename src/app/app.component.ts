@@ -46,7 +46,7 @@ export class AppComponent {
     },
     {
       title: "सेटिंग",
-      value: "live-program",
+      value: "setting",
 
       icon: "settings-outline"
     },
@@ -87,16 +87,16 @@ export class AppComponent {
         this.router.navigateByUrl("", { replaceUrl: true });
         break;
       case "live-program":
-        this.router.navigate(["tabs/home/programs", { param: "live" }]);
+        this.router.navigate(["tabs/home/programs", { param: "live now" }]);
         break;
       case "today-program":
-        this.router.navigate(["tabs/home/programs", { param: "today's" }]);
+        this.router.navigate(["tabs/home/programs", { param: "today's programs" }]);
         break;
       case "upcoming-program":
-        this.router.navigate(["tabs/home/programs", { param: "upcoming" }]);
+        this.router.navigate(["tabs/home/programs", { param: "upcoming programs" }]);
         break;
       case "archive-program":
-        this.router.navigate(["tabs/home/programs", { param: "archive" }]);
+        this.router.navigate(["tabs/home/programs", { param: "archive programs" }]);
         break;
       case "register":
         this.router.navigate(["../signup/signup"]);
@@ -105,7 +105,7 @@ export class AppComponent {
         this.router.navigate(["tabs/category"]);
         break;
       case "setting":
-        this.router.navigate(["tabs/"]);
+        this.router.navigate(["tabs/home/settings"]);
         break;
       case "login":
         this.router.navigate(["../signup"]);

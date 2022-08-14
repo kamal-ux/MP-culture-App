@@ -6,13 +6,13 @@
       </ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center"
-      >{{ activeRoute.snapshot.paramMap.get("param") | titlecase }} Programs</ion-title
-    >
+      >{{ activeRoute.snapshot.paramMap.get("param") | titlecase }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <!-- Today's programs [OPEN]-->
-  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == paramString">
+  <!-- Live programs [OPEN]-->
+  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'live now'">
     <ion-row class="mt20">
       <ion-col size="12">
         <h5 class="m-0 p-0">
@@ -21,13 +21,9 @@
         </h5>
       </ion-col>
     </ion-row>
-    <ion-card
-      class="blue_card"
-      (click)="viewProgramDetails(program, true)"
-      *ngFor="let program of todayPrograms"
-    >
+    <ion-card class="blue_card" *ngFor="let program of todayPrograms">
       <ion-row>
-        <ion-col size="4">
+        <ion-col size="4" (click)="viewProgramDetails(program, true)">
           <img
             src="{{
               program.ProgramMultiMedia.length
@@ -39,7 +35,7 @@
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
-            <h6 class="mb10">
+            <h6 class="mb10" (click)="viewProgramDetails(program, true)">
               <a>{{ program.ProgramName }} </a>
             </h6>
           </h6>
@@ -51,22 +47,37 @@
             >स्थान: {{ program.Venue ? program.Venue : program.CityName }}</a
           >
           <a>{{ program.ProgramDateTime | date: "short":"IST" }}</a>
-          <p class="mt10" style="white-space: pre-wrap">{{ program.AboutProgram }}</p>
+          <p
+            class="mt10"
+            style="white-space: pre-wrap"
+            [ngClass]="{ limitTextHeight: isReadMorePara }"
+          >
+            {{ program.AboutProgram }}
+          </p>
+          <u>
+            <a *ngIf="program.AboutProgram" (click)="showPara()">
+              {{ isReadMorePara ? "Read More" : "Read Less" }}
+            </a></u
+          >
         </ion-col>
       </ion-row>
     </ion-card>
   </div>
-  <!-- Today's programs [CLOSE]-->
+  <!-- Live programs [CLOSE]-->
 
-  <!-- Upcoming programs [OPEN]-->
-  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'upcoming'">
-    <ion-card
-      class="blue_card"
-      (click)="viewProgramDetails(program)"
-      *ngFor="let program of upcomingPrograms; let index = index"
-    >
+  <!-- Today's programs [OPEN]-->
+  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == paramString">
+    <ion-row class="mt20">
+      <ion-col size="12">
+        <h5 class="m-0 p-0">
+          <span class="border_bottom_red">आज के कार्यक्रम</span
+          ><span class="mt10 d-block">Today's Program</span>
+        </h5>
+      </ion-col>
+    </ion-row>
+    <ion-card class="blue_card" *ngFor="let program of todayPrograms">
       <ion-row>
-        <ion-col size="4">
+        <ion-col size="4" (click)="viewProgramDetails(program, true)">
           <img
             src="{{
               program.ProgramMultiMedia.length
@@ -78,6 +89,55 @@
         </ion-col>
         <ion-col size="8">
           <h6 class="mb10">
+            <h6 class="mb10" (click)="viewProgramDetails(program, true)">
+              <a>{{ program.ProgramName }} </a>
+            </h6>
+          </h6>
+          <p class="mt5">
+            {{ program.ProgramStartDate }} | {{ program.ProgramEndDate }} <br />
+            {{ program.StartTime }} To {{ program.EndTime }}
+          </p>
+          <a class="see_green_btn mr-1"
+            >स्थान: {{ program.Venue ? program.Venue : program.CityName }}</a
+          >
+          <a>{{ program.ProgramDateTime | date: "short":"IST" }}</a>
+          <p
+            class="mt10"
+            style="white-space: pre-wrap"
+            [ngClass]="{ limitTextHeight: isReadMorePara }"
+          >
+            {{ program.AboutProgram }}
+          </p>
+          <u>
+            <a *ngIf="program.AboutProgram" (click)="showPara()">
+              {{ isReadMorePara ? "Read More" : "Read Less" }}
+            </a></u
+          >
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <!-- Today's programs [CLOSE]-->
+
+  <!-- Upcoming programs [OPEN]-->
+  <div
+    class="ion-padding"
+    *ngIf="activeRoute.snapshot.paramMap.get('param') == 'upcoming programs'"
+  >
+    <ion-card class="blue_card" *ngFor="let program of upcomingPrograms; let index = index">
+      <ion-row>
+        <ion-col size="4" (click)="viewProgramDetails(program)">
+          <img
+            src="{{
+              program.ProgramMultiMedia.length
+                ? mediaUrl + program.ProgramMultiMedia[0].MediaPath
+                : '../../../assets/images/b3.jpg'
+            }}"
+            class="trending_img"
+          />
+        </ion-col>
+        <ion-col size="8">
+          <h6 class="mb10" (click)="viewProgramDetails(program)">
             <ion-text color="dark">{{ program.ProgramName }}</ion-text>
           </h6>
           <a class="mr-1" class="{{ index % 2 !== 0 ? 'orange_btn' : 'see_green_btn' }}"
@@ -88,7 +148,14 @@
             {{ program.StartTime }} To {{ program.EndTime }}
           </p>
           <!-- <p class="mt10">देशभक्ति आधारित स्वराज संस्थान संचालनालय</p> -->
-          <p class="mt10" style="white-space: pre-wrap">{{ program.AboutProgram }}</p>
+          <p class="mt10" style="white-space: pre-wrap" [ngClass]="{ limitTextHeight: isReadMore }">
+            {{ program.AboutProgram }}
+          </p>
+          <u>
+            <a *ngIf="program.AboutProgram" (click)="showText()">
+              {{ isReadMore ? "Read More" : "Read Less" }}
+            </a></u
+          >
         </ion-col>
       </ion-row>
     </ion-card>
@@ -96,14 +163,10 @@
   <!-- Upcoming programs [CLOSE]-->
 
   <!-- Archive programs [OPEN]-->
-  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'archive'">
-    <ion-card
-      class="blue_card"
-      (click)="viewProgramDetails(program)"
-      *ngFor="let program of pastPrograms; let index = index"
-    >
+  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'archive programs'">
+    <ion-card class="blue_card" *ngFor="let program of pastPrograms; let index = index">
       <ion-row>
-        <ion-col size="4">
+        <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
             src="{{
               program.ProgramMultiMedia.length
@@ -114,7 +177,7 @@
           />
         </ion-col>
         <ion-col size="8">
-          <h6 class="mb10">
+          <h6 class="mb10" (click)="viewProgramDetails(program)">
             <ion-text color="dark">{{ program.ProgramName }}</ion-text>
           </h6>
           <a class="mr-1" class="{{ index % 2 !== 0 ? 'orange_btn' : 'see_green_btn' }}"
@@ -133,7 +196,14 @@
                 : program.StartTime + " To " + program.EndTime
             }}
           </p>
-          <p class="mt20">{{ program.AboutProgram }}</p>
+          <p class="mt10" style="white-space: pre-wrap" [ngClass]="{ limitTextHeight: isMorePara }">
+            {{ program.AboutProgram }}
+          </p>
+          <u>
+            <a *ngIf="program.AboutProgram" (click)="showMorePara()">
+              {{ isMorePara ? "Read More" : "Read Less" }}
+            </a></u
+          >
         </ion-col>
       </ion-row>
     </ion-card>
