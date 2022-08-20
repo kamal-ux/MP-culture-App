@@ -3,162 +3,218 @@
     <div class="login_img">
       <img src="../../../assets/images/mp-logo.png" width="100" />
     </div>
-    <ion-row class="mt10 fnt-bold">
-      <ion-col size="8"><ion-text>Audience Registration</ion-text></ion-col>
-      <ion-col size="4" class="ion-text-right">
-        <select name="cars" id="cars">
-          <option value="english">English</option>
-        </select>
-      </ion-col>
-    </ion-row>
-    <form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)">
-      <ion-list>
-        <ion-row>
-          <ion-col size="12" class="relative">
-            <ion-text>Name <span class="text-danger">*</span></ion-text>
-            <ion-input formControlName="FullName"></ion-input>
-          </ion-col>
-          <ion-col size="12" class="relative">
-            <ion-text>Mobile Number <span class="text-danger">*</span></ion-text>
-            <ion-input
-              type="number"
-              class="readonly"
-              readonly="true"
-              formControlName="MobileNo"
-            ></ion-input>
-          </ion-col>
-
-          <ion-col size="12" class="relative">
-            <ion-text>Email </ion-text>
-            <ion-input id="email" name="email" placeholder="" formControlName="EmailId"></ion-input>
-          </ion-col>
-
-          <ion-col size="12" class="relative">
-            <ion-text>Address</ion-text>
-            <ion-input placeholder="" formControlName="Address"></ion-input>
-          </ion-col>
-          <ion-col size="12" class="relative">
-            <ion-text>Country</ion-text>
-
-            <ion-select interface="popover" placeholder="Select Country" formControlName="Country">
-              <ion-select-option value="India">India</ion-select-option>
-            </ion-select>
-          </ion-col>
-
-          <ion-col size="12" class="relative">
-            <ion-text>State</ion-text>
-            <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
-              <ion-select-option [value]="1">Rajsthan</ion-select-option>
-              <ion-select-option [value]="2">Uttar Pradesh</ion-select-option>
-              <ion-select-option [value]="3">Maharastra</ion-select-option>
-              <ion-select-option [value]="0">Madhya Pradesh</ion-select-option>
-            </ion-select>
-          </ion-col>
-
-          <ion-col size="12" class="relative">
-            <ion-text>District</ion-text>
-            <ion-select
-              interface="popover"
-              placeholder="Select District"
-              formControlName="DistrictId"
-            >
-              <ion-select-option
-                [value]="district.DistrictId"
-                *ngFor="let district of districtArr"
-                >{{ district.DistrictName }}</ion-select-option
+    <ion-grid>
+      <ion-row class="mt10 fnt-bold">
+        <ion-col size="8"><ion-text>Audience Registration</ion-text></ion-col>
+        <ion-col size="4" class="ion-text-right">
+          <select name="cars" id="cars">
+            <option value="english">English</option>
+          </select>
+        </ion-col>
+      </ion-row>
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="submit(signupForm.valid, signupForm.value)"
+      >
+        <ion-list>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>Name <span class="text-danger">*</span></ion-text>
+              <ion-input formControlName="FullName"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text
+                >Mobile Number <span class="text-danger">*</span></ion-text
               >
-            </ion-select>
-          </ion-col>
-          <ion-col size="12" class="relative">
-            <ion-text>Village/City</ion-text>
-            <ion-input
-              id="CityName"
-              name="CityName"
-              placeholder="City/Village"
-              formControlName="CityName"
-            ></ion-input>
-          </ion-col>
-
-          <ion-col size="8">
-            <ion-text>Birth Date <span class="text-danger">*</span></ion-text>
-            <div class="input-group">
-              <input
-                id="field_birthDate"
-                type="text"
-                class="form-control"
-                name="birthDate"
-                ngbDatepicker
-                required="false"
+              <ion-input
+                type="number"
+                class="readonly"
                 readonly="true"
-                #birthDateDp="ngbDatepicker"
-                formControlName="DateOfBirth"
-                placeholder="yyyy-mm-dd"
-              />
-              <span class="input-group-append">
-                <button
-                  type="button"
-                  class="btn btn-outline-primary"
-                  (click)="birthDateDp.toggle()"
+                formControlName="MobileNo"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>Email <span class="text-danger">*</span></ion-text>
+              <ion-input
+                id="email"
+                name="email"
+                placeholder=""
+                formControlName="EmailId"
+                required
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>Address</ion-text>
+              <ion-input placeholder="" formControlName="Address"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>Country</ion-text>
+
+              <ion-select
+                interface="popover"
+                placeholder="Select Country"
+                formControlName="Country"
+              >
+                <ion-select-option value="India">India</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>State</ion-text>
+              <ion-select
+                interface="popover"
+                placeholder="Select State"
+                formControlName="StateId"
+              >
+                <ion-select-option [value]="1">Rajsthan</ion-select-option>
+                <ion-select-option [value]="2">Uttar Pradesh</ion-select-option>
+                <ion-select-option [value]="3">Maharastra</ion-select-option>
+                <ion-select-option [value]="0"
+                  >Madhya Pradesh</ion-select-option
                 >
-                  <ion-icon name="calendar-outline"></ion-icon>
-                </button>
-              </span>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <ion-text>Age</ion-text>
-            <ion-input placeholder="" type="number" formControlName="Age"></ion-input>
-          </ion-col>
-          <ion-col size="12">
-            <p id="theme-text">
-              <ion-text> Through which medium you want information about the program?</ion-text>
-            </p>
-          </ion-col>
-          <ion-col size="12">
-            <ion-radio-group formControlName="NotificationRequired">
-              <ion-radio value="email"></ion-radio>
-              <ion-text>By Email</ion-text>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>District</ion-text>
+              <ion-select
+                interface="popover"
+                placeholder="Select District"
+                formControlName="DistrictId"
+              >
+                <ion-select-option
+                  [value]="district.DistrictId"
+                  *ngFor="let district of districtArr"
+                  >{{ district.DistrictName }}</ion-select-option
+                >
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="relative">
+              <ion-text>Village/City</ion-text>
+              <ion-input
+                id="CityName"
+                name="CityName"
+                placeholder="City/Village"
+                formControlName="CityName"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8">
+              <ion-text>Birth Date <span class="text-danger">*</span></ion-text>
 
-              <ion-radio value="sms"></ion-radio>
-              <ion-text>By SMS</ion-text>
-            </ion-radio-group>
-          </ion-col>
-          <ion-col size="12">
-            <h5><ion-text>Disclaimer</ion-text></h5>
-          </ion-col>
-          <ion-col size="12">
-            <ion-text>1. The information given by me is correct.</ion-text>
-          </ion-col>
-          <ion-col size="12">
-            <ion-text>
-              2. I will not have any objection in case the information given by me is used for
-              departmental use.
-            </ion-text>
-          </ion-col>
-          <ion-col size="12">
-            <ion-checkbox></ion-checkbox>&nbsp; <ion-text>I Agree</ion-text>
-          </ion-col>
+              <input
+                type="date"
+                formControlName="DateOfBirth"
+                id="field_birthDate"
+              />
+            </ion-col>
+            <ion-col size="4">
+              <ion-text>Age</ion-text>
+              <ion-input
+                placeholder=""
+                type="number"
+                formControlName="Age"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <p id="theme-text">
+                <ion-text>
+                  Through which medium you want information about the
+                  program?</ion-text
+                >
+              </p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-radio-group formControlName="NotificationRequired">
+                <ion-radio value="email"></ion-radio>
+                <ion-text>By Email</ion-text>
 
-          <ion-col size="6" class="mb30">
-            <button
-              type="submit"
-              [ngStyle]="{
-                'background-color': signupForm.invalid ? '#ff00009e' : 'red'
-              }"
-              [disabled]="!signupForm.valid"
-            >
-              Save
-            </button>
-            <!-- <button type="submit" [disabled]="signupForm.invalid">Save</button> -->
-          </ion-col>
-          <ion-col size="6" class="mb30">
-            <button class="skip" type="submit" routerLink="">Skip</button>
-          </ion-col>
-          <ion-col size="12" class="ion-text-center">
-            <p>Already have an account? <a routerLink="../../signup">Login</a></p>
-          </ion-col>
-        </ion-row>
-      </ion-list>
-    </form>
+                <ion-radio value="sms"></ion-radio>
+                <ion-text>By SMS</ion-text>
+              </ion-radio-group>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <h5><ion-text>Disclaimer</ion-text></h5>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-text>1. The information given by me is correct.</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-text>
+                2. I will not have any objection in case the information given
+                by me is used for departmental use.
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <ion-checkbox formControlName="iAgree"></ion-checkbox>&nbsp;
+                <ion-text>I Agree</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-row>
+          <ion-row *ngIf="!signupForm.controls['iAgree'].value">
+            <ion-col size="4"></ion-col>
+            <ion-col size="4">
+              <button class="skip" type="submit" routerLink="">Skip</button>
+            </ion-col>
+            <ion-col size="4"></ion-col>
+          </ion-row>
+          <ion-row *ngIf="signupForm.controls['iAgree'].value">
+            <ion-col size="4" class="mb30">
+              <button
+                type="submit"
+                [ngStyle]="{
+                  'background-color': signupForm.invalid ? '#ff00009e' : 'red'
+                }"
+                [disabled]="!signupForm.valid"
+              >
+                Save
+              </button>
+              <!-- <button type="submit" [disabled]="signupForm.invalid">Save</button> -->
+            </ion-col>
+            <ion-col size="4" class="mb30">
+              <button class="cancelBtn" type="submit" routerLink="">
+                Cancel
+              </button>
+            </ion-col>
+            <ion-col size="4" class="mb30">
+              <button class="skip" type="submit" routerLink="">Skip</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <p>
+                Already have an account? <a routerLink="../../signup">Login</a>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </form>
+    </ion-grid>
   </ion-content>
 </ion-app>
