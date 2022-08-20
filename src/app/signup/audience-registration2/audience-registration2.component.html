@@ -12,10 +12,7 @@
           </select>
         </ion-col>
       </ion-row>
-      <form
-        [formGroup]="signupForm"
-        (ngSubmit)="submit(signupForm.valid, signupForm.value)"
-      >
+      <form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)">
         <ion-list>
           <ion-row>
             <ion-col size="12" class="relative">
@@ -25,9 +22,7 @@
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text
-                >Mobile Number <span class="text-danger">*</span></ion-text
-              >
+              <ion-text>Mobile Number <span class="text-danger">*</span></ion-text>
               <ion-input
                 type="number"
                 class="readonly"
@@ -70,17 +65,11 @@
           <ion-row>
             <ion-col size="12" class="relative">
               <ion-text>State</ion-text>
-              <ion-select
-                interface="popover"
-                placeholder="Select State"
-                formControlName="StateId"
-              >
+              <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
                 <ion-select-option [value]="1">Rajsthan</ion-select-option>
                 <ion-select-option [value]="2">Uttar Pradesh</ion-select-option>
                 <ion-select-option [value]="3">Maharastra</ion-select-option>
-                <ion-select-option [value]="0"
-                  >Madhya Pradesh</ion-select-option
-                >
+                <ion-select-option [value]="0">Madhya Pradesh</ion-select-option>
               </ion-select>
             </ion-col>
           </ion-row>
@@ -115,28 +104,17 @@
             <ion-col size="8">
               <ion-text>Birth Date <span class="text-danger">*</span></ion-text>
 
-              <input
-                type="date"
-                formControlName="DateOfBirth"
-                id="field_birthDate"
-              />
+              <input type="date" formControlName="DateOfBirth" id="field_birthDate" />
             </ion-col>
             <ion-col size="4">
               <ion-text>Age</ion-text>
-              <ion-input
-                placeholder=""
-                type="number"
-                formControlName="Age"
-              ></ion-input>
+              <ion-input placeholder="" type="number" formControlName="Age"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12">
               <p id="theme-text">
-                <ion-text>
-                  Through which medium you want information about the
-                  program?</ion-text
-                >
+                <ion-text> Through which medium you want information about the program?</ion-text>
               </p>
             </ion-col>
           </ion-row>
@@ -164,8 +142,8 @@
           <ion-row>
             <ion-col size="12">
               <ion-text>
-                2. I will not have any objection in case the information given
-                by me is used for departmental use.
+                2. I will not have any objection in case the information given by me is used for
+                departmental use.
               </ion-text>
             </ion-col>
           </ion-row>
@@ -198,9 +176,7 @@
               <!-- <button type="submit" [disabled]="signupForm.invalid">Save</button> -->
             </ion-col>
             <ion-col size="4" class="mb30">
-              <button class="cancelBtn" type="submit" routerLink="">
-                Cancel
-              </button>
+              <button class="cancelBtn" type="submit" routerLink="">Cancel</button>
             </ion-col>
             <ion-col size="4" class="mb30">
               <button class="skip" type="submit" routerLink="">Skip</button>
@@ -208,9 +184,7 @@
           </ion-row>
           <ion-row>
             <ion-col size="12" class="ion-text-center">
-              <p>
-                Already have an account? <a routerLink="../../signup">Login</a>
-              </p>
+              <p>Already have an account? <a routerLink="../../">Login</a></p>
             </ion-col>
           </ion-row>
         </ion-list>
