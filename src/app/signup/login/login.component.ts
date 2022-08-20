@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   changeUserType(evt: any): void {
+    return;
     const userType = (this.userStatus = evt.value);
     console.log("user type", userType);
     if (userType == "artist") {
@@ -78,26 +79,20 @@ export class LoginComponent implements OnInit {
       Password: formValue.password
     };
     console.log("audience obj", formObj);
-    this.apiService.userLogin(formObj).subscribe(
+    this.apiService.audienceLogin(formObj).subscribe(
       (res) => {
         console.log("user logged-in", res);
         if (res.result == "success") {
-          const {
-            userid = "",
-            usertype = "",
-            username = "",
-            departmentid = "",
-            userfullname = ""
-          } = res;
-          const userData = {
-            userid,
-            usertype,
-            username,
-            departmentid,
-            userfullname
+          const { audienceid = "", usertype = "", fullname = "", mobileno = "" } = res;
+          const audienceData = {
+            AudienceId: audienceid,
+            UserType: usertype,
+            FullName: fullname,
+            MobileNo: mobileno
           };
-          console.log("userdata", userData);
-          userData && this.localStorageService.set("userData", userData);
+          console.log("userdata", audienceData);
+          audienceData && this.localStorageService.set("audienceData", audienceData);
+          this.utilService.presentToast("Logged In successfully");
           this.router.navigate(["/tabs/home"]);
         } else {
           this.utilService.presentToast(res.message);

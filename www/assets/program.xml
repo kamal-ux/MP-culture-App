@@ -32,6 +32,16 @@
 </s:sequence>
 </s:complexType>
 </s:element>
+<s:element name="LoadLiveProgram">
+<s:complexType/>
+</s:element>
+<s:element name="LoadLiveProgramResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="LoadLiveProgramResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
 <s:element name="string" nillable="true" type="s:string"/>
 </s:schema>
 </wsdl:types>
@@ -53,6 +63,12 @@
 <wsdl:message name="LoadTodaysProgramSoapOut">
 <wsdl:part name="parameters" element="tns:LoadTodaysProgramResponse"/>
 </wsdl:message>
+<wsdl:message name="LoadLiveProgramSoapIn">
+<wsdl:part name="parameters" element="tns:LoadLiveProgram"/>
+</wsdl:message>
+<wsdl:message name="LoadLiveProgramSoapOut">
+<wsdl:part name="parameters" element="tns:LoadLiveProgramResponse"/>
+</wsdl:message>
 <wsdl:message name="LoadUpcomingProgramHttpGetIn"/>
 <wsdl:message name="LoadUpcomingProgramHttpGetOut">
 <wsdl:part name="Body" element="tns:string"/>
@@ -65,6 +81,10 @@
 <wsdl:message name="LoadTodaysProgramHttpGetOut">
 <wsdl:part name="Body" element="tns:string"/>
 </wsdl:message>
+<wsdl:message name="LoadLiveProgramHttpGetIn"/>
+<wsdl:message name="LoadLiveProgramHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
 <wsdl:message name="LoadUpcomingProgramHttpPostIn"/>
 <wsdl:message name="LoadUpcomingProgramHttpPostOut">
 <wsdl:part name="Body" element="tns:string"/>
@@ -75,6 +95,10 @@
 </wsdl:message>
 <wsdl:message name="LoadTodaysProgramHttpPostIn"/>
 <wsdl:message name="LoadTodaysProgramHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="LoadLiveProgramHttpPostIn"/>
+<wsdl:message name="LoadLiveProgramHttpPostOut">
 <wsdl:part name="Body" element="tns:string"/>
 </wsdl:message>
 <wsdl:portType name="ProgramServiceSoap">
@@ -90,6 +114,10 @@
 <wsdl:input message="tns:LoadTodaysProgramSoapIn"/>
 <wsdl:output message="tns:LoadTodaysProgramSoapOut"/>
 </wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<wsdl:input message="tns:LoadLiveProgramSoapIn"/>
+<wsdl:output message="tns:LoadLiveProgramSoapOut"/>
+</wsdl:operation>
 </wsdl:portType>
 <wsdl:portType name="ProgramServiceHttpGet">
 <wsdl:operation name="LoadUpcomingProgram">
@@ -104,6 +132,10 @@
 <wsdl:input message="tns:LoadTodaysProgramHttpGetIn"/>
 <wsdl:output message="tns:LoadTodaysProgramHttpGetOut"/>
 </wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<wsdl:input message="tns:LoadLiveProgramHttpGetIn"/>
+<wsdl:output message="tns:LoadLiveProgramHttpGetOut"/>
+</wsdl:operation>
 </wsdl:portType>
 <wsdl:portType name="ProgramServiceHttpPost">
 <wsdl:operation name="LoadUpcomingProgram">
@@ -117,6 +149,10 @@
 <wsdl:operation name="LoadTodaysProgram">
 <wsdl:input message="tns:LoadTodaysProgramHttpPostIn"/>
 <wsdl:output message="tns:LoadTodaysProgramHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<wsdl:input message="tns:LoadLiveProgramHttpPostIn"/>
+<wsdl:output message="tns:LoadLiveProgramHttpPostOut"/>
 </wsdl:operation>
 </wsdl:portType>
 <wsdl:binding name="ProgramServiceSoap" type="tns:ProgramServiceSoap">
@@ -141,6 +177,15 @@
 </wsdl:operation>
 <wsdl:operation name="LoadTodaysProgram">
 <soap:operation soapAction="https://webservice.mpcd.solyn.in/LoadTodaysProgram" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/LoadLiveProgram" style="document"/>
 <wsdl:input>
 <soap:body use="literal"/>
 </wsdl:input>
@@ -178,6 +223,15 @@
 <soap12:body use="literal"/>
 </wsdl:output>
 </wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/LoadLiveProgram" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
 </wsdl:binding>
 <wsdl:binding name="ProgramServiceHttpGet" type="tns:ProgramServiceHttpGet">
 <http:binding verb="GET"/>
@@ -208,6 +262,15 @@
 <mime:mimeXml part="Body"/>
 </wsdl:output>
 </wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<http:operation location="/LoadLiveProgram"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
 </wsdl:binding>
 <wsdl:binding name="ProgramServiceHttpPost" type="tns:ProgramServiceHttpPost">
 <http:binding verb="POST"/>
@@ -231,6 +294,15 @@
 </wsdl:operation>
 <wsdl:operation name="LoadTodaysProgram">
 <http:operation location="/LoadTodaysProgram"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LoadLiveProgram">
+<http:operation location="/LoadLiveProgram"/>
 <wsdl:input>
 <mime:content type="application/x-www-form-urlencoded"/>
 </wsdl:input>

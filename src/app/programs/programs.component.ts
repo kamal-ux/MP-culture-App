@@ -19,6 +19,8 @@ export class ProgramsComponent implements OnInit {
   public isReadMorePara = true;
   public isReadMore = true;
   public isMorePara = true;
+  slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
+
   constructor(
     public activeRoute: ActivatedRoute,
     private apiService: ApiServiceService,

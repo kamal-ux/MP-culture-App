@@ -109,7 +109,7 @@ let AppComponent = class AppComponent {
       icon: "grid-outline"
     }, {
       title: "सेटिंग",
-      value: "live-program",
+      value: "setting",
       icon: "settings-outline"
     }, {
       title: "लॉग इन",
@@ -151,25 +151,25 @@ let AppComponent = class AppComponent {
 
       case "live-program":
         this.router.navigate(["tabs/home/programs", {
-          param: "live"
+          param: "live now"
         }]);
         break;
 
       case "today-program":
         this.router.navigate(["tabs/home/programs", {
-          param: "today's"
+          param: "today's programs"
         }]);
         break;
 
       case "upcoming-program":
         this.router.navigate(["tabs/home/programs", {
-          param: "upcoming"
+          param: "upcoming programs"
         }]);
         break;
 
       case "archive-program":
         this.router.navigate(["tabs/home/programs", {
-          param: "archive"
+          param: "archive programs"
         }]);
         break;
 
@@ -182,7 +182,7 @@ let AppComponent = class AppComponent {
         break;
 
       case "setting":
-        this.router.navigate(["tabs/"]);
+        this.router.navigate(["tabs/home/settings"]);
         break;
 
       case "login":

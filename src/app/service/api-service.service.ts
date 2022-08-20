@@ -73,6 +73,16 @@ export class ApiServiceService {
       })
     );
   }
+  // AudienceLogin;
+
+  audienceLogin(obj) {
+    this.client.addHttpHeader("Content-Type", "text/xml");
+    return this.client.call("AudienceLogin", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.AudienceLoginResult);
+      })
+    );
+  }
 
   artistLogin(obj) {
     this.client.addHttpHeader("Content-Type", "text/xml");

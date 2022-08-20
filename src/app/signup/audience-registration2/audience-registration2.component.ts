@@ -50,7 +50,11 @@ export class AudienceRegistration2Component implements OnInit {
   }
 
   async ionViewWillEnter() {
-    const { FullName, MobileNo, AudienceId } = await this.localStorage.get("audienceData");
+    const {
+      FullName = "",
+      MobileNo = "",
+      AudienceId = ""
+    } = await this.localStorage.get("audienceData");
     this.audienceId = AudienceId;
     this.signupForm.patchValue({
       FullName,
@@ -161,6 +165,7 @@ export class AudienceRegistration2Component implements OnInit {
       console.log("audience profile updated", res);
       res.result == "failure" && this.utilService.presentToast(res.message);
       res.result == "success" &&
+        this.localStorage.set("audienceData", formObj) &&
         this.utilService.presentToast("Successfull registered") &&
         this.router.navigate([""]);
     });
