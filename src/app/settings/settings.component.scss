@@ -1,13 +1,12 @@
-<<<<<<< HEAD
 ul.menu_list{
     margin: 0;
     padding: 0;
 }
 ul.menu_list li{
-	background-color: #dcebfd;
-	border-radius: 100px;
-	box-shadow: none;
-	padding: 10px;
+  background-color: #dcebfd;
+  border-radius: 100px;
+  box-shadow: none;
+  padding: 10px;
     margin: 0 0 10px 0;
     list-style: none;
     font-size: 14px;
@@ -24,10 +23,4 @@ ul.menu_list li a{
 ul.menu_list li span{font-size: 10px;}
 ul.menu_list li ion-icon{font-size:16px;vertical-align: middle;}
 .text_blue{color: #100DD1;}
-ion-toggle{padding: 4px;} 
-=======
-.back-button{
-	padding-left: 10px;
-	font-size: 7vw;
-}
->>>>>>> defad828cfb77f4c7cb53e0900e73e0afef229aa
+ion-toggle{padding: 4px;}
