@@ -1,15 +1,24 @@
-<form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.valid, signupForm.value)" class="">
+<form
+  [formGroup]="signupForm"
+  (ngSubmit)="submit(signupForm.valid, signupForm.value)"
+  class=""
+>
   <ion-list>
     <ion-row class="mt10">
       <ion-col size="12" class="relative">
         <ion-text>Mobile No. <span class="text-danger">*</span></ion-text>
-        <ion-input placeholder="Mobile No" type="text" formControlName="MobileNo"></ion-input>
+        <ion-input
+          placeholder="Mobile No"
+          type="text"
+          formControlName="MobileNo"
+        ></ion-input>
         <ion-text
           color="danger"
           *ngIf="
             !signupForm.get('MobileNo').hasError('MobileNo') &&
             signupForm.get('MobileNo').hasError('required') &&
-            (signupForm.get('MobileNo').dirty || signupForm.get('MobileNo').touched)
+            (signupForm.get('MobileNo').dirty ||
+              signupForm.get('MobileNo').touched)
           "
         >
           * Mobile Number is Required
@@ -26,13 +35,18 @@
       </ion-col>
       <ion-col size="12" class="relative">
         <ion-text>Full Name <span class="text-danger">*</span></ion-text>
-        <ion-input placeholder="Full Name" required formControlName="FullName"></ion-input>
+        <ion-input
+          placeholder="Full Name"
+          required
+          formControlName="FullName"
+        ></ion-input>
         <ion-text
           color="danger"
           *ngIf="
             !signupForm.get('FullName').hasError('FullName') &&
             signupForm.get('FullName').hasError('required') &&
-            (signupForm.get('FullName').dirty || signupForm.get('FullName').touched)
+            (signupForm.get('FullName').dirty ||
+              signupForm.get('FullName').touched)
           "
         >
           * Full Name is Required
@@ -51,7 +65,8 @@
           *ngIf="
             !signupForm.get('Password').hasError('Password') &&
             signupForm.get('Password').hasError('required') &&
-            (signupForm.get('Password').dirty || signupForm.get('Password').touched)
+            (signupForm.get('Password').dirty ||
+              signupForm.get('Password').touched)
           "
         >
           * Password is Required
@@ -61,8 +76,8 @@
           color="danger"
           *ngIf="signupForm.get('Password').hasError('error')"
         >
-          Password contain atleast 6 characters long including 1 uppercase, 1 special & alphanumeric
-          characters.
+          Password contain atleast 6 characters long including 1 uppercase, 1
+          special & alphanumeric characters.
         </ion-text>
       </ion-col>
       <ion-col size="12" class="relative">
@@ -77,7 +92,8 @@
           color="danger"
           *ngIf="
             signupForm.get('ConfirmPassword').value &&
-            signupForm.get('Password').value !== signupForm.get('ConfirmPassword').value
+            signupForm.get('Password').value !==
+              signupForm.get('ConfirmPassword').value
           "
         >
           * Password doesn't matched
@@ -86,7 +102,8 @@
     </ion-row>
 
     <ion-row>
-      <ion-col size="6" class="mb30">
+      <ion-col size="2"></ion-col>
+      <ion-col size="4" class="mb30">
         <button
           type="submit"
           [ngStyle]="{
@@ -97,9 +114,13 @@
           Next
         </button>
       </ion-col>
-      <ion-col size="6" class="mb30">
+
+      <ion-col size="4" class="mb30">
         <button class="cancel" type="button" routerLink="">Cancel</button>
       </ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col size="12" class="ion-text-center">
         <p>Already have an account? <a routerLink="../../signup">Login</a></p>
       </ion-col>

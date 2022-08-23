@@ -29,7 +29,6 @@ ion-header{
 .slide2_img {
 	max-width: 100% !important;
 	max-height: 300px !important;
-	border-radius: 10px;
 }
 .swiper-slide {
 	position: relative;
@@ -163,4 +162,35 @@ p{
 .limitTextHeight {
     height: 80px;
     overflow: hidden;
+}
+.py-50 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #fffbcc;
+}
+
+.pb-20 {
+	padding-bottom: 20px;
+	background-color: #fffbcc;
+}
+.blink_me {
+  animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+ion-text{
+	color: #797494;
+
+}
+.text-small{
+	font-size: 0.8rem;
+}
+#h3{
+	font-size: 20px;
+	font-weight: 400;
 }

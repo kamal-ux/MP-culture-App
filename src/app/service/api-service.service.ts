@@ -73,6 +73,16 @@ export class ApiServiceService {
       })
     );
   }
+  // AudienceLogin;
+
+  audienceLogin(obj) {
+    this.client.addHttpHeader("Content-Type", "text/xml");
+    return this.client.call("AudienceLogin", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.AudienceLoginResult);
+      })
+    );
+  }
 
   artistLogin(obj) {
     this.client.addHttpHeader("Content-Type", "text/xml");
@@ -115,6 +125,15 @@ export class ApiServiceService {
     return this.programClient.call("LoadTodaysProgram", {}).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadTodaysProgramResult);
+      })
+    );
+  }
+
+  loadMonthlyProgram() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("PopularProgramOfMonth", {}).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadPopularProgramOfMonthResult);
       })
     );
   }

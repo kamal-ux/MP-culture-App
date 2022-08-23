@@ -5,13 +5,21 @@ import { Platform } from "@ionic/angular";
 import { ApiServiceService } from "src/app/service/api-service.service";
 import { LocalStorageService } from "src/app/service/local-storage.service";
 import { UtilService } from "src/app/service/util-service.service";
+import {
+  NgbCalendar,
+  NgbDate,
+  NgbDateStruct,
+  NgbInputDatepickerConfig,
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-audience-registration2",
   templateUrl: "./audience-registration2.component.html",
-  styleUrls: ["./audience-registration2.component.scss"]
+  styleUrls: ["./audience-registration2.component.scss"],
+  providers: [NgbInputDatepickerConfig],
 })
 export class AudienceRegistration2Component implements OnInit {
+  model: NgbDateStruct;
   signupForm!: FormGroup;
   artistRegisterClientReady: boolean;
   districtArr: any;
@@ -21,8 +29,26 @@ export class AudienceRegistration2Component implements OnInit {
     private apiService: ApiServiceService,
     private router: Router,
     private localStorage: LocalStorageService,
-    private utilService: UtilService
-  ) {}
+    private utilService: UtilService,
+    config: NgbInputDatepickerConfig,
+    calendar: NgbCalendar
+  ) {
+    // customize default values of datepickers used by this component tree
+    config.minDate = { year: 1900, month: 1, day: 1 };
+    config.maxDate = { year: 2099, month: 12, day: 31 };
+
+    // days that don't belong to current month are not visible
+    config.outsideDays = "hidden";
+
+    // weekends are disabled
+    config.markDisabled = (date: NgbDate) => calendar.getWeekday(date) >= 6;
+
+    // setting datepicker popup to close only on click outside
+    config.autoClose = "outside";
+
+    // setting datepicker popup to open above the input
+    config.placement = ["top-start", "top-end"];
+  }
 
   ngOnInit() {
     this.apiService.artistRegisterClientState().subscribe((ready) => {
@@ -34,7 +60,7 @@ export class AudienceRegistration2Component implements OnInit {
     this.signupForm = this.fb.group({
       FullName: ["", Validators.required],
       MobileNo: [""],
-      EmailId: ["", Validators.email],
+      EmailId: ["", [Validators.email, Validators.required]],
       Address: [""],
       CityName: [""],
       Country: ["India"],
@@ -44,17 +70,23 @@ export class AudienceRegistration2Component implements OnInit {
       Age: [""],
       NotificationRequired: ["email"],
       EmailNotificationRequired: [""],
-      MobileNotificationRequired: [""]
+      MobileNotificationRequired: [""],
+      iAgree: [false],
     });
     // this.signupForm.controls.MobileNo.disable();
   }
 
   async ionViewWillEnter() {
-    const { FullName, MobileNo, AudienceId } = await this.localStorage.get("audienceData");
+    const {
+      FullName = "",
+      MobileNo = "",
+      AudienceId = "",
+    } = await this.localStorage.get("audienceData");
+    console.log("Mobile number", MobileNo);
     this.audienceId = AudienceId;
     this.signupForm.patchValue({
       FullName,
-      MobileNo
+      MobileNo,
     });
     this.signupForm.controls.DateOfBirth.valueChanges.subscribe((res: any) => {
       console.log("date birth", res);
@@ -153,14 +185,17 @@ export class AudienceRegistration2Component implements OnInit {
         this.calculateMonth(formValue.DateOfBirth.month) +
         "-" +
         formValue.DateOfBirth.day,
-      EmailNotificationRequired: formValue.NotificationRequired == "email" ? true : false,
-      MobileNotificationRequired: formValue.NotificationRequired == "sms" ? true : false
+      EmailNotificationRequired:
+        formValue.NotificationRequired == "email" ? true : false,
+      MobileNotificationRequired:
+        formValue.NotificationRequired == "sms" ? true : false,
     };
 
     this.apiService.doAudienceProfileUpdate(formObj).subscribe((res: any) => {
       console.log("audience profile updated", res);
       res.result == "failure" && this.utilService.presentToast(res.message);
       res.result == "success" &&
+        this.localStorage.set("audienceData", formObj) &&
         this.utilService.presentToast("Successfull registered") &&
         this.router.navigate([""]);
     });

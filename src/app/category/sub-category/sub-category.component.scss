@@ -26,7 +26,6 @@
 	left: 10px;
 	color: #fff;
 	text-align: left;
-	width: calc(100% - 20px);
 }
 .swiper-slide .content a, .swiper-slide .content span {
 	color: #fff;
@@ -53,7 +52,6 @@
 	border-radius: 10px;
 	box-shadow: none;
 	padding: 10px;
-  margin: 0 0 10px 0;
 }
 .blue_card .trending_img {
 	max-width: 100%;
@@ -91,7 +89,6 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: rgba(0,0,0,0.2);
 	left: 0;
 	right: 0;
 }
@@ -112,7 +109,7 @@
 }
 .foryou_card img {
 	width: 100% !important;
-	max-height: 400px !important;
+	max-height: 500px !important;
 	border-radius: 10px;
 }
 .blue_tab_card {
@@ -120,7 +117,6 @@
 	box-shadow: none;
 	padding: 10px;
 	border-radius: 0;
-  margin: 0 0 10px 0;
 }
 .blue_tab_card ion-row {
 	background-color: #fff;
@@ -134,9 +130,5 @@
 }
 .btn-segment.segment-button-checked {
 	background: #e42f08;
-	color: #e42f08;
-}
-.back-button{
-	padding-left: 10px;
-	font-size: 7vw;
+	color: #fff;
 }
