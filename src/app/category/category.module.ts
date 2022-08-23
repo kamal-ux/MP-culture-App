@@ -11,6 +11,6 @@ import { SubCategoryComponent } from "./sub-category/sub-category.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, CategoryPageRoutingModule],
-  declarations: [CategoryPage, SubCategoryComponent],
+  declarations: [CategoryPage, SubCategoryComponent]
 })
 export class CategoryPageModule {}

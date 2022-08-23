@@ -65,6 +65,11 @@ export class HomePage implements OnInit {
       console.log("todays program", res);
       this.todaysPrograms = res;
     });
+    // loadMonthlyProgram;
+    this.apiService.loadMonthlyProgram().subscribe((res: any) => {
+      console.log("monthly program", res);
+      this.todaysPrograms = res;
+    });
   }
 
   public loadLandingData(): void {

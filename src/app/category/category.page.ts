@@ -4,15 +4,19 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-category",
   templateUrl: "./category.page.html",
-  styleUrls: ["./category.page.scss"],
+  styleUrls: ["./category.page.scss"]
 })
 export class CategoryPage implements OnInit {
-  constructor(private rout: Router) {}
+  constructor(private route: Router) {}
 
   ngOnInit() {}
   openSubCategory(subCategory) {
-    this.rout.navigate(["/tabs/category/subCategory"], {
-      state: { subCategory },
+    this.route.navigate(["/tabs/category/subCategory"], {
+      state: { subCategory }
     });
+  }
+
+  navigateToHome() {
+    this.route.navigate([""]);
   }
 }

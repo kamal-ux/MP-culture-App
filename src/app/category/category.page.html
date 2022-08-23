@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon class="back-button" name="arrow-back-outline" (click)="navigateToHome()"></ion-icon>
+    </ion-buttons>
     <ion-title class="text-center">कला विधाये / Art Category</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,9 +14,7 @@
           <div class="content">
             <a class="red_btn">शास्त्रीय / classical</a>
           </div>
-          <img
-            src="{{'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'}}"
-          />
+          <img src="{{'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'}}" />
         </ion-card>
       </ion-col>
       <ion-col size="6">
@@ -33,10 +34,7 @@
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card
-          (click)="openSubCategory('folkAndTribal')"
-          class="foryou_card"
-        >
+        <ion-card (click)="openSubCategory('folkAndTribal')" class="foryou_card">
           <div class="content">
             <a class="red_btn">लोक एवं आदिवासी / folk and tribal</a>
           </div>

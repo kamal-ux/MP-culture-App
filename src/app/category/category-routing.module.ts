@@ -7,16 +7,16 @@ import { SubCategoryComponent } from "./sub-category/sub-category.component";
 const routes: Routes = [
   {
     path: "",
-    component: CategoryPage,
+    component: CategoryPage
   },
   {
     path: "subCategory",
-    component: SubCategoryComponent,
-  },
+    component: SubCategoryComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class CategoryPageRoutingModule {}

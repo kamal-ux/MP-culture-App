@@ -129,6 +129,15 @@ export class ApiServiceService {
     );
   }
 
+  loadMonthlyProgram() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("PopularProgramOfMonth", {}).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadPopularProgramOfMonthResult);
+      })
+    );
+  }
+
   loadLandingPageContent() {
     this.landingPageClient.addHttpHeader("Content-Type", "text/xml");
     return this.landingPageClient.call("LoadLandingData", {}).pipe(
