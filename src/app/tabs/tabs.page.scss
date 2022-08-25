@@ -1,6 +1,10 @@
 .tab-selected {
   color: red !important;
 }
+
 ion-tab-button {
   --color-selected: red;
+}
+ion-tab-bar{
+        box-shadow: 0 3px 34px rgb(255 255 255 / 34%)!important;
 }
