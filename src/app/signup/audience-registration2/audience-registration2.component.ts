@@ -9,14 +9,14 @@ import {
   NgbCalendar,
   NgbDate,
   NgbDateStruct,
-  NgbInputDatepickerConfig,
+  NgbInputDatepickerConfig
 } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-audience-registration2",
   templateUrl: "./audience-registration2.component.html",
   styleUrls: ["./audience-registration2.component.scss"],
-  providers: [NgbInputDatepickerConfig],
+  providers: [NgbInputDatepickerConfig]
 })
 export class AudienceRegistration2Component implements OnInit {
   model: NgbDateStruct;
@@ -71,7 +71,7 @@ export class AudienceRegistration2Component implements OnInit {
       NotificationRequired: ["email"],
       EmailNotificationRequired: [""],
       MobileNotificationRequired: [""],
-      iAgree: [false],
+      iAgree: [false]
     });
     // this.signupForm.controls.MobileNo.disable();
   }
@@ -80,18 +80,17 @@ export class AudienceRegistration2Component implements OnInit {
     const {
       FullName = "",
       MobileNo = "",
-      AudienceId = "",
+      AudienceId = ""
     } = await this.localStorage.get("audienceData");
     console.log("Mobile number", MobileNo);
     this.audienceId = AudienceId;
     this.signupForm.patchValue({
       FullName,
-      MobileNo,
+      MobileNo
     });
     this.signupForm.controls.DateOfBirth.valueChanges.subscribe((res: any) => {
       console.log("date birth", res);
-      const dateOfBirth = res.year + "-" + res.month + "-" + res.day;
-      this.signupForm.controls.Age.setValue(this.calculateAge(dateOfBirth));
+      this.signupForm.controls.Age.setValue(this.calculateAge(res));
     });
   }
 
@@ -185,10 +184,8 @@ export class AudienceRegistration2Component implements OnInit {
         this.calculateMonth(formValue.DateOfBirth.month) +
         "-" +
         formValue.DateOfBirth.day,
-      EmailNotificationRequired:
-        formValue.NotificationRequired == "email" ? true : false,
-      MobileNotificationRequired:
-        formValue.NotificationRequired == "sms" ? true : false,
+      EmailNotificationRequired: formValue.NotificationRequired == "email" ? true : false,
+      MobileNotificationRequired: formValue.NotificationRequired == "sms" ? true : false
     };
 
     this.apiService.doAudienceProfileUpdate(formObj).subscribe((res: any) => {

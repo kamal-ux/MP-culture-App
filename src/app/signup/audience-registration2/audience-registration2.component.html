@@ -41,6 +41,22 @@
                 formControlName="EmailId"
                 required
               ></ion-input>
+              <ion-text
+                color="danger"
+                *ngIf="
+                  !signupForm.get('EmailId').hasError('EmailId') &&
+                    signupForm.get('EmailId').hasError('required') &&
+                    (signupForm.get('EmailId').dirty || signupForm.get('EmailId').touched);
+                  else errorValidator
+                "
+              >
+                * Email Id is Required
+              </ion-text>
+              <ng-template #errorValidator>
+                <ion-text color="danger" *ngIf="signupForm.get('EmailId').errors"
+                  >Enter valid email id</ion-text
+                >
+              </ng-template>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -108,7 +124,12 @@
             </ion-col>
             <ion-col size="4">
               <ion-text>Age</ion-text>
-              <ion-input placeholder="" type="number" formControlName="Age"></ion-input>
+              <ion-input
+                placeholder=""
+                type="number"
+                readonly="true"
+                formControlName="Age"
+              ></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>

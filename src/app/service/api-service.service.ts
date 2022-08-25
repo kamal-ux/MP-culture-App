@@ -104,7 +104,7 @@ export class ApiServiceService {
 
   loadUpcomingProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient.call("LoadUpcomingProgram", null).pipe(
+    return this.programClient.call("LoadUpcomingProgram", { Count: 10 }).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadUpcomingProgramResult);
       })
@@ -133,7 +133,7 @@ export class ApiServiceService {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
     return this.programClient.call("PopularProgramOfMonth", {}).pipe(
       map((data) => {
-        return JSON.parse(data.result.LoadPopularProgramOfMonthResult);
+        return JSON.parse(data.result.PopularProgramOfMonthResult);
       })
     );
   }

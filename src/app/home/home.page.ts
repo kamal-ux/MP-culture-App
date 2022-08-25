@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   upcomingPrograms: any[] = [];
   todaysPrograms: any[] = [];
   pastPrograms: any[] = [];
+  monthlyPrograms: any[] = [];
   landingPageData: any;
   @ViewChild("slider", { static: false }) slideWithNav: IonSlides;
   @ViewChild("registerSlider", { static: false })
@@ -68,7 +69,7 @@ export class HomePage implements OnInit {
     // loadMonthlyProgram;
     this.apiService.loadMonthlyProgram().subscribe((res: any) => {
       console.log("monthly program", res);
-      this.todaysPrograms = res;
+      this.monthlyPrograms = res;
     });
   }
 
@@ -81,7 +82,7 @@ export class HomePage implements OnInit {
   }
 
   viewAllUpcomingProgram() {
-    this.router.navigate(["tabs/home/programs", { param: "upcoming" }]);
+    this.router.navigate(["tabs/home/programs", { param: "upcoming programs" }]);
   }
   viewProgramDetails(programDetails: any) {
     this.router.navigate(["tabs/home/programDetails"], {

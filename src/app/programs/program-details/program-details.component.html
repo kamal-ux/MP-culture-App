@@ -10,13 +10,12 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <ion-row>
-    <ion-slides
-      pager="true"
-      [options]="slideOptsOne"
-      *ngIf="programDetails.ProgramMultiMedia.length"
-    >
-      <ion-slide *ngFor="let details of programDetails.ProgramMultiMedia; let index = index">
-        <img src="{{ mediaUrl + details?.MediaPath }}" class="banner_img" />
+    <ion-slides pager="true" [options]="slideOptsOne">
+      <ion-slide>
+        <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
+      </ion-slide>
+      <ion-slide>
+        <img src="{{ mediaUrl + programDetails?.BannerImagePath2 }}" class="banner_img" />
       </ion-slide>
     </ion-slides>
   </ion-row>

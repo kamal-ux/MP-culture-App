@@ -44,62 +44,6 @@
     </ion-col>
   </ion-row>
 
-  <!-- <ion-row class="mt20">
-    <ion-col size="12" class="catagories_slider">
-      <h3 class="m-0">Top Catagories</h3>
-      <ion-slides>
-        <ion-slide>
-          <ion-row>
-            <ion-col size="6">
-              <div class="content">
-                <div class="red_btn">Sports</div>
-              </div>
-              <img src="../../../assets/images/slide1.jpg" class="slide2_img" />
-            </ion-col>
-            <ion-col size="6">
-              <div class="content">
-                <div class="red_btn">Fashion</div>
-              </div>
-              <img src="../../../assets/images/slide2.jpg" class="slide2_img" />
-            </ion-col>
-          </ion-row>
-        </ion-slide>
-        <ion-slide>
-          <ion-row>
-            <ion-col size="6">
-              <div class="content">
-                <div class="red_btn">Tech</div>
-              </div>
-              <img src="../../../assets/images/slide3.jpg" class="slide2_img" />
-            </ion-col>
-            <ion-col size="6">
-              <div class="content">
-                <div class="red_btn">Gadgets</div>
-              </div>
-              <img src="../../../assets/images/slide4.jpg" class="slide2_img" />
-            </ion-col>
-          </ion-row>
-        </ion-slide>
-        <ion-slide>
-          <ion-row>
-            <ion-col size="6">
-              <div class="content">
-                <div class="red_btn">Health</div>
-              </div>
-              <img src="../../../assets/images/slide5.jpg" class="slide2_img" />
-            </ion-col>
-            <ion-col size="6">
-              <div class="content">
-                <div class="red_btn">Politics</div>
-              </div>
-              <img src="../../../assets/images/slide6.jpg" class="slide2_img" />
-            </ion-col>
-          </ion-row>
-        </ion-slide>
-      </ion-slides>
-    </ion-col>
-  </ion-row> -->
-
   <!-- Today's programs [OPEN]-->
   <div class="ion-padding">
     <ion-row class="mt20">
@@ -109,21 +53,18 @@
           ><span class="mt10 d-block">Today's Program</span>
         </h5>
       </ion-col>
-      <!-- <ion-col size="6" class="ion-text-end">
-        <a class="red_btn" (click)="viewAllUpcomingProgram()">View All</a>
-      </ion-col> -->
     </ion-row>
     <ion-card class="blue_card" *ngFor="let program of todaysPrograms">
-      <ion-row>
+      <ion-row *ngIf="todaysPrograms.length">
         <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
-            src="{{program.ProgramMultiMedia.length ? (mediaUrl+ program.ProgramMultiMedia[0].MediaPath) :'../../../assets/images/b3.jpg'}}"
+            src="{{program?.DisplayPicturePath ? (mediaUrl+ program.DisplayPicturePath) :'../../../assets/images/b3.jpg'}}"
             class="trending_img"
           />
         </ion-col>
-        <ion-col size="8">
+        <ion-col size="8" (click)="viewProgramDetails(program)">
           <h6 class="mb10">
-            <h6 class="mb10" (click)="viewProgramDetails(program)">
+            <h6 class="mb10">
               <a>{{program.ProgramName}} </a>
             </h6>
           </h6>
@@ -143,9 +84,7 @@
             {{program.AboutProgram}}
           </p>
           <u>
-            <a *ngIf="program.AboutProgram" (click)="showPara()">
-              {{ isReadMorePara ? 'Show More': 'Show Less' }}
-            </a></u
+            <a *ngIf="program.AboutProgram"> {{ isReadMorePara ? 'Show More': 'Show Less' }} </a></u
           >
         </ion-col>
       </ion-row>
@@ -174,7 +113,7 @@
       <ion-row>
         <ion-col size="4">
           <img
-            src="{{program.ProgramMultiMedia.length ? mediaUrl+ program.ProgramMultiMedia[0].MediaPath :'../../../assets/images/b3.jpg'}}"
+            src="{{program.DisplayPicturePath ? mediaUrl+ program.DisplayPicturePath :'../../../assets/images/b3.jpg'}}"
             class="trending_img"
           />
         </ion-col>
@@ -198,54 +137,8 @@
   </div>
   <!-- Upcoming programs [CLOSE]-->
 
-  <!-- Artist Category [OPEN]-->
+  <!-- Monthly programs [OPEN]-->
   <div class="ion-padding">
-    <!-- <ion-row class="mt20">
-      <ion-col size="6">
-        <h5 class="m-0 p-0">
-          <span class="border_bottom_red">कलाकार श्रेणी</span
-          ><span class="mt10 d-block">Artist Category</span>
-        </h5>
-      </ion-col>
-      <ion-col size="6" class="ion-text-end">
-        <a class="red_btn">View All</a>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <div class="content">
-            <a class="red_btn">शास्त्रीय / classical</a>
-          </div>
-          <img src="../../../assets/images/cat1.jpg" />
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <div class="content">
-            <a class="red_btn">उप शास्त्रीय / sub classical</a>
-          </div>
-          <img src="../../../assets/images/cat2.jpg" />
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <div class="content">
-            <a class="red_btn">आधुनिक कला / modern Art</a>
-          </div>
-          <img src="../../../assets/images/cat3.jpg" />
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <div class="content">
-            <a class="red_btn">लोक एवं आदिवासी / folk and tribal</a>
-          </div>
-          <img src="../../../assets/images/cat4.jpg" />
-        </ion-card>
-      </ion-col>
-    </ion-row> -->
-
     <ion-row class="mt20">
       <ion-col size="8">
         <h5 class="m-0 p-0">
@@ -258,43 +151,20 @@
       </ion-col> -->
     </ion-row>
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="6" *ngFor="let program of monthlyPrograms">
         <ion-card class="foryou_card">
           <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
           <div class="content">
-            <a class="gray_btn">Mrinalini<br />नृत्य/Dancer</a>
+            <a class="red_btn">{{program.ProgramName}}</a>
           </div>
-          <img src="../../../assets/images/b5.jpg" />
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-          <div class="content">
-            <a class="gray_btn"> Bhuri Bai<br />चित्रकारी / painting</a>
-          </div>
-          <img src="../../../assets/images/b6.jpg" />
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-          <div class="content">
-            <a class="gray_btn">Sreetoma<br />गायन/Singer</a>
-          </div>
-          <img src="../../../assets/images/b7.jpg" />
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card class="foryou_card">
-          <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
-          <div class="content">
-            <a class="gray_btn">Rishav Ishu<br />Actor</a>
-          </div>
-          <img src="../../../assets/images/b8.jpg" />
+          <img
+            width="100px"
+            height="150px"
+            src="{{program.DisplayPicturePath ? mediaUrl + program.DisplayPicturePath : 'https://jusmarktech.in/Culture/img/bg-img/program/program3.jpeg' }}"
+          />
         </ion-card>
       </ion-col>
     </ion-row>
   </div>
-  <!-- Artist Category [CLOSE]-->
+  <!-- Monthly programs [CLOSE]-->
 </ion-content>

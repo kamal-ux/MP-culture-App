@@ -14,13 +14,12 @@
   <!-- Live programs [OPEN]-->
   <div class="mb10" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'live now'">
     <ion-row *ngFor="let programDetails of livePrograms; let index = index">
-      <ion-slides
-        pager="true"
-        [options]="slideOptsOne"
-        *ngIf="programDetails.ProgramMultiMedia.length"
-      >
-        <ion-slide *ngFor="let details of programDetails.ProgramMultiMedia; let index = index">
-          <img src="{{ mediaUrl + details?.MediaPath }}" class="banner_img" />
+      <ion-slides pager="true" [options]="slideOptsOne">
+        <ion-slide>
+          <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
+        </ion-slide>
+        <ion-slide>
+          <img src="{{ mediaUrl + programDetails?.BannerImagePath2 }}" class="banner_img" />
         </ion-slide>
       </ion-slides>
       <ion-col size=".5" class="py-50"></ion-col>
@@ -59,8 +58,8 @@
         <ion-col size="4" (click)="viewProgramDetails(program, true)">
           <img
             src="{{
-              program.ProgramMultiMedia.length
-                ? mediaUrl + program.ProgramMultiMedia[0].MediaPath
+              program.DisplayPicturePath
+                ? mediaUrl + program.DisplayPicturePath
                 : '../../../assets/images/b3.jpg'
             }}"
             class="trending_img"
@@ -108,8 +107,8 @@
         <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
             src="{{
-              program.ProgramMultiMedia.length
-                ? mediaUrl + program.ProgramMultiMedia[0].MediaPath
+              program.DisplayPicturePath
+                ? mediaUrl + program.DisplayPicturePath
                 : '../../../assets/images/b3.jpg'
             }}"
             class="trending_img"
@@ -148,8 +147,8 @@
         <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
             src="{{
-              program.ProgramMultiMedia.length
-                ? mediaUrl + program.ProgramMultiMedia[0].MediaPath
+              program.DisplayPicturePath
+                ? mediaUrl + program.DisplayPicturePath
                 : '../../../assets/images/b3.jpg'
             }}"
             class="trending_img"
