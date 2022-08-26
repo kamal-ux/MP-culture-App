@@ -163,7 +163,7 @@ TabsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
   \************************************************/
 /***/ ((module) => {
 
-module.exports = ".tab-selected {\n  color: red !important;\n}\n\nion-tab-button {\n  --color-selected: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UscUJBQUE7QUFDRjs7QUFDQTtFQUNFLHFCQUFBO0FBRUYiLCJmaWxlIjoidGFicy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGFiLXNlbGVjdGVkIHtcbiAgY29sb3I6IHJlZCAhaW1wb3J0YW50O1xufVxuaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZWQ7XG59Il19 */";
+module.exports = ".tab-selected {\n  color: red !important;\n}\n\nion-tab-button {\n  --color-selected: red;\n}\n\nion-tab-bar {\n  box-shadow: 0 3px 34px rgba(255, 255, 255, 0.34) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UscUJBQUE7QUFDRjs7QUFFQTtFQUNFLHFCQUFBO0FBQ0Y7O0FBQ0E7RUFDUSwyREFBQTtBQUVSIiwiZmlsZSI6InRhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRhYi1zZWxlY3RlZCB7XG4gIGNvbG9yOiByZWQgIWltcG9ydGFudDtcbn1cblxuaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZWQ7XG59XG5pb24tdGFiLWJhcntcbiAgICAgICAgYm94LXNoYWRvdzogMCAzcHggMzRweCByZ2IoMjU1IDI1NSAyNTUgLyAzNCUpIWltcG9ydGFudDtcbn0iXX0= */";
 
 /***/ }),
 

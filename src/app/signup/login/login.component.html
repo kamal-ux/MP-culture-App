@@ -37,6 +37,7 @@
               <ion-icon name="call-outline" class="icon"></ion-icon>
               <ion-text
                 color="danger"
+                class="text-small"
                 *ngIf="
                   !loginForm.get('mobileNo').hasError('mobileNo') &&
                   loginForm.get('mobileNo').hasError('required') &&
@@ -61,20 +62,29 @@
                 type="password"
                 placeholder="Password"
                 formControlName="password"
-                (ionChange)="password_check()"
               ></ion-input>
               <ion-icon name="lock-closed-outline" class="icon"></ion-icon>
-            </ion-col>
-            <ion-col>
               <ion-text
+                color="danger"
+                class="text-small"
+                *ngIf="
+                  !loginForm.get('password').hasError('password') &&
+                  loginForm.get('password').hasError('required') &&
+                  (loginForm.get('password').dirty || loginForm.get('password').touched)
+                "
+              >
+                * Password is Required
+              </ion-text>
+            </ion-col>
+            <!-- <ion-text
                 class="text-small"
                 color="danger"
                 *ngIf="loginForm.get('password').hasError('error')"
               >
-                Password contain atleast 6 characters long including 1 uppercase, 1 special &
-                alphanumeric characters.
-              </ion-text>
-            </ion-col>
+                Password must be eight characters including one uppercase letter, one special
+                character and alphanumeric characters
+              </ion-text> -->
+
             <ion-col size="12" class="mb30">
               <button
                 type="submit"
