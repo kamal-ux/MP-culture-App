@@ -5,12 +5,7 @@ import { Platform } from "@ionic/angular";
 import { ApiServiceService } from "src/app/service/api-service.service";
 import { LocalStorageService } from "src/app/service/local-storage.service";
 import { UtilService } from "src/app/service/util-service.service";
-import {
-  NgbCalendar,
-  NgbDate,
-  NgbDateStruct,
-  NgbInputDatepickerConfig
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbDateStruct, NgbInputDatepickerConfig } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-audience-registration2",
@@ -29,26 +24,8 @@ export class AudienceRegistration2Component implements OnInit {
     private apiService: ApiServiceService,
     private router: Router,
     private localStorage: LocalStorageService,
-    private utilService: UtilService,
-    config: NgbInputDatepickerConfig,
-    calendar: NgbCalendar
-  ) {
-    // customize default values of datepickers used by this component tree
-    config.minDate = { year: 1900, month: 1, day: 1 };
-    config.maxDate = { year: 2099, month: 12, day: 31 };
-
-    // days that don't belong to current month are not visible
-    config.outsideDays = "hidden";
-
-    // weekends are disabled
-    config.markDisabled = (date: NgbDate) => calendar.getWeekday(date) >= 6;
-
-    // setting datepicker popup to close only on click outside
-    config.autoClose = "outside";
-
-    // setting datepicker popup to open above the input
-    config.placement = ["top-start", "top-end"];
-  }
+    private utilService: UtilService
+  ) {}
 
   ngOnInit() {
     this.apiService.artistRegisterClientState().subscribe((ready) => {
@@ -81,8 +58,7 @@ export class AudienceRegistration2Component implements OnInit {
       FullName = "",
       MobileNo = "",
       AudienceId = ""
-    } = await this.localStorage.get("audienceData");
-    console.log("Mobile number", MobileNo);
+    } = (await this.localStorage.get("audienceData")) || {};
     this.audienceId = AudienceId;
     this.signupForm.patchValue({
       FullName,
@@ -197,5 +173,9 @@ export class AudienceRegistration2Component implements OnInit {
         this.router.navigate([""]);
     });
     console.log("form obj", isValid, formObj);
+  }
+
+  goToLoginPage(): void {
+    this.signupForm.reset();
   }
 }

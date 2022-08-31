@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
+import { environment } from "src/environments/environment";
 import { ApiServiceService } from "../service/api-service.service";
 
 @Component({
@@ -14,7 +15,8 @@ export class LandingPage implements OnInit {
   todaysPrograms: any[] = [];
   pastPrograms: any[] = [];
   landingPageData: any;
-  mediaUrl: string = "http://mpcd.solyn.in";
+  // mediaUrl: string = "http://mpcd.solyn.in";
+  mediaUrl: string = environment.mediaUrl;
   @ViewChild("slider", { static: false }) slideWithNav: IonSlides;
   @ViewChild("registerSlider", { static: false })
   slideOpts = {

@@ -20,11 +20,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     this.urslsNotToShowLoading = [
       "assets/test.xml",
       "assets/program.xml",
+      "assets/category.xml",
       "/ProgramService.asmx",
       "/landingPage.xml",
       "/LandingPageService.asmx",
       "/artistRegister.xml",
-      "/SignupService.asmx"
+      "/SignupService.asmx",
+      "/categoryservice.asmx"
     ];
   }
 

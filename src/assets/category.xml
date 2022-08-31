@@ -1,0 +1,111 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<s:element name="LoadAllCategory">
+<s:complexType/>
+</s:element>
+<s:element name="LoadAllCategoryResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="LoadAllCategoryResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="string" nillable="true" type="s:string"/>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="LoadAllCategorySoapIn">
+<wsdl:part name="parameters" element="tns:LoadAllCategory"/>
+</wsdl:message>
+<wsdl:message name="LoadAllCategorySoapOut">
+<wsdl:part name="parameters" element="tns:LoadAllCategoryResponse"/>
+</wsdl:message>
+<wsdl:message name="LoadAllCategoryHttpGetIn"/>
+<wsdl:message name="LoadAllCategoryHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="LoadAllCategoryHttpPostIn"/>
+<wsdl:message name="LoadAllCategoryHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:portType name="CategoryServiceSoap">
+<wsdl:operation name="LoadAllCategory">
+<wsdl:input message="tns:LoadAllCategorySoapIn"/>
+<wsdl:output message="tns:LoadAllCategorySoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="CategoryServiceHttpGet">
+<wsdl:operation name="LoadAllCategory">
+<wsdl:input message="tns:LoadAllCategoryHttpGetIn"/>
+<wsdl:output message="tns:LoadAllCategoryHttpGetOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="CategoryServiceHttpPost">
+<wsdl:operation name="LoadAllCategory">
+<wsdl:input message="tns:LoadAllCategoryHttpPostIn"/>
+<wsdl:output message="tns:LoadAllCategoryHttpPostOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="CategoryServiceSoap" type="tns:CategoryServiceSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="LoadAllCategory">
+<soap:operation soapAction="http://tempuri.org/LoadAllCategory" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="CategoryServiceSoap12" type="tns:CategoryServiceSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="LoadAllCategory">
+<soap12:operation soapAction="http://tempuri.org/LoadAllCategory" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="CategoryServiceHttpGet" type="tns:CategoryServiceHttpGet">
+<http:binding verb="GET"/>
+<wsdl:operation name="LoadAllCategory">
+<http:operation location="/LoadAllCategory"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="CategoryServiceHttpPost" type="tns:CategoryServiceHttpPost">
+<http:binding verb="POST"/>
+<wsdl:operation name="LoadAllCategory">
+<http:operation location="/LoadAllCategory"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="CategoryService">
+<wsdl:port name="CategoryServiceSoap" binding="tns:CategoryServiceSoap">
+<soap:address location="https://webservice.mpcd.solyn.in/categoryservice.asmx"/>
+</wsdl:port>
+<wsdl:port name="CategoryServiceSoap12" binding="tns:CategoryServiceSoap12">
+<soap12:address location="https://webservice.mpcd.solyn.in/categoryservice.asmx"/>
+</wsdl:port>
+<wsdl:port name="CategoryServiceHttpGet" binding="tns:CategoryServiceHttpGet">
+<http:address location="https://webservice.mpcd.solyn.in/categoryservice.asmx"/>
+</wsdl:port>
+<wsdl:port name="CategoryServiceHttpPost" binding="tns:CategoryServiceHttpPost">
+<http:address location="https://webservice.mpcd.solyn.in/categoryservice.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

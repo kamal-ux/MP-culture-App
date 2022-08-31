@@ -64,7 +64,7 @@ export class AppComponent {
     private menuController: MenuController
   ) {
     StatusBar.setOverlaysWebView({ overlay: false });
-    StatusBar.setStyle({ style: Style.Light });
+    StatusBar.setStyle({ style: Style.Dark });
     StatusBar.setBackgroundColor({ color: "#e42f08" });
   }
 

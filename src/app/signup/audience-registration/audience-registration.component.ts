@@ -104,4 +104,8 @@ export class AudienceRegistrationComponent implements OnInit {
       }
     });
   }
+
+  goToLoginPage(): void {
+    this.signupForm.reset();
+  }
 }

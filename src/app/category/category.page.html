@@ -9,15 +9,17 @@
 <ion-content>
   <div class="ion-padding">
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="6" *ngFor="let category of categories?.ArtCategory">
         <ion-card (click)="openSubCategory('classical')" class="foryou_card">
           <div class="content">
-            <a class="red_btn">शास्त्रीय / classical</a>
+            <a class="red_btn">{{category.ArtCategoryName}}</a>
           </div>
-          <img src="{{'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'}}" />
+          <img
+            src="{{category.PicturePath ? mediaUrl+ category.PicturePath :'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'}}"
+          />
         </ion-card>
       </ion-col>
-      <ion-col size="6">
+      <!-- <ion-col size="6">
         <ion-card (click)="openSubCategory('subClassical')" class="foryou_card">
           <div class="content">
             <a class="red_btn">उप शास्त्रीय / sub classical</a>
@@ -40,7 +42,7 @@
           </div>
           <img src="../../../assets/images/cat4.jpg" />
         </ion-card>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </div>
 </ion-content>

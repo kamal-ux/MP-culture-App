@@ -93,6 +93,7 @@ export class LoginComponent implements OnInit {
           console.log("userdata", audienceData);
           audienceData && this.localStorageService.set("audienceData", audienceData);
           this.utilService.presentToast("Logged In successfully");
+          this.loginForm.reset();
           this.router.navigate(["/tabs/home"]);
         } else {
           this.utilService.presentToast(res.message);
@@ -134,5 +135,9 @@ export class LoginComponent implements OnInit {
         this.utilService.dismissLoading();
       }
     );
+  }
+
+  goToRegisterPage(): void {
+    this.loginForm.reset();
   }
 }
