@@ -1,15 +1,60 @@
-import { Component, Renderer2 } from "@angular/core";
+import { Component, Renderer2, SimpleChanges } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuController } from "@ionic/angular";
 import { LocalStorageService } from "./service/local-storage.service";
 import { StatusBar, Style } from "@capacitor/status-bar";
+import { StoreService } from "./service/store.service";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
-  public appMenu = [
+  public appMenu = [];
+  public offAppMenu = [
+    {
+      title: "कार्यक्रमों का सजीव प्रसारण",
+      value: "live-program",
+      icon: "play-outline"
+    },
+    {
+      title: "आज के कार्यक्रम",
+      value: "today-program",
+      icon: "flash-outline"
+    },
+    {
+      title: "आगामी कार्यक्रम",
+      value: "upcoming-program",
+
+      icon: "flash-outline"
+    },
+    {
+      title: "संगृहीत कार्यक्रम",
+      value: "archive-program",
+
+      icon: "documents-outline"
+    },
+    {
+      title: "कला विधाये",
+      value: "category",
+
+      icon: "grid-outline"
+    },
+    {
+      title: "सेटिंग",
+      value: "setting",
+
+      icon: "settings-outline"
+    },
+    {
+      title: "लॉग आउट",
+      value: "logout",
+
+      icon: "log-out-outline"
+    }
+  ];
+
+  public loginAppMenu = [
     {
       title: "कार्यक्रमों का सजीव प्रसारण",
       value: "live-program",
@@ -62,7 +107,8 @@ export class AppComponent {
     private router: Router,
     private localStorageService: LocalStorageService,
     private menuController: MenuController,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private storeService: StoreService
   ) {
     StatusBar.setOverlaysWebView({ overlay: false });
     StatusBar.setStyle({ style: Style.Dark });
@@ -77,20 +123,31 @@ export class AppComponent {
     } else {
       this.renderer.setAttribute(document.body, "color-theme", "light");
     }
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    this.appMenu = this.loginAppMenu;
+    this.storeService.getIsLoggedIn().subscribe((res: any) => {
+      console.log("isLoggedIn", res);
+      this.isLoggedIn = res;
+      this.isLoggedIn ? (this.appMenu = this.offAppMenu) : (this.appMenu = this.loginAppMenu);
+    });
   }
 
   async ionViewWillEnter() {
     this.isLoggedIn =
       (await !!this.localStorageService.get("audienceData")) ||
       (await !!this.localStorageService.get("audienceData"));
+
+    this.storeService.getIsLoggedIn().subscribe((res: any) => {
+      console.log("isLoggedIn", res);
+      this.isLoggedIn = res;
+      this.isLoggedIn ? (this.appMenu = this.offAppMenu) : (this.offAppMenu = this.appMenu);
+    });
   }
 
   public menuToggle(menu: string): void {
     switch (menu) {
-      case "Logout":
-        this.localStorageService.clearAll();
+      case "logout":
+        this.storeService.setIsLoggedIn(false);
+        this.localStorageService.remove("audienceData");
         this.router.navigateByUrl("", { replaceUrl: true });
         break;
       case "live-program":

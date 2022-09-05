@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LocalStorageService } from "src/app/service/local-storage.service";
+import { StoreService } from "src/app/service/store.service";
 import { UtilService } from "src/app/service/util-service.service";
 import { ApiServiceService } from "../../service/api-service.service";
 
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private utilService: UtilService,
     private fb: FormBuilder,
     private router: Router,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private storeService: StoreService
   ) {}
 
   ngOnInit() {
@@ -92,6 +94,7 @@ export class LoginComponent implements OnInit {
           };
           console.log("userdata", audienceData);
           audienceData && this.localStorageService.set("audienceData", audienceData);
+          this.storeService.setIsLoggedIn(true);
           this.utilService.presentToast("Logged In successfully");
           this.loginForm.reset();
           this.router.navigate(["/tabs/home"]);
