@@ -3,6 +3,7 @@ import { IonSlides } from "@ionic/angular";
 import { ApiServiceService } from "../service/api-service.service";
 import { environment } from "../../environments/environment";
 import { Router } from "@angular/router";
+import { StoreService } from "../service/store.service";
 
 @Component({
   selector: "app-home",
@@ -35,11 +36,16 @@ export class HomePage implements OnInit {
   mediaUrl: string = environment.mediaUrl;
   isReadMore = true;
   isReadMorePara = true;
-  constructor(private apiService: ApiServiceService, private router: Router) {}
+  constructor(
+    private apiService: ApiServiceService,
+    private router: Router,
+    private storeService: StoreService
+  ) {}
 
   ngOnInit(): void {}
 
   ionViewWillEnter(): void {
+    this.getStoreData();
     this.apiService.landingPageClientState().subscribe((ready) => {
       if (ready) {
         this.landingPageClientReady = true;
@@ -71,6 +77,19 @@ export class HomePage implements OnInit {
       console.log("monthly program", res);
       this.monthlyPrograms = res;
     });
+  }
+
+  public getStoreData() {
+    const {
+      upcomingProgramsData = [],
+      pastProgramsData = [],
+      todaysProgramsData = [],
+      monthlyProgramsData = []
+    } = this.storeService;
+    this.upcomingPrograms = upcomingProgramsData;
+    this.pastPrograms = pastProgramsData;
+    this.todaysPrograms = todaysProgramsData;
+    this.monthlyPrograms = monthlyProgramsData;
   }
 
   public loadLandingData(): void {

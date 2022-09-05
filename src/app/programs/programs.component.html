@@ -29,7 +29,10 @@
       <ion-col size=".4" class="pb-20"></ion-col>
 
       <ion-col size="8" class="pb-20">
-        <a href="{{ programDetails.LiveStreamingLink }}" target="_blank">
+        <a
+          href="{{ programDetails.LiveStreamingLink ? programDetails.LiveStreamingLink : '' }}"
+          target="_blank"
+        >
           <ion-text>
             <ion-icon class="text-danger blink_me" name="radio-button-on"></ion-icon>
             &nbsp; <b>Live Now</b></ion-text
@@ -63,6 +66,8 @@
                 : '../../../assets/images/b3.jpg'
             }}"
             class="trending_img"
+            width="100px"
+            height="85px"
           />
         </ion-col>
         <ion-col size="8">
@@ -112,6 +117,8 @@
                 : '../../../assets/images/b3.jpg'
             }}"
             class="trending_img"
+            width="100px"
+            height="85px"
           />
         </ion-col>
         <ion-col size="8">
@@ -152,6 +159,8 @@
                 : '../../../assets/images/b3.jpg'
             }}"
             class="trending_img"
+            width="100px"
+            height="85px"
           />
         </ion-col>
         <ion-col size="8">
@@ -174,7 +183,12 @@
                 : program.StartTime + " To " + program.EndTime
             }}
           </p>
-          <p class="mt10" style="white-space: pre-wrap" [ngClass]="{ limitTextHeight: isMorePara }">
+          <p
+            class="mt10"
+            style="white-space: pre-wrap"
+            *ngIf="program.AboutProgram"
+            [ngClass]="{ limitTextHeight: isMorePara }"
+          >
             {{ program.AboutProgram }}
           </p>
           <u>

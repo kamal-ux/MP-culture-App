@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Renderer2 } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuController } from "@ionic/angular";
 import { LocalStorageService } from "./service/local-storage.service";
@@ -61,15 +61,22 @@ export class AppComponent {
   constructor(
     private router: Router,
     private localStorageService: LocalStorageService,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private renderer: Renderer2
   ) {
     StatusBar.setOverlaysWebView({ overlay: false });
     StatusBar.setStyle({ style: Style.Dark });
     StatusBar.setBackgroundColor({ color: "#e42f08" });
   }
 
-  ngOnInit(): void {
-    this.localStorageService.init();
+  async ngOnInit() {
+    await this.localStorageService.init();
+    const mode = (await this.localStorageService.get("mode")) || false;
+    if (mode) {
+      this.renderer.setAttribute(document.body, "color-theme", "dark");
+    } else {
+      this.renderer.setAttribute(document.body, "color-theme", "light");
+    }
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
   }

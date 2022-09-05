@@ -87,11 +87,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LandingPage": () => (/* binding */ LandingPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _landing_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./landing.page.html?ngResource */ 5806);
 /* harmony import */ var _landing_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./landing.page.scss?ngResource */ 52075);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _service_api_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/api-service.service */ 7149);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 92340);
+/* harmony import */ var _service_api_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/api-service.service */ 7149);
+
 
 
 
@@ -103,7 +105,8 @@ let LandingPage = class LandingPage {
         this.upcomingPrograms = [];
         this.todaysPrograms = [];
         this.pastPrograms = [];
-        this.mediaUrl = "http://mpcd.solyn.in";
+        // mediaUrl: string = "http://mpcd.solyn.in";
+        this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.mediaUrl;
         this.slideOpts = {
             initialSlide: 0,
             // speed: 400,
@@ -152,14 +155,14 @@ let LandingPage = class LandingPage {
     }
 };
 LandingPage.ctorParameters = () => [
-    { type: _service_api_service_service__WEBPACK_IMPORTED_MODULE_2__.ApiServiceService }
+    { type: _service_api_service_service__WEBPACK_IMPORTED_MODULE_3__.ApiServiceService }
 ];
 LandingPage.propDecorators = {
-    slideWithNav: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.ViewChild, args: ["slider", { static: false },] }],
-    slideOpts: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.ViewChild, args: ["registerSlider", { static: false },] }]
+    slideWithNav: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.ViewChild, args: ["slider", { static: false },] }],
+    slideOpts: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.ViewChild, args: ["registerSlider", { static: false },] }]
 };
-LandingPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+LandingPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
         selector: "app-landing",
         template: _landing_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_landing_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]

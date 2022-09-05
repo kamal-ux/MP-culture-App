@@ -21,12 +21,14 @@ export class HttpConfigInterceptor implements HttpInterceptor {
       "assets/test.xml",
       "assets/program.xml",
       "assets/category.xml",
+      "assets/settings.xml",
       "/ProgramService.asmx",
       "/landingPage.xml",
       "/LandingPageService.asmx",
       "/artistRegister.xml",
       "/SignupService.asmx",
-      "/categoryservice.asmx"
+      "/categoryservice.asmx",
+      "/SettingService.asmx"
     ];
   }
 

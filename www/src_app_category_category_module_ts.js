@@ -93,24 +93,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CategoryPage": () => (/* binding */ CategoryPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _category_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./category.page.html?ngResource */ 75966);
 /* harmony import */ var _category_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./category.page.scss?ngResource */ 45058);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 92340);
+/* harmony import */ var _service_api_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/api-service.service */ 7149);
+
+
 
 
 
 
 
 let CategoryPage = class CategoryPage {
-    constructor(route) {
+    constructor(route, apiService) {
         this.route = route;
+        this.apiService = apiService;
+        this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.mediaUrl + "/";
     }
-    ngOnInit() { }
-    openSubCategory(subCategory) {
+    ngOnInit() {
+        this.apiService.categoryClientState().subscribe((ready) => {
+            if (ready) {
+                this.categoryClientReady = true;
+                this.loadAllCategory();
+            }
+        });
+    }
+    loadAllCategory() {
+        this.apiService.loadCategoryData().subscribe((res) => {
+            console.log("category data", res);
+            this.categories = res;
+        });
+    }
+    openSubCategory(category) {
         this.route.navigate(["/tabs/category/subCategory"], {
-            state: { subCategory }
+            state: category
         });
     }
     navigateToHome() {
@@ -118,10 +137,11 @@ let CategoryPage = class CategoryPage {
     }
 };
 CategoryPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: _service_api_service_service__WEBPACK_IMPORTED_MODULE_3__.ApiServiceService }
 ];
-CategoryPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+CategoryPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: "app-category",
         template: _category_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_category_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -142,11 +162,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SubCategoryComponent": () => (/* binding */ SubCategoryComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _sub_category_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sub-category.component.html?ngResource */ 97922);
 /* harmony import */ var _sub_category_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sub-category.component.scss?ngResource */ 57920);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
 
 
 
@@ -155,22 +177,222 @@ __webpack_require__.r(__webpack_exports__);
 let SubCategoryComponent = class SubCategoryComponent {
     constructor(router) {
         this.router = router;
+        this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.mediaUrl + "/";
     }
     ngOnInit() {
-        this.routState = this.router.getCurrentNavigation().extras.state;
-        console.log("rout state", this.routState);
+        this.category = this.router.getCurrentNavigation().extras.state;
+        console.log("rout state", this.category);
     }
 };
 SubCategoryComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router }
 ];
-SubCategoryComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+SubCategoryComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: "app-sub-category",
         template: _sub_category_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_sub_category_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], SubCategoryComponent);
+
+
+
+/***/ }),
+
+/***/ 7149:
+/*!************************************************!*\
+  !*** ./src/app/service/api-service.service.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ApiServiceService": () => (/* binding */ ApiServiceService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var ngx_soap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-soap */ 58335);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 84505);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 86942);
+
+
+
+
+
+
+let ApiServiceService = class ApiServiceService {
+    constructor(http, soap) {
+        this.http = http;
+        this.soap = soap;
+        this.path = "../assets/test.xml";
+        this.programWSDLPath = "../assets/program.xml";
+        this.landingPageWSDLPath = "../assets/landingPage.xml";
+        this.artistRegisterWSDLPath = "../assets/artistRegister.xml";
+        this.categoryWSDLPath = "../assets/category.xml";
+        this.settingsWSDLPath = "../assets/settings.xml";
+        this.clientReady = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject(false);
+        this.programClientReady = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject(false);
+        this.landingPageClientReady = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject(false);
+        this.artistRegisterClientReady = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject(false);
+        this.categoryClientReady = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject(false);
+        this.settingsClientReady = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject(false);
+        this.soap.createClient(this.path).then((client) => {
+            console.log("client", client);
+            this.client = client;
+            this.clientReady.next(true);
+        });
+        this.soap.createClient(this.programWSDLPath).then((client) => {
+            console.log("program client", client);
+            this.programClient = client;
+            this.programClientReady.next(true);
+        });
+        this.soap.createClient(this.landingPageWSDLPath).then((client) => {
+            console.log("landing page client", client);
+            this.landingPageClient = client;
+            this.landingPageClientReady.next(true);
+        });
+        this.soap.createClient(this.artistRegisterWSDLPath).then((client) => {
+            console.log("artist register client", client);
+            this.artistRegisterClient = client;
+            this.artistRegisterClientReady.next(true);
+        });
+        this.soap.createClient(this.categoryWSDLPath).then((client) => {
+            console.log("artist register client", client);
+            this.categoryClient = client;
+            this.categoryClientReady.next(true);
+        });
+        this.soap.createClient(this.settingsWSDLPath).then((client) => {
+            console.log("artist register client", client);
+            this.settingsClient = client;
+            this.settingsClientReady.next(true);
+        });
+    }
+    clientState() {
+        return this.clientReady.asObservable();
+    }
+    programClientState() {
+        return this.programClientReady.asObservable();
+    }
+    landingPageClientState() {
+        return this.landingPageClientReady.asObservable();
+    }
+    artistRegisterClientState() {
+        return this.artistRegisterClientReady.asObservable();
+    }
+    categoryClientState() {
+        return this.categoryClientReady.asObservable();
+    }
+    settingsClientState() {
+        return this.settingsClientReady.asObservable();
+    }
+    userLogin(obj) {
+        this.client.addHttpHeader("Content-Type", "text/xml");
+        return this.client.call("UserLogin", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.UserLoginResult);
+        }));
+    }
+    // AudienceLogin;
+    audienceLogin(obj) {
+        this.client.addHttpHeader("Content-Type", "text/xml");
+        return this.client.call("AudienceLogin", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.AudienceLoginResult);
+        }));
+    }
+    artistLogin(obj) {
+        this.client.addHttpHeader("Content-Type", "text/xml");
+        return this.client.call("ArtistLogin", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.ArtistLoginResult);
+        }));
+    }
+    loadLiveProgram() {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("LoadLiveProgram", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadLiveProgramResult);
+        }));
+    }
+    loadUpcomingProgram() {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("LoadUpcomingProgram", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadUpcomingProgramResult);
+        }));
+    }
+    loadPastProgram() {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("LoadPastProgram", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadPastProgramResult);
+        }));
+    }
+    loadTodaysProgram() {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("LoadTodaysProgram", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadTodaysProgramResult);
+        }));
+    }
+    loadMonthlyProgram() {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("PopularProgramOfMonth", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.PopularProgramOfMonthResult);
+        }));
+    }
+    loadLandingPageContent() {
+        this.landingPageClient.addHttpHeader("Content-Type", "text/xml");
+        return this.landingPageClient.call("LoadLandingData", {}).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadLandingDataResult);
+        }));
+    }
+    doArtistRegister(obj) {
+        this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+        return this.artistRegisterClient.call("ArtistSignup", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.ArtistSignupResult);
+        }));
+    }
+    doAudienceRegister(obj) {
+        this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+        return this.artistRegisterClient.call("AudienceSignup", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.AudienceSignupResult);
+        }));
+    }
+    doAudienceProfileUpdate(obj) {
+        this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+        return this.artistRegisterClient.call("AudienceUpdate", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.AudienceUpdateResult);
+        }));
+    }
+    getArtistRegisterRequirement() {
+        this.artistRegisterClient.addHttpHeader("Content-Type", "text/xml");
+        return this.artistRegisterClient.call("ArtistRegistrationPageLoad", {}).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.ArtistRegistrationPageLoadResult);
+        }));
+    }
+    loadCategoryData() {
+        this.categoryClient.addHttpHeader("Content-Type", "text/xml");
+        return this.categoryClient.call("LoadAllCategory", {}).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadAllCategoryResult);
+        }));
+    }
+    loadSettingsData(audienceData) {
+        this.settingsClient.addHttpHeader("Content-Type", "text/xml");
+        return this.settingsClient.call("LoadNotificationRequirementByAudienceId", audienceData).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadNotificationRequirementByAudienceIdResult);
+        }));
+    }
+    changeSettings(audienceSettingsData) {
+        this.settingsClient.addHttpHeader("Content-Type", "text/xml");
+        return this.settingsClient.call("UpdateNotificationRequirement", audienceSettingsData).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.UpdateNotificationRequirementResult);
+        }));
+    }
+};
+ApiServiceService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient },
+    { type: ngx_soap__WEBPACK_IMPORTED_MODULE_3__.NgxSoapService }
+];
+ApiServiceService = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Injectable)({
+        providedIn: "root"
+    })
+], ApiServiceService);
 
 
 
@@ -202,7 +424,7 @@ module.exports = ".icons {\n  font-size: 25px;\n  color: gray;\n  padding-left: 
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon class=\"back-button\" name=\"arrow-back-outline\" (click)=\"navigateToHome()\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"text-center\">कला विधाये / Art Category</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div class=\"ion-padding\">\n    <ion-row>\n      <ion-col size=\"6\">\n        <ion-card (click)=\"openSubCategory('classical')\" class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">शास्त्रीय / classical</a>\n          </div>\n          <img src=\"{{'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'}}\" />\n        </ion-card>\n      </ion-col>\n      <ion-col size=\"6\">\n        <ion-card (click)=\"openSubCategory('subClassical')\" class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">उप शास्त्रीय / sub classical</a>\n          </div>\n          <img src=\"../../../assets/images/cat2.jpg\" />\n        </ion-card>\n      </ion-col>\n      <ion-col size=\"6\">\n        <ion-card (click)=\"openSubCategory('modernArt')\" class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">आधुनिक कला / modern Art</a>\n          </div>\n          <img src=\"../../../assets/images/cat3.jpg\" />\n        </ion-card>\n      </ion-col>\n      <ion-col size=\"6\">\n        <ion-card (click)=\"openSubCategory('folkAndTribal')\" class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">लोक एवं आदिवासी / folk and tribal</a>\n          </div>\n          <img src=\"../../../assets/images/cat4.jpg\" />\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </div>\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon class=\"back-button\" name=\"arrow-back-outline\" (click)=\"navigateToHome()\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"text-center\">कला विधाये / Art Category</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div class=\"ion-padding\">\n    <ion-row>\n      <ion-col size=\"6\" *ngFor=\"let category of categories\">\n        <ion-card (click)=\"openSubCategory(category)\" class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">{{category.ArtCategoryName}}</a>\n          </div>\n          <img\n            src=\"{{category.PicturePath ? mediaUrl+ category.PicturePath :'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'}}\"\n          />\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </div>\n</ion-content>\n";
 
 /***/ }),
 
@@ -212,7 +434,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
   \******************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"text-center\">{{ routState.subCategory | titlecase }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div class=\"ion-padding\">\n    <ion-row>\n      <ion-col size=\"6\">\n        <ion-card class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">शास्त्रीय / classical</a>\n          </div>\n          <img src=\"{{ 'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg' }}\" />\n        </ion-card>\n      </ion-col>\n      <ion-col size=\"6\">\n        <ion-card class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">उप शास्त्रीय / sub classical</a>\n          </div>\n          <img src=\"../../../assets/images/cat2.jpg\" />\n        </ion-card>\n      </ion-col>\n      <ion-col size=\"6\">\n        <ion-card class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">आधुनिक कला / modern Art</a>\n          </div>\n          <img src=\"../../../assets/images/cat3.jpg\" />\n        </ion-card>\n      </ion-col>\n      <ion-col size=\"6\">\n        <ion-card class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">लोक एवं आदिवासी / folk and tribal</a>\n          </div>\n          <img src=\"../../../assets/images/cat4.jpg\" />\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </div>\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"text-center\">{{ category.ArtCategoryName | titlecase }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div class=\"ion-padding\">\n    <ion-row>\n      <ion-col size=\"6\" *ngFor=\"let category of category?.SubCategory\">\n        <ion-card class=\"foryou_card\">\n          <div class=\"content\">\n            <a class=\"red_btn\">{{ category.ArtSubCategoryName }}</a>\n          </div>\n          <img\n            src=\"{{\n              category.PicturePath\n                ? mediaUrl + category.PicturePath\n                : 'https://jusmarktech.in/Culture/img/bg-img/category/cat1.jpeg'\n            }}\"\n          />\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </div>\n</ion-content>\n";
 
 /***/ })
 

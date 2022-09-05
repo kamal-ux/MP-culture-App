@@ -61,10 +61,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
 /* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.html?ngResource */ 33383);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 79259);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./service/local-storage.service */ 42518);
@@ -79,10 +79,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-  constructor(router, localStorageService, menuController) {
+  constructor(router, localStorageService, menuController, renderer) {
     this.router = router;
     this.localStorageService = localStorageService;
     this.menuController = menuController;
+    this.renderer = renderer;
     this.appMenu = [{
       title: "कार्यक्रमों का सजीव प्रसारण",
       value: "live-program",
@@ -120,7 +121,7 @@ let AppComponent = class AppComponent {
       overlay: false
     });
     _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.StatusBar.setStyle({
-      style: _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.Style.Light
+      style: _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.Style.Dark
     });
     _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__.StatusBar.setBackgroundColor({
       color: "#e42f08"
@@ -128,15 +129,27 @@ let AppComponent = class AppComponent {
   }
 
   ngOnInit() {
-    this.localStorageService.init(); //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-  }
-
-  ionViewWillEnter() {
     var _this = this;
 
     return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this.isLoggedIn = (yield !!_this.localStorageService.get("audienceData")) || (yield !!_this.localStorageService.get("audienceData"));
+      yield _this.localStorageService.init();
+      const mode = (yield _this.localStorageService.get("mode")) || false;
+
+      if (mode) {
+        _this.renderer.setAttribute(document.body, "color-theme", "dark");
+      } else {
+        _this.renderer.setAttribute(document.body, "color-theme", "light");
+      } //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+      //Add 'implements OnInit' to the class.
+
+    })();
+  }
+
+  ionViewWillEnter() {
+    var _this2 = this;
+
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this2.isLoggedIn = (yield !!_this2.localStorageService.get("audienceData")) || (yield !!_this2.localStorageService.get("audienceData"));
     })();
   }
 
@@ -202,9 +215,11 @@ AppComponent.ctorParameters = () => [{
   type: _service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__.LocalStorageService
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.MenuController
+}, {
+  type: _angular_core__WEBPACK_IMPORTED_MODULE_7__.Renderer2
 }];
 
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
   selector: "app-root",
   template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -309,11 +324,15 @@ let HttpConfigInterceptor = class HttpConfigInterceptor {
         this.urslsNotToShowLoading = [
             "assets/test.xml",
             "assets/program.xml",
+            "assets/category.xml",
+            "assets/settings.xml",
             "/ProgramService.asmx",
             "/landingPage.xml",
             "/LandingPageService.asmx",
             "/artistRegister.xml",
-            "/SignupService.asmx"
+            "/SignupService.asmx",
+            "/categoryservice.asmx",
+            "/SettingService.asmx"
         ];
     }
     intercept(request, next) {

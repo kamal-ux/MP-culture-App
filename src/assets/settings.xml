@@ -1,0 +1,206 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://webservice.mpcd.solyn.in/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://webservice.mpcd.solyn.in/">
+<script/>
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="https://webservice.mpcd.solyn.in/">
+<s:element name="UpdateNotificationRequirement">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="AudienceId" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="EmailNotificationRequired" type="s:boolean"/>
+<s:element minOccurs="1" maxOccurs="1" name="SMSNotificationRequired" type="s:boolean"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="UpdateNotificationRequirementResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="UpdateNotificationRequirementResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="LoadNotificationRequirementByAudienceId">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="AudienceId" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="LoadNotificationRequirementByAudienceIdResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="LoadNotificationRequirementByAudienceIdResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="string" nillable="true" type="s:string"/>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="UpdateNotificationRequirementSoapIn">
+<wsdl:part name="parameters" element="tns:UpdateNotificationRequirement"/>
+</wsdl:message>
+<wsdl:message name="UpdateNotificationRequirementSoapOut">
+<wsdl:part name="parameters" element="tns:UpdateNotificationRequirementResponse"/>
+</wsdl:message>
+<wsdl:message name="LoadNotificationRequirementByAudienceIdSoapIn">
+<wsdl:part name="parameters" element="tns:LoadNotificationRequirementByAudienceId"/>
+</wsdl:message>
+<wsdl:message name="LoadNotificationRequirementByAudienceIdSoapOut">
+<wsdl:part name="parameters" element="tns:LoadNotificationRequirementByAudienceIdResponse"/>
+</wsdl:message>
+<wsdl:message name="UpdateNotificationRequirementHttpGetIn">
+<wsdl:part name="AudienceId" type="s:string"/>
+<wsdl:part name="EmailNotificationRequired" type="s:string"/>
+<wsdl:part name="SMSNotificationRequired" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="UpdateNotificationRequirementHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="LoadNotificationRequirementByAudienceIdHttpGetIn">
+<wsdl:part name="AudienceId" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="LoadNotificationRequirementByAudienceIdHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="UpdateNotificationRequirementHttpPostIn">
+<wsdl:part name="AudienceId" type="s:string"/>
+<wsdl:part name="EmailNotificationRequired" type="s:string"/>
+<wsdl:part name="SMSNotificationRequired" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="UpdateNotificationRequirementHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="LoadNotificationRequirementByAudienceIdHttpPostIn">
+<wsdl:part name="AudienceId" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="LoadNotificationRequirementByAudienceIdHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:portType name="SettingServiceSoap">
+<wsdl:operation name="UpdateNotificationRequirement">
+<wsdl:input message="tns:UpdateNotificationRequirementSoapIn"/>
+<wsdl:output message="tns:UpdateNotificationRequirementSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<wsdl:input message="tns:LoadNotificationRequirementByAudienceIdSoapIn"/>
+<wsdl:output message="tns:LoadNotificationRequirementByAudienceIdSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="SettingServiceHttpGet">
+<wsdl:operation name="UpdateNotificationRequirement">
+<wsdl:input message="tns:UpdateNotificationRequirementHttpGetIn"/>
+<wsdl:output message="tns:UpdateNotificationRequirementHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<wsdl:input message="tns:LoadNotificationRequirementByAudienceIdHttpGetIn"/>
+<wsdl:output message="tns:LoadNotificationRequirementByAudienceIdHttpGetOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="SettingServiceHttpPost">
+<wsdl:operation name="UpdateNotificationRequirement">
+<wsdl:input message="tns:UpdateNotificationRequirementHttpPostIn"/>
+<wsdl:output message="tns:UpdateNotificationRequirementHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<wsdl:input message="tns:LoadNotificationRequirementByAudienceIdHttpPostIn"/>
+<wsdl:output message="tns:LoadNotificationRequirementByAudienceIdHttpPostOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="SettingServiceSoap" type="tns:SettingServiceSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="UpdateNotificationRequirement">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/UpdateNotificationRequirement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/LoadNotificationRequirementByAudienceId" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="SettingServiceSoap12" type="tns:SettingServiceSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="UpdateNotificationRequirement">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/UpdateNotificationRequirement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/LoadNotificationRequirementByAudienceId" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="SettingServiceHttpGet" type="tns:SettingServiceHttpGet">
+<http:binding verb="GET"/>
+<wsdl:operation name="UpdateNotificationRequirement">
+<http:operation location="/UpdateNotificationRequirement"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<http:operation location="/LoadNotificationRequirementByAudienceId"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="SettingServiceHttpPost" type="tns:SettingServiceHttpPost">
+<http:binding verb="POST"/>
+<wsdl:operation name="UpdateNotificationRequirement">
+<http:operation location="/UpdateNotificationRequirement"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LoadNotificationRequirementByAudienceId">
+<http:operation location="/LoadNotificationRequirementByAudienceId"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SettingService">
+<wsdl:port name="SettingServiceSoap" binding="tns:SettingServiceSoap">
+<soap:address location="https://webservice.mpcd.solyn.in/SettingService.asmx"/>
+</wsdl:port>
+<wsdl:port name="SettingServiceSoap12" binding="tns:SettingServiceSoap12">
+<soap12:address location="https://webservice.mpcd.solyn.in/SettingService.asmx"/>
+</wsdl:port>
+<wsdl:port name="SettingServiceHttpGet" binding="tns:SettingServiceHttpGet">
+<http:address location="https://webservice.mpcd.solyn.in/SettingService.asmx"/>
+</wsdl:port>
+<wsdl:port name="SettingServiceHttpPost" binding="tns:SettingServiceHttpPost">
+<http:address location="https://webservice.mpcd.solyn.in/SettingService.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -146,7 +146,7 @@
         <a class="red_btn">View All</a>
       </ion-col> -->
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="monthlyPrograms.length">
       <ion-col size="6" *ngFor="let program of monthlyPrograms">
         <ion-card class="foryou_card">
           <ion-icon name="bookmark-outline" class="bookmark"></ion-icon>
@@ -159,6 +159,13 @@
             src="{{program.DisplayPicturePath ? mediaUrl + program.DisplayPicturePath : 'https://jusmarktech.in/Culture/img/bg-img/program/program3.jpeg' }}"
           />
         </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!monthlyPrograms.length">
+      <ion-col class="ion-text-center">
+        <ion-text class="text-small" color="danger"
+          >Currently we do not have any program in this category</ion-text
+        >
       </ion-col>
     </ion-row>
   </div>

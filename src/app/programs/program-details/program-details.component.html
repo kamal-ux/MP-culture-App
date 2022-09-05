@@ -11,10 +11,10 @@
 <ion-content [fullscreen]="true">
   <ion-row>
     <ion-slides pager="true" [options]="slideOptsOne">
-      <ion-slide>
+      <ion-slide *ngIf="programDetails?.BannerImagePath1">
         <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
       </ion-slide>
-      <ion-slide>
+      <ion-slide *ngIf="programDetails?.BannerImagePath2">
         <img src="{{ mediaUrl + programDetails?.BannerImagePath2 }}" class="banner_img" />
       </ion-slide>
     </ion-slides>
@@ -38,10 +38,10 @@
       <span class="border_bottom_red">Program Details</span>
     </ion-col>
     <ion-col class="mt10" size="12">
-      <ion-text><b>Program Name : </b>{{ programDetails.ProgramName }}</ion-text
+      <ion-text><b> Name : </b>{{ programDetails.ProgramName }}</ion-text
       ><br />
       <ion-text
-        ><b>Program Date : </b>
+        ><b> Date : </b>
         {{
           programDetails.ProgramStartDate == programDetails.ProgramEndDate
             ? programDetails.ProgramStartDate

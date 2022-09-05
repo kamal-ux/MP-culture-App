@@ -26,14 +26,14 @@ export class CategoryPage implements OnInit {
 
   loadAllCategory(): void {
     this.apiService.loadCategoryData().subscribe((res: any) => {
-      console.log("category data", res.Categories);
-      this.categories = res.Categories;
+      console.log("category data", res);
+      this.categories = res;
     });
   }
 
-  openSubCategory(subCategory) {
+  openSubCategory(category) {
     this.route.navigate(["/tabs/category/subCategory"], {
-      state: { subCategory }
+      state: category
     });
   }
 

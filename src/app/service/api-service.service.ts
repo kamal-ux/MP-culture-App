@@ -13,18 +13,21 @@ export class ApiServiceService {
   landingPageClient: Client;
   artistRegisterClient: Client;
   categoryClient: Client;
+  settingsClient: Client;
 
   path = "../assets/test.xml";
   programWSDLPath = "../assets/program.xml";
   landingPageWSDLPath = "../assets/landingPage.xml";
   artistRegisterWSDLPath = "../assets/artistRegister.xml";
   categoryWSDLPath = "../assets/category.xml";
+  settingsWSDLPath = "../assets/settings.xml";
 
   private clientReady = new BehaviorSubject(false);
   private programClientReady = new BehaviorSubject(false);
   private landingPageClientReady = new BehaviorSubject(false);
   private artistRegisterClientReady = new BehaviorSubject(false);
   private categoryClientReady = new BehaviorSubject(false);
+  private settingsClientReady = new BehaviorSubject(false);
 
   constructor(private http: HttpClient, private soap: NgxSoapService) {
     this.soap.createClient(this.path).then((client) => {
@@ -55,6 +58,11 @@ export class ApiServiceService {
       this.categoryClient = client;
       this.categoryClientReady.next(true);
     });
+    this.soap.createClient(this.settingsWSDLPath).then((client) => {
+      console.log("artist register client", client);
+      this.settingsClient = client;
+      this.settingsClientReady.next(true);
+    });
   }
 
   clientState() {
@@ -75,6 +83,10 @@ export class ApiServiceService {
 
   categoryClientState() {
     return this.categoryClientReady.asObservable();
+  }
+
+  settingsClientState() {
+    return this.settingsClientReady.asObservable();
   }
 
   userLogin(obj) {
@@ -107,7 +119,7 @@ export class ApiServiceService {
 
   loadLiveProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient.call("LoadLiveProgram", null).pipe(
+    return this.programClient.call("LoadLiveProgram", { Count: 20 }).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadLiveProgramResult);
       })
@@ -116,7 +128,7 @@ export class ApiServiceService {
 
   loadUpcomingProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient.call("LoadUpcomingProgram", { Count: 10 }).pipe(
+    return this.programClient.call("LoadUpcomingProgram", { Count: 20 }).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadUpcomingProgramResult);
       })
@@ -125,7 +137,7 @@ export class ApiServiceService {
 
   loadPastProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient.call("LoadPastProgram", {}).pipe(
+    return this.programClient.call("LoadPastProgram", { Count: 20 }).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadPastProgramResult);
       })
@@ -134,7 +146,7 @@ export class ApiServiceService {
 
   loadTodaysProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient.call("LoadTodaysProgram", {}).pipe(
+    return this.programClient.call("LoadTodaysProgram", { Count: 20 }).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadTodaysProgramResult);
       })
@@ -143,9 +155,18 @@ export class ApiServiceService {
 
   loadMonthlyProgram() {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient.call("PopularProgramOfMonth", {}).pipe(
+    return this.programClient.call("PopularProgramOfMonth", { Count: 20 }).pipe(
       map((data) => {
         return JSON.parse(data.result.PopularProgramOfMonthResult);
+      })
+    );
+  }
+
+  loadProgramRating() {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("LoadProgramRatingReviewByProgramId", { Count: 20 }).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
       })
     );
   }
@@ -200,6 +221,24 @@ export class ApiServiceService {
     return this.categoryClient.call("LoadAllCategory", {}).pipe(
       map((data) => {
         return JSON.parse(data.result.LoadAllCategoryResult);
+      })
+    );
+  }
+
+  loadSettingsData(audienceData) {
+    this.settingsClient.addHttpHeader("Content-Type", "text/xml");
+    return this.settingsClient.call("LoadNotificationRequirementByAudienceId", audienceData).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadNotificationRequirementByAudienceIdResult);
+      })
+    );
+  }
+
+  changeSettings(audienceSettingsData) {
+    this.settingsClient.addHttpHeader("Content-Type", "text/xml");
+    return this.settingsClient.call("UpdateNotificationRequirement", audienceSettingsData).pipe(
+      map((data) => {
+        return JSON.parse(data.result.UpdateNotificationRequirementResult);
       })
     );
   }

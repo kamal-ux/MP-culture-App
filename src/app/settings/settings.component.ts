@@ -1,7 +1,9 @@
 import { Component, OnInit, Renderer2 } from "@angular/core";
 import { Router } from "@angular/router";
+import { ApiServiceService } from "../service/api-service.service";
 import { LocalStorageService } from "../service/local-storage.service";
-
+import { UtilService } from "../service/util-service.service";
+import * as _ from "lodash";
 @Component({
   selector: "app-settings",
   templateUrl: "./settings.component.html",
@@ -9,19 +11,62 @@ import { LocalStorageService } from "../service/local-storage.service";
 })
 export class SettingsComponent implements OnInit {
   mode: boolean;
-  language: string = "english";
-  isDefaultLanguage: boolean = true;
+  language: string = "hindi";
+  isDefaultLanguage: boolean = false;
+  settingsClientReady: boolean = false;
+  EmailNotificationRequired: boolean;
+  MobileNotificationRequired: boolean;
+  audienceId: any;
+  isNotificationChange: boolean = true;
   constructor(
     private router: Router,
     private renderer: Renderer2,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private apiService: ApiServiceService,
+    private utilService: UtilService
   ) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    // this.mode = (await this.localStorageService.get("mode")) || false;
+    // console.log("mode", this.mode);
+    // this.apiService.settingsClientState().subscribe(async (ready) => {
+    //   if (ready) {
+    //     this.settingsClientReady = true;
+    //     const { AudienceId = "" } = (await this.localStorageService.get("audienceData")) || "";
+    //     this.audienceId = AudienceId;
+    //     !_.isEmpty(this.audienceId) && this.loadRequirementForSettings(AudienceId);
+    //   }
+    // });
+  }
 
   async ionViewWillEnter() {
+    this.EmailNotificationRequired =
+      (await this.localStorageService.get("EmailNotificationRequired")) || false;
+    this.MobileNotificationRequired =
+      (await this.localStorageService.get("MobileNotificationRequired")) || false;
     this.mode = (await this.localStorageService.get("mode")) || false;
     console.log("mode", this.mode);
+    this.apiService.settingsClientState().subscribe(async (ready) => {
+      if (ready) {
+        this.settingsClientReady = true;
+        const { AudienceId = "" } = (await this.localStorageService.get("audienceData")) || "";
+        this.audienceId = AudienceId;
+        !_.isEmpty(this.audienceId) && this.loadRequirementForSettings(AudienceId);
+      }
+    });
+  }
+
+  loadRequirementForSettings(AudienceId): void {
+    const audienceData = { AudienceId };
+    console.log("audience data", audienceData);
+    this.apiService.loadSettingsData(audienceData).subscribe((notification: any) => {
+      console.log("settings requirement", notification);
+      const { EmailNotificationRequired = false, MobileNotificationRequired = false } =
+        notification[0] || {};
+      this.isNotificationChange = false;
+      this.EmailNotificationRequired = EmailNotificationRequired;
+      this.MobileNotificationRequired = MobileNotificationRequired;
+    });
   }
 
   onToggleColorTheme(event): void {
@@ -31,6 +76,36 @@ export class SettingsComponent implements OnInit {
     } else {
       this.renderer.setAttribute(document.body, "color-theme", "light");
     }
+  }
+
+  notificationChange(): void {
+    if (!this.isNotificationChange) {
+      this.isNotificationChange = true;
+      return;
+    }
+    const settings = {
+      AudienceId: this.audienceId,
+      EmailNotificationRequired: this.EmailNotificationRequired,
+      SMSNotificationRequired: this.MobileNotificationRequired
+    };
+    if (!this.audienceId) {
+      this.utilService.presentToast("Please login first to change notification settings.");
+      return;
+    }
+    if (!this.EmailNotificationRequired && !this.MobileNotificationRequired) {
+      this.utilService.presentToast("Please select atleast one mode of notification.");
+      return;
+    }
+    this.apiService.changeSettings(settings).subscribe((res: any) => {
+      console.log(res);
+      this.localStorageService.set("EmailNotificationRequired", this.EmailNotificationRequired);
+      this.localStorageService.set("MobileNotificationRequired", this.MobileNotificationRequired);
+      if (res.result == "success" && res.message) {
+        this.utilService.presentToast(res.message);
+      } else {
+        this.utilService.presentToast(res.message);
+      }
+    });
   }
 
   languageSwitcher(event): any {
