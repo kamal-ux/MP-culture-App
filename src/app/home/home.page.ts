@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
   scrollAmount = 4;
   landingImages: any;
   mediaUrl: string = environment.mediaUrl;
-  isReadMore = true;
+  isReadMore = [false];
   isReadMorePara = true;
   constructor(
     private apiService: ApiServiceService,
@@ -109,8 +109,9 @@ export class HomePage implements OnInit {
     });
   }
 
-  showText() {
-    this.isReadMore = !this.isReadMore;
+  showText(index?: number) {
+    // console.log("show more", !this.isReadMore[index]);
+    this.isReadMore[index] = !this.isReadMore[index];
   }
   showPara() {
     this.isReadMorePara = !this.isReadMorePara;
