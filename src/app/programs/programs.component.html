@@ -12,14 +12,23 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <!-- Live programs [OPEN]-->
-  <div class="mb10" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'live now'">
+  <div
+    class="mb10"
+    *ngIf="activeRoute.snapshot.paramMap.get('param') == 'live now'"
+  >
     <ion-row *ngFor="let programDetails of livePrograms; let index = index">
       <ion-slides pager="true" [options]="slideOptsOne">
         <ion-slide>
-          <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
+          <img
+            src="{{ mediaUrl + programDetails?.BannerImagePath1 }}"
+            class="banner_img"
+          />
         </ion-slide>
         <ion-slide>
-          <img src="{{ mediaUrl + programDetails?.BannerImagePath2 }}" class="banner_img" />
+          <img
+            src="{{ mediaUrl + programDetails?.BannerImagePath2 }}"
+            class="banner_img"
+          />
         </ion-slide>
       </ion-slides>
       <ion-col size=".5" class="py-50"></ion-col>
@@ -30,11 +39,18 @@
 
       <ion-col size="8" class="pb-20">
         <a
-          href="{{ programDetails.LiveStreamingLink ? programDetails.LiveStreamingLink : '' }}"
+          href="{{
+            programDetails.LiveStreamingLink
+              ? programDetails.LiveStreamingLink
+              : ''
+          }}"
           target="_blank"
         >
           <ion-text>
-            <ion-icon class="text-danger blink_me" name="radio-button-on"></ion-icon>
+            <ion-icon
+              class="text-danger blink_me"
+              name="radio-button-on"
+            ></ion-icon>
             &nbsp; <b>Live Now</b></ion-text
           ></a
         >
@@ -47,7 +63,10 @@
   <!-- Live programs [CLOSE]-->
 
   <!-- Today's programs [OPEN]-->
-  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == paramString">
+  <div
+    class="ion-padding"
+    *ngIf="activeRoute.snapshot.paramMap.get('param') == paramString"
+  >
     <ion-row class="mt20">
       <ion-col size="12">
         <h5 class="m-0 p-0">
@@ -107,7 +126,10 @@
     class="ion-padding"
     *ngIf="activeRoute.snapshot.paramMap.get('param') == 'upcoming programs'"
   >
-    <ion-card class="blue_card" *ngFor="let program of upcomingPrograms; let index = index">
+    <ion-card
+      class="blue_card"
+      *ngFor="let program of upcomingPrograms; let index = index"
+    >
       <ion-row>
         <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
@@ -125,7 +147,9 @@
           <h6 class="mb10" (click)="viewProgramDetails(program)">
             <ion-text color="dark">{{ program.ProgramName }}</ion-text>
           </h6>
-          <a class="mr-1" class="{{ index % 2 !== 0 ? 'orange_btn' : 'see_green_btn' }}"
+          <a
+            class="mr-1"
+            class="{{ index % 2 !== 0 ? 'orange_btn' : 'see_green_btn' }}"
             >स्थान: {{ program.Venue }}</a
           >
           <p class="mt5">
@@ -133,7 +157,11 @@
             {{ program.StartTime }} To {{ program.EndTime }}
           </p>
           <!-- <p class="mt10">देशभक्ति आधारित स्वराज संस्थान संचालनालय</p> -->
-          <p class="mt10" style="white-space: pre-wrap" [ngClass]="{ limitTextHeight: isReadMore }">
+          <p
+            class="mt10"
+            style="white-space: pre-wrap"
+            [ngClass]="{ limitTextHeight: isReadMore }"
+          >
             {{ program.AboutProgram }}
           </p>
           <u>
@@ -148,8 +176,14 @@
   <!-- Upcoming programs [CLOSE]-->
 
   <!-- Archive programs [OPEN]-->
-  <div class="ion-padding" *ngIf="activeRoute.snapshot.paramMap.get('param') == 'archive programs'">
-    <ion-card class="blue_card" *ngFor="let program of pastPrograms; let index = index">
+  <div
+    class="ion-padding"
+    *ngIf="activeRoute.snapshot.paramMap.get('param') == 'archive programs'"
+  >
+    <ion-card
+      class="blue_card"
+      *ngFor="let program of pastPrograms; let index = index"
+    >
       <ion-row>
         <ion-col size="4" (click)="viewProgramDetails(program)">
           <img
@@ -167,7 +201,9 @@
           <h6 class="mb10" (click)="viewProgramDetails(program)">
             <ion-text color="dark">{{ program.ProgramName }}</ion-text>
           </h6>
-          <a class="mr-1" class="{{ index % 2 !== 0 ? 'orange_btn' : 'see_green_btn' }}"
+          <a
+            class="mr-1"
+            class="{{ index % 2 !== 0 ? 'orange_btn' : 'see_green_btn' }}"
             >स्थान: {{ program.Venue ? program.Venue : program.CityName }}</a
           ><br />
           <p class="mt5">

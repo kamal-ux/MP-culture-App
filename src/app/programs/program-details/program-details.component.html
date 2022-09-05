@@ -8,14 +8,20 @@
     <ion-title class="ion-text-center">Program Details</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-row>
     <ion-slides pager="true" [options]="slideOptsOne">
       <ion-slide *ngIf="programDetails?.BannerImagePath1">
-        <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
+        <img
+          src="{{ mediaUrl + programDetails?.BannerImagePath1 }}"
+          class="banner_img"
+        />
       </ion-slide>
       <ion-slide *ngIf="programDetails?.BannerImagePath2">
-        <img src="{{ mediaUrl + programDetails?.BannerImagePath2 }}" class="banner_img" />
+        <img
+          src="{{ mediaUrl + programDetails?.BannerImagePath2 }}"
+          class="banner_img"
+        />
       </ion-slide>
     </ion-slides>
   </ion-row>
@@ -33,7 +39,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="mt10 pad-5" *ngIf="programDetails">
+  <ion-row class="mt10" *ngIf="programDetails">
     <ion-col size="12">
       <span class="border_bottom_red">Program Details</span>
     </ion-col>
@@ -45,7 +51,9 @@
         {{
           programDetails.ProgramStartDate == programDetails.ProgramEndDate
             ? programDetails.ProgramStartDate
-            : programDetails.ProgramStartDate + " To " + programDetails.ProgramEndDate
+            : programDetails.ProgramStartDate +
+              " To " +
+              programDetails.ProgramEndDate
         }}</ion-text
       ><br />
       <ion-text
@@ -72,4 +80,117 @@
     </ion-col>
   </ion-row>
   <!-- add review and rating UI -->
+  <!-- Reviews Open -->
+
+  <ion-row class="mt10">
+    <ion-col size="12">
+      <span class="border_bottom_red">Rating & Reviews</span>
+    </ion-col>
+  </ion-row>
+  <ion-row class="mt10">
+    <ion-col size="4" class="ion-text-center">
+      <h2>2.5 <ion-icon name="star" class="font18"></ion-icon></h2>
+      <p>103 Ratings &amp; <br />19 Reviews</p>
+    </ion-col>
+    <ion-col size="8">
+      <table>
+        <tbody>
+          <tr>
+            <td>5 <ion-icon name="star"></ion-icon></td>
+            <td>
+              <div class="progress">
+                <div class="bar" style="width: 80%"></div>
+              </div>
+            </td>
+            <td>80%</td>
+          </tr>
+          <tr>
+            <td>4 <ion-icon name="star"></ion-icon></td>
+            <td>
+              <div class="progress">
+                <div class="bar" style="width: 60%"></div>
+              </div>
+            </td>
+            <td>60%</td>
+          </tr>
+          <tr>
+            <td>3 <ion-icon name="star"></ion-icon></td>
+            <td>
+              <div class="progress">
+                <div class="bar" style="width: 40%"></div>
+              </div>
+            </td>
+            <td>40%</td>
+          </tr>
+          <tr>
+            <td>2 <ion-icon name="star"></ion-icon></td>
+            <td>
+              <div class="progress">
+                <div class="bar" style="width: 20%"></div>
+              </div>
+            </td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>1 <ion-icon name="star"></ion-icon></td>
+            <td>
+              <div class="progress">
+                <div class="bar" style="width: 10%"></div>
+              </div>
+            </td>
+            <td>10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-col>
+  </ion-row>
+  <h4>Rating & Reviews</h4>
+  <ion-row class="mt10">
+    <ion-col size="3">
+      <img src="assets/images/b1.jpg" class="review_thum"
+    /></ion-col>
+    <ion-col size="9">
+      <p>8 days ago</p>
+      <p class="bold">Tom kok</p>
+    </ion-col>
+    <ion-col size="12">
+      <p class="rating">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco.
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="mt10">
+    <ion-col size="3">
+      <img src="assets/images/b1.jpg" class="review_thum"
+    /></ion-col>
+    <ion-col size="9">
+      <p>8 days ago</p>
+      <p class="bold">Tom kok</p>
+    </ion-col>
+    <ion-col size="12">
+      <p class="rating">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco.
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <!-- Reviews End -->
 </ion-content>
