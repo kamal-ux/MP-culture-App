@@ -43,14 +43,20 @@ export class UtilService {
   }
 
   async presentLoading(message: any) {
-    this.loading = this.loading ? await this.loading.dismiss() : false;
-    this.loading = await this.loadingCtrl.create({
-      message
-    });
-    await this.loading.present();
+    if (!this.loading) {
+      this.loading = this.loading ? await this.loading.dismiss() : false;
+      this.loading = await this.loadingCtrl.create({
+        message
+      });
+      await this.loading.present();
+      this.loading = true;
+    }
   }
 
   async dismissLoading() {
-    await (this.loading && this.loadingCtrl.dismiss());
+    if (this.loading) {
+      await (this.loading && this.loadingCtrl.dismiss());
+      this.loading = false;
+    }
   }
 }
