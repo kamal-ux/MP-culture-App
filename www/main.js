@@ -61,14 +61,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
 /* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.html?ngResource */ 33383);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 79259);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./service/local-storage.service */ 42518);
 /* harmony import */ var _capacitor_status_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/status-bar */ 19326);
+/* harmony import */ var _service_store_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service/store.service */ 87627);
+
 
 
 
@@ -79,12 +81,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-  constructor(router, localStorageService, menuController, renderer) {
+  constructor(router, localStorageService, menuController, renderer, storeService) {
     this.router = router;
     this.localStorageService = localStorageService;
     this.menuController = menuController;
     this.renderer = renderer;
-    this.appMenu = [{
+    this.storeService = storeService;
+    this.appMenu = [];
+    this.offAppMenu = [{
+      title: "कार्यक्रमों का सजीव प्रसारण",
+      value: "live-program",
+      icon: "play-outline"
+    }, {
+      title: "आज के कार्यक्रम",
+      value: "today-program",
+      icon: "flash-outline"
+    }, {
+      title: "आगामी कार्यक्रम",
+      value: "upcoming-program",
+      icon: "flash-outline"
+    }, {
+      title: "संगृहीत कार्यक्रम",
+      value: "archive-program",
+      icon: "documents-outline"
+    }, {
+      title: "कला विधाये",
+      value: "category",
+      icon: "grid-outline"
+    }, {
+      title: "सेटिंग",
+      value: "setting",
+      icon: "settings-outline"
+    }, {
+      title: "लॉग आउट",
+      value: "logout",
+      icon: "log-out-outline"
+    }];
+    this.loginAppMenu = [{
       title: "कार्यक्रमों का सजीव प्रसारण",
       value: "live-program",
       icon: "play-outline"
@@ -139,9 +172,22 @@ let AppComponent = class AppComponent {
         _this.renderer.setAttribute(document.body, "color-theme", "dark");
       } else {
         _this.renderer.setAttribute(document.body, "color-theme", "light");
-      } //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-      //Add 'implements OnInit' to the class.
+      }
 
+      _this.appMenu = _this.loginAppMenu;
+      const {
+        AudienceId = ""
+      } = (yield _this.localStorageService.get("audienceData")) || {};
+
+      if (AudienceId) {
+        _this.appMenu = _this.offAppMenu;
+      }
+
+      _this.storeService.getIsLoggedIn().subscribe(res => {
+        console.log("isLoggedIn", res);
+        _this.isLoggedIn = res;
+        _this.isLoggedIn ? _this.appMenu = _this.offAppMenu : _this.appMenu = _this.loginAppMenu;
+      });
     })();
   }
 
@@ -150,13 +196,20 @@ let AppComponent = class AppComponent {
 
     return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this2.isLoggedIn = (yield !!_this2.localStorageService.get("audienceData")) || (yield !!_this2.localStorageService.get("audienceData"));
+
+      _this2.storeService.getIsLoggedIn().subscribe(res => {
+        console.log("isLoggedIn", res);
+        _this2.isLoggedIn = res;
+        _this2.isLoggedIn ? _this2.appMenu = _this2.offAppMenu : _this2.offAppMenu = _this2.appMenu;
+      });
     })();
   }
 
   menuToggle(menu) {
     switch (menu) {
-      case "Logout":
-        this.localStorageService.clearAll();
+      case "logout":
+        this.storeService.setIsLoggedIn(false);
+        this.localStorageService.remove("audienceData");
         this.router.navigateByUrl("", {
           replaceUrl: true
         });
@@ -210,16 +263,18 @@ let AppComponent = class AppComponent {
 };
 
 AppComponent.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
   type: _service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__.LocalStorageService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.MenuController
 }, {
-  type: _angular_core__WEBPACK_IMPORTED_MODULE_7__.Renderer2
+  type: _angular_core__WEBPACK_IMPORTED_MODULE_8__.Renderer2
+}, {
+  type: _service_store_service__WEBPACK_IMPORTED_MODULE_5__.StoreService
 }];
 
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
   selector: "app-root",
   template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -472,6 +527,69 @@ LocalStorageService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_ang
 
 /***/ }),
 
+/***/ 87627:
+/*!******************************************!*\
+  !*** ./src/app/service/store.service.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "StoreService": () => (/* binding */ StoreService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 92218);
+
+
+
+let StoreService = class StoreService {
+    constructor() {
+        this.isLoggedInSubject = new rxjs__WEBPACK_IMPORTED_MODULE_0__.Subject();
+    }
+    setIsLoggedIn(isLoggedIn) {
+        this.isLoggedInSubject.next(isLoggedIn);
+    }
+    getIsLoggedIn() {
+        return this.isLoggedInSubject.asObservable();
+    }
+    get todaysProgramsData() {
+        return this.todaysPrograms;
+    }
+    set todaysProgramsData(val) {
+        this.todaysPrograms = val;
+    }
+    get upcomingProgramsData() {
+        return this.upcomingPrograms;
+    }
+    set upcomingProgramsData(val) {
+        this.upcomingPrograms = val;
+    }
+    get pastProgramsData() {
+        return this.pastPrograms;
+    }
+    set pastProgramsData(val) {
+        this.pastPrograms = val;
+    }
+    get monthlyProgramsData() {
+        return this.monthlyPrograms;
+    }
+    set monthlyProgramsData(val) {
+        this.monthlyPrograms = val;
+    }
+};
+StoreService.ctorParameters = () => [];
+StoreService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: "root"
+    })
+], StoreService);
+
+
+
+/***/ }),
+
 /***/ 29922:
 /*!*************************************************!*\
   !*** ./src/app/service/util-service.service.ts ***!
@@ -544,11 +662,14 @@ let UtilService = class UtilService {
     var _this4 = this;
 
     return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this4.loading = _this4.loading ? yield _this4.loading.dismiss() : false;
-      _this4.loading = yield _this4.loadingCtrl.create({
-        message
-      });
-      yield _this4.loading.present();
+      if (!_this4.loading) {
+        _this4.loading = _this4.loading ? yield _this4.loading.dismiss() : false;
+        _this4.loading = yield _this4.loadingCtrl.create({
+          message
+        });
+        yield _this4.loading.present();
+        _this4.loading = true;
+      }
     })();
   }
 
@@ -556,7 +677,10 @@ let UtilService = class UtilService {
     var _this5 = this;
 
     return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      yield _this5.loading && _this5.loadingCtrl.dismiss();
+      if (_this5.loading) {
+        yield _this5.loading && _this5.loadingCtrl.dismiss();
+        _this5.loading = false;
+      }
     })();
   }
 

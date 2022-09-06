@@ -137,6 +137,12 @@ let ApiServiceService = class ApiServiceService {
             return JSON.parse(data.result.PopularProgramOfMonthResult);
         }));
     }
+    loadProgramRating() {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("LoadProgramRatingReviewByProgramId", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
+        }));
+    }
     loadLandingPageContent() {
         this.landingPageClient.addHttpHeader("Content-Type", "text/xml");
         return this.landingPageClient.call("LoadLandingData", {}).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
@@ -335,16 +341,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AudienceRegistrationComponent": () => (/* binding */ AudienceRegistrationComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _audience_registration_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audience-registration.component.html?ngResource */ 47533);
-/* harmony import */ var _audience_registration_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audience-registration.component.scss?ngResource */ 62288);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/api-service.service */ 7149);
-/* harmony import */ var src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/local-storage.service */ 42518);
-/* harmony import */ var src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/util-service.service */ 29922);
+/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _audience_registration_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audience-registration.component.html?ngResource */ 47533);
+/* harmony import */ var _audience_registration_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audience-registration.component.scss?ngResource */ 62288);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/api-service.service */ 7149);
+/* harmony import */ var src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/local-storage.service */ 42518);
+/* harmony import */ var src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/util-service.service */ 29922);
+/* harmony import */ var _assets_app_data_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../assets/app-data.json */ 88121);
+
+
 
 
 
@@ -356,107 +366,142 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AudienceRegistrationComponent = class AudienceRegistrationComponent {
-    constructor(fb, apiService, utilService, router, localStorage, platform) {
-        this.fb = fb;
-        this.apiService = apiService;
-        this.utilService = utilService;
-        this.router = router;
-        this.localStorage = localStorage;
-        this.platform = platform;
-        this.signupType = "artist";
-    }
-    ngOnInit() {
-        this.signupForm = this.fb.group({
-            FullName: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]],
-            MobileNo: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.maxLength(10), _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(10)]],
-            Password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(6)]],
-            ConfirmPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]]
-        }, { validator: this.passwordMatchValidator });
-        this.apiService.artistRegisterClientState().subscribe((ready) => {
-            if (ready) {
-                this.artistRegisterClientReady = true;
-                this.getArtistRegisterRequirement();
-            }
-        });
-    }
-    passwordMatchValidator(g) {
-        return g.get("Password").value === g.get("ConfirmPassword").value ? null : { mismatch: true };
-    }
-    getArtistRegisterRequirement() {
-        this.apiService.getArtistRegisterRequirement().subscribe((res) => {
-            console.log("requiremtn payload", res);
-        });
-    }
-    toggleStatus(status) {
-        this.signupType = status;
-    }
-    imgTobase64(element) {
-        console.log("element", element.files);
-        var file = element.files[0];
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            console.log("RESULT", reader.result);
-        };
-        return reader.readAsDataURL(file);
-    }
-    password_check() {
-        const pass = this.signupForm.get("Password").value;
-        console.log(pass);
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        if (regex.exec(pass) == null) {
-            this.signupForm.controls["Password"].setErrors({ error: true });
-        }
-        else {
-            this.signupForm.get("Password").clearValidators();
-        }
-    }
-    submit(isValid, formValue) {
-        if (!isValid || !this.artistRegisterClientReady)
-            return;
-        const formObj = {
-            FullName: formValue.FullName,
-            MobileNo: formValue.MobileNo,
-            Password: formValue.Password,
-            CreatedThrough: this.platform.is("android") ? "ANDROID" : "IOS"
-        };
-        const { FullName, MobileNo, Password, CreatedThrough } = formObj;
-        console.log("form obj", isValid, formObj);
-        this.apiService.doAudienceRegister(formObj).subscribe((res) => {
-            console.log("audience register", res);
-            res.result == "failure" && this.utilService.presentToast(res.message);
-            if (res.result == "success") {
-                this.localStorage.set("audienceData", {
-                    FullName,
-                    MobileNo,
-                    Password,
-                    CreatedThrough,
-                    AudienceId: res.AudienceId
-                });
-                this.signupForm.reset();
-                this.router.navigate(["signup/signup/audienceSignup2"]);
-            }
-        });
-    }
-    goToLoginPage() {
-        this.signupForm.reset();
-    }
-};
-AudienceRegistrationComponent.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder },
-    { type: src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__.ApiServiceService },
-    { type: src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_4__.UtilService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
-    { type: src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_3__.LocalStorageService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.Platform }
-];
-AudienceRegistrationComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
-        selector: "app-audience-registration",
-        template: _audience_registration_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_audience_registration_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], AudienceRegistrationComponent);
+  constructor(fb, apiService, utilService, router, localStorage, platform) {
+    this.fb = fb;
+    this.apiService = apiService;
+    this.utilService = utilService;
+    this.router = router;
+    this.localStorage = localStorage;
+    this.platform = platform;
+    this.signupType = "artist";
+    this.language = _assets_app_data_json__WEBPACK_IMPORTED_MODULE_6__;
+  }
 
+  ngOnInit() {
+    var _this = this;
+
+    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      console.log("language", _this.language);
+      _this.signupForm = _this.fb.group({
+        FullName: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+        MobileNo: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.maxLength(10), _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.minLength(10)]],
+        Password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.minLength(6)]],
+        ConfirmPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]]
+      }, {
+        validator: _this.passwordMatchValidator
+      });
+      _this.mode = (yield _this.localStorage.get("mode")) || false;
+
+      _this.apiService.artistRegisterClientState().subscribe(ready => {
+        if (ready) {
+          _this.artistRegisterClientReady = true;
+
+          _this.getArtistRegisterRequirement();
+        }
+      });
+    })();
+  }
+
+  passwordMatchValidator(g) {
+    return g.get("Password").value === g.get("ConfirmPassword").value ? null : {
+      mismatch: true
+    };
+  }
+
+  getArtistRegisterRequirement() {
+    this.apiService.getArtistRegisterRequirement().subscribe(res => {
+      console.log("requiremtn payload", res);
+    });
+  }
+
+  toggleStatus(status) {
+    this.signupType = status;
+  }
+
+  imgTobase64(element) {
+    console.log("element", element.files);
+    var file = element.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+      console.log("RESULT", reader.result);
+    };
+
+    return reader.readAsDataURL(file);
+  }
+
+  password_check() {
+    const pass = this.signupForm.get("Password").value;
+    console.log(pass);
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (regex.exec(pass) == null) {
+      this.signupForm.controls["Password"].setErrors({
+        error: true
+      });
+    } else {
+      this.signupForm.get("Password").clearValidators();
+    }
+  }
+
+  submit(isValid, formValue) {
+    if (!isValid || !this.artistRegisterClientReady) return;
+    const formObj = {
+      FullName: formValue.FullName,
+      MobileNo: formValue.MobileNo,
+      Password: formValue.Password,
+      CreatedThrough: this.platform.is("android") ? "ANDROID" : "IOS"
+    };
+    const {
+      FullName,
+      MobileNo,
+      Password,
+      CreatedThrough
+    } = formObj;
+    console.log("form obj", isValid, formObj);
+    this.apiService.doAudienceRegister(formObj).subscribe(res => {
+      console.log("audience register", res);
+      res.result == "failure" && this.utilService.presentToast(res.message);
+
+      if (res.result == "success") {
+        this.localStorage.set("audienceData", {
+          FullName,
+          MobileNo,
+          Password,
+          CreatedThrough,
+          AudienceId: res.AudienceId
+        });
+        this.signupForm.reset();
+        this.router.navigate(["signup/signup/audienceSignup2"]);
+      }
+    });
+  }
+
+  goToLoginPage() {
+    this.signupForm.reset();
+  }
+
+};
+
+AudienceRegistrationComponent.ctorParameters = () => [{
+  type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__.FormBuilder
+}, {
+  type: src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_3__.ApiServiceService
+}, {
+  type: src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_5__.UtilService
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router
+}, {
+  type: src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_4__.LocalStorageService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.Platform
+}];
+
+AudienceRegistrationComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
+  selector: "app-audience-registration",
+  template: _audience_registration_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_audience_registration_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], AudienceRegistrationComponent);
 
 
 /***/ }),
@@ -711,15 +756,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginComponent": () => (/* binding */ LoginComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _login_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login.component.html?ngResource */ 91007);
 /* harmony import */ var _login_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.component.scss?ngResource */ 59440);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 60124);
 /* harmony import */ var src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/local-storage.service */ 42518);
-/* harmony import */ var src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/util-service.service */ 29922);
-/* harmony import */ var _service_api_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/api-service.service */ 7149);
+/* harmony import */ var src_app_service_store_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/store.service */ 87627);
+/* harmony import */ var src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/util-service.service */ 29922);
+/* harmony import */ var _service_api_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../service/api-service.service */ 7149);
+
 
 
 
@@ -730,20 +777,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginComponent = class LoginComponent {
-    constructor(apiService, utilService, fb, router, localStorageService) {
+    constructor(apiService, utilService, fb, router, localStorageService, storeService) {
         this.apiService = apiService;
         this.utilService = utilService;
         this.fb = fb;
         this.router = router;
         this.localStorageService = localStorageService;
+        this.storeService = storeService;
         this.userStatus = "audience";
     }
     ngOnInit() {
         this.subscription();
         this.loginForm = this.fb.group({
             userStatus: ["audience"],
-            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]],
-            mobileNo: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.maxLength(10), _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(10)]]
+            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
+            mobileNo: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.maxLength(10), _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.minLength(10)]]
         });
     }
     subscription() {
@@ -758,13 +806,13 @@ let LoginComponent = class LoginComponent {
         const userType = (this.userStatus = evt.value);
         console.log("user type", userType);
         if (userType == "artist") {
-            this.loginForm.controls["mobileNo"].setValidators([_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]);
+            this.loginForm.controls["mobileNo"].setValidators([_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]);
             this.loginForm.get("mobileNo").updateValueAndValidity();
             this.loginForm.controls["userName"].clearValidators();
             this.loginForm.get("userName").updateValueAndValidity();
         }
         else {
-            this.loginForm.controls["userName"].setValidators([_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]);
+            this.loginForm.controls["userName"].setValidators([_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]);
             this.loginForm.get("userName").updateValueAndValidity();
             this.loginForm.controls["mobileNo"].clearValidators();
             this.loginForm.get("mobileNo").updateValueAndValidity();
@@ -805,6 +853,7 @@ let LoginComponent = class LoginComponent {
                 };
                 console.log("userdata", audienceData);
                 audienceData && this.localStorageService.set("audienceData", audienceData);
+                this.storeService.setIsLoggedIn(true);
                 this.utilService.presentToast("Logged In successfully");
                 this.loginForm.reset();
                 this.router.navigate(["/tabs/home"]);
@@ -850,14 +899,15 @@ let LoginComponent = class LoginComponent {
     }
 };
 LoginComponent.ctorParameters = () => [
-    { type: _service_api_service_service__WEBPACK_IMPORTED_MODULE_4__.ApiServiceService },
-    { type: src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_3__.UtilService },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
-    { type: src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__.LocalStorageService }
+    { type: _service_api_service_service__WEBPACK_IMPORTED_MODULE_5__.ApiServiceService },
+    { type: src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_4__.UtilService },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router },
+    { type: src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_2__.LocalStorageService },
+    { type: src_app_service_store_service__WEBPACK_IMPORTED_MODULE_3__.StoreService }
 ];
-LoginComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+LoginComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: "app-login",
         template: _login_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_login_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -1250,7 +1300,7 @@ module.exports = "<ion-app>\n  <ion-content class=\"ion-padding login_top\">\n  
   \**********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<form [formGroup]=\"signupForm\" (ngSubmit)=\"submit(signupForm.valid, signupForm.value)\" class=\"\">\n  <ion-list>\n    <ion-row class=\"mt10\">\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>Mobile No. <span class=\"text-danger\">*</span></ion-text>\n        <ion-input placeholder=\"Mobile No\" type=\"text\" formControlName=\"MobileNo\"></ion-input>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            !signupForm.get('MobileNo').hasError('MobileNo') &&\n            signupForm.get('MobileNo').hasError('required') &&\n            (signupForm.get('MobileNo').dirty || signupForm.get('MobileNo').touched)\n          \"\n        >\n          * Mobile Number is Required\n        </ion-text>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            signupForm.get('MobileNo').hasError('minlength') ||\n            signupForm.get('MobileNo').hasError('maxlength')\n          \"\n        >\n          Enter valid mobile number\n        </ion-text>\n      </ion-col>\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>Full Name <span class=\"text-danger\">*</span></ion-text>\n        <ion-input placeholder=\"Full Name\" required formControlName=\"FullName\"></ion-input>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            !signupForm.get('FullName').hasError('FullName') &&\n            signupForm.get('FullName').hasError('required') &&\n            (signupForm.get('FullName').dirty || signupForm.get('FullName').touched)\n          \"\n        >\n          * Full Name is Required\n        </ion-text>\n      </ion-col>\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>Password <span class=\"text-danger\">*</span></ion-text>\n        <ion-input\n          placeholder=\"Password\"\n          (ionChange)=\"password_check()\"\n          required\n          type=\"password\"\n          formControlName=\"Password\"\n        ></ion-input>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            !signupForm.get('Password').hasError('Password') &&\n            signupForm.get('Password').hasError('required') &&\n            (signupForm.get('Password').dirty || signupForm.get('Password').touched)\n          \"\n        >\n          * Password is Required\n        </ion-text>\n        <ion-text\n          class=\"text-small\"\n          color=\"danger\"\n          *ngIf=\"signupForm.get('Password').hasError('error')\"\n        >\n          Password must be 8 characters including 1 uppercase letter, 1 special character and\n          alphanumeric characters\n        </ion-text>\n      </ion-col>\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>Confirm Password <span class=\"text-danger\">*</span></ion-text>\n        <ion-input\n          type=\"password\"\n          placeholder=\"Confirm Password\"\n          required\n          formControlName=\"ConfirmPassword\"\n        ></ion-input>\n\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            signupForm.get('ConfirmPassword').value &&\n            signupForm.get('Password').value !== signupForm.get('ConfirmPassword').value\n          \"\n        >\n          * Password doesn't matched\n        </ion-text>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col size=\"2\"></ion-col>\n      <ion-col size=\"4\" class=\"mb30\">\n        <button\n          type=\"submit\"\n          [ngStyle]=\"{\n            'background-color': signupForm.invalid ? '#ff00009e' : 'red'\n          }\"\n          [disabled]=\"!signupForm.valid\"\n        >\n          Next\n        </button>\n      </ion-col>\n\n      <ion-col size=\"4\" class=\"mb30\">\n        <button class=\"cancel\" type=\"button\" routerLink=\"\">Cancel</button>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" class=\"ion-text-center\">\n        <p>\n          Already have an account? <a routerLink=\"../../signup\" (click)=\"goToLoginPage()\">Login</a>\n        </p>\n      </ion-col>\n    </ion-row>\n  </ion-list>\n</form>\n";
+module.exports = "<form [formGroup]=\"signupForm\" (ngSubmit)=\"submit(signupForm.valid, signupForm.value)\" class=\"\">\n  <ion-list>\n    <ion-row class=\"mt10\">\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>\n          {{ mode ? language.mobileNo : \"Mobile No.\" }} <span class=\"text-danger\">*</span></ion-text\n        >\n        <ion-input placeholder=\"Mobile No\" type=\"text\" formControlName=\"MobileNo\"></ion-input>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            !signupForm.get('MobileNo').hasError('MobileNo') &&\n            signupForm.get('MobileNo').hasError('required') &&\n            (signupForm.get('MobileNo').dirty || signupForm.get('MobileNo').touched)\n          \"\n        >\n          * Mobile Number is Required\n        </ion-text>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            signupForm.get('MobileNo').hasError('minlength') ||\n            signupForm.get('MobileNo').hasError('maxlength')\n          \"\n        >\n          Enter valid mobile number\n        </ion-text>\n      </ion-col>\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>\n          {{ mode ? language.fullName : \"Full Name\" }} <span class=\"text-danger\">*</span></ion-text\n        >\n        <ion-input placeholder=\"Full Name\" required formControlName=\"FullName\"></ion-input>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            !signupForm.get('FullName').hasError('FullName') &&\n            signupForm.get('FullName').hasError('required') &&\n            (signupForm.get('FullName').dirty || signupForm.get('FullName').touched)\n          \"\n        >\n          * Full Name is Required\n        </ion-text>\n      </ion-col>\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text\n          >{{ mode ? language.password : \"Password\" }} <span class=\"text-danger\">*</span></ion-text\n        >\n        <ion-input\n          placeholder=\"Password\"\n          (ionChange)=\"password_check()\"\n          required\n          type=\"password\"\n          formControlName=\"Password\"\n        ></ion-input>\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            !signupForm.get('Password').hasError('Password') &&\n            signupForm.get('Password').hasError('required') &&\n            (signupForm.get('Password').dirty || signupForm.get('Password').touched)\n          \"\n        >\n          * Password is Required\n        </ion-text>\n        <ion-text\n          class=\"text-small\"\n          color=\"danger\"\n          *ngIf=\"signupForm.get('Password').hasError('error')\"\n        >\n          Password must be 8 characters including 1 uppercase letter, 1 special character and\n          alphanumeric characters\n        </ion-text>\n      </ion-col>\n      <ion-col size=\"12\" class=\"relative\">\n        <ion-text>\n          {{ mode ? language.confirmPassword : \"Confirm Password\" }}\n          <span class=\"text-danger\">*</span></ion-text\n        >\n        <ion-input\n          type=\"password\"\n          placeholder=\"Confirm Password\"\n          required\n          formControlName=\"ConfirmPassword\"\n        ></ion-input>\n\n        <ion-text\n          color=\"danger\"\n          *ngIf=\"\n            signupForm.get('ConfirmPassword').value &&\n            signupForm.get('Password').value !== signupForm.get('ConfirmPassword').value\n          \"\n        >\n          * Password doesn't matched\n        </ion-text>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col size=\"2\"></ion-col>\n      <ion-col size=\"4\" class=\"mb30\">\n        <button\n          type=\"submit\"\n          [ngStyle]=\"{\n            'background-color': signupForm.invalid ? '#ff00009e' : 'red'\n          }\"\n          [disabled]=\"!signupForm.valid\"\n        >\n          {{ mode ? language.next : \"Next\" }}\n        </button>\n      </ion-col>\n\n      <ion-col size=\"4\" class=\"mb30\">\n        <button class=\"cancel\" type=\"button\" routerLink=\"\">\n          {{ mode ? language.cancel : \"Cancel\" }}\n        </button>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" class=\"ion-text-center\">\n        <p>\n          {{ mode ? language.confirm : \"Already have an account?\" }}\n          <a routerLink=\"../../signup\" (click)=\"goToLoginPage()\">{{\n            mode ? language.loginHere : \"Login\"\n          }}</a>\n        </p>\n      </ion-col>\n    </ion-row>\n  </ion-list>\n</form>\n";
 
 /***/ }),
 
@@ -1291,6 +1341,16 @@ module.exports = "<ion-app>\n  <ion-content class=\"ion-padding login_top\">\n  
 /***/ ((module) => {
 
 module.exports = "<ion-app>\n  <ion-content class=\"ion-padding login_top\">\n    <div class=\"login_img\">\n      <img src=\"../../../assets/images/mp-logo.png\" width=\"100\" />\n    </div>\n    <h3 class=\"ion-text-center mb30\">Welcome, Register Now!</h3>\n    <!-- <button\n      type=\"submit\"\n      class=\"button_roundad\"\n      [ngClass]=\"{'deselected_btn': signupType === 'audience'}\"\n      (click)=\"toggleStatus('artist')\"\n    >\n      Artist Registration\n    </button> -->\n    <button\n      type=\"submit\"\n      class=\"button_roundad\"\n      [ngClass]=\"{'deselected_btn': signupType === 'artist'}\"\n      (click)=\"toggleStatus('audience')\"\n    >\n      Audience Registration\n    </button>\n    <ng-container *ngIf=\"signupType == 'artist'\">\n      <form\n        [formGroup]=\"signupForm\"\n        (ngSubmit)=\"submit(signupForm.valid, signupForm.value)\"\n        class=\"\"\n      >\n        <ion-list>\n          <ion-row class=\"mt10\">\n            <ion-col size=\"12\" class=\"relative\">\n              <ion-text>Mobile No. <span class=\"text-danger\">*</span></ion-text>\n              <ion-input placeholder=\"\" required formControlName=\"MobileNo\"></ion-input>\n            </ion-col>\n            <ion-col size=\"12\" class=\"relative\">\n              <ion-text>Artist Name <span class=\"text-danger\">*</span></ion-text>\n              <ion-input placeholder=\"\" required formControlName=\"ArtistName\"></ion-input>\n            </ion-col>\n            <ion-col size=\"12\" class=\"relative\">\n              <ion-text>Password <span class=\"text-danger\">*</span></ion-text>\n              <ion-input\n                placeholder=\"\"\n                required\n                type=\"password\"\n                formControlName=\"Password\"\n              ></ion-input>\n            </ion-col>\n            <ion-col size=\"12\" class=\"relative\">\n              <ion-text>Confirm Password <span class=\"text-danger\">*</span></ion-text>\n\n              <ion-input\n                placeholder=\"\"\n                type=\"password\"\n                required\n                formControlName=\"ConfirmPassword\"\n              ></ion-input>\n            </ion-col>\n          </ion-row>\n\n          <ion-row>\n            <ion-col size=\"2\"></ion-col>\n            <ion-col size=\"3\" class=\"mb30\">\n              <button\n                type=\"submit\"\n                [ngStyle]=\"{\n            'background-color': signupForm.invalid ? '#ff00009e' : 'red'\n          }\"\n                [disabled]=\"!signupForm.valid\"\n              >\n                Next\n              </button>\n              <ion-col size=\"2\"></ion-col>\n            </ion-col>\n            <ion-col size=\"3\" class=\"mb30\">\n              <button class=\"cancel\" routerLink=\"\" type=\"button\">Cancel</button>\n            </ion-col>\n            <ion-col size=\"2\"></ion-col>\n            <ion-col size=\"12\" class=\"ion-text-center\">\n              <p>Already have an account? <a routerLink=\"../../signup\">Login</a></p>\n            </ion-col>\n          </ion-row>\n        </ion-list>\n      </form>\n    </ng-container>\n    <app-audience-registration *ngIf=\"signupType == 'audience'\"></app-audience-registration>\n  </ion-content>\n</ion-app>\n";
+
+/***/ }),
+
+/***/ 88121:
+/*!**********************************!*\
+  !*** ./src/assets/app-data.json ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = JSON.parse('{"audienceRegister":"दर्शकों का पंजीकरण","mobileNo":"मोबाइल नंबर","fullName":"पूरा नाम","password":"पासवर्ड","confirmPassword":"पासवर्ड की पुष्टि कीजिये","next":"अगला","cancel":"रद्द करो","confirm":"क्या आपके पास पहले से एक खाता मौजूद है?","loginHere":"लॉग इन करें"}');
 
 /***/ })
 

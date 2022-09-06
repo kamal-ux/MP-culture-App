@@ -124,6 +124,10 @@ export class AppComponent {
       this.renderer.setAttribute(document.body, "color-theme", "light");
     }
     this.appMenu = this.loginAppMenu;
+    const { AudienceId = "" } = (await this.localStorageService.get("audienceData")) || {};
+    if (AudienceId) {
+      this.appMenu = this.offAppMenu;
+    }
     this.storeService.getIsLoggedIn().subscribe((res: any) => {
       console.log("isLoggedIn", res);
       this.isLoggedIn = res;

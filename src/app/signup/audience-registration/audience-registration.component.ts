@@ -5,6 +5,7 @@ import { AlertController, Platform } from "@ionic/angular";
 import { ApiServiceService } from "src/app/service/api-service.service";
 import { LocalStorageService } from "src/app/service/local-storage.service";
 import { UtilService } from "src/app/service/util-service.service";
+import * as language from "../../../assets/app-data.json";
 
 @Component({
   selector: "app-audience-registration",
@@ -15,6 +16,8 @@ export class AudienceRegistrationComponent implements OnInit {
   signupForm!: FormGroup;
   signupType = "artist";
   artistRegisterClientReady: boolean;
+  language: any = (language as any).default;
+  mode: boolean;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService,
@@ -24,7 +27,8 @@ export class AudienceRegistrationComponent implements OnInit {
     private platform: Platform
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.log("language", this.language);
     this.signupForm = this.fb.group(
       {
         FullName: ["", [Validators.required]],
@@ -34,6 +38,8 @@ export class AudienceRegistrationComponent implements OnInit {
       },
       { validator: this.passwordMatchValidator }
     );
+    this.mode = (await this.localStorage.get("mode")) || false;
+
     this.apiService.artistRegisterClientState().subscribe((ready) => {
       if (ready) {
         this.artistRegisterClientReady = true;

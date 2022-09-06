@@ -2,7 +2,9 @@
   <ion-list>
     <ion-row class="mt10">
       <ion-col size="12" class="relative">
-        <ion-text>Mobile No. <span class="text-danger">*</span></ion-text>
+        <ion-text>
+          {{ mode ? language.mobileNo : "Mobile No." }} <span class="text-danger">*</span></ion-text
+        >
         <ion-input placeholder="Mobile No" type="text" formControlName="MobileNo"></ion-input>
         <ion-text
           color="danger"
@@ -25,7 +27,9 @@
         </ion-text>
       </ion-col>
       <ion-col size="12" class="relative">
-        <ion-text>Full Name <span class="text-danger">*</span></ion-text>
+        <ion-text>
+          {{ mode ? language.fullName : "Full Name" }} <span class="text-danger">*</span></ion-text
+        >
         <ion-input placeholder="Full Name" required formControlName="FullName"></ion-input>
         <ion-text
           color="danger"
@@ -39,7 +43,9 @@
         </ion-text>
       </ion-col>
       <ion-col size="12" class="relative">
-        <ion-text>Password <span class="text-danger">*</span></ion-text>
+        <ion-text
+          >{{ mode ? language.password : "Password" }} <span class="text-danger">*</span></ion-text
+        >
         <ion-input
           placeholder="Password"
           (ionChange)="password_check()"
@@ -67,7 +73,10 @@
         </ion-text>
       </ion-col>
       <ion-col size="12" class="relative">
-        <ion-text>Confirm Password <span class="text-danger">*</span></ion-text>
+        <ion-text>
+          {{ mode ? language.confirmPassword : "Confirm Password" }}
+          <span class="text-danger">*</span></ion-text
+        >
         <ion-input
           type="password"
           placeholder="Confirm Password"
@@ -97,19 +106,24 @@
           }"
           [disabled]="!signupForm.valid"
         >
-          Next
+          {{ mode ? language.next : "Next" }}
         </button>
       </ion-col>
 
       <ion-col size="4" class="mb30">
-        <button class="cancel" type="button" routerLink="">Cancel</button>
+        <button class="cancel" type="button" routerLink="">
+          {{ mode ? language.cancel : "Cancel" }}
+        </button>
       </ion-col>
       <ion-col size="2"></ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12" class="ion-text-center">
         <p>
-          Already have an account? <a routerLink="../../signup" (click)="goToLoginPage()">Login</a>
+          {{ mode ? language.confirm : "Already have an account?" }}
+          <a routerLink="../../signup" (click)="goToLoginPage()">{{
+            mode ? language.loginHere : "Login"
+          }}</a>
         </p>
       </ion-col>
     </ion-row>
