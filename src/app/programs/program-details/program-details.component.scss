@@ -190,7 +190,9 @@ table tr td:nth-child(3){width: 10%;}
   .bar{
 	background: #337ab7;
  }
-
+button{
+	font-size: 10.5px;
+}
 @keyframes blinker {
   50% {
     opacity: 0;

@@ -12,16 +12,10 @@
   <ion-row>
     <ion-slides pager="true" [options]="slideOptsOne">
       <ion-slide *ngIf="programDetails?.BannerImagePath1">
-        <img
-          src="{{ mediaUrl + programDetails?.BannerImagePath1 }}"
-          class="banner_img"
-        />
+        <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
       </ion-slide>
       <ion-slide *ngIf="programDetails?.BannerImagePath2">
-        <img
-          src="{{ mediaUrl + programDetails?.BannerImagePath2 }}"
-          class="banner_img"
-        />
+        <img src="{{ mediaUrl + programDetails?.BannerImagePath2 }}" class="banner_img" />
       </ion-slide>
     </ion-slides>
   </ion-row>
@@ -51,9 +45,7 @@
         {{
           programDetails.ProgramStartDate == programDetails.ProgramEndDate
             ? programDetails.ProgramStartDate
-            : programDetails.ProgramStartDate +
-              " To " +
-              programDetails.ProgramEndDate
+            : programDetails.ProgramStartDate + " To " + programDetails.ProgramEndDate
         }}</ion-text
       ><br />
       <ion-text
@@ -144,11 +136,14 @@
       </table>
     </ion-col>
   </ion-row>
-  <h4>Rating & Reviews</h4>
   <ion-row class="mt10">
-    <ion-col size="3">
-      <img src="assets/images/b1.jpg" class="review_thum"
-    /></ion-col>
+    <ion-col size="8">
+      <h4>Rating & Reviews</h4>
+    </ion-col>
+    <ion-col size="4">
+      <button (click)="goToRateProgram()">Rate Program</button>
+    </ion-col>
+    <ion-col size="3"> <img src="assets/images/b1.jpg" class="review_thum" /></ion-col>
     <ion-col size="9">
       <p>8 days ago</p>
       <p class="bold">Tom kok</p>
@@ -162,16 +157,14 @@
         <ion-icon name="star-outline"></ion-icon>
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        ullamco.
       </p>
     </ion-col>
   </ion-row>
   <ion-row class="mt10">
-    <ion-col size="3">
-      <img src="assets/images/b1.jpg" class="review_thum"
-    /></ion-col>
+    <ion-col size="3"> <img src="assets/images/b1.jpg" class="review_thum" /></ion-col>
     <ion-col size="9">
       <p>8 days ago</p>
       <p class="bold">Tom kok</p>
@@ -185,9 +178,9 @@
         <ion-icon name="star-outline"></ion-icon>
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        ullamco.
       </p>
     </ion-col>
   </ion-row>

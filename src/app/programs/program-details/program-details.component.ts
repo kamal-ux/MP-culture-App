@@ -26,5 +26,9 @@ export class ProgramDetailsComponent implements OnInit {
     });
   }
 
+  goToRateProgram(): void {
+    this.router.navigateByUrl("/tabs/home/programDetails/rating");
+  }
+
   ionViewWillEnter() {}
 }
