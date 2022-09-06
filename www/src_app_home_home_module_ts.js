@@ -248,12 +248,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ProgramDetailsComponent": () => (/* binding */ ProgramDetailsComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _program_details_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./program-details.component.html?ngResource */ 56914);
 /* harmony import */ var _program_details_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./program-details.component.scss?ngResource */ 56309);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 92340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/api-service.service */ 7149);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
 
 
 
@@ -261,22 +263,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ProgramDetailsComponent = class ProgramDetailsComponent {
-    constructor(router) {
+    constructor(router, apiService) {
         this.router = router;
-        this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.mediaUrl;
+        this.apiService = apiService;
+        this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.mediaUrl;
         this.slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
     }
     ngOnInit() {
         this.programDetails = this.router?.getCurrentNavigation()?.extras?.state;
         console.log("details", this.programDetails);
+        const { ProgramId = "" } = this.programDetails;
+        this.subscription(ProgramId);
+    }
+    subscription(ProgramId) {
+        const obj = { ProgramId: ProgramId, Count: 10 };
+        this.apiService.loadProgramRating(obj).subscribe((res) => {
+            console.log("program review details", res);
+        });
     }
     ionViewWillEnter() { }
 };
 ProgramDetailsComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__.ApiServiceService }
 ];
-ProgramDetailsComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+ProgramDetailsComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: "app-program-details",
         template: _program_details_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_program_details_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -409,7 +421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SettingsComponent": () => (/* binding */ SettingsComponent)
 /* harmony export */ });
-/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _settings_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./settings.component.html?ngResource */ 49885);
 /* harmony import */ var _settings_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./settings.component.scss?ngResource */ 75855);
@@ -454,20 +466,20 @@ let SettingsComponent = class SettingsComponent {
     //   }
     // });
 
-    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
+    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
   }
 
   ionViewWillEnter() {
     var _this = this;
 
-    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this.EmailNotificationRequired = (yield _this.localStorageService.get("EmailNotificationRequired")) || false;
       _this.MobileNotificationRequired = (yield _this.localStorageService.get("MobileNotificationRequired")) || false;
       _this.mode = (yield _this.localStorageService.get("mode")) || false;
       console.log("mode", _this.mode);
 
       _this.apiService.settingsClientState().subscribe( /*#__PURE__*/function () {
-        var _ref = (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (ready) {
+        var _ref = (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (ready) {
           if (ready) {
             _this.settingsClientReady = true;
             const {

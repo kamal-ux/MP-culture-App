@@ -137,9 +137,11 @@ let ApiServiceService = class ApiServiceService {
             return JSON.parse(data.result.PopularProgramOfMonthResult);
         }));
     }
-    loadProgramRating() {
+    loadProgramRating(obj) {
         this.programClient.addHttpHeader("Content-Type", "text/xml");
-        return this.programClient.call("LoadProgramRatingReviewByProgramId", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+        return this.programClient
+            .call("LoadProgramRatingReviewByProgramId", { ProgramId: 16, Count: 10 })
+            .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
             return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
         }));
     }
@@ -341,7 +343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AudienceRegistrationComponent": () => (/* binding */ AudienceRegistrationComponent)
 /* harmony export */ });
-/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _audience_registration_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audience-registration.component.html?ngResource */ 47533);
 /* harmony import */ var _audience_registration_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audience-registration.component.scss?ngResource */ 62288);
@@ -380,7 +382,7 @@ let AudienceRegistrationComponent = class AudienceRegistrationComponent {
   ngOnInit() {
     var _this = this;
 
-    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       console.log("language", _this.language);
       _this.signupForm = _this.fb.group({
         FullName: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
@@ -516,7 +518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AudienceRegistration2Component": () => (/* binding */ AudienceRegistration2Component)
 /* harmony export */ });
-/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _audience_registration2_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audience-registration2.component.html?ngResource */ 99827);
 /* harmony import */ var _audience_registration2_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audience-registration2.component.scss?ngResource */ 67691);
@@ -575,7 +577,7 @@ let AudienceRegistration2Component = class AudienceRegistration2Component {
   ionViewWillEnter() {
     var _this = this;
 
-    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const {
         FullName = "",
         MobileNo = "",
