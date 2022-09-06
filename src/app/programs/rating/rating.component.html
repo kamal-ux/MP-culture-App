@@ -1,3 +1,27 @@
-<p>
-  rating works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"
+      >ललित पर्व
+      <span class="orange_btn font16"
+        >2.5 <ion-icon name="star"></ion-icon></span
+    ></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h2 class="rating mt20">
+    <ion-icon name="star" class="active"></ion-icon>
+    <ion-icon name="star" class="active"></ion-icon>
+    <ion-icon name="star" class="active"></ion-icon>
+    <ion-icon name="star" class="active"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+  </h2>
+  <p>
+    <ion-textarea plasceholder="Describe your experience.."> </ion-textarea>
+  </p>
+  <p><button type="submit">Post</button></p>
+</ion-content>

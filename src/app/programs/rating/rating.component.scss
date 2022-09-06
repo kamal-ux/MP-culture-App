@@ -1,0 +1,137 @@
+
+.toolbar-content {
+    text-align: center;
+    font-weight: 600;
+}
+.swiper-pagination-bullet-active {
+	background:white;
+}
+ion-header{
+	--background: white;
+}
+.text-justify {
+	text-align: justify;
+	color:#797494;
+}
+.header-area {
+	    // background: url(https://jusmarktech.in/Culture/img/bg-img/NOTES1.png) repeat-x #fff;
+    background-color: #fff !important;
+    height: 100px !important;
+    background-position: 0% 63%;
+}
+.mt21{
+	margin-top:20px
+}
+#icons {
+	font-size: 25px;
+	color: #67696c!important;
+	padding-left: 10px;
+}
+
+.blue_card {
+	background-color: #dcebfd;
+	border-radius: 10px;
+	box-shadow: none;
+	padding: 10px;
+  margin: 0 0 10px 0;
+}
+.blue_card .trending_img {
+	max-width: 100%;
+	max-height: 80px;
+	border-radius: 10px;
+}
+.product_slide {
+	padding: 15px;
+	background: #0C153B;
+	background: -webkit-linear-gradient(to right, #242644, #0C153B);
+	background: linear-gradient(to right, #242644, #0C153B);
+}
+.product_slide .swiper-slide:before {
+	background: transparent;
+}
+.product_slide p a {
+	color: #797494;
+}
+ion-text{
+    color:#797494;
+}
+.product_slide .swiper-pagination-bullet-active {
+	opacity: 1;
+	background: #ffc107 !important;
+}
+.product_slide .swiper-pagination-fraction, .product_slide .swiper-pagination-custom, .product_slide .swiper-container-horizontal>.swiper-pagination-bullets {
+	left: 25px;
+}
+.foryou_card {
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+	padding: 0;
+	margin: 0;
+}
+.foryou_card:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.2);
+	left: 0;
+	right: 0;
+}
+.foryou_card .bookmark {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: #fff;
+	text-align: left;
+}
+.foryou_card .content {
+	position: absolute;
+	bottom: 20px;
+	left: 10px;
+	color: #fff;
+	text-align: left;
+	width: calc(100% - 20px);
+}
+.foryou_card img {
+	width: 100% !important;
+	max-height: 400px !important;
+	border-radius: 10px;
+}
+.blue_tab_card {
+	background-color: #dcebfd;
+	box-shadow: none;
+	padding: 10px;
+	border-radius: 0;
+  margin: 0 0 10px 0;
+}
+.blue_tab_card ion-row {
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 7px;
+}
+.blue_tab_card .trending_img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+.btn-segment.segment-button-checked {
+	background: #e42f08;
+	color: #e42f08;
+}
+a {
+	color:black;
+}
+.pad-5{
+    padding:5px;
+}
+
+.blink-me {
+  animation: blinker 1.5s linear infinite;
+}
+.review_thum{width: 80px; height: 80px;}
+.rating ion-icon{margin: 0 5px 5px 0; color: #999;font-size: 32px !important;}
+.rating ion-icon:hover, .rating ion-icon.active{color: #e42f08;}
+.font18{font-size: 18px !important;}
+
+ion-textarea{border: solid 1px #ccc; padding: 5px; font-size: 14px; border-radius: 6px; height: 80px;}
