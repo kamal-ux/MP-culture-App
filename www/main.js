@@ -169,9 +169,9 @@ let AppComponent = class AppComponent {
     return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       setTimeout(() => {
         _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_6__.SplashScreen.hide({
-          fadeOutDuration: 10
+          fadeOutDuration: 300
         });
-      }, 10);
+      }, 2000);
       yield _this.localStorageService.init();
       const mode = (yield _this.localStorageService.get("mode")) || false;
 

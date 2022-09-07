@@ -4,7 +4,7 @@ import { MenuController } from "@ionic/angular";
 import { LocalStorageService } from "./service/local-storage.service";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { StoreService } from "./service/store.service";
-import { SplashScreen } from '@capacitor/splash-screen';
+import { SplashScreen } from "@capacitor/splash-screen";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -117,13 +117,11 @@ export class AppComponent {
   }
 
   async ngOnInit() {
-      setTimeout(
-        () => {
-          SplashScreen.hide({
-            fadeOutDuration:10,
-          });
-        },10
-      );
+    setTimeout(() => {
+      SplashScreen.hide({
+        fadeOutDuration: 300,
+      });
+    }, 2000);
     await this.localStorageService.init();
     const mode = (await this.localStorageService.get("mode")) || false;
     if (mode) {
