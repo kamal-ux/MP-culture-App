@@ -10,6 +10,7 @@ export class StoreService {
   private pastPrograms;
   private monthlyPrograms;
   private isLoggedInSubject = new Subject<any>();
+  private isRating = new Subject<any>();
 
   constructor() {}
 
@@ -51,5 +52,13 @@ export class StoreService {
 
   public set monthlyProgramsData(val) {
     this.monthlyPrograms = val;
+  }
+
+  setRatingData(isLoggedIn) {
+    this.isRating.next(isLoggedIn);
+  }
+
+  getRatingData(): Observable<any> {
+    return this.isRating.asObservable();
   }
 }

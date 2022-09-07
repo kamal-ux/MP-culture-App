@@ -335,10 +335,16 @@ let ApiServiceService = class ApiServiceService {
             return JSON.parse(data.result.PopularProgramOfMonthResult);
         }));
     }
-    loadProgramRating() {
+    loadProgramRating(obj) {
         this.programClient.addHttpHeader("Content-Type", "text/xml");
-        return this.programClient.call("LoadProgramRatingReviewByProgramId", { Count: 20 }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+        return this.programClient.call("LoadProgramRatingReviewByProgramId", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
             return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
+        }));
+    }
+    InsertProgramRatingReviewByAudienceId(obj) {
+        this.programClient.addHttpHeader("Content-Type", "text/xml");
+        return this.programClient.call("InsertProgramRatingReviewByAudienceId", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
+            return JSON.parse(data.result.InsertProgramRatingReviewByAudienceIdResult);
         }));
     }
     loadLandingPageContent() {

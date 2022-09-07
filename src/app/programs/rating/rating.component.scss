@@ -130,8 +130,25 @@ a {
   animation: blinker 1.5s linear infinite;
 }
 .review_thum{width: 80px; height: 80px;}
-.rating ion-icon{margin: 0 5px 5px 0; color: #999;font-size: 32px !important;}
+.rating ion-icon{margin: 0 5px 5px 0; color: #999;font-size: 35px !important;}
 .rating ion-icon:hover, .rating ion-icon.active{color: #e42f08;}
 .font18{font-size: 18px !important;}
 
 ion-textarea{border: solid 1px #ccc; padding: 5px; font-size: 14px; border-radius: 6px; height: 80px;}
+.h30{
+	height: 30px;
+}
+form {
+	    border: 1px solid #ccc;
+    padding: 20px 30px;
+    border-radius: 5px;
+	margin-top:70px;
+}
+.orange-btn {
+    background: #ffaf00;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    padding: 3px 6px;
+    color: #fff;
+}
