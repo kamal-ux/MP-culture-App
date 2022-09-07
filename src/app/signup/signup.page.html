@@ -30,11 +30,21 @@
           <ion-row class="mt10">
             <ion-col size="12" class="relative">
               <ion-text>Mobile No. <span class="text-danger">*</span></ion-text>
-              <ion-input placeholder="" required formControlName="MobileNo"></ion-input>
+              <ion-input
+                placeholder=""
+                required
+                formControlName="MobileNo"
+              ></ion-input>
             </ion-col>
             <ion-col size="12" class="relative">
-              <ion-text>Artist Name <span class="text-danger">*</span></ion-text>
-              <ion-input placeholder="" required formControlName="ArtistName"></ion-input>
+              <ion-text
+                >Artist Name <span class="text-danger">*</span></ion-text
+              >
+              <ion-input
+                placeholder=""
+                required
+                formControlName="ArtistName"
+              ></ion-input>
             </ion-col>
             <ion-col size="12" class="relative">
               <ion-text>Password <span class="text-danger">*</span></ion-text>
@@ -46,7 +56,9 @@
               ></ion-input>
             </ion-col>
             <ion-col size="12" class="relative">
-              <ion-text>Confirm Password <span class="text-danger">*</span></ion-text>
+              <ion-text
+                >Confirm Password <span class="text-danger">*</span></ion-text
+              >
 
               <ion-input
                 placeholder=""
@@ -76,12 +88,16 @@
             </ion-col>
             <ion-col size="2"></ion-col>
             <ion-col size="12" class="ion-text-center">
-              <p>Already have an account? <a routerLink="../../signup">Login</a></p>
+              <p>
+                Already have an account? <a routerLink="../../signup">Login</a>
+              </p>
             </ion-col>
           </ion-row>
         </ion-list>
       </form>
     </ng-container>
-    <app-audience-registration *ngIf="signupType == 'audience'"></app-audience-registration>
+    <app-audience-registration
+      *ngIf="signupType == 'audience'"
+    ></app-audience-registration>
   </ion-content>
 </ion-app>
