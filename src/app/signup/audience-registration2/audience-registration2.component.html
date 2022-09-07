@@ -5,9 +5,14 @@
     </div>
     <ion-grid>
       <ion-row class="mt10 fnt-bold">
-        <ion-col size="8"><ion-text>Audience Registration</ion-text></ion-col>
+        <ion-col size="8"
+          ><ion-text>
+            {{ isEnglish ? "Audience Registration" : language.audienceRegister }}</ion-text
+          ></ion-col
+        >
         <ion-col size="4" class="ion-text-right">
-          <select name="cars" id="cars">
+          <select name="cars" id="cars" (change)="languageSwitch($event.target)">
+            <option value="hindi">हिन्दी</option>
             <option value="english">English</option>
           </select>
         </ion-col>
@@ -16,13 +21,19 @@
         <ion-list>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>Name <span class="text-danger">*</span></ion-text>
+              <ion-text
+                >{{ isEnglish ? "Name" : language.name }}
+                <span class="text-danger">*</span></ion-text
+              >
               <ion-input formControlName="FullName"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>Mobile Number <span class="text-danger">*</span></ion-text>
+              <ion-text>
+                {{ isEnglish ? "Mobile Number" : language.mobileNo
+                }}<span class="text-danger">*</span></ion-text
+              >
               <ion-input
                 type="number"
                 class="readonly"
@@ -33,7 +44,10 @@
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>Email <span class="text-danger">*</span></ion-text>
+              <ion-text>
+                {{ isEnglish ? "Email" : language.email
+                }}<span class="text-danger">*</span></ion-text
+              >
               <ion-input
                 id="email"
                 name="email"
@@ -61,13 +75,13 @@
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>Address</ion-text>
+              <ion-text>{{ isEnglish ? "Address" : language.address }}</ion-text>
               <ion-input placeholder="" formControlName="Address"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>Country</ion-text>
+              <ion-text>{{ isEnglish ? "Country" : language.country }}</ion-text>
 
               <ion-select
                 interface="popover"
@@ -80,7 +94,7 @@
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>State</ion-text>
+              <ion-text>{{ isEnglish ? "State" : language.state }}</ion-text>
               <ion-select interface="popover" placeholder="Select State" formControlName="StateId">
                 <ion-select-option [value]="1">Rajsthan</ion-select-option>
                 <ion-select-option [value]="2">Uttar Pradesh</ion-select-option>
@@ -91,7 +105,7 @@
           </ion-row>
           <ion-row>
             <ion-col size="12" class="relative">
-              <ion-text>District</ion-text>
+              <ion-text>{{ isEnglish ? "District" : language.district }}</ion-text>
               <ion-select
                 interface="popover"
                 placeholder="Select District"
@@ -105,7 +119,7 @@
               </ion-select>
             </ion-col>
           </ion-row>
-          <ion-row>
+          <!-- <ion-row>
             <ion-col size="12" class="relative">
               <ion-text>Village/City</ion-text>
               <ion-input
@@ -116,14 +130,18 @@
               ></ion-input>
             </ion-col>
           </ion-row>
+           -->
           <ion-row>
             <ion-col size="8">
-              <ion-text>Birth Date <span class="text-danger">*</span></ion-text>
+              <ion-text>
+                {{ isEnglish ? "Birth Date" : language.dob }}
+                <span class="text-danger">*</span></ion-text
+              >
 
               <input type="date" formControlName="DateOfBirth" id="field_birthDate" />
             </ion-col>
             <ion-col size="4">
-              <ion-text>Age</ion-text>
+              <ion-text>{{ isEnglish ? "Age" : language.age }}</ion-text>
               <ion-input
                 placeholder=""
                 type="number"
@@ -135,7 +153,13 @@
           <ion-row>
             <ion-col size="12">
               <p id="theme-text">
-                <ion-text> Through which medium you want information about the program?</ion-text>
+                <ion-text>
+                  {{
+                    isEnglish
+                      ? "Through which medium you want information about the program?"
+                      : language.isNotification
+                  }}
+                </ion-text>
               </p>
             </ion-col>
           </ion-row>
@@ -143,28 +167,39 @@
             <ion-col size="12">
               <ion-radio-group formControlName="NotificationRequired">
                 <ion-radio value="email"></ion-radio>
-                <ion-text>By Email</ion-text>
+                <ion-text>{{ isEnglish ? "By Email" : language.fromEmail }}</ion-text>
 
                 <ion-radio value="sms"></ion-radio>
-                <ion-text>By SMS</ion-text>
+                <ion-text>{{ isEnglish ? "By SMS" : language.fromSMS }}</ion-text>
               </ion-radio-group>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12">
-              <h5><ion-text>Disclaimer</ion-text></h5>
+              <h5>
+                <ion-text>{{ isEnglish ? "Disclaimer" : language.disclaimer }}</ion-text>
+              </h5>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12">
-              <ion-text>1. The information given by me is correct.</ion-text>
+              <ion-text
+                >1.
+                {{
+                  isEnglish ? "The information given by me is correct." : language.disclaimer1
+                }}</ion-text
+              >
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12">
               <ion-text>
-                2. I will not have any objection in case the information given by me is used for
-                departmental use.
+                2.
+                {{
+                  isEnglish
+                    ? "I will not have any objection in case the information given by me is used for departmental use."
+                    : language.disclaimer2
+                }}
               </ion-text>
             </ion-col>
           </ion-row>
@@ -172,14 +207,16 @@
             <ion-row>
               <ion-col size="12">
                 <ion-checkbox formControlName="iAgree"></ion-checkbox>&nbsp;
-                <ion-text>I Agree</ion-text>
+                <ion-text>{{ isEnglish ? "I Agree" : language.disclaimer3 }}</ion-text>
               </ion-col>
             </ion-row>
           </ion-row>
           <ion-row *ngIf="!signupForm.controls['iAgree'].value">
             <ion-col size="4"></ion-col>
             <ion-col size="4">
-              <button class="skip" type="submit" routerLink="">Skip</button>
+              <button class="skip" type="submit" routerLink="">
+                {{ isEnglish ? "Skip" : language.skip }}
+              </button>
             </ion-col>
             <ion-col size="4"></ion-col>
           </ion-row>
@@ -192,21 +229,28 @@
                 }"
                 [disabled]="!signupForm.valid"
               >
-                Save
+                {{ isEnglish ? "Save" : language.save }}
               </button>
               <!-- <button type="submit" [disabled]="signupForm.invalid">Save</button> -->
             </ion-col>
             <ion-col size="4" class="mb30">
-              <button class="cancelBtn" type="submit" routerLink="">Cancel</button>
+              <button class="cancelBtn" type="submit" routerLink="">
+                {{ isEnglish ? "Cancel" : language.cancel }}
+              </button>
             </ion-col>
             <ion-col size="4" class="mb30">
-              <button class="skip" type="submit" routerLink="">Skip</button>
+              <button class="skip" type="submit" routerLink="">
+                {{ isEnglish ? "Skip" : language.skip }}
+              </button>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12" class="ion-text-center">
               <p>
-                Already have an account? <a routerLink="../../" (click)="goToLoginPage()">Login</a>
+                {{ isEnglish ? "Already have an account?" : language.confirm }}
+                <a routerLink="../../" (click)="goToLoginPage()">{{
+                  isEnglish ? "Login" : language.loginHere
+                }}</a>
               </p>
             </ion-col>
           </ion-row>

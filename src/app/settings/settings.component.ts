@@ -11,6 +11,7 @@ import * as _ from "lodash";
 })
 export class SettingsComponent implements OnInit {
   mode: boolean;
+  isLanguage: boolean;
   language: string = "hindi";
   isDefaultLanguage: boolean = false;
   settingsClientReady: boolean = false;
@@ -45,6 +46,7 @@ export class SettingsComponent implements OnInit {
     this.MobileNotificationRequired =
       (await this.localStorageService.get("MobileNotificationRequired")) || false;
     this.mode = (await this.localStorageService.get("mode")) || false;
+    this.isLanguage = (await this.localStorageService.get("isEnglish")) || false;
     console.log("mode", this.mode);
     this.apiService.settingsClientState().subscribe(async (ready) => {
       if (ready) {
@@ -111,8 +113,10 @@ export class SettingsComponent implements OnInit {
   languageSwitcher(event): any {
     if (event.target.checked) {
       this.language = "english";
+      this.localStorageService.set("isEnglish", true);
     } else {
       this.language = "hindi";
+      this.localStorageService.set("isEnglish", false);
     }
   }
 
