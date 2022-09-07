@@ -4,10 +4,11 @@ import { MenuController } from "@ionic/angular";
 import { LocalStorageService } from "./service/local-storage.service";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { StoreService } from "./service/store.service";
+import { SplashScreen } from "@capacitor/splash-screen";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
-  styleUrls: ["app.component.scss"]
+  styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
   public appMenu = [];
@@ -15,92 +16,92 @@ export class AppComponent {
     {
       title: "कार्यक्रमों का सजीव प्रसारण",
       value: "live-program",
-      icon: "play-outline"
+      icon: "play-outline",
     },
     {
       title: "आज के कार्यक्रम",
       value: "today-program",
-      icon: "flash-outline"
+      icon: "flash-outline",
     },
     {
       title: "आगामी कार्यक्रम",
       value: "upcoming-program",
 
-      icon: "flash-outline"
+      icon: "flash-outline",
     },
     {
       title: "संगृहीत कार्यक्रम",
       value: "archive-program",
 
-      icon: "documents-outline"
+      icon: "documents-outline",
     },
     {
       title: "कला विधाये",
       value: "category",
 
-      icon: "grid-outline"
+      icon: "grid-outline",
     },
     {
       title: "सेटिंग",
       value: "setting",
 
-      icon: "settings-outline"
+      icon: "settings-outline",
     },
     {
       title: "लॉग आउट",
       value: "logout",
 
-      icon: "log-out-outline"
-    }
+      icon: "log-out-outline",
+    },
   ];
 
   public loginAppMenu = [
     {
       title: "कार्यक्रमों का सजीव प्रसारण",
       value: "live-program",
-      icon: "play-outline"
+      icon: "play-outline",
     },
     {
       title: "आज के कार्यक्रम",
       value: "today-program",
-      icon: "flash-outline"
+      icon: "flash-outline",
     },
     {
       title: "आगामी कार्यक्रम",
       value: "upcoming-program",
 
-      icon: "flash-outline"
+      icon: "flash-outline",
     },
     {
       title: "संगृहीत कार्यक्रम",
       value: "archive-program",
 
-      icon: "documents-outline"
+      icon: "documents-outline",
     },
     {
       title: "प्रवेशिका",
       value: "register",
 
-      icon: "person-outline"
+      icon: "person-outline",
     },
     {
       title: "कला विधाये",
       value: "category",
 
-      icon: "grid-outline"
+      icon: "grid-outline",
     },
     {
       title: "सेटिंग",
       value: "setting",
 
-      icon: "settings-outline"
+      icon: "settings-outline",
     },
     {
       title: "लॉग इन",
       value: "login",
 
-      icon: "power-outline"
-    }
+      icon: "power-outline",
+    },
   ];
   isLoggedIn: boolean;
   constructor(
@@ -116,6 +117,11 @@ export class AppComponent {
   }
 
   async ngOnInit() {
+    setTimeout(() => {
+      SplashScreen.hide({
+        fadeOutDuration: 300,
+      });
+    }, 2000);
     await this.localStorageService.init();
     const mode = (await this.localStorageService.get("mode")) || false;
     if (mode) {
@@ -124,14 +130,17 @@ export class AppComponent {
       this.renderer.setAttribute(document.body, "color-theme", "light");
     }
     this.appMenu = this.loginAppMenu;
-    const { AudienceId = "" } = (await this.localStorageService.get("audienceData")) || {};
+    const { AudienceId = "" } =
+      (await this.localStorageService.get("audienceData")) || {};
     if (AudienceId) {
       this.appMenu = this.offAppMenu;
     }
     this.storeService.getIsLoggedIn().subscribe((res: any) => {
       console.log("isLoggedIn", res);
       this.isLoggedIn = res;
-      this.isLoggedIn ? (this.appMenu = this.offAppMenu) : (this.appMenu = this.loginAppMenu);
+      this.isLoggedIn
+        ? (this.appMenu = this.offAppMenu)
+        : (this.appMenu = this.loginAppMenu);
     });
   }
 
@@ -143,7 +152,9 @@ export class AppComponent {
     this.storeService.getIsLoggedIn().subscribe((res: any) => {
       console.log("isLoggedIn", res);
       this.isLoggedIn = res;
-      this.isLoggedIn ? (this.appMenu = this.offAppMenu) : (this.offAppMenu = this.appMenu);
+      this.isLoggedIn
+        ? (this.appMenu = this.offAppMenu)
+        : (this.offAppMenu = this.appMenu);
     });
   }
 
@@ -158,13 +169,22 @@ export class AppComponent {
         this.router.navigate(["tabs/home/programs", { param: "live now" }]);
         break;
       case "today-program":
-        this.router.navigate(["tabs/home/programs", { param: "today's programs" }]);
+        this.router.navigate([
+          "tabs/home/programs",
+          { param: "today's programs" },
+        ]);
         break;
       case "upcoming-program":
-        this.router.navigate(["tabs/home/programs", { param: "upcoming programs" }]);
+        this.router.navigate([
+          "tabs/home/programs",
+          { param: "upcoming programs" },
+        ]);
         break;
       case "archive-program":
-        this.router.navigate(["tabs/home/programs", { param: "archive programs" }]);
+        this.router.navigate([
+          "tabs/home/programs",
+          { param: "archive programs" },
+        ]);
         break;
       case "register":
         this.router.navigate(["../signup/signup"]);
