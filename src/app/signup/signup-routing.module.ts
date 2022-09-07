@@ -27,7 +27,7 @@ const routes: Routes = [
     component: AudienceRegistrationComponent
   },
   {
-    path: "audience/otp",
+    path: "signup/otp",
     component: OtpComponent
   },
   {
