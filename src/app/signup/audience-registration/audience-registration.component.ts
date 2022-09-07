@@ -18,6 +18,7 @@ export class AudienceRegistrationComponent implements OnInit {
   artistRegisterClientReady: boolean;
   language: any = (language as any).default;
   mode: boolean;
+  isEnglish: boolean;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService,
@@ -46,6 +47,9 @@ export class AudienceRegistrationComponent implements OnInit {
         this.getArtistRegisterRequirement();
       }
     });
+  }
+  async ionViewWillEnter() {
+    this.isEnglish = (await this.localStorage.get("isEnglish")) || false;
   }
 
   passwordMatchValidator(g: FormGroup) {

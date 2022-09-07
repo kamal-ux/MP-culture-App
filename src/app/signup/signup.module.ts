@@ -13,6 +13,7 @@ import { SignupStep2Component } from "./signup-step2/signup-step2.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ArtistSignupComponent } from "./artist-signup/artist-signup.component";
 import { AudienceRegistration2Component } from "./audience-registration2/audience-registration2.component";
+import { OtpComponent } from "./otp/otp.component";
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { AudienceRegistration2Component } from "./audience-registration2/audienc
     AudienceRegistrationComponent,
     SignupStep2Component,
     ArtistSignupComponent,
-    AudienceRegistration2Component
+    AudienceRegistration2Component,
+    OtpComponent
   ],
   providers: [AudienceRegistrationComponent]
 })

@@ -1,0 +1,34 @@
+.login_img {text-align: center;}
+
+ion-icon{vertical-align: middle;}
+.icon{position: absolute; right: 22px;top: 50%;transform: translateY(-50%);font-size: 18px; z-index: 9; color: #e42f08;}
+ion-input, ion-select{padding: 3px 20px 2px 20px !important; border-radius: 5px; color: #333; font-size: 14px !important; min-height: 50px; background: #dcebfd;}
+ion-input:focus{border: solid 1px #e42f08;color: #e42f08 !important;}
+
+ion-col{margin-bottom: 10px;}
+.list-ios{background: transparent;}
+.login_top{
+    --background: url(../../../assets/images/login_top.png) no-repeat right top/60%;
+}
+.login_top:before{
+background: url(../../../assets/images/login_bottom.png) no-repeat left bottom/60%;
+content: "";position: fixed;left: 0;bottom: 0;width: 100%;height: 150px;display: block;z-index: 0;}
+
+.deselected_btn {
+    background: white;
+border: 1px solid #0000000f;
+    color:black;
+}
+.selected_btn {
+    background: red;
+}
+ion-list{
+    padding:5px;
+}
+ion-card {
+    border: 1px solid lightgray;
+    margin-top: 15px;
+    padding: 10px;
+    box-shadow: none;
+}
+ion-input{border: solid 1px #ccc; padding: 5px; border-radius: 2px; height: 36px; min-height: 36px;}

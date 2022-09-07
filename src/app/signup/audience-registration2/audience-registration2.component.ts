@@ -6,6 +6,7 @@ import { ApiServiceService } from "src/app/service/api-service.service";
 import { LocalStorageService } from "src/app/service/local-storage.service";
 import { UtilService } from "src/app/service/util-service.service";
 import { NgbDateStruct, NgbInputDatepickerConfig } from "@ng-bootstrap/ng-bootstrap";
+import * as language from "../../../assets/app-data.json";
 
 @Component({
   selector: "app-audience-registration2",
@@ -19,6 +20,9 @@ export class AudienceRegistration2Component implements OnInit {
   artistRegisterClientReady: boolean;
   districtArr: any;
   audienceId: any;
+  isEnglish: boolean = false;
+  language: any = (language as any).default;
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService,
@@ -54,6 +58,7 @@ export class AudienceRegistration2Component implements OnInit {
   }
 
   async ionViewWillEnter() {
+    this.isEnglish = (await this.localStorage.get("isEnglish")) || false;
     const {
       FullName = "",
       MobileNo = "",
@@ -173,6 +178,11 @@ export class AudienceRegistration2Component implements OnInit {
         this.router.navigate([""]);
     });
     console.log("form obj", isValid, formObj);
+  }
+
+  languageSwitch(evt: any) {
+    console.log("language", evt.value);
+    this.isEnglish = evt.value == "hindi" ? false : true;
   }
 
   goToLoginPage(): void {

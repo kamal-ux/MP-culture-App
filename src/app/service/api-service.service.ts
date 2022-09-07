@@ -164,13 +164,20 @@ export class ApiServiceService {
 
   loadProgramRating(obj) {
     this.programClient.addHttpHeader("Content-Type", "text/xml");
-    return this.programClient
-      .call("LoadProgramRatingReviewByProgramId", { ProgramId: 16, Count: 10 })
-      .pipe(
-        map((data) => {
-          return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
-        })
-      );
+    return this.programClient.call("LoadProgramRatingReviewByProgramId", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
+      })
+    );
+  }
+
+  InsertProgramRatingReviewByAudienceId(obj) {
+    this.programClient.addHttpHeader("Content-Type", "text/xml");
+    return this.programClient.call("InsertProgramRatingReviewByAudienceId", obj).pipe(
+      map((data) => {
+        return JSON.parse(data.result.InsertProgramRatingReviewByAudienceIdResult);
+      })
+    );
   }
 
   loadLandingPageContent() {

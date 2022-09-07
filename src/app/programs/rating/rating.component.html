@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"
+      >ललित पर्व <span class="orange-btn font16">2.5 <ion-icon name="star"></ion-icon></span
+    ></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="ratingForm" (ngSubmit)="submit(ratingForm.valid, ratingForm.value)">
+    <h2 class="rating mt20 text-center">
+      <ng-container>
+        <ion-icon
+          name="star"
+          [ngStyle]="{
+            color: rate.active ? 'yellow' : 'gray'
+          }"
+          (click)="doRate(index)"
+          *ngFor="let rate of ratingObj; let index = index"
+        ></ion-icon>
+      </ng-container>
+    </h2>
+    <h2 class="text-center h30">
+      <ion-text color="success" class="text-success">{{
+        rate || ratingObj[rate].active ? ratingObj[rate].text : ""
+      }}</ion-text>
+    </h2>
+    <p>
+      <ion-textarea plasceholder="Describe your experience.." formControlName="review">
+      </ion-textarea>
+    </p>
+    <p><button type="submit">Post</button></p>
+  </form>
+</ion-content>

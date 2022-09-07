@@ -4,6 +4,7 @@ import { ArtistSignupComponent } from "./artist-signup/artist-signup.component";
 import { AudienceRegistrationComponent } from "./audience-registration/audience-registration.component";
 import { AudienceRegistration2Component } from "./audience-registration2/audience-registration2.component";
 import { LoginComponent } from "./login/login.component";
+import { OtpComponent } from "./otp/otp.component";
 import { SignupStep2Component } from "./signup-step2/signup-step2.component";
 
 import { SignupPage } from "./signup.page";
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: "audience",
     component: AudienceRegistrationComponent
+  },
+  {
+    path: "signup/otp",
+    component: OtpComponent
   },
   {
     path: "signup/audienceSignup2",

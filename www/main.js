@@ -554,6 +554,7 @@ __webpack_require__.r(__webpack_exports__);
 let StoreService = class StoreService {
     constructor() {
         this.isLoggedInSubject = new rxjs__WEBPACK_IMPORTED_MODULE_0__.Subject();
+        this.isRating = new rxjs__WEBPACK_IMPORTED_MODULE_0__.Subject();
     }
     setIsLoggedIn(isLoggedIn) {
         this.isLoggedInSubject.next(isLoggedIn);
@@ -584,6 +585,12 @@ let StoreService = class StoreService {
     }
     set monthlyProgramsData(val) {
         this.monthlyPrograms = val;
+    }
+    setRatingData(isLoggedIn) {
+        this.isRating.next(isLoggedIn);
+    }
+    getRatingData() {
+        return this.isRating.asObservable();
     }
 };
 StoreService.ctorParameters = () => [];

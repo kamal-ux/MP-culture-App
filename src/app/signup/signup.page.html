@@ -3,7 +3,8 @@
     <div class="login_img">
       <img src="../../../assets/images/mp-logo.png" width="100" />
     </div>
-    <h3 class="ion-text-center mb30">Welcome, Register Now!</h3>
+    <h6 class="mb30 mt10">{{isEnglish ? "Sign Up Here !" : language.doRegister}}</h6>
+    <!-- <h5 class="ion-text-center mb30">{{isEnglish ? "Sign Up Here !" : language.doRegister}}</h5> -->
     <!-- <button
       type="submit"
       class="button_roundad"
@@ -18,7 +19,7 @@
       [ngClass]="{'deselected_btn': signupType === 'artist'}"
       (click)="toggleStatus('audience')"
     >
-      Audience Registration
+      {{ isEnglish ? "Audience Registration" : language.audienceRegister }}
     </button>
     <ng-container *ngIf="signupType == 'artist'">
       <form

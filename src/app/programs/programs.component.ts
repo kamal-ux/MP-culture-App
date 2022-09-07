@@ -75,7 +75,7 @@ export class ProgramsComponent implements OnInit {
   viewProgramDetails(programDetails: any, today?: any) {
     programDetails.today = today ? today : false;
     this.router.navigate(["tabs/home/programDetails"], {
-      state: programDetails
+      state: { ...programDetails, isArchive: !!this.pastPrograms }
     });
   }
 

@@ -11938,5 +11938,11 @@ ion-input > .readonly {
 .bold {
   font-weight: 700;
 }
+.font16 {
+  font-size: 16px;
+}
+.text_green {
+  color: #00b894;
+}
 
 /*# sourceMappingURL=styles.css.map*/

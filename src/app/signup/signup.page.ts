@@ -5,6 +5,7 @@ import { Platform } from "@ionic/angular";
 import { ApiServiceService } from "../service/api-service.service";
 import { LocalStorageService } from "../service/local-storage.service";
 import { UtilService } from "../service/util-service.service";
+import * as language from "../../assets/app-data.json";
 
 @Component({
   selector: "app-signup",
@@ -15,6 +16,9 @@ export class SignupPage implements OnInit {
   signupForm!: FormGroup;
   signupType = "audience";
   artistRegisterClientReady: boolean;
+  isEnglish: boolean = false;
+  language: any = (language as any).default;
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService,
@@ -40,6 +44,10 @@ export class SignupPage implements OnInit {
       },
       { validator: this.passwordMatchValidator }
     );
+  }
+
+  async ionViewWillEnter() {
+    this.isEnglish = (await this.localStorage.get("isEnglish")) || false;
   }
 
   passwordMatchValidator(g: FormGroup) {
