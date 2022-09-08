@@ -75,6 +75,11 @@ export class SignupPage implements OnInit {
     return reader.readAsDataURL(file);
   }
 
+  languageSwitch(evt: any) {
+    console.log("language", evt.value);
+    this.isEnglish = evt.value == "hindi" ? false : true;
+  }
+
   submit(isValid: boolean, formValue: any): void {
     if (!isValid || !this.artistRegisterClientReady) return;
     const formObj = {

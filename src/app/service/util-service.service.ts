@@ -44,7 +44,7 @@ export class UtilService {
 
   async presentLoading(message: any) {
     if (!this.loading) {
-      this.loading = this.loading ? await this.loading.dismiss() : false;
+      this.loading = this.loading ? await this.loadingCtrl.dismiss() : false;
       this.loading = await this.loadingCtrl.create({
         message
       });
