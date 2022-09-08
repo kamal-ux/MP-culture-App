@@ -23,7 +23,12 @@
             >
             </ion-icon>
             <ion-label class="text-bold"
-              >{{ p.title }}<span class="red-circle flashing-effect"></span
+              >{{ p.title }}
+              <ion-icon
+                *ngIf="p.value === 'live-program'"
+                class="text-danger blink_me"
+                name="radio-button-on"
+              ></ion-icon
             ></ion-label>
           </ion-item>
         </ion-menu-toggle>

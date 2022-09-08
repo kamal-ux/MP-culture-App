@@ -3,16 +3,20 @@
     <div class="login_img">
       <img src="../../../assets/images/mp-logo.png" width="100" />
     </div>
-    <h6 class="mb30 mt10">{{isEnglish ? "Sign Up Here !" : language.doRegister}}</h6>
-    <!-- <h5 class="ion-text-center mb30">{{isEnglish ? "Sign Up Here !" : language.doRegister}}</h5> -->
-    <!-- <button
-      type="submit"
-      class="button_roundad"
-      [ngClass]="{'deselected_btn': signupType === 'audience'}"
-      (click)="toggleStatus('artist')"
-    >
-      Artist Registration
-    </button> -->
+    <ion-row class="mt10 fnt-bold">
+      <ion-col size="8"
+        ><ion-text
+          ><b> {{ isEnglish ? "Sign Up Here !" : language.doRegister }}</b></ion-text
+        ></ion-col
+      >
+      <ion-col size="4" class="ion-text-right">
+        <select name="cars" id="cars" (change)="languageSwitch($event.target)">
+          <option [selected]="!isEnglish" value="hindi">हिन्दी</option>
+          <option [selected]="isEnglish" value="english">English</option>
+        </select>
+      </ion-col>
+    </ion-row>
+
     <button
       type="submit"
       class="button_roundad"
@@ -83,6 +87,9 @@
         </ion-list>
       </form>
     </ng-container>
-    <app-audience-registration *ngIf="signupType == 'audience'"></app-audience-registration>
+    <app-audience-registration
+      *ngIf="signupType == 'audience'"
+      [isEnglish]="isEnglish"
+    ></app-audience-registration>
   </ion-content>
 </ion-app>

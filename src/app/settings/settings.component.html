@@ -19,6 +19,7 @@
             color="danger"
             checked="false"
             [(ngModel)]="EmailNotificationRequired"
+            [disabled]="!MobileNotificationRequired"
             (ionChange)="notificationChange()"
             mode="md"
           ></ion-toggle
@@ -36,6 +37,7 @@
             color="danger"
             checked="false"
             [(ngModel)]="MobileNotificationRequired"
+            [disabled]="!EmailNotificationRequired"
             (ionChange)="notificationChange()"
             mode="md"
           ></ion-toggle

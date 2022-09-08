@@ -160,21 +160,22 @@ export class AudienceRegistration2Component implements OnInit {
       StateId: formValue.StateId,
       Gender: "",
       DateOfBirth:
-        formValue.DateOfBirth.year +
+        new Date(formValue.DateOfBirth).getFullYear() +
         "-" +
         this.calculateMonth(formValue.DateOfBirth.month) +
         "-" +
-        formValue.DateOfBirth.day,
+        new Date(formValue.DateOfBirth).getDate(),
       EmailNotificationRequired: formValue.NotificationRequired == "email" ? true : false,
       MobileNotificationRequired: formValue.NotificationRequired == "sms" ? true : false
     };
-
+    this.utilService.presentLoading("Please wait...");
     this.apiService.doAudienceProfileUpdate(formObj).subscribe((res: any) => {
       console.log("audience profile updated", res);
+      this.utilService.dismissLoading();
       res.result == "failure" && this.utilService.presentToast(res.message);
       res.result == "success" &&
         this.localStorage.set("audienceData", formObj) &&
-        this.utilService.presentToast("Successfull registered") &&
+        this.utilService.presentToast("Profile updated successfully!") &&
         this.router.navigate([""]);
     });
     console.log("form obj", isValid, formObj);

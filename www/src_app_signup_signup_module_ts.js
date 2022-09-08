@@ -359,13 +359,15 @@
 /* harmony import */ var _audience_registration_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audience-registration.component.html?ngResource */ 47533);
 /* harmony import */ var _audience_registration_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audience-registration.component.scss?ngResource */ 62288);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/api-service.service */ 7149);
 /* harmony import */ var src_app_service_local_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/local-storage.service */ 42518);
-/* harmony import */ var src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/util-service.service */ 29922);
-/* harmony import */ var _assets_app_data_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../assets/app-data.json */ 88121);
+/* harmony import */ var src_app_service_store_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/store.service */ 87627);
+/* harmony import */ var src_app_service_util_service_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/util-service.service */ 29922);
+/* harmony import */ var _assets_app_data_json__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../assets/app-data.json */ 88121);
+
 
 
 
