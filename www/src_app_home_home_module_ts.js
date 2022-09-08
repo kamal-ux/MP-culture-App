@@ -269,15 +269,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ProgramDetailsComponent": () => (/* binding */ ProgramDetailsComponent)
 /* harmony export */ });
-<<<<<<< HEAD
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _program_details_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./program-details.component.html?ngResource */ 56914);
-/* harmony import */ var _program_details_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./program-details.component.scss?ngResource */ 56309);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/api-service.service */ 7149);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
-=======
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _program_details_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./program-details.component.html?ngResource */ 56914);
 /* harmony import */ var _program_details_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./program-details.component.scss?ngResource */ 56309);
@@ -287,7 +278,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_store_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/store.service */ 87627);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
->>>>>>> b788c56df9d0e838b84d202f5c34baeabe74bc07
 
 
 
@@ -296,12 +286,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ProgramDetailsComponent = class ProgramDetailsComponent {
-<<<<<<< HEAD
-    constructor(router, apiService) {
-        this.router = router;
-        this.apiService = apiService;
-        this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.mediaUrl;
-=======
     constructor(router, apiService, storeService) {
         this.router = router;
         this.apiService = apiService;
@@ -309,7 +293,6 @@ let ProgramDetailsComponent = class ProgramDetailsComponent {
         this.ProgramId = "";
         this.mediaUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__.environment.mediaUrl;
         this.isLoggedIn = true;
->>>>>>> b788c56df9d0e838b84d202f5c34baeabe74bc07
         this.slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
         this.allRatingData = [];
     }
@@ -320,14 +303,6 @@ let ProgramDetailsComponent = class ProgramDetailsComponent {
         this.programDetails = this.router?.getCurrentNavigation()?.extras?.state;
         console.log("details", this.programDetails);
         const { ProgramId = "" } = this.programDetails;
-<<<<<<< HEAD
-        this.subscription(ProgramId);
-    }
-    subscription(ProgramId) {
-        const obj = { ProgramId: ProgramId, Count: 10 };
-        this.apiService.loadProgramRating(obj).subscribe((res) => {
-            console.log("program review details", res);
-=======
         this.ProgramId = ProgramId;
         this.subscription();
     }
@@ -362,26 +337,17 @@ let ProgramDetailsComponent = class ProgramDetailsComponent {
     goToRateProgram() {
         this.router.navigate(["tabs/home/programDetails/rating"], {
             state: this.programDetails
->>>>>>> b788c56df9d0e838b84d202f5c34baeabe74bc07
         });
     }
     ionViewWillEnter() { }
 };
 ProgramDetailsComponent.ctorParameters = () => [
-<<<<<<< HEAD
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
-    { type: src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__.ApiServiceService }
-];
-ProgramDetailsComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
-=======
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router },
     { type: src_app_service_api_service_service__WEBPACK_IMPORTED_MODULE_2__.ApiServiceService },
     { type: src_app_service_store_service__WEBPACK_IMPORTED_MODULE_3__.StoreService }
 ];
 ProgramDetailsComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
->>>>>>> b788c56df9d0e838b84d202f5c34baeabe74bc07
         selector: "app-program-details",
         template: _program_details_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_program_details_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -514,7 +480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RatingComponent": () => (/* binding */ RatingComponent)
 /* harmony export */ });
-/* harmony import */ var _Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _rating_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rating.component.html?ngResource */ 52841);
 /* harmony import */ var _rating_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./rating.component.scss?ngResource */ 69812);
@@ -571,7 +537,7 @@ let RatingComponent = class RatingComponent {
   ngOnInit() {
     var _this = this;
 
-    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this.ratingForm = _this.fb.group({
         ProgramId: [""],
         rate: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required],
@@ -595,7 +561,7 @@ let RatingComponent = class RatingComponent {
   }
 
   ionViewWillEnter() {
-    return (0,_Users_kamalsharma_Desktop_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
+    return (0,_Users_VB_culture_dept_mp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
   }
 
   doRate(index) {
@@ -905,7 +871,7 @@ module.exports = ".toolbar-content {\n  text-align: center;\n  font-weight: 600;
   \*************************************************************/
 /***/ ((module) => {
 
-module.exports = "ul.menu_list {\n  margin: 0;\n  padding: 0;\n}\n\nul.menu_list li {\n  background-color: #dcebfd;\n  border-radius: 100px;\n  box-shadow: none;\n  padding: 10px;\n  margin: 0 0 10px 0;\n  list-style: none;\n  font-size: 14px;\n  color: #606060;\n  font-weight: 400;\n  display: block;\n  width: 100%;\n}\n\nul.menu_list li a {\n  font-size: 12px;\n  color: #000;\n  text-decoration: none;\n}\n\nul.menu_list li span {\n  font-size: 10px;\n}\n\nul.menu_list li ion-icon {\n  font-size: 16px;\n  vertical-align: middle;\n}\n\n.text_blue {\n  color: #100DD1;\n}\n\nion-toggle {\n  padding: 4px;\n}\n\n.back-button {\n  padding-left: 10px;\n  font-size: 7vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHRpbmdzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtFQUNBLFVBQUE7QUFDSjs7QUFDQTtFQUNFLHlCQUFBO0VBQ0Esb0JBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7RUFDRSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0FBRUo7O0FBQUE7RUFDSSxlQUFBO0VBQ0EsV0FBQTtFQUNBLHFCQUFBO0FBR0o7O0FBREE7RUFBcUIsZUFBQTtBQUtyQjs7QUFKQTtFQUF5QixlQUFBO0VBQWUsc0JBQUE7QUFTeEM7O0FBUkE7RUFBVyxjQUFBO0FBWVg7O0FBWEE7RUFBVyxZQUFBO0FBZVg7O0FBZEE7RUFDQyxrQkFBQTtFQUNBLGNBQUE7QUFpQkQiLCJmaWxlIjoic2V0dGluZ3MuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ1bC5tZW51X2xpc3R7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG51bC5tZW51X2xpc3QgbGl7XG4gIGJhY2tncm91bmQtY29sb3I6ICNkY2ViZmQ7XG4gIGJvcmRlci1yYWRpdXM6IDEwMHB4O1xuICBib3gtc2hhZG93OiBub25lO1xuICBwYWRkaW5nOiAxMHB4O1xuICAgIG1hcmdpbjogMCAwIDEwcHggMDtcbiAgICBsaXN0LXN0eWxlOiBub25lO1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICBjb2xvcjogIzYwNjA2MDtcbiAgICBmb250LXdlaWdodDogNDAwO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHdpZHRoOiAxMDAlO1xufVxudWwubWVudV9saXN0IGxpIGF7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICAgIGNvbG9yOiAjMDAwO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTs7XG59XG51bC5tZW51X2xpc3QgbGkgc3Bhbntmb250LXNpemU6IDEwcHg7fVxudWwubWVudV9saXN0IGxpIGlvbi1pY29ue2ZvbnQtc2l6ZToxNnB4O3ZlcnRpY2FsLWFsaWduOiBtaWRkbGU7fVxuLnRleHRfYmx1ZXtjb2xvcjogIzEwMEREMTt9XG5pb24tdG9nZ2xle3BhZGRpbmc6IDRweDt9XG4uYmFjay1idXR0b257XG5cdHBhZGRpbmctbGVmdDogMTBweDtcblx0Zm9udC1zaXplOiA3dnc7XG59Il19 */";
+module.exports = "ul.menu_list {\n  margin: 0;\n  padding: 0;\n}\n\nul.menu_list li {\n  background-color: #dcebfd;\n  border-radius: 100px;\n  box-shadow: none;\n  padding: 10px;\n  margin: 0 0 10px 0;\n  list-style: none;\n  font-size: 14px;\n  color: #606060;\n  font-weight: 400;\n  display: block;\n  width: 100%;\n}\n\nul.menu_list li a {\n  font-size: 12px;\n  color: #000;\n  text-decoration: none;\n}\n\nul.menu_list li span {\n  font-size: 10px;\n}\n\nul.menu_list li ion-icon {\n  font-size: 16px;\n  vertical-align: middle;\n}\n\n.text_blue {\n  color: #100DD1;\n}\n\nion-toggle {\n  padding: 4px;\n}\n\n.back-button {\n  padding-left: 10px;\n  font-size: 7vw;\n}\n\nion-toggle.toggle-disabled {\n  opacity: 0.7;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHRpbmdzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtFQUNBLFVBQUE7QUFDSjs7QUFDQTtFQUNFLHlCQUFBO0VBQ0Esb0JBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7RUFDRSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0FBRUo7O0FBQUE7RUFDSSxlQUFBO0VBQ0EsV0FBQTtFQUNBLHFCQUFBO0FBR0o7O0FBREE7RUFBcUIsZUFBQTtBQUtyQjs7QUFKQTtFQUF5QixlQUFBO0VBQWUsc0JBQUE7QUFTeEM7O0FBUkE7RUFBVyxjQUFBO0FBWVg7O0FBWEE7RUFBVyxZQUFBO0FBZVg7O0FBZEE7RUFDQyxrQkFBQTtFQUNBLGNBQUE7QUFpQkQ7O0FBZkE7RUFDSSxZQUFBO0FBa0JKIiwiZmlsZSI6InNldHRpbmdzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwubWVudV9saXN0e1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xufVxudWwubWVudV9saXN0IGxpe1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGNlYmZkO1xuICBib3JkZXItcmFkaXVzOiAxMDBweDtcbiAgYm94LXNoYWRvdzogbm9uZTtcbiAgcGFkZGluZzogMTBweDtcbiAgICBtYXJnaW46IDAgMCAxMHB4IDA7XG4gICAgbGlzdC1zdHlsZTogbm9uZTtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgY29sb3I6ICM2MDYwNjA7XG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICB3aWR0aDogMTAwJTtcbn1cbnVsLm1lbnVfbGlzdCBsaSBhe1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICBjb2xvcjogIzAwMDtcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7O1xufVxudWwubWVudV9saXN0IGxpIHNwYW57Zm9udC1zaXplOiAxMHB4O31cbnVsLm1lbnVfbGlzdCBsaSBpb24taWNvbntmb250LXNpemU6MTZweDt2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO31cbi50ZXh0X2JsdWV7Y29sb3I6ICMxMDBERDE7fVxuaW9uLXRvZ2dsZXtwYWRkaW5nOiA0cHg7fVxuLmJhY2stYnV0dG9ue1xuXHRwYWRkaW5nLWxlZnQ6IDEwcHg7XG5cdGZvbnQtc2l6ZTogN3Z3O1xufVxuaW9uLXRvZ2dsZS50b2dnbGUtZGlzYWJsZWR7XG4gICAgb3BhY2l0eTogMC43O1xuXG59Il19 */";
 
 /***/ }),
 
@@ -955,7 +921,7 @@ module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"he
   \*************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon class=\"back-button\" name=\"arrow-back-outline\" (click)=\"navigateToHome()\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"ion-text-center\">Settings</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content class=\"ion-padding\">\n  <ul class=\"menu_list\">\n    <li *ngIf=\"audienceId\">\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"notifications-outline\" class=\"text_blue\"></ion-icon> Email\n          Notifications</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            checked=\"false\"\n            [(ngModel)]=\"EmailNotificationRequired\"\n            (ionChange)=\"notificationChange()\"\n            mode=\"md\"\n          ></ion-toggle\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li *ngIf=\"audienceId\">\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"notifications-outline\" class=\"text_blue\"></ion-icon> SMS\n          Notifications</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            checked=\"false\"\n            [(ngModel)]=\"MobileNotificationRequired\"\n            (ionChange)=\"notificationChange()\"\n            mode=\"md\"\n          ></ion-toggle\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"moon-outline\" class=\"text_blue\"></ion-icon> Night Mode</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            checked=\"false\"\n            [(ngModel)]=\"mode\"\n            (ionChange)=\"onToggleColorTheme($event)\"\n            mode=\"md\"\n          ></ion-toggle>\n        </ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"help-circle-outline\" class=\"text_blue\"></ion-icon> Support</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-icon name=\"chevron-forward-outline\"></ion-icon\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"shield-checkmark-outline\" class=\"text_blue\"></ion-icon> Privacy</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-icon name=\"chevron-forward-outline\"></ion-icon\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li *ngIf=\"audienceId\">\n      <ion-row>\n        <ion-col size=\"9\"\n          ><ion-icon name=\"notifications-outline\" class=\"text_blue\"></ion-icon> Password\n          <span>Updated 15 days ago</span></ion-col\n        >\n        <ion-col size=\"3\" class=\"ion-text-end\">\n          <a href=\"#!\"> Change <ion-icon name=\"chevron-forward-outline\"></ion-icon></a\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"language-outline\" class=\"text_blue\"></ion-icon>\n          {{ language | titlecase }}</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            [(ngModel)]=\"isLanguage\"\n            (ionChange)=\"languageSwitcher($event)\"\n            mode=\"md\"\n          ></ion-toggle>\n        </ion-col>\n      </ion-row>\n    </li>\n  </ul>\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon class=\"back-button\" name=\"arrow-back-outline\" (click)=\"navigateToHome()\"></ion-icon>\n    </ion-buttons>\n    <ion-title class=\"ion-text-center\">Settings</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content class=\"ion-padding\">\n  <ul class=\"menu_list\">\n    <li *ngIf=\"audienceId\">\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"notifications-outline\" class=\"text_blue\"></ion-icon> Email\n          Notifications</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            checked=\"false\"\n            [(ngModel)]=\"EmailNotificationRequired\"\n            [disabled]=\"!MobileNotificationRequired\"\n            (ionChange)=\"notificationChange()\"\n            mode=\"md\"\n          ></ion-toggle\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li *ngIf=\"audienceId\">\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"notifications-outline\" class=\"text_blue\"></ion-icon> SMS\n          Notifications</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            checked=\"false\"\n            [(ngModel)]=\"MobileNotificationRequired\"\n            [disabled]=\"!EmailNotificationRequired\"\n            (ionChange)=\"notificationChange()\"\n            mode=\"md\"\n          ></ion-toggle\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"moon-outline\" class=\"text_blue\"></ion-icon> Night Mode</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            checked=\"false\"\n            [(ngModel)]=\"mode\"\n            (ionChange)=\"onToggleColorTheme($event)\"\n            mode=\"md\"\n          ></ion-toggle>\n        </ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"help-circle-outline\" class=\"text_blue\"></ion-icon> Support</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-icon name=\"chevron-forward-outline\"></ion-icon\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"shield-checkmark-outline\" class=\"text_blue\"></ion-icon> Privacy</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-icon name=\"chevron-forward-outline\"></ion-icon\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li *ngIf=\"audienceId\">\n      <ion-row>\n        <ion-col size=\"9\"\n          ><ion-icon name=\"notifications-outline\" class=\"text_blue\"></ion-icon> Password\n          <span>Updated 15 days ago</span></ion-col\n        >\n        <ion-col size=\"3\" class=\"ion-text-end\">\n          <a href=\"#!\"> Change <ion-icon name=\"chevron-forward-outline\"></ion-icon></a\n        ></ion-col>\n      </ion-row>\n    </li>\n    <li>\n      <ion-row>\n        <ion-col size=\"7\"\n          ><ion-icon name=\"language-outline\" class=\"text_blue\"></ion-icon>\n          {{ language | titlecase }}</ion-col\n        >\n        <ion-col size=\"5\" class=\"ion-text-end\"\n          ><ion-toggle\n            color=\"danger\"\n            [(ngModel)]=\"isLanguage\"\n            (ionChange)=\"languageSwitcher($event)\"\n            mode=\"md\"\n          ></ion-toggle>\n        </ion-col>\n      </ion-row>\n    </li>\n  </ul>\n</ion-content>\n";
 
 /***/ })
 

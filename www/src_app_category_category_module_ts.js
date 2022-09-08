@@ -337,13 +337,7 @@ let ApiServiceService = class ApiServiceService {
     }
     loadProgramRating(obj) {
         this.programClient.addHttpHeader("Content-Type", "text/xml");
-<<<<<<< HEAD
-        return this.programClient
-            .call("LoadProgramRatingReviewByProgramId", { ProgramId: 16, Count: 10 })
-            .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
-=======
         return this.programClient.call("LoadProgramRatingReviewByProgramId", obj).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((data) => {
->>>>>>> b788c56df9d0e838b84d202f5c34baeabe74bc07
             return JSON.parse(data.result.LoadProgramRatingReviewByProgramIdResult);
         }));
     }

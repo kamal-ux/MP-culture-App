@@ -12,8 +12,8 @@
         >
         <ion-col size="4" class="ion-text-right">
           <select name="cars" id="cars" (change)="languageSwitch($event.target)">
-            <option value="hindi">हिन्दी</option>
-            <option value="english">English</option>
+            <option [selected]="!isEnglish" value="hindi">हिन्दी</option>
+            <option [selected]="isEnglish" value="english">English</option>
           </select>
         </ion-col>
       </ion-row>

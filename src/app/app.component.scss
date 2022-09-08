@@ -21,5 +21,14 @@ ion-icon{color:#67696c; margin-inline-end: 10px;}
     background-color: #e42f08;
 }
 ion-menu{
-    --width:230px;
+    --width:245px;
+}
+
+.blink_me {
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
