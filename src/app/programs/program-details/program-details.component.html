@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-row>
+  <ion-row *ngIf="programDetails.BannerImagePath1 || programDetails.BannerImagePath2">
     <ion-slides pager="true" [options]="slideOptsOne">
       <ion-slide *ngIf="programDetails?.BannerImagePath1">
         <img src="{{ mediaUrl + programDetails?.BannerImagePath1 }}" class="banner_img" />
@@ -19,7 +19,7 @@
       </ion-slide>
     </ion-slides>
   </ion-row>
-  <ion-row>
+  <ion-row *ngIf="programDetails.LiveStreamingLink">
     <ion-col size="12">
       <ion-item>
         <a
@@ -141,7 +141,7 @@
         <h4>Rating & Reviews</h4>
       </ion-col>
       <ion-col size="4">
-        <button *ngIf="isLoggedIn" (click)="goToRateProgram()">Rate Program</button>
+        <button (click)="goToRateProgram()">Rate Program</button>
       </ion-col>
     </ion-row>
     <ion-row class="mt10" *ngFor="let data of allRatingData">
