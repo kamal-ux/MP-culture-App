@@ -80,11 +80,48 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  notificationChange(): void {
-    if (!this.isNotificationChange) {
-      this.isNotificationChange = true;
+  emailNotificationChange(): void {
+    if (this.EmailNotificationRequired && !this.MobileNotificationRequired) {
+      this.EmailNotificationRequired = !this.EmailNotificationRequired;
       return;
     }
+    const settings = {
+      AudienceId: this.audienceId,
+      EmailNotificationRequired: !this.EmailNotificationRequired,
+      SMSNotificationRequired: this.MobileNotificationRequired
+    };
+    this.changeStatus(settings);
+  }
+  smsNotificationChange(): void {
+    if (!this.EmailNotificationRequired && this.MobileNotificationRequired) {
+      this.MobileNotificationRequired = !this.MobileNotificationRequired;
+      return;
+    }
+    const settings = {
+      AudienceId: this.audienceId,
+      EmailNotificationRequired: this.EmailNotificationRequired,
+      SMSNotificationRequired: !this.MobileNotificationRequired
+    };
+    this.changeStatus(settings);
+  }
+
+  changeStatus(settings): void {
+    this.apiService.changeSettings(settings).subscribe((res: any) => {
+      console.log(res);
+      this.localStorageService.set("EmailNotificationRequired", settings.EmailNotificationRequired);
+      this.localStorageService.set("MobileNotificationRequired", settings.SMSNotificationRequired);
+      if (res.result == "success" && res.message) {
+        this.utilService.presentToast(res.message);
+      } else {
+        this.utilService.presentToast(res.message);
+      }
+    });
+  }
+
+  notificationChange(): void {
+    console.log("sms", !this.MobileNotificationRequired);
+    console.log("sms email", !this.EmailNotificationRequired);
+    return;
     const settings = {
       AudienceId: this.audienceId,
       EmailNotificationRequired: this.EmailNotificationRequired,

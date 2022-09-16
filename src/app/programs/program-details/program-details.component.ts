@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiServiceService } from "src/app/service/api-service.service";
+import { LocalStorageService } from "src/app/service/local-storage.service";
 import { StoreService } from "src/app/service/store.service";
+import { UtilService } from "src/app/service/util-service.service";
 import { environment } from "src/environments/environment";
 @Component({
   selector: "app-program-details",
@@ -12,15 +14,17 @@ export class ProgramDetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiServiceService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private localStorageService: LocalStorageService,
+    private utilService: UtilService
   ) {}
   programDetails: any;
   ProgramId = "";
   mediaUrl = environment.mediaUrl;
-  isLoggedIn: boolean = true;
+  isLoggedIn: any = true;
   slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
   allRatingData: any[] = [];
-  ngOnInit() {
+  async ngOnInit() {
     this.storeService.getIsLoggedIn().subscribe((res: any) => {
       this.isLoggedIn = res;
     });
@@ -29,6 +33,8 @@ export class ProgramDetailsComponent implements OnInit {
     const { ProgramId = "" } = this.programDetails;
     this.ProgramId = ProgramId;
     this.subscription();
+    this.isLoggedIn = await this.localStorageService.get("audienceData");
+    console.log("is logged in", this.isLoggedIn);
   }
   public subscription(): void {
     this.getAllRating(this.ProgramId);
@@ -61,6 +67,10 @@ export class ProgramDetailsComponent implements OnInit {
   }
 
   goToRateProgram(): void {
+    if (!this.isLoggedIn) {
+      this.utilService.presentToast("Please login to continue");
+      return;
+    }
     this.router.navigate(["tabs/home/programDetails/rating"], {
       state: this.programDetails
     });

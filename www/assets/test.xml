@@ -1,0 +1,289 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://webservice.mpcd.solyn.in/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://webservice.mpcd.solyn.in/">
+<script/>
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="https://webservice.mpcd.solyn.in/">
+<s:element name="UserLogin">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="UserLoginResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="UserLoginResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ArtistLogin">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MobileNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ArtistLoginResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ArtistLoginResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="AudienceLogin">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MobileNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="AudienceLoginResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="AudienceLoginResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="string" nillable="true" type="s:string"/>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="UserLoginSoapIn">
+<wsdl:part name="parameters" element="tns:UserLogin"/>
+</wsdl:message>
+<wsdl:message name="UserLoginSoapOut">
+<wsdl:part name="parameters" element="tns:UserLoginResponse"/>
+</wsdl:message>
+<wsdl:message name="ArtistLoginSoapIn">
+<wsdl:part name="parameters" element="tns:ArtistLogin"/>
+</wsdl:message>
+<wsdl:message name="ArtistLoginSoapOut">
+<wsdl:part name="parameters" element="tns:ArtistLoginResponse"/>
+</wsdl:message>
+<wsdl:message name="AudienceLoginSoapIn">
+<wsdl:part name="parameters" element="tns:AudienceLogin"/>
+</wsdl:message>
+<wsdl:message name="AudienceLoginSoapOut">
+<wsdl:part name="parameters" element="tns:AudienceLoginResponse"/>
+</wsdl:message>
+<wsdl:message name="UserLoginHttpGetIn">
+<wsdl:part name="UserName" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="UserLoginHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistLoginHttpGetIn">
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistLoginHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceLoginHttpGetIn">
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceLoginHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="UserLoginHttpPostIn">
+<wsdl:part name="UserName" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="UserLoginHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistLoginHttpPostIn">
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="ArtistLoginHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceLoginHttpPostIn">
+<wsdl:part name="MobileNo" type="s:string"/>
+<wsdl:part name="Password" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="AudienceLoginHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:portType name="LoginServiceSoap">
+<wsdl:operation name="UserLogin">
+<wsdl:input message="tns:UserLoginSoapIn"/>
+<wsdl:output message="tns:UserLoginSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<wsdl:input message="tns:ArtistLoginSoapIn"/>
+<wsdl:output message="tns:ArtistLoginSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<wsdl:input message="tns:AudienceLoginSoapIn"/>
+<wsdl:output message="tns:AudienceLoginSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="LoginServiceHttpGet">
+<wsdl:operation name="UserLogin">
+<wsdl:input message="tns:UserLoginHttpGetIn"/>
+<wsdl:output message="tns:UserLoginHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<wsdl:input message="tns:ArtistLoginHttpGetIn"/>
+<wsdl:output message="tns:ArtistLoginHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<wsdl:input message="tns:AudienceLoginHttpGetIn"/>
+<wsdl:output message="tns:AudienceLoginHttpGetOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="LoginServiceHttpPost">
+<wsdl:operation name="UserLogin">
+<wsdl:input message="tns:UserLoginHttpPostIn"/>
+<wsdl:output message="tns:UserLoginHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<wsdl:input message="tns:ArtistLoginHttpPostIn"/>
+<wsdl:output message="tns:ArtistLoginHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<wsdl:input message="tns:AudienceLoginHttpPostIn"/>
+<wsdl:output message="tns:AudienceLoginHttpPostOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="LoginServiceSoap" type="tns:LoginServiceSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="UserLogin">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/UserLogin" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/ArtistLogin" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<soap:operation soapAction="https://webservice.mpcd.solyn.in/AudienceLogin" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="LoginServiceSoap12" type="tns:LoginServiceSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="UserLogin">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/UserLogin" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/ArtistLogin" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<soap12:operation soapAction="https://webservice.mpcd.solyn.in/AudienceLogin" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="LoginServiceHttpGet" type="tns:LoginServiceHttpGet">
+<http:binding verb="GET"/>
+<wsdl:operation name="UserLogin">
+<http:operation location="/UserLogin"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<http:operation location="/ArtistLogin"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<http:operation location="/AudienceLogin"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="LoginServiceHttpPost" type="tns:LoginServiceHttpPost">
+<http:binding verb="POST"/>
+<wsdl:operation name="UserLogin">
+<http:operation location="/UserLogin"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ArtistLogin">
+<http:operation location="/ArtistLogin"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AudienceLogin">
+<http:operation location="/AudienceLogin"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="LoginService">
+<wsdl:port name="LoginServiceSoap" binding="tns:LoginServiceSoap">
+<soap:address location="https://webservice.mpcd.solyn.in/LoginService.asmx"/>
+</wsdl:port>
+<wsdl:port name="LoginServiceSoap12" binding="tns:LoginServiceSoap12">
+<soap12:address location="https://webservice.mpcd.solyn.in/LoginService.asmx"/>
+</wsdl:port>
+<wsdl:port name="LoginServiceHttpGet" binding="tns:LoginServiceHttpGet">
+<http:address location="https://webservice.mpcd.solyn.in/LoginService.asmx"/>
+</wsdl:port>
+<wsdl:port name="LoginServiceHttpPost" binding="tns:LoginServiceHttpPost">
+<http:address location="https://webservice.mpcd.solyn.in/LoginService.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

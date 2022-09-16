@@ -49,9 +49,8 @@ export class AudienceRegistration2Component implements OnInit {
       StateId: [0],
       DateOfBirth: ["", Validators.nullValidator],
       Age: [""],
-      NotificationRequired: ["email"],
-      EmailNotificationRequired: [""],
-      MobileNotificationRequired: [""],
+      EmailNotificationRequired: [true],
+      MobileNotificationRequired: [false],
       iAgree: [false]
     });
     // this.signupForm.controls.MobileNo.disable();
@@ -165,9 +164,10 @@ export class AudienceRegistration2Component implements OnInit {
         this.calculateMonth(formValue.DateOfBirth.month) +
         "-" +
         new Date(formValue.DateOfBirth).getDate(),
-      EmailNotificationRequired: formValue.NotificationRequired == "email" ? true : false,
-      MobileNotificationRequired: formValue.NotificationRequired == "sms" ? true : false
+      EmailNotificationRequired: formValue.EmailNotificationRequired,
+      MobileNotificationRequired: formValue.MobileNotificationRequired
     };
+    console.log("form obj", formObj);
     this.utilService.presentLoading("Please wait...");
     this.apiService.doAudienceProfileUpdate(formObj).subscribe((res: any) => {
       console.log("audience profile updated", res);

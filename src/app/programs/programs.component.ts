@@ -17,7 +17,7 @@ export class ProgramsComponent implements OnInit {
   public paramString: any = "today's programs";
   public mediaUrl = environment.mediaUrl;
   public isReadMorePara = true;
-  public isReadMore = true;
+  isReadMore = [false];
   public isMorePara = true;
   slideOptsOne = { initialSlide: 0, slidesPerView: 1, autoplay: true, loop: true };
 
@@ -79,9 +79,14 @@ export class ProgramsComponent implements OnInit {
     });
   }
 
-  showText() {
-    this.isReadMore = !this.isReadMore;
+  // showText() {
+  //   this.isReadMore = !this.isReadMore;
+  // }
+  showText(index?: number) {
+    // console.log("show more", !this.isReadMore[index]);
+    this.isReadMore[index] = !this.isReadMore[index];
   }
+
   showPara() {
     this.isReadMorePara = !this.isReadMorePara;
   }

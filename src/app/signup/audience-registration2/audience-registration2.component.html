@@ -164,14 +164,27 @@
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="12">
-              <ion-radio-group formControlName="NotificationRequired">
+            <ion-col size="6">
+              <ion-checkbox
+                formControlName="EmailNotificationRequired"
+                value="false"
+              ></ion-checkbox>
+              <ion-text class="pad-5">{{ isEnglish ? "By Email" : language.fromEmail }}</ion-text>
+              <!-- <ion-radio-group formControlName="EmailNotificationRequired">
                 <ion-radio value="email"></ion-radio>
                 <ion-text>{{ isEnglish ? "By Email" : language.fromEmail }}</ion-text>
-
+              </ion-radio-group> -->
+            </ion-col>
+            <ion-col size="6">
+              <ion-checkbox
+                formControlName="MobileNotificationRequired"
+                value="false"
+              ></ion-checkbox>
+              <ion-text class="pad-5">{{ isEnglish ? "By SMS" : language.fromSMS }}</ion-text>
+              <!-- <ion-radio-group formControlName="MobileNotificationRequired">
                 <ion-radio value="sms"></ion-radio>
                 <ion-text>{{ isEnglish ? "By SMS" : language.fromSMS }}</ion-text>
-              </ion-radio-group>
+              </ion-radio-group> -->
             </ion-col>
           </ion-row>
           <ion-row>
