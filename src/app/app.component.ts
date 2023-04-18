@@ -121,7 +121,7 @@ export class AppComponent {
       SplashScreen.hide({
         fadeOutDuration: 300,
       });
-    }, 2000);
+    }, 3000);
     await this.localStorageService.init();
     const mode = (await this.localStorageService.get("mode")) || false;
     if (mode) {

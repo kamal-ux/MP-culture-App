@@ -171,7 +171,7 @@ let AppComponent = class AppComponent {
         _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_6__.SplashScreen.hide({
           fadeOutDuration: 300
         });
-      }, 2000);
+      }, 3000);
       yield _this.localStorageService.init();
       const mode = (yield _this.localStorageService.get("mode")) || false;
 
