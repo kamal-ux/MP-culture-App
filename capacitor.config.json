@@ -1,1 +1,11 @@
-{}
+{
+     "appId": "com.culture_mp.app",
+  "appName": "Culture MP",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+    "plugins": {
+		"SplashScreen" :{
+			"launchShowDuration": 0
+		}
+	}
+}

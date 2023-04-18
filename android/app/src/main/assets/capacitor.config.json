@@ -1,6 +1,11 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "culture_dept_mp",
+	"appId": "com.culture_mp.app",
+	"appName": "Culture MP",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": false
+		}
+	}
 }
